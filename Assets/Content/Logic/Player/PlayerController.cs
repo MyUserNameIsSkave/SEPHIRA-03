@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using static UnityEngine.InputSystem.Controls.AxisControl;
-using static UnityEngine.Rendering.DebugUI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -74,10 +69,7 @@ public class PlayerController : MonoBehaviour
     private GameObject PlayerCameraSocket;
     private GameObject CurrentCameraSlot;
     private Camera MyCamera;
-    public AudioClip CameraMove;
-    public AudioClip CameraChange;
-    private AudioSource audioSource;
-    public AudioSource ChangeSource;
+
     
 
     [SerializeField]
@@ -126,15 +118,6 @@ public class PlayerController : MonoBehaviour
         {
             ClickOnCamera(BaseCameraSlot);
         }
-        // Ajouter le composant AudioSource à l'objet
-        audioSource = gameObject.AddComponent<AudioSource>();
-       
-        // Assigner le clip audio à l'AudioSource
-        audioSource.clip = CameraMove;
-        ChangeSource.clip = CameraChange;
-        previousRotation = transform.rotation;
-
-
     }
 
 
@@ -148,36 +131,10 @@ public class PlayerController : MonoBehaviour
         // Obtenir la rotation actuelle du gameObject
         Quaternion currentRotation = transform.rotation;
 
-        // Vérifier si le gameObject a effectué une rotation depuis la dernière frame
-        if (currentRotation != previousRotation)
-        {
-            if (YawInput != 0 || PitchInput != 0)
-            {
-                // Vérifier si le son est désactivé
-                if (!audioSource.isPlaying)
-                {
-                    // Activer le son
-                    audioSource.Play();
-                }
-            }
-            else
-            {
-                // Vérifier si le son est activé
-                if (audioSource.isPlaying)
-                {
-                    // Désactiver le son
-                    audioSource.Stop();
-                }
-            }
-        }
-        else
-        {
-            audioSource.Stop();
-        }
-
         // Mettre à jour la rotation précédente
         previousRotation = currentRotation;
     }
+
 
     //Align Camera to View
     private void LateUpdate()
@@ -199,7 +156,7 @@ public class PlayerController : MonoBehaviour
     public void ClickOnCamera(GameObject CameraSlot)
     {
         CurrentCameraSlot = CameraSlot;
-        ChangeSource.Play();
+
         //Position & Rotation
         transform.position = CameraSlot.transform.GetChild(0).GetChild(0).GetChild(0).transform.position;
         transform.rotation = CameraSlot.transform.GetChild(0).GetChild(0).GetChild(0).transform.rotation;
@@ -207,8 +164,7 @@ public class PlayerController : MonoBehaviour
         PossessedCameraController = CameraSlot.GetComponent<CameraController>();
         PlayerCameraSocket = PossessedCameraController.PlayerCameraSocket;
 
-       
-
+ 
 
         //FOV
         SlotSettings Settings = CameraSlot.GetComponent<SlotSettings>();

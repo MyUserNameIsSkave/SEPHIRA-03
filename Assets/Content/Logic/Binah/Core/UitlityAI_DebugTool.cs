@@ -117,7 +117,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
-    public void LogChosedAction(InteractiveObject action)
+    public void LogChosedAction(AI_Interaction action)
     {
         if (!logChosenAction)
         {
@@ -130,7 +130,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
-    public void DebugScoreVisualizers(InteractiveObject action, float _score)
+    public void DebugScoreVisualizers(AI_Interaction action, float _score)
     {
         if (!displayScore)
         {
@@ -161,7 +161,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
-    public void DebugPathVisualizer(InteractiveObject bestAction)
+    public void DebugPathVisualizer(AI_Interaction bestAction)
     {
         if (!displayPath)
         {

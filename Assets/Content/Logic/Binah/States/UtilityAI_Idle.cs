@@ -11,7 +11,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     private float inactivityStartTime;
     private float timeLeftBeforeInitiative;
 
-    private InteractiveObject bestAction;
+    private AI_Interaction bestAction;
 
 
 
@@ -189,11 +189,11 @@ public class UtilityAI_Idle : UtilityAI_BaseState
         //Get All Colliding Object
         Collider[] colliders = Physics.OverlapSphere(UtilityAI_Manager.Object.transform.position, UtilityAI_Manager.ActionDetectionRadius, UtilityAI_Manager.InteractiveObject);
 
-        List<InteractiveObject> derivedScripts = new List<InteractiveObject>();
+        List<AI_Interaction> derivedScripts = new List<AI_Interaction>();
 
         foreach (Collider collider in colliders)
         {
-            InteractiveObject derivedScript = collider.GetComponent<InteractiveObject>();
+            AI_Interaction derivedScript = collider.GetComponent<AI_Interaction>();
             if (derivedScript != null)
             {
                 derivedScripts.Add(derivedScript);
@@ -210,7 +210,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Chose the Best Action to Do
     /// </summary>
-    void DecideBestAction(InteractiveObject[] actionAvaliable)
+    void DecideBestAction(AI_Interaction[] actionAvaliable)
     {
             #region Debug
         if (UtilityAI_Manager.UseDebugTool)
@@ -254,7 +254,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Call Scoring Logic
     /// </summary>
-    public float ScoreDetectedActions(InteractiveObject action)
+    public float ScoreDetectedActions(AI_Interaction action)
     {
         float score = RunThroughConsideration(false, action);
 
@@ -278,7 +278,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Call Scoring Logic
     /// </summary>
-    public void ScoreIndicatedAction(InteractiveObject action)
+    public void ScoreIndicatedAction(AI_Interaction action)
     {
         float score = RunThroughConsideration(true, action);
 
@@ -310,7 +310,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Scoring Logic, use Consideration to define an Action Score between 0 & 1, called for AI Detected Action and Player Indicated Action
     /// </summary>
-    private float RunThroughConsideration(bool IgnorPathLength, InteractiveObject action)
+    private float RunThroughConsideration(bool IgnorPathLength, AI_Interaction action)
     {
         bool distanceEvaluated;
 
@@ -368,7 +368,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Get the length of the path to the action to take it into account for the score
     /// </summary>
-    private float CalculatePathLength(InteractiveObject action)
+    private float CalculatePathLength(AI_Interaction action)
     {
         //Variables
         Vector3 endPoint = action.transform.position;
@@ -396,7 +396,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// <summary>
     /// Ask the UtilityAI_Action script to execute the selected Action
     /// </summary>
-    public void ExecuteAction(InteractiveObject action)
+    public void ExecuteAction(AI_Interaction action)
     {
             #region Debug
         if (UtilityAI_Manager.UseDebugTool)

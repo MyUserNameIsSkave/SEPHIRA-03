@@ -121,7 +121,7 @@ public class UtilityAI_Manager : MonoBehaviour
     public LayerMask InteractiveObject;
 
     [HideInInspector]
-    public InteractiveObject ActionToDo;
+    public AI_Interaction ActionToDo;
 
     [HideInInspector]
     public UitlityAI_DebugTool DebugTool;

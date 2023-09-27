@@ -132,7 +132,8 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
 
 
         //COVER
-        InteractiveObject cover = SearchForCover();
+
+        AI_Interaction cover = SearchForCover();
         if (cover != null)
         {
                 #region Debug
@@ -196,13 +197,13 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
 
     #region COVER
 
-    private InteractiveObject SearchForCover()
+    private AI_Interaction SearchForCover()
     {
         //Variables
         Vector3 playerPosition = UtilityAI_Manager.gameObject.transform.position;
 
-        List<InteractiveObject> InteractionList = new List<InteractiveObject>();
-        List<InteractiveObject> coverList = new List<InteractiveObject>();
+        List<AI_Interaction> InteractionList = new List<AI_Interaction>();
+        List<AI_Interaction> coverList = new List<AI_Interaction>();
 
 
         //Get all action in radius
@@ -212,7 +213,7 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
         //Get each scripts derived from InteractiveObject to a List
         foreach (Collider collider in colliders)
         {
-            InteractiveObject Interaction = collider.GetComponent<InteractiveObject>();
+            AI_Interaction Interaction = collider.GetComponent<AI_Interaction>();
             if (Interaction != null)
             {
                 InteractionList.Add(Interaction);
@@ -259,13 +260,13 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
 
     }
 
-    private InteractiveObject GetClosestCover(List<InteractiveObject> coverList)
+    private AI_Interaction GetClosestCover(List<AI_Interaction> coverList)
     {
         NavMeshPath path = new NavMeshPath();
         float shortestPathLength = Mathf.Infinity;
         float currentPathLength = 0f;
 
-        InteractiveObject finalCover = null;
+        AI_Interaction finalCover = null;
 
 
         foreach (var coverScript in coverList)

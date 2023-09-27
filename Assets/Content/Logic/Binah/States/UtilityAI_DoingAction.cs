@@ -11,7 +11,7 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
 {
     // ----- WORKING VARIABLES -----
 
-    private InteractiveObject action;
+    private AI_Interaction action;
 
     //For the custom behavior in case of Box Collider
     private BoxCollider actionCollider;
@@ -78,7 +78,7 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
     /// <summary>
     /// Action Initialization Method
     /// </summary>
-    public void ActionChosed(InteractiveObject _action)
+    public void ActionChosed(AI_Interaction _action)
     {
         action = _action;
         actionCollider = action.gameObject.GetComponent<BoxCollider>();

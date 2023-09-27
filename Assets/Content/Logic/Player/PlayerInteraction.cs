@@ -6,7 +6,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     //Settings
     [SerializeField]
-    private LayerMask interactableLayer;
+    private LayerMask interactableLayer;                //WHY THO ?!
 
 
     //Working Variables
@@ -41,18 +41,18 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 ;
+
+
             // ----- If Raycast Hit
 
-            #region AI Interaction
-            if (hit.collider.CompareTag("AI_Interactable"))
+            #region Interaction
+
+            //Trigger PlayerIndication() in the Object
+            if (hit.collider.GetComponent<IInteractable>() != null)
             {
-                //Trigger PlayerIndication() in the Object
-                if (hit.collider.GetComponent<IInteractable>() != null)
-                {
 
-                    hit.collider.GetComponent<IInteractable>().SelectedByPlayer();
+                hit.collider.GetComponent<IInteractable>().SelectedByPlayer();
 
-                }
             }
             #endregion
 

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BinahAnimation : MonoBehaviour
 {
-    public AudioSource isHit;
-    public AudioSource punchEnemy;
-
 
     [SerializeField]
     private Animator Animator;
@@ -23,7 +20,6 @@ public class BinahAnimation : MonoBehaviour
 
     public void OnPunch()
     {
-        punchEnemy.Play();
         Animator.SetBool("Punch", true);
 
     }
@@ -34,7 +30,6 @@ public class BinahAnimation : MonoBehaviour
     public void OnPunched()
     {
         Animator.SetBool("Punched", true);
-        isHit.Play();
         Invoke("ResetAnimation", 1f);
     }
 
