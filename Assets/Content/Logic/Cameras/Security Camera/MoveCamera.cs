@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class MoveCamera : MonoBehaviour
 {
     public GameObject PlayerCameraSocket;
 

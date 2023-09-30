@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = CameraSlot.transform.GetChild(0).GetChild(0).GetChild(0).transform.rotation;
 
         PossessedCameraController = CameraSlot.GetComponent<CameraController>();
-        PlayerCameraSocket = PossessedCameraController.PlayerCameraSocket;
+        //////////////////////////////////PlayerCameraSocket = PossessedCameraController.PlayerCameraSocket;
 
  
 
@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
 
 
         //Apply Input
-        PossessedCameraController.RotateCamera(-PitchInput / MovementSensivityAjustement, YawInput / MovementSensivityAjustement);
+        /////////////////////////////////////////////PossessedCameraController.RotateCamera(-PitchInput / MovementSensivityAjustement, YawInput / MovementSensivityAjustement);
     }
 
 

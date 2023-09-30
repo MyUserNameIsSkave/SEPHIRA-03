@@ -17,7 +17,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The time used for methodes that need to be checked regularly but are to heavy to by done in FixedUpdate()")]
-    public float CustomUpdateFrequency = 1;
+    public float CustomUpdateFrequency = 0.5f;
 
 
         #region 
@@ -90,6 +90,8 @@ public class UtilityAI_Manager : MonoBehaviour
     [Space(7)]
 
     public bool UseDebugTool;
+
+
     [SerializeField]
     string currentStateName;
         #endregion
