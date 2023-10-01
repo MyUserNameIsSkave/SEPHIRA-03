@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Security_Camera : CameraBase
+public class SecurityCamera_Camera : CameraBase
 {
 
 }

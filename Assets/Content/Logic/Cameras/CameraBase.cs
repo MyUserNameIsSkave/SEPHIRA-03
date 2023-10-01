@@ -40,10 +40,13 @@ public class CameraBase : MonoBehaviour, IInteractable
     private float BaseYaw;
 
 
+
+
     // ----- INTERFACE -----
     public void SelectedByPlayer()
     {
         //CHange Camera
+        cameraController.currentCamera = this;
     }
 
     public void Interaction()
@@ -62,7 +65,7 @@ public class CameraBase : MonoBehaviour, IInteractable
         BasePitch = Mathf.Clamp(BaseVerticalRotation, VerticalRange.x, VerticalRange.y);
         BaseYaw = Mathf.Clamp(BaseHorizontalRotation, HorizontalRange.x, HorizontalRange.y);
 
-        PivotPoint.transform.rotation = Quaternion.Euler(BasePitch, BaseYaw, 0);
+        PivotPoint.transform.localRotation = Quaternion.Euler(BasePitch, BaseYaw, 0);
     }
 
 

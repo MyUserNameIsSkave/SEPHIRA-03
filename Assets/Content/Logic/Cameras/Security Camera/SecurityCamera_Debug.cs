@@ -1,30 +1,60 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.InputSystem.Controls.AxisControl;
 
-public class CameraGizmo : MonoBehaviour
+
+public class SecurityCamera_Debug : MonoBehaviour
 {
+    enum GizmoDisplaySettings
+    {
+        Hidden,
+        OnlyOnSelected,
+        Always
+    }
+
+    [Header ("     Visibility Setting")]
+    [Space(5)]
+
     [SerializeField]
-    private CameraBase cameraVariables;
+    GizmoDisplaySettings Visibility = GizmoDisplaySettings.OnlyOnSelected;
 
-    [SerializeField, Range (0.3f, 5f)]
-    float LimitLength;
 
-    [SerializeField, Range(3f, 10f)]
-    int Resolution;
+        [Space(10)]
 
-    [SerializeField, Range(1f, 10f)]
+
+    [Header("     Visual Feedback")]
+    [Space(5)]
+
+    [SerializeField]
+    private bool CameraDirectionCrossOn;
+
+    [SerializeField]
+    private bool GridPatern;
+
+
+        [Space(10)]
+
+
+    [Header("     Other")]
+    [Space(5)]
+
+    [SerializeField, Range(1f, 25f)]
     float ForwardLength;
 
 
-    [SerializeField, Range(0.01f, 0.05f)]
-    float SphereRadius;
 
 
+    #region Working variables
+
+    //Reference
+    private CameraBase cameraVariables;
 
 
+    //Settings
+    int Resolution = 7;
+    float SphereRadius = 0.01f;
+    float LimitLength = 0.3f;
+
+
+    //Working
     float BasePitch;
     float BaseYaw;
 
@@ -50,22 +80,19 @@ public class CameraGizmo : MonoBehaviour
     Vector3 CurrentPoint;
 
 
-
-
-
     float UpClamp;
     float DownClamp;
 
     float RightClamp;
     float LeftClamp;
 
+    #endregion
 
-    [SerializeField]
-    private bool CameraDirectionCrossOn;
 
-    [SerializeField]
 
-    private bool GridPatern;
+
+
+
 
 
 
@@ -73,14 +100,27 @@ public class CameraGizmo : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (Visibility != GizmoDisplaySettings.Always)
+        {
+            return;
+        }
+
+        cameraVariables = GetComponent<CameraBase>();
+        GetVariables();
         TraceGizmos(DownClamp - UpClamp, RightClamp - LeftClamp, Resolution);
     }
 
 
     private void OnDrawGizmosSelected()
     {
-        GetVariables();
+        if (Visibility != GizmoDisplaySettings.OnlyOnSelected)
+        {
+            return;
+        }
 
+        cameraVariables = GetComponent<CameraBase>();
+        GetVariables();
+        TraceGizmos(DownClamp - UpClamp, RightClamp - LeftClamp, Resolution);
 
     }
 
@@ -125,8 +165,6 @@ public class CameraGizmo : MonoBehaviour
         DownLeftPoint = BasePosition + transform.TransformDirection(Quaternion.Euler(DownClamp, LeftClamp, 0) * -Vector3.forward * LimitLength);
 
     }
-
-
 
 
     private void TraceGizmos(float PitchAngleOpening, float YawAngleOpening, int Resolution)

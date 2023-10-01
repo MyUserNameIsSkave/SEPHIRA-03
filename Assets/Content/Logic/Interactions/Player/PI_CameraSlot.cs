@@ -11,6 +11,6 @@ public class PI_CameraSlot : Player_Interaction
 
     public override void SelectedByPlayer()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().ClickOnCamera(gameObject);
+
     }
 }

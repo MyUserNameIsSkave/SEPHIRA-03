@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+public class PlayerWorldInteraction : MonoBehaviour
 {
     //Settings
     [SerializeField]
@@ -22,11 +22,13 @@ public class PlayerInteraction : MonoBehaviour
     //----------------------------------------------------------------
 
 
-    private void Start()
+    private void Awake()
     {
         _camera = Camera.main;
         UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
     }
+
+
 
 
     void Update()
@@ -35,22 +37,28 @@ public class PlayerInteraction : MonoBehaviour
         //Interaction Input
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            if (!Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit))
+            Debug.Log("click");
+
+            RaycastHit hit = new RaycastHit();
+            if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
             {
+                Debug.Log("False");
                 return;
             }
 ;
-
+            Debug.Log("True");
 
             // ----- If Raycast Hit
 
             #region Interaction
 
-            //Trigger PlayerIndication() in the Object
+
+
+            //Trigger SelectedByPlayer() in the Object. 
+            //The Interface MUST be on the colliding object
             if (hit.collider.GetComponent<IInteractable>() != null)
             {
-
+                Debug.Log("Clicked on Interaction");
                 hit.collider.GetComponent<IInteractable>().SelectedByPlayer();
 
             }

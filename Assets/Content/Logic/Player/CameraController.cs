@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField, Tooltip ("Serializable only for debugging purpose")]
-    private CameraBase currentCamera;
+    [Tooltip ("Serializable only for debugging purpose")]
+    public CameraBase currentCamera;
 
         [Space(20)]
 
@@ -62,8 +62,6 @@ public class CameraController : MonoBehaviour
         {
             float PositionInBorder = Mathf.InverseLerp(1 - HorizontalThreshold, 1, Mathf.Abs(WidthPositionPercentage));
             HorizontalInput = (SensivityProgresion.Evaluate(PositionInBorder) * Mathf.Sign(WidthPositionPercentage)) * Sensivity * Time.deltaTime * 10;
-
-            Debug.Log(HorizontalInput);
         }
 
 
