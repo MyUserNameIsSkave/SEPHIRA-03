@@ -1,42 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
+    // ----- SETTINGS VARIABLES -----
+
     [Tooltip ("Serializable only for debugging purpose")]
     public CameraBase currentCamera;
 
-        [Space(20)]
+        [Space(15)]
+        [Header("     ROTATION")]
+        [Space(7)]
 
-    [SerializeField, Range(0f, 1f)]
-    private float HorizontalThreshold = 0.2f;
+    [Range(0f, 1f)]
+    public float HorizontalThreshold = 0.2f;
 
-    [SerializeField, Range(0f, 1f)]
-    private float VerticalThreshold = 0.2f;
+    [Range(0f, 1f)]
+    public float VerticalThreshold = 0.2f;
 
-        [Space(20)]
+        [Space(7)]
+
+    public AnimationCurve SensivityProgresion;
 
     [SerializeField]
-    private AnimationCurve SensivityProgresion;
+    private float RotationSensivity;
 
-        [Space(20)]
+        [Space(15)]
+        [Header("     ZOOM")]
+        [Space(7)]
 
-    [SerializeField]
-    private float Sensivity;
+    public float ZoomSensivity;
 
 
 
 
-    private void Update()
+    // ----- WORKING VARIABLES -----
+
+    [HideInInspector]
+    public Camera camera;
+
+
+
+    [HideInInspector]
+    public float AjustedRotationSensivity;
+
+
+    //the FOV of the Camera before launching. Used to adjuste the sensitivity of the camera throughout  the FOV change
+    [Tooltip ("The FOV of the Camera before launching. Used to adjuste the sensitivity of the camera throughout  the FOV change")]
+    private float referenceFOV;
+
+
+
+    [HideInInspector]
+    public float currentFOV;
+
+
+
+    // Coroutines
+    Coroutine moveCamera = null;
+
+
+
+
+
+
+
+
+
+
+    // ----- LOGIC -----
+
+
+    private void Awake()
     {
+        camera = Camera.main;
+        referenceFOV = camera.fieldOfView;
+        currentFOV = referenceFOV;
 
-        if (Input.GetKey(KeyCode.LeftAlt))
-        {
-            currentCamera.RotateCamera(GetCameraInput());
-        }
     }
+
 
     private void LateUpdate()
     {
@@ -45,33 +89,64 @@ public class CameraController : MonoBehaviour
     }
 
 
+    #region CAMERA ROTATION
 
-
-    public Vector2 GetCameraInput()
+    //Start ans Stop MoveCamera Coroutine depending on the Inputs
+    private void OnCameraRotation(InputValue value)
     {
-        //Mouse Position Relative to Border
-        float WidthPositionPercentage = Mathf.Clamp((((Input.mousePosition.x - Screen.width / 2) / Screen.width) * 2), -1, 1);
-        float HeightPositionhPercentage = Mathf.Clamp((((Input.mousePosition.y - Screen.height / 2) / Screen.height) * 2), -1, 1);
-
-        float HorizontalInput = 0f;
-        float VerticalInput = 0f;
         
 
-        //Mouse Position to Input
-        if (Mathf.Abs(WidthPositionPercentage) >= 1 - HorizontalThreshold)
+        if (value.Get<float>() != 0)
         {
-            float PositionInBorder = Mathf.InverseLerp(1 - HorizontalThreshold, 1, Mathf.Abs(WidthPositionPercentage));
-            HorizontalInput = (SensivityProgresion.Evaluate(PositionInBorder) * Mathf.Sign(WidthPositionPercentage)) * Sensivity * Time.deltaTime * 10;
+            moveCamera = StartCoroutine(CameraRotation());
         }
-
-
-        if (Mathf.Abs(HeightPositionhPercentage) >= 1 - VerticalThreshold)
+        else
         {
-            float PositionInBorder = Mathf.InverseLerp(1 - VerticalThreshold, 1, Mathf.Abs(HeightPositionhPercentage));
-            VerticalInput = (SensivityProgresion.Evaluate(PositionInBorder) * Mathf.Sign(HeightPositionhPercentage)) * Sensivity * Time.deltaTime * 10;
+            StopCoroutine(moveCamera);
         }
-
-
-        return new Vector2(VerticalInput, HorizontalInput);
     }
+
+    // MoveCamera Coroutine, Responsible for Camera Movement
+    private IEnumerator CameraRotation()
+    {
+        while (true)
+        {
+            AjustedRotationSensivity = RotationSensivity * (currentFOV / referenceFOV);
+            currentCamera.RotateCamera();
+            yield return null;
+        }
+    }
+
+    #endregion
+
+
+
+
+
+
+    private void OnZoom(InputValue value)
+    {
+        currentCamera.Zoom(value.Get<float>() * ZoomSensivity);
+    }
+
+
+    public void ChangeFOV(float newFOV)
+    {
+        currentFOV = newFOV;
+        camera.fieldOfView = currentFOV;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
