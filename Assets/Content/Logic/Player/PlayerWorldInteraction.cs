@@ -5,15 +5,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerWorldInteraction : MonoBehaviour
 {
-    //Settings
+    [Header("     LAYER SELECTION")]
+    [Space(7)]
+
+
     [SerializeField]
-    public LayerMask PlayerInteractableLayer;            
+    private LayerMask PlayerInteractableLayer;
+
+    [SerializeField]
     public LayerMask BinahLayer;
 
-    //Working Variables
-    private Camera _camera;
 
+
+
+    private Camera _camera;
     private UtilityAI_Manager UtilityAI_Manager;
+
 
 
 

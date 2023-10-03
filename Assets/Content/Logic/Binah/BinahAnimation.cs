@@ -1,50 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BinahAnimation : MonoBehaviour
 {
 
-    [SerializeField]
+    private NavMeshAgent agent;
     private Animator Animator;
 
 
 
-    public void Struggling()
+    private void Awake()
     {
-        Animator.SetBool("Struggling", true);
+        agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponent<Animator>();
     }
 
-
-
-
-    public void OnPunch()
+    private void Update()
     {
-        Animator.SetBool("Punch", true);
+        float maxSpeed = agent.speed;
+        float currentSpeed = agent.velocity.magnitude;
 
+        Animator.speed = currentSpeed / maxSpeed;
     }
 
-
-
-
-    public void OnPunched()
-    {
-        Animator.SetBool("Punched", true);
-        Invoke("ResetAnimation", 1f);
-    }
-
-
-
-
-
-    public void ResetAnimation()
-    {
-        Animator.SetBool("Struggling", false);
-        Animator.SetBool("Punch", false);
-        Animator.SetBool("Punch", false);
-
-
-    }
 
 
 }

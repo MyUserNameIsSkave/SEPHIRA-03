@@ -5,6 +5,34 @@ using UnityEngine.AI;
 
 public class EnnemisBehavior : MonoBehaviour
 {
+
+
+
+
+    //DEPRECIATED 
+    //ONLY USEFULL TO GET THE PATROL POINT SETUP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public AudioSource detectBinah;
 
     #region Waypoint Draw & Variables
@@ -309,15 +337,6 @@ public class EnnemisBehavior : MonoBehaviour
 
 
 
-        //Animation
-
-        if (IsStruggling)
-        {
-            EnnemiAnimation.Struggling();
-            GameObject.FindGameObjectWithTag("Binah").GetComponent<BinahAnimation>().Struggling();
-        }
-
-
     }
 
 
@@ -353,7 +372,6 @@ public class EnnemisBehavior : MonoBehaviour
         {
             IsStruggling = false;
             EnnemiAnimation.OnPunched();
-            GameObject.FindGameObjectWithTag("Binah").GetComponent<BinahAnimation>().OnPunch();
             //Destroy(gameObject);
 
             GetComponent<CapsuleCollider>().enabled = false;    

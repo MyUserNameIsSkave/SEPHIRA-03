@@ -1,21 +1,27 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
+
 
 public class BinahIndication : MonoBehaviour
 {
 
-
-    public bool inIndicationMode;
-
+    [Header ("     LAYER SELECTION")]
+    [Space (7)]
 
     public LayerMask WalkableLayer;
     public LayerMask AIInteractionLayer;
     public LayerMask BinahLayer;
 
+
+
     //Working Variables
+    private float maxSlop= 45f;
+
+    private bool inIndicationMode;
+
     private Camera _camera;
     private UtilityAI_Manager UtilityAI_Manager;
-
 
 
 
@@ -107,8 +113,17 @@ public class BinahIndication : MonoBehaviour
         }
 
 
-        //MUST add slop verification
+        // Slope Verifiaction
+        Vector3 surfaceNormal = hit.normal;
+        float slopeAngle = Vector3.Angle(Vector3.up, surfaceNormal);
 
+        if (slopeAngle > maxSlop)
+        {
+            return;
+        }
+
+
+        // Move
         UtilityAI_Manager.IndicatedPosition = hit.point;
         UtilityAI_Manager.SwitchState(UtilityAI_Manager.MovingState);
     }
