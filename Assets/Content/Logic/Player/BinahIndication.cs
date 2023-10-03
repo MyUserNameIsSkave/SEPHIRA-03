@@ -1,20 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerWorldInteraction : MonoBehaviour
+public class BinahIndication : MonoBehaviour
 {
-    //Settings
-    [SerializeField]
-    public LayerMask PlayerInteractableLayer;            
+
+
+    public bool inIndicationMode;
+
+
+    public LayerMask WalkableLayer;
+    public LayerMask AIInteractionLayer;
     public LayerMask BinahLayer;
 
     //Working Variables
     private Camera _camera;
-
     private UtilityAI_Manager UtilityAI_Manager;
-
 
 
 
@@ -32,6 +32,22 @@ public class PlayerWorldInteraction : MonoBehaviour
 
 
 
+
+
+
+    private void OnMovementIndication(InputValue value)
+    {
+        if (value.Get<float>() == 0)
+        {
+            inIndicationMode = false;
+        }
+        else
+        {
+            inIndicationMode = true;
+        }
+    }
+
+
     private void OnInteraction(InputValue value)
     {
         //Only on Press
@@ -41,11 +57,22 @@ public class PlayerWorldInteraction : MonoBehaviour
         }
 
 
+
         RaycastHit hit;
         Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ~BinahLayer);
 
 
-        Interaction(hit);
+
+        if (!inIndicationMode)
+        {
+            ActionIndication(hit);
+            return;
+        }
+        else
+        {
+            MovementIndication(hit);
+            return;
+        }
 
     }
 
@@ -53,23 +80,37 @@ public class PlayerWorldInteraction : MonoBehaviour
 
 
 
-    private void Interaction(RaycastHit hit)
+    private void ActionIndication(RaycastHit hit)
     {
-        if (!DoubleCheckRaycast(PlayerInteractableLayer))
+        if (!DoubleCheckRaycast(AIInteractionLayer))
         {
             return;
         }
-
 
 
         IInteractable interactionInterface = hit.collider.GetComponent<IInteractable>();
 
-
         if (interactionInterface != null)
         {
-            interactionInterface.Interaction();
+            interactionInterface.SelectedByPlayer();
             return;
         }
+    }
+
+
+
+    private void MovementIndication(RaycastHit hit)
+    {
+        if (!DoubleCheckRaycast(WalkableLayer))
+        {
+            return;
+        }
+
+
+        //MUST add slop verification
+
+        UtilityAI_Manager.IndicatedPosition = hit.point;
+        UtilityAI_Manager.SwitchState(UtilityAI_Manager.MovingState);
     }
 
 
@@ -77,6 +118,15 @@ public class PlayerWorldInteraction : MonoBehaviour
 
 
 
+
+
+
+
+
+
+    /// <summary>
+    /// Check if an a Valid Object is directly under the Cursor. Return true if it is the case.
+    /// </summary>
     private bool DoubleCheckRaycast(LayerMask targetLayer)
     {
         RaycastHit initialHit;
@@ -85,7 +135,6 @@ public class PlayerWorldInteraction : MonoBehaviour
         {
             return false;
         }
-
 
         RaycastHit verificationHit;
         Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out verificationHit, Mathf.Infinity);

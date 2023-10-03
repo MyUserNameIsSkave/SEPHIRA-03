@@ -13,6 +13,7 @@ public class CameraBase : MonoBehaviour, IInteractable
         [Header ("     ROTATION")]
         [Space(7)]
 
+
     public GameObject PivotPoint;
 
     public GameObject CameraPoint;
@@ -33,10 +34,10 @@ public class CameraBase : MonoBehaviour, IInteractable
     [Range(-180, 180)]
     public float BaseVerticalRotation;
 
-    [Space(15)]
-    [Header("     ZOOM")]
-    [Space(7)]
 
+        [Space(15)]
+        [Header("     ZOOM")]
+        [Space(7)]
 
     [SerializeField]
     private float baseFOV;
@@ -62,7 +63,7 @@ public class CameraBase : MonoBehaviour, IInteractable
 
     //Zoom
     private float currentCameraFOV;
-    public float ZoomLeft = 0f;
+    private float ZoomLeft = 0f;
     private float currentLerpedFOV = 0f;
     private Coroutine ZoomLerping;
 
@@ -81,14 +82,14 @@ public class CameraBase : MonoBehaviour, IInteractable
 
     public void SelectedByPlayer()
     {
-        //CHange Camera
-        cameraController.currentCamera = this;
-        cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
+        // Leave Empty
     }
 
     public void Interaction()
     {
-        //Leave Empty
+        // Change Camera
+        cameraController.currentCamera = this;
+        cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
     }
 
     #endregion

@@ -20,7 +20,15 @@ public class UtilityAI_Manager : MonoBehaviour
     public float CustomUpdateFrequency = 0.5f;
 
 
-        #region 
+    [Space(15)]
+    [Header("     VARIABLES")]
+    [Space(7)]
+
+    public StateVariablesDictionnary StateVariablesDictionnary;
+
+
+    #region 
+    [Space(15)]
     [Header("ACTION")]
     [Space(7)]
 
@@ -43,7 +51,7 @@ public class UtilityAI_Manager : MonoBehaviour
     public float IdleTimeBeforeFlee;
     #endregion
 
-
+    #region
     [Space(15)]
     [Header("FLEE")]
     [Space(7)]
@@ -72,17 +80,10 @@ public class UtilityAI_Manager : MonoBehaviour
 
     public float FleeDistance;
 
+    #endregion
 
 
 
-
-
-
-    [Space(15)]
-    [Header("     VARIABLES")]
-    [Space(7)]
-
-    public StateVariablesDictionnary StateVariablesDictionnary;
 
 
     [Space(5)]
@@ -90,11 +91,7 @@ public class UtilityAI_Manager : MonoBehaviour
     [Space(7)]
 
     public bool UseDebugTool;
-
-
-    [SerializeField]
-    string currentStateName;
-        #endregion
+    #endregion
 
 
 
@@ -131,7 +128,7 @@ public class UtilityAI_Manager : MonoBehaviour
     [HideInInspector]
     public Vector3 IndicatedPosition;
 
-    //[HideInInspector]
+    [HideInInspector]
     public List<GameObject> EnemyToFlee;
 
     [HideInInspector]
@@ -238,7 +235,6 @@ public class UtilityAI_Manager : MonoBehaviour
 
         //Notify New State
         newState.EnterState();
-        currentStateName = newState.ToString();
     }
 
 

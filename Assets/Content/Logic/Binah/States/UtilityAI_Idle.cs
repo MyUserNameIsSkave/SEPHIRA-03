@@ -32,7 +32,6 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     /// </summary>
     public override void EnterState()
     {
-        Debug.Log("--------------------- ENTER IDLE ---------------------");
         inactivityStartTime = Time.time;
     }
 

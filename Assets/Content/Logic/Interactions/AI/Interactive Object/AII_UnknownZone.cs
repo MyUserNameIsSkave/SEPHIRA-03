@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class IO_UnknownZone : AI_Interaction
+public class AII_UnknownZone : AI_Interaction
 
 {
     // ----- VARIABLES -----

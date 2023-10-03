@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.7232224
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00000071525574
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.2793353
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -70,6 +70,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6443686216564134109}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8401332345009082934}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4150955312195202485}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -90,6 +98,51 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6528929488298583291}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &6443686216564134109
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222289231504546218}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &8401332345009082934
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222289231504546218}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 7
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 999999
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!95 &4150955312195202485
 Animator:
   serializedVersion: 5
@@ -137,37 +190,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CustomUpdateFrequency: 1
-  ActionDetectionRadius: 0
-  MaxPathLength: 0
-  IndicatedActionMinScore: 0
-  IndependenceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  MinIndependenceForInitiative: 0
-  IndependenceMinScore: 0
-  IdleTimeBeforeFlee: 0
-  DetectEnemyToFleeRadius: 0
-  MinDistanceBeforeFlee: 0
-  SearchHideSpotRadius: 0
-  SearchDensity: 0
-  SearchCoverRadius: 0
-  CoverConsideration: {fileID: 0}
-  FleeDistance: 0
   StateVariablesDictionnary:
     StateVariables:
     - Name: Courage
       Value: 0
     - Name: Determination
-      Value: 25
+      Value: 0
     - Name: Curiosity
       Value: 0
     - Name: Independence
       Value: 0
+  ActionDetectionRadius: 8
+  MaxPathLength: 16
+  IndicatedActionMinScore: 0
+  IndependenceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 50
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 10
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MinIndependenceForInitiative: 20
+  IndependenceMinScore: 0.5
+  IdleTimeBeforeFlee: 0
+  DetectEnemyToFleeRadius: 10
+  MinDistanceBeforeFlee: 3
+  SearchHideSpotRadius: 10
+  SearchDensity: 5
+  SearchCoverRadius: 8
+  CoverConsideration: {fileID: 0}
+  FleeDistance: 10
   UseDebugTool: 1
-  currentStateName: 
   Object: {fileID: 0}
   Agent: {fileID: 0}
   InteractiveObject:
@@ -190,15 +260,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4a7f418637e348911a14664961804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawActionDetectionRadius: 0
+  Visibility: 0
+  drawActionDetectionRadius: 1
   displayScore: 0
   displayPath: 0
   logChosenAction: 0
   logInitiatives: 0
   logFlee: 0
-  drawEnemyToFleeDetectionRadius: 0
-  drawSearchForCoverRadius: 0
-  drawSearchForHideSpotRadius: 0
+  drawEnemyToFleeDetectionRadius: 1
+  drawSearchForCoverRadius: 1
+  drawSearchForHideSpotRadius: 1
   scoreVisualization: {fileID: 0}
   lineRendererPrefab: {fileID: 0}
   pathColor: {r: 1, g: 1, b: 1, a: 1}

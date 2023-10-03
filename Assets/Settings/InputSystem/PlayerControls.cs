@@ -44,6 +44,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Value"",
+                    ""id"": ""2721d799-254d-4060-b997-411aacb6a881"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MovementIndication"",
+                    ""type"": ""Value"",
+                    ""id"": ""285fe4f7-ae21-4fe9-a23a-70c2269a8519"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -68,6 +86,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CameraRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d6eca99-ffff-40e5-b112-aaf265877254"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b79a746c-0f04-4192-a678-1d67428b5c8e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementIndication"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +118,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
         m_Camera_CameraRotation = m_Camera.FindAction("CameraRotation", throwIfNotFound: true);
+        m_Camera_Interaction = m_Camera.FindAction("Interaction", throwIfNotFound: true);
+        m_Camera_MovementIndication = m_Camera.FindAction("MovementIndication", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +183,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
     private readonly InputAction m_Camera_Zoom;
     private readonly InputAction m_Camera_CameraRotation;
+    private readonly InputAction m_Camera_Interaction;
+    private readonly InputAction m_Camera_MovementIndication;
     public struct CameraActions
     {
         private @PlayerControls m_Wrapper;
         public CameraActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Zoom => m_Wrapper.m_Camera_Zoom;
         public InputAction @CameraRotation => m_Wrapper.m_Camera_CameraRotation;
+        public InputAction @Interaction => m_Wrapper.m_Camera_Interaction;
+        public InputAction @MovementIndication => m_Wrapper.m_Camera_MovementIndication;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +208,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraRotation.started += instance.OnCameraRotation;
             @CameraRotation.performed += instance.OnCameraRotation;
             @CameraRotation.canceled += instance.OnCameraRotation;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
+            @MovementIndication.started += instance.OnMovementIndication;
+            @MovementIndication.performed += instance.OnMovementIndication;
+            @MovementIndication.canceled += instance.OnMovementIndication;
         }
 
         private void UnregisterCallbacks(ICameraActions instance)
@@ -172,6 +224,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CameraRotation.started -= instance.OnCameraRotation;
             @CameraRotation.performed -= instance.OnCameraRotation;
             @CameraRotation.canceled -= instance.OnCameraRotation;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+            @MovementIndication.started -= instance.OnMovementIndication;
+            @MovementIndication.performed -= instance.OnMovementIndication;
+            @MovementIndication.canceled -= instance.OnMovementIndication;
         }
 
         public void RemoveCallbacks(ICameraActions instance)
@@ -193,5 +251,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnZoom(InputAction.CallbackContext context);
         void OnCameraRotation(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnMovementIndication(InputAction.CallbackContext context);
     }
 }

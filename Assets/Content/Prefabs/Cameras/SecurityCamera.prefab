@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2439538632442337420}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: CameraPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6039337649041446343}
   - component: {fileID: 5227946851070936001}
   - component: {fileID: 450508138179445812}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: SecurityCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PivotPoint: {fileID: 7239958585332854039}
   CameraPoint: {fileID: 700761169249496039}
-  HorizontalRange: {x: -50, y: 50}
+  HorizontalRange: {x: -80.6589, y: 19.341103}
   VerticalRange: {x: -45, y: 25}
   BaseHorizontalRotation: 0
   BaseVerticalRotation: 0
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5822191548230582030}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: PivotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,17 +168,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5b7aa74f724ad214ebd736793f992d2d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b7aa74f724ad214ebd736793f992d2d,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b7aa74f724ad214ebd736793f992d2d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b7aa74f724ad214ebd736793f992d2d,
         type: 3}
@@ -240,6 +240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraFoot
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b7aa74f724ad214ebd736793f992d2d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -262,17 +267,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
@@ -282,12 +287,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0076
+      value: 0.032
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.021
+      value: -0.037
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99a486ffdee0bf64da12c213de8d2691,
         type: 3}
@@ -333,6 +338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraObjectiv
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99a486ffdee0bf64da12c213de8d2691,
+        type: 3}
+      propertyPath: m_Layer
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

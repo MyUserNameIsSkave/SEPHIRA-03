@@ -7,7 +7,7 @@ public class UnknownZone_Collision : MonoBehaviour
 
     // ----- VARIABLES -----
 
-    private IO_UnknownZone IO_script;
+    private AII_UnknownZone IO_script;
 
     public float discoveryTime;
 
@@ -22,7 +22,7 @@ public class UnknownZone_Collision : MonoBehaviour
 
     void Start()
     {
-        IO_script = transform.parent.GetComponent<IO_UnknownZone>();
+        IO_script = transform.parent.GetComponent<AII_UnknownZone>();
     }
 
 

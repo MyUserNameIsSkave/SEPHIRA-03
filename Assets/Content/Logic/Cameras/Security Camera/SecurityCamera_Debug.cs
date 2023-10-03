@@ -50,8 +50,8 @@ public class SecurityCamera_Debug : MonoBehaviour
 
     //Settings
     int Resolution = 7;
-    float SphereRadius = 0.01f;
-    float LimitLength = 0.3f;
+    float SphereRadius = 0.02f;
+    float LimitLength = 0.5f;
 
 
     //Working

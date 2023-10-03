@@ -9,6 +9,27 @@ public class UitlityAI_DebugTool : MonoBehaviour
 {
     // ----- SETTINGS VARIABLES -----
 
+    enum GizmoVisibilitySettings
+    {
+        Hidden,
+        OnlyOnSelected,
+        Always
+    }
+
+    [Header("     Visibility Setting")]
+    [Space(5)]
+
+    [SerializeField]
+    GizmoVisibilitySettings Visibility = GizmoVisibilitySettings.OnlyOnSelected;
+
+
+
+
+    [Space(20)]
+
+
+
+
     [SerializeField]
     bool drawActionDetectionRadius = true;
 
@@ -24,7 +45,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
     [SerializeField]
     bool logInitiatives = true;
 
-    [Space (20)]
+        [Space (20)]
 
     public bool logFlee = true;
 
@@ -80,7 +101,33 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
+
+    private void OnDrawGizmosSelected()
+    {
+        if (Visibility != GizmoVisibilitySettings.OnlyOnSelected)
+        {
+            return;
+        }
+        
+        DrawGizmo();
+    }
+
+
+
+
     private void OnDrawGizmos()
+    {
+        if (Visibility != GizmoVisibilitySettings.Always)
+        {
+            return;
+        }
+
+        DrawGizmo();
+    }
+
+
+
+    private void DrawGizmo()
     {
         if (drawActionDetectionRadius && UtilityAI_Manager.UseDebugTool)
         {
@@ -112,8 +159,14 @@ public class UitlityAI_DebugTool : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, UtilityAI_Manager.SearchHideSpotRadius);
 
         }
-
     }
+
+
+
+
+
+
+
 
 
 

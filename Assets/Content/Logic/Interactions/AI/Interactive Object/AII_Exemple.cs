@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PI_CameraSlot : Player_Interaction
+public class AII_Exemple : AI_Interaction
 {
     public override void Interaction()
     {
-
+        Debug.Log("Interacted");
     }
 
-    public override void SelectedByPlayer()
-    {
 
-    }
+
+
 }
