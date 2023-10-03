@@ -62,7 +62,7 @@ public class CameraBase : MonoBehaviour, IInteractable
 
     //Zoom
     private float currentCameraFOV;
-    private float ZoomLeft = 0f;
+    public float ZoomLeft = 0f;
     private float currentLerpedFOV = 0f;
     private Coroutine ZoomLerping;
 
@@ -183,17 +183,15 @@ public class CameraBase : MonoBehaviour, IInteractable
     /// </summary>
     public void Zoom(float ZoomIncrement)
     {
-        Debug.Log("input");
-
-
         //Stop if alreaddy at the limit
         if (cameraController.currentFOV + ZoomIncrement == FOVRange.x || cameraController.currentFOV + ZoomIncrement == FOVRange.y)
         {
+            Debug.Log("At the edge");
             ZoomLeft = 0;
             return;
         }
 
-        Debug.Log("in range");
+
         //Variables
         ZoomLeft += ZoomIncrement;
         float currentFOV = cameraController.currentFOV;
@@ -226,9 +224,9 @@ public class CameraBase : MonoBehaviour, IInteractable
             float t = elapsedTime / duration;
             elapsedTime = Time.time - startTime;
 
-            // Maths
+
+            // Lerp
             float lerpedFOV = Mathf.Lerp(startFOV, endFOV, t);
-            ZoomLeft -= lerpedFOV - currentLerpedFOV;
 
 
             //Stop if alreaddy at the limit
@@ -242,6 +240,7 @@ public class CameraBase : MonoBehaviour, IInteractable
             // Apply Variables Values
             currentLerpedFOV = lerpedFOV;
             currentCameraFOV = lerpedFOV;
+            ZoomLeft -= lerpedFOV - currentLerpedFOV;
 
             //Apply FOV
             cameraController.ChangeFOV(lerpedFOV);
