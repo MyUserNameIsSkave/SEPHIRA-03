@@ -22,7 +22,7 @@ public class BinahAnimation : MonoBehaviour
         float maxSpeed = agent.speed;
         float currentSpeed = agent.velocity.magnitude;
 
-        Animator.speed = currentSpeed / maxSpeed;
+        Animator.SetFloat("Speed", currentSpeed / maxSpeed);
     }
 
 
