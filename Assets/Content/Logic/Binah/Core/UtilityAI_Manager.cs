@@ -117,7 +117,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
     //Interactive Object Mask
     [HideInInspector]
-    public LayerMask InteractiveObject;
+    public LayerMask AI_InteractionObject;
 
     [HideInInspector]
     public AI_Interaction ActionToDo;
@@ -154,7 +154,7 @@ public class UtilityAI_Manager : MonoBehaviour
         //Base References
         Object = gameObject;
         Agent = GetComponent<NavMeshAgent>();
-        InteractiveObject = LayerMask.GetMask("InteractiveObject");
+        AI_InteractionObject = LayerMask.GetMask("AI Interactable");
 
         //Give Reference of This to each States
         IdleState.UtilityAI_Manager = this;
