@@ -169,12 +169,26 @@ public class UtilityAI_Idle : UtilityAI_BaseState
         }
 
 
+
         //Time Check
         timeLeftBeforeInitiative = UtilityAI_Manager.IndependenceCurve.Evaluate(independence);
 
-        if (timeLeftBeforeInitiative >= Time.time - inactivityStartTime)
+
+        //if (UtilityAI_Manager.UseDebugTool)
+        //{
+        //    UtilityAI_Manager.DebugTool.ShowInitiativeLogs("Trop tot pour prendre une initiative, temps restant : " + (Mathf.Abs((Time.time - inactivityStartTime) - timeLeftBeforeInitiative)).ToString());
+        //}
+
+
+
+        if (timeLeftBeforeInitiative <= Time.time - inactivityStartTime)
         {
             SearchForAction();
+            Debug.Log("BON");
+        }
+        else
+        {
+            //Debug.Log("PAS BON");
         }
     }
 
@@ -186,7 +200,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     void SearchForAction()
     { 
         //Get All Colliding Object
-        Collider[] colliders = Physics.OverlapSphere(UtilityAI_Manager.Object.transform.position, UtilityAI_Manager.ActionDetectionRadius, UtilityAI_Manager.InteractiveObject);
+        Collider[] colliders = Physics.OverlapSphere(UtilityAI_Manager.Object.transform.position, UtilityAI_Manager.ActionDetectionRadius, UtilityAI_Manager.AI_InteractionObject);
 
         List<AI_Interaction> derivedScripts = new List<AI_Interaction>();
 

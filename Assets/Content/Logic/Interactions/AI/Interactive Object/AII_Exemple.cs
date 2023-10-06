@@ -6,10 +6,7 @@ public class AII_Exemple : AI_Interaction
 {
     public override void Interaction()
     {
-        Debug.Log("Interacted");
+        Debug.Log("Exemple Interacted");
     }
-
-
-
 
 }
