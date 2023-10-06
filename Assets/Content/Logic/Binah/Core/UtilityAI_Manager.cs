@@ -12,6 +12,26 @@ public class UtilityAI_Manager : MonoBehaviour
 
     #region Settings
 
+
+
+
+
+    [Header("          GENERAL")]
+    [Space(7)]
+
+    public float WalkSpeed;
+
+    public float CrouchSpeed;
+
+
+
+    [Space(15)]
+    [Header("          AI")]
+    [Space(17)]
+
+
+
+
     [Header("     SETTINGS")]
     [Space(7)]
 
@@ -132,7 +152,16 @@ public class UtilityAI_Manager : MonoBehaviour
     public List<GameObject> EnemyToFlee;
 
     [HideInInspector]
-    public bool isHidenBehindCover;
+    public bool isHidenBehindCover = false;
+
+
+
+
+
+    [HideInInspector]
+    public bool isCrouched = false;
+
+
 
 
     private void OnValidate()

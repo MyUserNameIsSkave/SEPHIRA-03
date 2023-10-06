@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
-using System.Linq;
+
 
 public class UtilityAI_Idle : UtilityAI_BaseState
 {
@@ -57,7 +57,7 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     public override void CustomUdpateState()
     {
         //TEMPORAIRE EN ATTENDANT LA MISE ENPLACE D'UN HIDING STATE FONCTIONNEL
-        if (UtilityAI_Manager.isHidenBehindCover)
+        if (UtilityAI_Manager.isHidenBehindCover) 
         {
             return;
         }

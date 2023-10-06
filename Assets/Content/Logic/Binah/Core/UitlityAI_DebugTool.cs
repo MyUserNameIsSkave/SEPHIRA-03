@@ -83,7 +83,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
     [HideInInspector]
     public UtilityAI_Manager UtilityAI_Manager;
 
-    private LineRenderer lineRenderer;
+    private LineRenderer lineRenderer = null;
     private List<GameObject> scoresObject = new List<GameObject>();
 
 
@@ -212,8 +212,6 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
-
-
     public void DebugPathVisualizer(AI_Interaction bestAction)
     {
         if (!displayPath)
@@ -221,6 +219,7 @@ public class UitlityAI_DebugTool : MonoBehaviour
             return;
         }
 
+        Debug.LogWarning("Debug Path Visualizer currently Broken, the path is not calculated ");
 
 
         if (lineRenderer != null)
@@ -239,12 +238,25 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
+        print(bestAction.transform.position);
+
         if (UtilityAI_Manager.Agent.CalculatePath(bestAction.transform.position, path))
         {
+
             // Set Line Renderer positions based on path corners
             lineRenderer.positionCount = path.corners.Length;
             lineRenderer.SetPositions(path.corners);
         }
+
+
+
+        //if (UtilityAI_Manager.Agent.CalculatePath(new Vector3 (0,0,0), path))
+        //{
+
+        //    // Set Line Renderer positions based on path corners
+        //    lineRenderer.positionCount = path.corners.Length;
+        //    lineRenderer.SetPositions(path.corners);
+        //}
     }
 
 

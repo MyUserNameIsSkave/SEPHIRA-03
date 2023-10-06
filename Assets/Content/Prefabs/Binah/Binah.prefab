@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7232224
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -90,7 +90,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7744086432901898766}
+      addedObject: {fileID: 7340013218034187450}
   m_SourcePrefab: {fileID: 100100000, guid: faff45e86baf5a740bc65b9e3cb8edc2, type: 3}
 --- !u!1 &6222289231504546218 stripped
 GameObject:
@@ -131,8 +131,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 7
-  m_Acceleration: 8
+  m_Speed: 4
+  m_Acceleration: 99999
   avoidancePriority: 50
   m_AngularSpeed: 999999
   m_StoppingDistance: 0
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bbee5761b6eb44fa645a613acc619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 4150955312195202485}
 --- !u!114 &3338353945509453955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a85551024d16ac40b34d3f40207581a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomUpdateFrequency: 1
+  CustomUpdateFrequency: 0.25
   StateVariablesDictionnary:
     StateVariables:
     - Name: Courage
@@ -244,11 +243,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   ActionToDo: {fileID: 0}
-  DebugTool: {fileID: 7744086432901898766}
+  DebugTool: {fileID: 7340013218034187450}
   IndicatedPosition: {x: 0, y: 0, z: 0}
   EnemyToFlee: []
   isHidenBehindCover: 0
---- !u!114 &7744086432901898766
+--- !u!114 &7340013218034187450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,17 +259,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4a7f418637e348911a14664961804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Visibility: 0
+  Visibility: 1
   drawActionDetectionRadius: 1
-  displayScore: 0
-  displayPath: 0
-  logChosenAction: 0
-  logInitiatives: 0
+  displayScore: 1
+  displayPath: 1
+  logChosenAction: 1
+  logInitiatives: 1
   logFlee: 0
-  drawEnemyToFleeDetectionRadius: 1
-  drawSearchForCoverRadius: 1
-  drawSearchForHideSpotRadius: 1
-  scoreVisualization: {fileID: 0}
-  lineRendererPrefab: {fileID: 0}
+  drawEnemyToFleeDetectionRadius: 0
+  drawSearchForCoverRadius: 0
+  drawSearchForHideSpotRadius: 0
+  scoreVisualization: {fileID: 106967762492125251, guid: f698119914d7c58489b12f470b2d8646,
+    type: 3}
+  lineRendererPrefab: {fileID: 4405758791993773298, guid: d3eac87b8609c944c860ef03e0d8e7f4,
+    type: 3}
   pathColor: {r: 1, g: 1, b: 1, a: 1}
   UtilityAI_Manager: {fileID: 3338353945509453955}
