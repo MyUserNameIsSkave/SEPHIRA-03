@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2655315385531047876}
   - component: {fileID: 7294242419697740534}
   - component: {fileID: 9180154521804796847}
+  - component: {fileID: 401890130832394054}
+  - component: {fileID: 5544124188405388299}
   - component: {fileID: 5725508484586793652}
   m_Layer: 0
   m_Name: Player
@@ -78,9 +80,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a58bbe6a43ef5848950ee8133f6da2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableLayer:
+  PlayerInteractableLayer:
     serializedVersion: 2
     m_Bits: 2147483648
+  BinahLayer:
+    serializedVersion: 2
+    m_Bits: 67108864
+--- !u!114 &401890130832394054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616966976986061276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51dcd7118ff2a7428596ff4e10eed81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WalkableLayer:
+    serializedVersion: 2
+    m_Bits: 268435456
+  AIInteractionLayer:
+    serializedVersion: 2
+    m_Bits: 1073741824
+  BinahLayer:
+    serializedVersion: 2
+    m_Bits: 67108864
+  maxSlop: 45
+  inIndicationMode: 0
+  _camera: {fileID: 0}
+--- !u!114 &5544124188405388299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616966976986061276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c152889e24203bb4692c4768ef65b6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicationScript: {fileID: 401890130832394054}
+  color: {r: 0, g: 0.77201605, b: 1, a: 0}
+  sphereScale: 0.2
 --- !u!114 &5725508484586793652
 MonoBehaviour:
   m_ObjectHideFlags: 0

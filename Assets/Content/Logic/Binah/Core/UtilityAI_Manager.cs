@@ -4,7 +4,8 @@ using System.Collections;
 using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
-using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+using UnityEngine.Accessibility;
 
 public class UtilityAI_Manager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
 
 
-    [Header("          GENERAL")]
+    [Header("     ----- GENERAL -----")]
     [Space(7)]
 
     public float WalkSpeed;
@@ -26,7 +27,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
 
     [Space(15)]
-    [Header("          AI")]
+    [Header("     ----- AI ------")]
     [Space(17)]
 
 
@@ -47,7 +48,7 @@ public class UtilityAI_Manager : MonoBehaviour
     public StateVariablesDictionnary StateVariablesDictionnary;
 
 
-    #region 
+    #region Action
     [Space(15)]
     [Header("ACTION")]
     [Space(7)]
@@ -71,7 +72,7 @@ public class UtilityAI_Manager : MonoBehaviour
     public float IdleTimeBeforeFlee;
     #endregion
 
-    #region
+    #region Flee
     [Space(15)]
     [Header("FLEE")]
     [Space(7)]
@@ -80,7 +81,6 @@ public class UtilityAI_Manager : MonoBehaviour
     [Space(5)]
 
     public float DetectEnemyToFleeRadius;
-    public float MinDistanceBeforeFlee;
 
     [Header("     Hide")]
     [Space(5)]
@@ -264,6 +264,43 @@ public class UtilityAI_Manager : MonoBehaviour
 
         //Notify New State
         newState.EnterState();
+    }
+
+
+
+
+
+    // ---------- CONTROLS ----------
+
+    private void OnCrouch(InputValue value)
+    {
+        if (value.Get<float>() == 0)
+        {
+            return;
+        }
+
+        Crouching(!isCrouched);
+    }
+
+
+
+    // ---------- LOGIC ----------
+
+    /// <summary>
+    /// the Method used to make the IA Crouch / Uncrouch.
+    /// </summary>
+    public void Crouching(bool newCrouchingState)
+    {
+        isCrouched = newCrouchingState;
+
+        if (isCrouched)
+        {
+            Agent.speed = CrouchSpeed;
+        }
+        else
+        {
+            Agent.speed = WalkSpeed;
+        }
     }
 
 

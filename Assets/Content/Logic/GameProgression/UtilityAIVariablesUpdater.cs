@@ -118,13 +118,6 @@ public class UtilityAIVariablesUpdater : MonoBehaviour
     private float newDetectEnemyToFleeRadius;
 
 
-    [Space(10)]
-
-    [SerializeField]
-    private bool changeMinDistanceBeforeFlee;
-    [SerializeField]
-    private float newMinDistanceBeforeFlee;
-
 
     [Space(10)]
     [Header("     Hide")]
@@ -225,9 +218,6 @@ public class UtilityAIVariablesUpdater : MonoBehaviour
         //Flee Settings
         if (changeDetectEnemyToFleeRadius)
             UtilityAI_Manager.DetectEnemyToFleeRadius = newDetectEnemyToFleeRadius;
-
-        if (changeMinDistanceBeforeFlee)
-            UtilityAI_Manager.MinDistanceBeforeFlee = newMinDistanceBeforeFlee;
 
         if (changeSearchHideSpotRadius)
             UtilityAI_Manager.SearchHideSpotRadius = newSearchHideSpotRadius;

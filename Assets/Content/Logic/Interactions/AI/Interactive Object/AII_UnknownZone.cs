@@ -52,7 +52,7 @@ public class AII_UnknownZone : AI_Interaction
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Binah"))
         {
             StartCoroutine(Discovering());
         }
@@ -61,7 +61,7 @@ public class AII_UnknownZone : AI_Interaction
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Binah"))
         {
             StopAllCoroutines();
         }

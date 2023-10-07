@@ -141,7 +141,6 @@ public class UitlityAI_DebugTool : MonoBehaviour
             //Draw Search Zone
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, UtilityAI_Manager.DetectEnemyToFleeRadius);
-            Gizmos.DrawWireSphere(transform.position, UtilityAI_Manager.MinDistanceBeforeFlee);
         }
 
         if (drawSearchForCoverRadius && UtilityAI_Manager.UseDebugTool)

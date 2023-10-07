@@ -82,6 +82,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1334072768809446890}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1950638713949213929}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -164,6 +168,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1334072768809446890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222289231504546218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 3627608ef871ee24485aa4f37b1fe8b6,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Camera
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &1950638713949213929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a85551024d16ac40b34d3f40207581a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WalkSpeed: 0
+  CrouchSpeed: 0
   CustomUpdateFrequency: 0.25
   StateVariablesDictionnary:
     StateVariables:
@@ -239,7 +276,7 @@ MonoBehaviour:
   UseDebugTool: 1
   Object: {fileID: 0}
   Agent: {fileID: 0}
-  InteractiveObject:
+  AI_InteractionObject:
     serializedVersion: 2
     m_Bits: 0
   ActionToDo: {fileID: 0}
@@ -247,6 +284,7 @@ MonoBehaviour:
   IndicatedPosition: {x: 0, y: 0, z: 0}
   EnemyToFlee: []
   isHidenBehindCover: 0
+  isCrouched: 0
 --- !u!114 &7340013218034187450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,10 +299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Visibility: 1
   drawActionDetectionRadius: 1
-  displayScore: 1
+  displayScore: 0
   displayPath: 1
-  logChosenAction: 1
-  logInitiatives: 1
+  logChosenAction: 0
+  logInitiatives: 0
   logFlee: 0
   drawEnemyToFleeDetectionRadius: 0
   drawSearchForCoverRadius: 0

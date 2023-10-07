@@ -16,11 +16,14 @@ public class BinahIndication : MonoBehaviour
 
 
     //Working Variables
-    private float maxSlop= 45f;
+    [HideInInspector]
+    public float maxSlop= 45f;
 
-    private bool inIndicationMode;
+    [HideInInspector]
+    public bool inIndicationMode;
 
-    private Camera _camera;
+    [HideInInspector]
+    public Camera _camera;
     private UtilityAI_Manager UtilityAI_Manager;
 
 

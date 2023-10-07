@@ -49,11 +49,11 @@ public class UtilityAI_Idle : UtilityAI_BaseState
 
     public override void UpdateState()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            SearchForAction();
-        }
+
     }
+
+
+
     public override void CustomUdpateState()
     {
         //TEMPORAIRE EN ATTENDANT LA MISE ENPLACE D'UN HIDING STATE FONCTIONNEL
@@ -130,13 +130,6 @@ public class UtilityAI_Idle : UtilityAI_BaseState
                 {
                     UtilityAI_Manager.EnemyToFlee.Add(collider.gameObject);
                     Debug.Log("Vue direct");
-                }
-                //Hiden but Too Close
-                else if (Vector3.Distance(playerPosition, enemyPosition) <= UtilityAI_Manager.MinDistanceBeforeFlee)
-                {
-                    UtilityAI_Manager.EnemyToFlee.Add(collider.gameObject);
-                    Debug.Log("TooClose");
-
                 }
             }            
         }

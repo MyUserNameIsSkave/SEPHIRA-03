@@ -1,13 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class UtilityAI_Fleeing : UtilityAI_BaseState
 {
@@ -43,11 +38,7 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
 
     public override void UpdateState()
     {
-        ////DebugKey
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    GoThroughPossibilities();
-        //}
+
     }
 
 
@@ -73,10 +64,6 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
     /// </summary>
     private void CheckIfInDanger()
     {
-
-
-
-
         //Get All Colliding Object
         Collider[] colliders = Physics.OverlapSphere(UtilityAI_Manager.Object.transform.position, UtilityAI_Manager.DetectEnemyToFleeRadius, LayerMask.GetMask("Enemy"));
 
@@ -97,12 +84,11 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
             if (Physics.Raycast(playerPosition, (enemyPosition - playerPosition).normalized, out hit))
             {
                 //Direct Sight
-                if (hit.collider.CompareTag("Enemy"))
-                {
-                    UtilityAI_Manager.EnemyToFlee.Add(collider.gameObject);
-                }
-                //Hiden but Too Close
-                else if (Vector3.Distance(playerPosition, enemyPosition) <= UtilityAI_Manager.MinDistanceBeforeFlee)
+                //if (hit.collider.CompareTag("Enemy"))
+
+                Debug.LogWarning("If there is a strange behavior with the enemy detection, check here.");
+
+                if (hit.collider == collider)
                 {
                     UtilityAI_Manager.EnemyToFlee.Add(collider.gameObject);
                 }
@@ -120,6 +106,8 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
     }
 
 
+
+
     private void GoThroughPossibilities()
     {
         //Prevent Out of Range Error
@@ -130,8 +118,9 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
         }
 
 
-
         //COVER
+
+        UtilityAI_Manager.Crouching(false);
 
         AI_Interaction cover = SearchForCover();
         if (cover != null)
@@ -177,11 +166,11 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
             {
                 Debug.Log("Must Flee: " + fleePosition);
             }
-                #endregion
+            #endregion
 
             //Do Movement
+            UtilityAI_Manager.Crouching(false);
             UtilityAI_Manager.Agent.SetDestination(fleePosition);
-
             return;
 
         }
@@ -320,13 +309,10 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
 
             foreach (var enemy in UtilityAI_Manager.EnemyToFlee)
             {
-                
-
-
                 RaycastHit hit;
                 if (Physics.Raycast(point, (enemy.transform.position - point).normalized, out hit))
                 {
-                    if (hit.collider.gameObject.CompareTag("Enemy") || hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("AI_Interactable"))
+                    if (hit.collider.gameObject.CompareTag("Enemy") || hit.collider.gameObject.CompareTag("Binah"))
                     {
                         wouldHideTheAI = false;
                     }
@@ -375,7 +361,7 @@ public class UtilityAI_Fleeing : UtilityAI_BaseState
             foreach (var enemy in UtilityAI_Manager.EnemyToFlee)
             {
 
-                if (Vector3.Distance(playerPosition, point) <= ajustedRadius && Vector3.Distance(enemy.transform.position, point) >= 1)
+                if (Vector3.Distance(playerPosition, point) <= ajustedRadius && Vector3.Distance(enemy.transform.position, point) >= 3)
                 {
                     allPointList.Add(point);
                 }

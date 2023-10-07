@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""42c8b4b0-89c4-4b80-bc65-dfea8a055c9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""MovementIndication"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c39cd274-d93b-477b-ab48-b9d6e214d593"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Camera_CameraRotation = m_Camera.FindAction("CameraRotation", throwIfNotFound: true);
         m_Camera_Interaction = m_Camera.FindAction("Interaction", throwIfNotFound: true);
         m_Camera_MovementIndication = m_Camera.FindAction("MovementIndication", throwIfNotFound: true);
+        m_Camera_Crouch = m_Camera.FindAction("Crouch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +206,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Camera_CameraRotation;
     private readonly InputAction m_Camera_Interaction;
     private readonly InputAction m_Camera_MovementIndication;
+    private readonly InputAction m_Camera_Crouch;
     public struct CameraActions
     {
         private @PlayerControls m_Wrapper;
@@ -193,6 +215,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @CameraRotation => m_Wrapper.m_Camera_CameraRotation;
         public InputAction @Interaction => m_Wrapper.m_Camera_Interaction;
         public InputAction @MovementIndication => m_Wrapper.m_Camera_MovementIndication;
+        public InputAction @Crouch => m_Wrapper.m_Camera_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_Camera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +237,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MovementIndication.started += instance.OnMovementIndication;
             @MovementIndication.performed += instance.OnMovementIndication;
             @MovementIndication.canceled += instance.OnMovementIndication;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         private void UnregisterCallbacks(ICameraActions instance)
@@ -230,6 +256,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MovementIndication.started -= instance.OnMovementIndication;
             @MovementIndication.performed -= instance.OnMovementIndication;
             @MovementIndication.canceled -= instance.OnMovementIndication;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         public void RemoveCallbacks(ICameraActions instance)
@@ -253,5 +282,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnCameraRotation(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnMovementIndication(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }
