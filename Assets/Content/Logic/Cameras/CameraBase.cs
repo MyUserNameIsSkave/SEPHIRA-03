@@ -115,6 +115,11 @@ public class CameraBase : MonoBehaviour, IInteractable
     }
 
 
+    private void Start()
+    {
+        BaseYaw = BaseHorizontalRotation;
+        BasePitch = -BaseVerticalRotation;
+    }
 
 
 
