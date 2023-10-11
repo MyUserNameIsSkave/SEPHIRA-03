@@ -1,40 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Ladder : MonoBehaviour
 {
-
     [SerializeField]
+    float climbingSpeed;
+
+
+
+    // Variables
     private NavMeshAgent agent;
+    private Coroutine checkState;
+    private NavMeshLink link;
+
+
+    private float ladderLength;
+    private float lerpNormalizer;
+
+    private float startTime;
+
+
+    private void Start()
+    {
+        link = GetComponent<NavMeshLink>();
+        
+        ladderLength = Vector3.Distance(link.startPoint, link.endPoint);
+        lerpNormalizer = ladderLength / climbingSpeed;
+
+
+    }
+
+
+
+
+
+    
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!agent)
+        print(other.gameObject.name);
+        NavMeshAgent  _agent = other.GetComponent<NavMeshAgent>();
+
+        if (_agent)
         {
-            return;
+            startTime = Time.time;
+            agent = _agent;
+            checkState = StartCoroutine(CheckState());
         }
     }
+
+
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject != agent.gameObject)
+        print(other.gameObject.name);
+        if (other.gameObject == agent.gameObject)
         {
+            StopCoroutine(checkState);
             return;
         }
     }
 
 
-
-
-    //Enter Collider
-    // Collider is Reference -> Start Coroutine
-    // Collider Not Refernce -> Set Reference -> Start Coroutine
-
-    //Exit Collider
-    // Collider is Reference -> Stop Coroutine
 
 
 
@@ -44,14 +76,14 @@ public class Ladder : MonoBehaviour
     {
         while (agent.isOnOffMeshLink)
         {
-            StartCoroutine(CheckState());
-            yield return null;
+            yield return new WaitForFixedUpdate();
+            UpdatePosition();
         }
 
 
 
-
-
+        yield return null;
+        StartCoroutine(CheckState());
     }
 
 
@@ -60,5 +92,17 @@ public class Ladder : MonoBehaviour
     private void UpdatePosition()
     {
         print("Update Position");
+
+        //Lerp position
+
+
+        float timeProgression = Time.time - startTime;
+        float lerpProgression = timeProgression / lerpNormalizer;
+
+        float heightProgression = Mathf.Lerp(link.startPoint.y, link.endPoint.y, lerpProgression);
+
+
+        agent.gameObject.transform.position = new Vector3(link.startPoint.x, heightProgression, link.startPoint.z);
+
     }
 }
