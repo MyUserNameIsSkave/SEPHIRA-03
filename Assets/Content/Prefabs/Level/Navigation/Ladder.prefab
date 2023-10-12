@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3070436766397730856
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5325994182774622203}
-  m_Layer: 0
-  m_Name: LowPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5325994182774622203
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3070436766397730856}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0640138, y: -0.256, z: -1.5}
-  m_LocalScale: {x: 1.6850765, y: 0.22035588, z: 6.768621}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3214688709803181024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3138110386412834307
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +12,7 @@ GameObject:
   - component: {fileID: 8359937472393889667}
   - component: {fileID: 3800716068553618817}
   - component: {fileID: 4730067520275344177}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Ladder End Plateform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3138110386412834307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00488693, y: 0.4880002, z: -2.1436253}
-  m_LocalScale: {x: 3, y: 0.024, z: 5.2868934}
+  m_LocalPosition: {x: 0.00488693, y: 0.4880002, z: -3.021}
+  m_LocalScale: {x: 3, y: 0.024, z: 7.038904}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3214688709803181024}
@@ -136,37 +105,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &5000853289004443219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5164875359533349495}
-  m_Layer: 0
-  m_Name: High Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5164875359533349495
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5000853289004443219}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0640138, y: 0.498, z: -1.500001}
-  m_LocalScale: {x: 1.6850765, y: 0.22035588, z: 6.768621}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3214688709803181024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6717735630197828283
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +124,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &3214688709803181024
 Transform:
@@ -202,8 +140,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 951496402049138131}
-  - {fileID: 5325994182774622203}
-  - {fileID: 5164875359533349495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9184582358522357081
@@ -271,12 +207,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.58, y: 1.25, z: 7.79}
+  m_Center: {x: 0, y: 0.15, z: -1.5}
 --- !u!114 &2068883690362909601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,8 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: -1372625422
-  m_StartPoint: {x: 0, y: 2.5, z: -0.25}
-  m_EndPoint: {x: 0, y: -2.25, z: -0.25}
+  m_StartPoint: {x: 0, y: 2.5, z: -0.5}
+  m_EndPoint: {x: 0, y: -2, z: -0.5}
   m_Width: -0
   m_CostModifier: -1
   m_Bidirectional: 1
@@ -309,4 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90989ca3039d6cf4b88519637951f84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  climbingSpeed: 0.7

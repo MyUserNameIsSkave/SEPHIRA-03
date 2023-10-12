@@ -136,17 +136,4 @@ public class CameraController : MonoBehaviour
         camera.fieldOfView = currentFOV;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
