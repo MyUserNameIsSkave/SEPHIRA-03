@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
-using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Drawing;
 
-public class Ladder : MonoBehaviour
+public class LadderLogic : MonoBehaviour
 {
     //Settings
-    [SerializeField]
-    float climbingSpeed;
-
-
+    public float climbingSpeed;
 
     //References
-    private NavMeshAgent agent;
-    private Coroutine checkState;
     private NavMeshLink link;
+    NavMeshAgent agent;
 
 
     //Working Variables
     private Vector3 startPoint;
     private Vector3 endPoint;
 
-    private float startTime;
-    private float baseAgentSpeed;
+    float baseAgentSpeed;
+    bool inUse = false;
 
 
 
-    // ---------- LOGIC ----------
+
+
+
+
+
+    //// ---------- LOGIC ----------
 
 
 
@@ -45,54 +46,57 @@ public class Ladder : MonoBehaviour
 
 
 
-
-    private void OnTriggerEnter(Collider other)
+    #region Collisions
+    public void TriggerEnter(Collider other)
     {
-        print(other.gameObject.name);
-        NavMeshAgent  _agent = other.GetComponent<NavMeshAgent>();
+        NavMeshAgent _agent = other.GetComponent<NavMeshAgent>();
 
         if (_agent)
         {
             agent = _agent;
-            baseAgentSpeed = agent.speed;
-            checkState = StartCoroutine(CheckState());
+
+            if (agent.speed != climbingSpeed)
+            {
+                baseAgentSpeed = agent.speed;
+            }
+
+            StartCoroutine(CheckForUse());
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void TriggerExit(Collider other)
     {
-        print(other.gameObject.name);
         if (other.gameObject == agent.gameObject)
         {
-            startTime = 0;
-            //StopCoroutine(checkState);
-            StopAllCoroutines();
+            if (!inUse)
+            {
+                StopAllCoroutines();
+            }
             return;
         }
     }
+    #endregion
 
 
 
-    bool used = false;
 
-    IEnumerator CheckState()
+    IEnumerator CheckForUse()
     {
         if (agent.isOnOffMeshLink)
         {
+            //Check for Start 
             StartUsing();
 
             //Adjust rotation to face the ladder
             agent.gameObject.transform.rotation = gameObject.transform.rotation * Quaternion.Euler(0, 180, 0);
         }
-        else if (startTime != 0)
+        else if (inUse)
         {
+            //Check for End
             EndUsing();
-            yield break;
         }
-
-
         yield return new WaitForFixedUpdate();
-        StartCoroutine(CheckState());
+        StartCoroutine(CheckForUse());
     }
 
 
@@ -103,9 +107,9 @@ public class Ladder : MonoBehaviour
     /// </summary>
     private void StartUsing()
     {
-        if (startTime == 0)
+        if (!inUse)
         {
-            startTime = Time.time;
+            inUse = true;
             agent.speed = climbingSpeed;
             agent.GetComponent<Animator>().SetBool("ClimbingLader", true);
 
@@ -121,7 +125,6 @@ public class Ladder : MonoBehaviour
                 //Going Up
                 agent.GetComponent<Animator>().SetFloat("Ladder Start Position", 1f);
             }
-
         }
     }
 
@@ -133,5 +136,7 @@ public class Ladder : MonoBehaviour
     {
         agent.GetComponent<Animator>().SetBool("ClimbingLader", false);
         agent.speed = baseAgentSpeed;
+        inUse = false;
     }
+
 }
