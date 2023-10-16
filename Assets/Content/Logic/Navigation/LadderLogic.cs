@@ -46,16 +46,7 @@ public class LadderLogic : MonoBehaviour
 
 
 
-
-
     #region Collisions
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        TriggerEnter(other);
-    }
-
     public void TriggerEnter(Collider other)
     {
         NavMeshAgent _agent = other.GetComponent<NavMeshAgent>();
@@ -72,15 +63,6 @@ public class LadderLogic : MonoBehaviour
             StartCoroutine(CheckForUse());
         }
     }
-
-
-
-
-    private void OnTriggerExit(Collider other)
-    {
-        OnTriggerExit(other);
-    }
-
 
     public void TriggerExit(Collider other)
     {
