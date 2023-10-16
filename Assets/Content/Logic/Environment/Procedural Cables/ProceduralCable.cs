@@ -157,8 +157,6 @@ public class ProceduralCable : MonoBehaviour
         {
             yield return new WaitForSeconds(0.25f);
             StartCoroutine(ShowRange());
-
-            yield break;
         }
 
         if (Vector3.Distance(_camera.transform.position, position) <= MakeStaticDistance)
