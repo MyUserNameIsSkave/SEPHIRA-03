@@ -12,17 +12,17 @@ public class LadderCollision : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        logicScript.TriggerEnter(other);
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    logicScript.TriggerEnter(other);
 
 
 
-    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        logicScript.TriggerExit(other);
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    logicScript.TriggerExit(other);
+    //}
 
 }
