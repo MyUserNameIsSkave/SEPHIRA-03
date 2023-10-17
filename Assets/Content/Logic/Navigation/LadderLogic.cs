@@ -47,7 +47,7 @@ public class LadderLogic : MonoBehaviour
 
 
     #region Collisions
-    public void TriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         NavMeshAgent _agent = other.GetComponent<NavMeshAgent>();
 
@@ -64,7 +64,7 @@ public class LadderLogic : MonoBehaviour
         }
     }
 
-    public void TriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == agent.gameObject)
         {
