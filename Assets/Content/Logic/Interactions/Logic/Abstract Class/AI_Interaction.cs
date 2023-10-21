@@ -12,9 +12,15 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     [Space(7f)]
 
 
-    //To manually set in the child
+    [SerializeField, Tooltip ("The Stamina Cost of the action to the Player")]
+    protected int stamCost;
+
+    [Tooltip ("The Scriptabel Object that translate State Variables into Score")]
     public Consideration Consideration;
+
+    [Tooltip ("The distance from the center at witch the action can be executed by the AI")]
     public float ActionRange;
+
 
 
     [Space(15f)]
@@ -70,7 +76,14 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
 
 
+    protected PlayerStamina staminaScript;
 
+
+
+    private void Awake()
+    {
+        staminaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStamina>();
+    }
 
 
     //References and get Variables
@@ -96,6 +109,8 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     /// Methode contenant toute la logique nécessaire à l'execution de l'action
     /// </summary>
     public abstract void Interaction();
+
+
 
 
 
@@ -154,7 +169,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
             //Force Execute
             ForcedActionConsequences();
             UtilityAI_Manager.SwitchState(UtilityAI_Manager.IdleState);
-            UtilityAI_Manager.IdleState.ExecuteAction(action);
+            UtilityAI_Manager.IdleState.ScoreIndicatedAction(action);
         }
 
 
@@ -173,6 +188,34 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
                                                                       forcedActionVariablesModification.Determination,
                                                                       forcedActionVariablesModification.Curiosity,
                                                                       forcedActionVariablesModification.Independence);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// Return True if the Player has enought Stma for the Action.
+    /// </summary>
+    /// <returns></returns>
+    protected bool CheckStamina()
+    {
+        if (stamCost <= staminaScript.CurrentStam)
+        {
+            staminaScript.CurrentStam -= stamCost;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

@@ -62,13 +62,12 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
     {
         if (action == null)
         {
-            Debug.Log("Action null");
+            Debug.LogWarning("Action null");
             return;
         }
 
         if (CheckForRange())
         {
-            Debug.Log("Execute action");
             ExecuteAction();
             action = null;
         }
@@ -116,7 +115,7 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
         {
             targetPosition = action.transform.position;
         }
-        Debug.Log("Distance check");
+
         return Vector3.Distance(targetPosition, UtilityAI_Manager.Object.transform.position) <= action.ActionRange ? true : false;
     }
 
