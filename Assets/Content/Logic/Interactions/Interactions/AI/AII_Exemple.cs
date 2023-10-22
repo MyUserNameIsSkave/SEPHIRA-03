@@ -6,7 +6,14 @@ public class AII_Exemple : AI_Interaction
 {
     public override void Interaction()
     {
-        Debug.Log("Exemple Interacted");
+        if (CheckStamina())
+        {
+            Debug.Log("Action Executed");
+        }
+        else
+        {
+            Debug.Log("Action Failed");
+        }
     }
 
 }

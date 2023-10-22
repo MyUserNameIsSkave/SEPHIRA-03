@@ -177,11 +177,6 @@ public class UtilityAI_Idle : UtilityAI_BaseState
         if (timeLeftBeforeInitiative <= Time.time - inactivityStartTime)
         {
             SearchForAction();
-            Debug.Log("BON");
-        }
-        else
-        {
-            //Debug.Log("PAS BON");
         }
     }
 

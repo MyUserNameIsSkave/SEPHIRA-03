@@ -64,6 +64,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
     public AnimationCurve IndependenceCurve;
     public float MinIndependenceForInitiative;
+    [Tooltip ("The minimum score of a detected action to be a valid choice.")]
     public float IndependenceMinScore;
 
     [Space (7)]

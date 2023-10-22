@@ -74,7 +74,7 @@ public class PlayerWorldInteraction : MonoBehaviour
 
         if (interactionInterface != null)
         {
-            interactionInterface.Interaction();
+            interactionInterface.SelectedByPlayer();   
             return;
         }
     }
