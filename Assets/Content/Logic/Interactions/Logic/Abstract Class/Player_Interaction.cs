@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Player_Interaction : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    protected int stamCost;
+    
+    public int stamCost;
 
     protected PlayerStamina staminaScript;
 

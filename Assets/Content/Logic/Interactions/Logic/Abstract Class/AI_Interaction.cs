@@ -12,8 +12,8 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     [Space(7f)]
 
 
-    [SerializeField, Tooltip ("The Stamina Cost of the action to the Player")]
-    protected int stamCost;
+    [Tooltip ("The Stamina Cost of the action to the Player")]
+    public int stamCost;
 
     [Tooltip ("The Scriptabel Object that translate State Variables into Score")]
     public Consideration Consideration;
