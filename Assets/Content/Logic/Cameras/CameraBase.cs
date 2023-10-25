@@ -82,12 +82,13 @@ public class CameraBase : MonoBehaviour, IInteractable
 
     public void SelectedByPlayer()
     {
-        // Leave Empty
+        //Recieve Input
+        Interaction();
     }
 
     public void Interaction()
     {
-        // Change Camera
+        //Change Camera
         cameraController.currentCamera = this;
         cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
     }
