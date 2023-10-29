@@ -62,15 +62,10 @@ public class PlayerWorldInteraction : MonoBehaviour
 
     private void Interaction(RaycastHit hit)
     {
-        print("Input");
-
-
         if (!DoubleCheckRaycast(PlayerInteractableLayer))
         {
             return;
         }
-        print("VALID");
-
 
 
         IInteractable interactionInterface = hit.collider.GetComponent<IInteractable>();
@@ -81,8 +76,6 @@ public class PlayerWorldInteraction : MonoBehaviour
             interactionInterface.SelectedByPlayer();   
             return;
         }
-
-        print("NULL");
     }
 
 
