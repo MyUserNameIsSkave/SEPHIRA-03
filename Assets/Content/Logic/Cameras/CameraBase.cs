@@ -43,10 +43,10 @@ public class CameraBase : MonoBehaviour, IInteractable
     private float baseFOV;
 
 
-    [SerializeField, MinMaxSlider(10, 90)]
+    [SerializeField, MinMaxSlider(10, 110)]
     private Vector2 FOVRange;
-
     [SerializeField]
+
     private float ZoomDuration;
 
 
