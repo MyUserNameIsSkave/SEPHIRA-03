@@ -4,8 +4,31 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
-public class Enemy_BaseManager : MonoBehaviour
+
+[RequireComponent(typeof(Enemy_AudioDetection))]
+[RequireComponent(typeof(Enemy_VisualDetection))]
+public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 {
+    #region State Selection
+
+    [Header ("Initial State")]
+    public Enemy_BaseState currentState;
+
+    public enum possibleInitialState 
+    {
+        Enemy_Idle,
+        Enemy_Patrol,
+        Enemy_GettingCloser
+    }
+
+    public possibleInitialState initialState;
+
+    #endregion
+
+
+    [Space (60)]
+
+
     #region State Settings
 
     [Header("   Neutral State")]
@@ -54,32 +77,79 @@ public class Enemy_BaseManager : MonoBehaviour
 
     #endregion
 
-    protected Enemy_BaseState _currentState;
 
-
-    // NEED TO FIND A WAY TO CHOSE A BASE STATE
 
 
 
     protected void BaseAwake()
     {
-        //   Instanciate needed State Scritps
+        //Debug
+        switch (initialState)
+        {
+            case possibleInitialState.Enemy_Idle:
+                if (!useIdle)
+                {
+                    Debug.LogError("Le State Initial de " + gameObject.name + " n'est pas seletionné parmis les States possibles");
+                    Debug.Break();
+                }
+                break;
+        }
+        switch (initialState)
+        {
+            case possibleInitialState.Enemy_Patrol:
+                if (!usePatrol)
+                {
+                    Debug.LogError("Le State Initial de " + gameObject.name + " n'est pas seletionné parmis les States possibles");
+                    Debug.Break();
+                }
+                break;
+        }
+        switch (initialState)
+        {
+            case possibleInitialState.Enemy_GettingCloser:
+                if (!useGettingCloser)
+                {
+                    Debug.LogError("Le State Initial de " + gameObject.name + " n'est pas seletionné parmis les States possibles");
+                    Debug.Break();
+                }
+                break;
+        }
 
-        #region Neutral State List
+
+        //Instanciate Used States and set Initial State
+        #region Neutral State List (Manage initial State too)
         if (useIdle)
         {
             NeutralStates.Add(IdleState = new Enemy_Idle());
             IdleState.BaseManager = this;
+
+            //Set Initial State
+            if (initialState == possibleInitialState.Enemy_Idle)
+            {
+                SwitchState(IdleState);
+            }
         }
         if (usePatrol)
         {
             NeutralStates.Add(PatrolState = new Enemy_Patrol());
             PatrolState.BaseManager = this;
+
+            //Set Initial State
+            if (initialState == possibleInitialState.Enemy_Patrol)
+            {
+                SwitchState(PatrolState);
+            }
         }
         if (useGettingCloser)
         {
             NeutralStates.Add(GettingCloserState = new Enemy_GettingCloser());
             GettingCloserState.BaseManager = this;
+
+            //Set Initial State
+            if (initialState == possibleInitialState.Enemy_GettingCloser)
+            {
+                SwitchState(GettingCloserState);
+            }
         }
         #endregion
 
@@ -116,8 +186,14 @@ public class Enemy_BaseManager : MonoBehaviour
             SearchState.BaseManager = this;
         }
        #endregion
+    }
 
-        SwitchState(_currentState);
+
+
+
+    protected void BaseStart()
+    {
+
     }
 
 
@@ -125,12 +201,12 @@ public class Enemy_BaseManager : MonoBehaviour
 
     protected void BaseUpdate()
     {
-        if (_currentState == null)
+        if (currentState == null)
         {
             return;
         }
-        
-        _currentState.UpdateState();
+
+        currentState.UpdateState();
     }
 
 
@@ -138,11 +214,11 @@ public class Enemy_BaseManager : MonoBehaviour
 
     protected void BaseFixedUpdate()
     {
-        if (_currentState == null)
+        if (currentState == null)
         {
             return;
         }
-        _currentState.FixedUpdateState();
+        currentState.FixedUpdateState();
     }
 
 
@@ -151,7 +227,7 @@ public class Enemy_BaseManager : MonoBehaviour
     /// <summary>
     /// Methode to call in order to Switch State. Reference the New State using State Manager variable.
     /// </summary>
-    public void SwitchState(Enemy_BaseState newState)
+    public virtual void SwitchState(Enemy_BaseState newState)
     {
         if (newState == null)
         {
@@ -160,18 +236,31 @@ public class Enemy_BaseManager : MonoBehaviour
         }
 
         //Notify Old State if Different
-        if (newState != _currentState)
+        if (newState != currentState)
         {
-            if (_currentState != null)
+            if (currentState != null)
             {
-                _currentState.ExitState();
+                currentState.ExitState();
             }
         }
 
         //Set New State
-        _currentState = newState;
+        currentState = newState;
 
         //Notify New State
         newState.EnterState();
     }
+
+
+
+
+    public abstract void HaveBeenWarned();
+    //{
+    //    Debug.Log(gameObject.name + " Has Been Warned !");
+    //}
+
+    public abstract void IsWarning();
+    //{
+    //    Debug.Log(gameObject.name + " Is Warning !");
+    //}
 }

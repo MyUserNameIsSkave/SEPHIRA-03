@@ -16,12 +16,34 @@ public class Enemy_NeutralState : Enemy_BaseState
 
     public override void FixedUpdateState()
     {
-
+        return;
+    }
+    public override void UpdateState()
+    {
+        return;
     }
 
-    public override void UpdateState()
+
+
+    public override void HeardSuspectNoise()
     {
 
     }
 
+    public override void SeenSuspectThing()
+    {
+
+    }
+
+
+    public override void DetectedBinah()
+    {
+
+    }
+
+
+    public override void LostBinah()
+    {
+
+    }
 }

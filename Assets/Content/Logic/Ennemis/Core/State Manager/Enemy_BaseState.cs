@@ -28,4 +28,16 @@ public abstract class Enemy_BaseState
     /// On Fixed Update
     /// </summary>
     public abstract void FixedUpdateState();
+
+
+
+
+
+    public abstract void HeardSuspectNoise();
+    public abstract void SeenSuspectThing();
+    public abstract void DetectedBinah();
+    public abstract void LostBinah();
+
+
+
 }

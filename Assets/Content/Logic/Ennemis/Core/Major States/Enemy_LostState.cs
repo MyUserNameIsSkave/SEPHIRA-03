@@ -18,9 +18,32 @@ public class Enemy_LostState : Enemy_BaseState
     {
         return;
     }
-
     public override void UpdateState()
     {
         return;
+    }
+
+
+
+    public override void HeardSuspectNoise()
+    {
+
+    }
+
+    public override void SeenSuspectThing()
+    {
+
+    }
+
+
+    public override void DetectedBinah()
+    {
+
+    }
+
+
+    public override void LostBinah()
+    {
+
     }
 }

@@ -13,8 +13,7 @@ public class Yakuza_Manager : Enemy_BaseManager
 
     private void Start()
     {
-        //Set the base state
-        SwitchState(IdleState);
+        BaseStart();
     }
 
 
@@ -49,4 +48,16 @@ public class Yakuza_Manager : Enemy_BaseManager
         BaseFixedUpdate();
     }
 
+
+
+
+    public override void HaveBeenWarned()
+    {
+        Debug.Log(gameObject.name + " Has Been Warned !");
+    }
+
+    public override void IsWarning()
+    {
+        Debug.Log(gameObject.name + " Is Warning !");
+    }
 }
