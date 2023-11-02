@@ -77,13 +77,33 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     #endregion
 
+    [Space (20)]
+    [Header ("Debug")]
+
+    [SerializeField]
+    protected bool displayCurrentState = true;
+
+
+
+
+    private void OnValidate()
+    {
+        if (displayCurrentState)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 
 
 
 
     protected void BaseAwake()
     {
-        //Debug
+        //Prevent Bugs
         switch (initialState)
         {
             case possibleInitialState.Enemy_Idle:
@@ -255,12 +275,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
     public abstract void HaveBeenWarned();
-    //{
-    //    Debug.Log(gameObject.name + " Has Been Warned !");
-    //}
 
     public abstract void IsWarning();
-    //{
-    //    Debug.Log(gameObject.name + " Is Warning !");
-    //}
 }
