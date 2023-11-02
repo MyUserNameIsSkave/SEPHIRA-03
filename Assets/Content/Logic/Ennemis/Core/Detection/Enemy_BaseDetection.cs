@@ -7,7 +7,7 @@ public class Enemy_BaseDetection : MonoBehaviour
     //Base Manager Reference
     private Enemy_BaseManager enemyManager;
 
-    private void Awake()
+    private void Start()
     {
         enemyManager = GetComponent<Enemy_BaseManager>();
     }
@@ -22,6 +22,8 @@ public class Enemy_BaseDetection : MonoBehaviour
 
     public void SeenSomething()
     {
+        Debug.Log(enemyManager);
+        Debug.Log(enemyManager.currentState);
         enemyManager.currentState.SeenSuspectThing();
     }
 

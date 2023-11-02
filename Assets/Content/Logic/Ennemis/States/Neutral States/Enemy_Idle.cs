@@ -35,18 +35,15 @@ public class Enemy_Idle : Enemy_NeutralState
     public override void SeenSuspectThing()
     {
         Debug.Log(BaseManager.gameObject.name + " Seen Something");
-
     }
 
     public override void DetectedBinah()
     {
         Debug.Log(BaseManager.gameObject.name + " Detected Binah");
-
     }
 
     public override void LostBinah()
     {
         Debug.Log(BaseManager.gameObject.name + " Lost Binah");
-
     }
 }

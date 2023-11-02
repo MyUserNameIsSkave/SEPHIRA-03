@@ -9,14 +9,14 @@ using UnityEngine.InputSystem;
 public class Enemy_VisualDetection : Enemy_BaseDetection
 {
     [SerializeField]
-    private SphereCollider overalCollision;
+    private SphereCollider overallCollider;
 
 
 
 
     private void Awake()
     {
-        overalCollision = GetComponent<SphereCollider>();
+        overallCollider = GetComponent<SphereCollider>();
     }
 
 
@@ -29,9 +29,28 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
 
     private void OnTriggerExit(Collider other)
     {
-        
+        LostBinah();
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Binah"))
+        {
+            return;
+        }
+
+        if (Vector3.Distance(transform.position, other.transform.position) >= overallCollider.radius / 2)
+        {
+            //See Something
+            SeenSomething();
+        }
+        else
+        {
+            //Detect Binah
+            DetectedBinah();
+        }
+    }
 
 
 
