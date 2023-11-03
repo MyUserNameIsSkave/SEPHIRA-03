@@ -22,8 +22,6 @@ public class Enemy_BaseDetection : MonoBehaviour
 
     public void SeenSomething()
     {
-        Debug.Log(enemyManager);
-        Debug.Log(enemyManager.currentState);
         enemyManager.currentState.SeenSuspectThing();
     }
 

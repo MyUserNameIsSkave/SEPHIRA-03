@@ -7,6 +7,8 @@ public abstract class Enemy_BaseState
     public Enemy_BaseManager BaseManager;
 
 
+
+
     /// <summary>
     /// On State Enter
     /// </summary>
@@ -37,7 +39,5 @@ public abstract class Enemy_BaseState
     public abstract void SeenSuspectThing();
     public abstract void DetectedBinah();
     public abstract void LostBinah();
-
-
 
 }

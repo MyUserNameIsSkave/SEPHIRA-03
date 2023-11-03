@@ -7,6 +7,11 @@ public class Enemy_Search : Enemy_LostState
     public override void EnterState()
     {
         Debug.Log("Enemy Enter Search ");
+
+
+        //Enable Detection Decrease
+        BaseManager.isLosingInterest = true;
+
     }
 
     public override void ExitState()
@@ -16,7 +21,10 @@ public class Enemy_Search : Enemy_LostState
 
     public override void FixedUpdateState()
     {
-        return;
+        if (BaseManager.DetectionProgression == 0)
+        {
+            BaseManager.SwitchState(BaseManager.NeutralStates[Random.Range(0, BaseManager.NeutralStates.Count)]);
+        }
     }
 
     public override void UpdateState()

@@ -36,22 +36,22 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public bool usePatrol;
     public bool useGettingCloser;
 
-    protected Enemy_Idle IdleState;
-    protected Enemy_Patrol PatrolState;
-    protected Enemy_GettingCloser GettingCloserState;
+    public Enemy_Idle IdleState;
+    public Enemy_Patrol PatrolState;
+    public Enemy_GettingCloser GettingCloserState;
 
-    protected List<Enemy_NeutralState> NeutralStates = new List<Enemy_NeutralState>();
+    public List<Enemy_NeutralState> NeutralStates = new List<Enemy_NeutralState>();
 
 
 
     [Header("   Binah in Sight State")]
+    public bool useInvestigating;
     public bool useChasing;
-    public bool useWarning;
 
-    protected Enemy_Chasing ChasingState;
-    protected Enemy_Warning WarningState;
+    public Enemy_Investigating InvestingatingState;
+    public Enemy_Chasing ChasingState;
 
-    protected List<Enemy_InSight> InSightStates = new List<Enemy_InSight>();
+    public List<Enemy_InSightState> InSightStates = new List<Enemy_InSightState>();
 
 
 
@@ -59,11 +59,13 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [Header("   Binah In Range State")]
     public bool useNeutralization;
     public bool useImmobilization;
+    public bool useWarning;
 
-    protected Enemy_Neutralization NeutralizationState;
-    protected Enemy_Immobilization ImmobilizationState;
+    public Enemy_Neutralization NeutralizationState;
+    public Enemy_Immobilization ImmobilizationState;
+    public Enemy_Warning WarningState;
 
-    protected List<Enemy_InRangeState> InRangeStates = new List<Enemy_InRangeState>();
+    public List<Enemy_InRangeState> InRangeStates = new List<Enemy_InRangeState>();
 
 
 
@@ -71,11 +73,71 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [Header("   Binah Lost State")]
     public bool useSearch;
 
-    protected Enemy_Search SearchState;
+    public Enemy_Search SearchState;
 
-    protected List<Enemy_LostState> LostStates = new List<Enemy_LostState>();
+    public List<Enemy_LostState> LostStates = new List<Enemy_LostState>();
 
     #endregion
+
+
+    [Space(20)]
+
+
+    #region Ennemy Settings and Variabes
+
+    [Header("Settings")]
+    public float detectionRate = 25f;
+    public float loseRate = 12.5f;
+
+    public float WalkSpeed = 1f;
+    public float RunSpeed = 2.5f;
+
+
+
+
+    [Header ("Variables")]
+    [SerializeField]
+    private float _detectionProgression = 0f;
+
+    public float DetectionProgression
+    {
+        get { return _detectionProgression; }
+
+        set { _detectionProgression = Mathf.Clamp(value, 0, 100); 
+              if (_detectionProgression == 100) {currentState.DetectedBinah(); }}
+
+    }
+
+    public bool isLosingInterest = false;
+
+
+    public Vector3 lastSeenPosition;
+
+
+
+
+
+    //References
+    public NavMeshAgent agent;
+    public GameObject Binah;
+
+
+
+
+    #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+    #region Debug
 
     [Space (20)]
     [Header ("Debug")]
@@ -83,7 +145,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [SerializeField]
     protected bool displayCurrentState = true;
 
-
+    #endregion
 
 
     private void OnValidate()
@@ -103,6 +165,12 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     protected void BaseAwake()
     {
+        //Get References
+        agent = GetComponent<NavMeshAgent>();
+        Binah = GameObject.FindGameObjectWithTag("Binah");
+
+        print(Binah);
+
         //Prevent Bugs
         switch (initialState)
         {
@@ -174,29 +242,34 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         #endregion
 
         #region In Sight State List
-       if (useChasing)
-       {
-            InSightStates.Add(ChasingState = new Enemy_Chasing());
-            ChasingState.BaseManager = this;
-       }
-       if (useWarning)
-       {
-            InSightStates.Add(WarningState = new Enemy_Warning());
-            WarningState.BaseManager = this;
-       }
+        if (useInvestigating)
+        {
+            InSightStates.Add(InvestingatingState = new Enemy_Investigating());
+            InvestingatingState.BaseManager = this;
+        }
+        if (useChasing)
+        {
+             InSightStates.Add(ChasingState = new Enemy_Chasing());
+             ChasingState.BaseManager = this;
+        }
         #endregion
 
         #region In Range State List
-       if (useNeutralization)
-       {
-            InRangeStates.Add(NeutralizationState = new Enemy_Neutralization());
-            NeutralizationState.BaseManager = this;
-       }
-       if (useImmobilization)
-       {
-            InRangeStates.Add(ImmobilizationState = new Enemy_Immobilization());
-            ImmobilizationState.BaseManager = this;
-       }
+        if (useNeutralization)
+        {
+             InRangeStates.Add(NeutralizationState = new Enemy_Neutralization());
+             NeutralizationState.BaseManager = this;
+        }
+        if (useImmobilization)
+        {
+             InRangeStates.Add(ImmobilizationState = new Enemy_Immobilization());
+             ImmobilizationState.BaseManager = this;
+        }
+        if (useWarning)
+        {
+            InRangeStates.Add(WarningState = new Enemy_Warning());
+            WarningState.BaseManager = this;
+        }
         #endregion
 
         #region Lost State List
@@ -234,6 +307,14 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     protected void BaseFixedUpdate()
     {
+        if (isLosingInterest)
+        {
+            LoseInterest();
+        }
+
+
+
+
         if (currentState == null)
         {
             return;
@@ -274,7 +355,37 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
+
+
+
     public abstract void HaveBeenWarned();
 
     public abstract void IsWarning();
+
+
+
+
+    public void MoveAgentTo(Vector3 targetPosition)
+    {
+        print(lastSeenPosition);
+        agent.SetDestination(targetPosition);
+    }
+
+    public void ChangeAgentSpeed(float movementSpeed)
+    {
+        agent.speed = movementSpeed;
+    }
+
+
+
+
+    private void LoseInterest()
+    {
+        DetectionProgression -= loseRate * Time.deltaTime;
+    }
+
+
+    //IMPLEMENTER ICI DES METHODES PO
+    //URCHANGER D ETAT AVEC LES CHANGEMENTS DE VARAIBLES APPROPRIES ETC.
+    //PRENNANT EN COMPTE LES ETAT DISPONIBLES ET CONDITIONS
 }
