@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy_Chasing : Enemy_InSightState
@@ -14,6 +15,17 @@ public class Enemy_Chasing : Enemy_InSightState
 
         BaseManager.isLosingInterest = false;
         BaseManager.DetectionProgression = 100;
+
+
+
+        //if Warning Only
+        if (BaseManager.InRangeStates.Contains(BaseManager.WarningState))
+        {
+            if (BaseManager.InRangeStates.Count == 1)
+            {
+                BaseManager.SwitchState(BaseManager.WarningState);
+            }
+        }
     }
 
 
@@ -27,7 +39,19 @@ public class Enemy_Chasing : Enemy_InSightState
 
     public override void FixedUpdateState()
     {
-        return;
+
+
+
+
+        //Switch State
+        if (Vector3.Distance(BaseManager.transform.position, BaseManager.Binah.transform.position) <= BaseManager.canAttackDistance)
+        {
+            List<Enemy_InRangeState> inRangeStates = new List<Enemy_InRangeState>(BaseManager.InRangeStates);
+            inRangeStates.Remove(BaseManager.WarningState);
+
+            //Switch State
+            BaseManager.SwitchState(inRangeStates[Random.Range(0, inRangeStates.Count)]);
+        }
     }
 
     public override void UpdateState()

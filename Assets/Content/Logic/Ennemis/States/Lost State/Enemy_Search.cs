@@ -50,6 +50,8 @@ public class Enemy_Search : Enemy_LostState
     {
         Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
+        // Switch State
+        // CHASE
     }
 
     public override void LostBinah()

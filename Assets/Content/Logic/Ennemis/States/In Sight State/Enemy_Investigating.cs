@@ -71,19 +71,8 @@ public class Enemy_Investigating : Enemy_InSightState
 
     public override void DetectedBinah()
     {
+        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
-        //STACK OVERFLOW     
-
-
-
-        //Debug.Log(BaseManager.gameObject.name + " Detected Binah");
-
-
-        ////Set Detection to Max
-        //if (BaseManager.DetectionProgression != 0)
-        //{
-        //    BaseManager.DetectionProgression = 100;
-        //}
 
         //Get the State List minus itself
         List<Enemy_InSightState> inSightStates = new List<Enemy_InSightState>(BaseManager.InSightStates);

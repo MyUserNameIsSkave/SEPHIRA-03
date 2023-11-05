@@ -1325,7 +1325,7 @@ Transform:
   m_GameObject: {fileID: 506107972}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.92, y: 1.861, z: 10.07}
+  m_LocalPosition: {x: -9.22, y: 1.861, z: 6.04}
   m_LocalScale: {x: 0.45828998, y: 0.6547, z: 0.78564}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1344,20 +1344,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c733baf2a882f524682dea7e1960bc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 1
+  initialState: 0
   useIdle: 1
-  usePatrol: 1
+  usePatrol: 0
   useGettingCloser: 0
-  useInvestigating: 0
-  useChasing: 0
+  useInvestigating: 1
+  useChasing: 1
   useNeutralization: 0
   useImmobilization: 0
   useWarning: 1
   useSearch: 0
-  detectionRate: 25
+  detectionRate: 1000
   loseRate: 12.5
   WalkSpeed: 1
   RunSpeed: 2.5
+  canAttackDistance: 1
   _detectionProgression: 0
   isLosingInterest: 0
   lastSeenPosition: {x: 0, y: 0, z: 0}
@@ -4069,7 +4070,7 @@ Transform:
   m_GameObject: {fileID: 1370816992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.07, y: 1.07, z: 10.076}
+  m_LocalPosition: {x: -6.87, y: 1.07, z: 7.19}
   m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4090,18 +4091,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialState: 0
   useIdle: 1
-  usePatrol: 1
+  usePatrol: 0
   useGettingCloser: 0
-  useInvestigating: 0
+  useInvestigating: 1
   useChasing: 1
   useNeutralization: 1
   useImmobilization: 0
   useWarning: 0
   useSearch: 0
-  detectionRate: 25
+  detectionRate: 50
   loseRate: 12.5
   WalkSpeed: 1
-  RunSpeed: 2.5
+  RunSpeed: 10
+  canAttackDistance: 2
   _detectionProgression: 0
   isLosingInterest: 0
   lastSeenPosition: {x: 0, y: 0, z: 0}
@@ -4165,7 +4167,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 99999
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -5024,7 +5026,8 @@ MonoBehaviour:
   detectionRate: 25
   loseRate: 12.5
   WalkSpeed: 1
-  RunSpeed: 2.5
+  RunSpeed: 4
+  canAttackDistance: 2
   _detectionProgression: 0
   isLosingInterest: 0
   lastSeenPosition: {x: 0, y: 0, z: 0}
@@ -5113,7 +5116,7 @@ Transform:
   m_GameObject: {fileID: 1590599634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.52, y: 0.88, z: 9.5}
+  m_LocalPosition: {x: -4.39, y: 0.88, z: 7.4}
   m_LocalScale: {x: 0.75, y: 0.9, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5558,8 +5561,8 @@ Transform:
   m_GameObject: {fileID: 1706357959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.74, y: 0.68, z: 10.06}
-  m_LocalScale: {x: 0.8, y: 0.6, z: 1.77}
+  m_LocalPosition: {x: -2.15, y: 0.68, z: 7.35}
+  m_LocalScale: {x: 0.8, y: 0.5, z: 1.77}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1288872035}
@@ -5577,20 +5580,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da947f98cc852244bd13f43536598cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 2
+  initialState: 0
   useIdle: 1
   usePatrol: 0
-  useGettingCloser: 1
-  useInvestigating: 0
+  useGettingCloser: 0
+  useInvestigating: 1
   useChasing: 1
   useNeutralization: 0
   useImmobilization: 1
   useWarning: 0
   useSearch: 1
-  detectionRate: 25
+  detectionRate: 100
   loseRate: 12.5
   WalkSpeed: 1
-  RunSpeed: 2.5
+  RunSpeed: 8
+  canAttackDistance: 2
   _detectionProgression: 0
   isLosingInterest: 0
   lastSeenPosition: {x: 0, y: 0, z: 0}
@@ -5654,7 +5658,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5000001
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 100000
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -5662,7 +5666,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2.0000005
-  m_BaseOffset: 0
+  m_BaseOffset: 1.35
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &1715170806

@@ -8,6 +8,11 @@ public class Enemy_Immobilization : Enemy_InRangeState
     public override void EnterState()
     {
         Debug.Log("Enemy Enter Immobilization ");
+
+
+
+        BaseManager.MoveAgentTo(BaseManager.transform.position);
+        Debug.Log("BINAH MUST BE IMMOBILIZED");
     }
 
     public override void ExitState()

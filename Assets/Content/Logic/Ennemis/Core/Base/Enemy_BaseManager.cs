@@ -44,7 +44,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Header("   Binah in Sight State")]
+    [Header("   Binah in Sight State"), Tooltip ("Thoses state might be obligatory so maybe remove the option")]
     public bool useInvestigating;
     public bool useChasing;
 
@@ -59,6 +59,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [Header("   Binah In Range State")]
     public bool useNeutralization;
     public bool useImmobilization;
+    [Tooltip ("Might only work if used alone")]
     public bool useWarning;
 
     public Enemy_Neutralization NeutralizationState;
@@ -91,6 +92,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public float WalkSpeed = 1f;
     public float RunSpeed = 2.5f;
+    public float canAttackDistance = 1f;
 
 
 
@@ -367,7 +369,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public void MoveAgentTo(Vector3 targetPosition)
     {
-        print(lastSeenPosition);
         agent.SetDestination(targetPosition);
     }
 

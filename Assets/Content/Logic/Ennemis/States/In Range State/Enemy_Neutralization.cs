@@ -6,12 +6,16 @@ public class Enemy_Neutralization : Enemy_InRangeState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Neutralization ");
+        Debug.Log("Enemy Enter Neutralization");
+
+
+        BaseManager.MoveAgentTo(BaseManager.transform.position);
+        Debug.Log("BINAH MUST BE NEUTRALIZED");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Neutralization ");
+        Debug.Log("Enemy Exite Neutralization");
     }
 
     public override void FixedUpdateState()
