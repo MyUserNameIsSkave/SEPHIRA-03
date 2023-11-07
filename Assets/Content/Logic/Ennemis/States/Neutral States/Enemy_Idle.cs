@@ -62,6 +62,10 @@ public class Enemy_Idle : Enemy_NeutralState
     public override void DetectedBinah()
     {
         Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+
+        //Switch State
+        BaseManager.SwitchState(BaseManager.ChasingState);
+
     }
 
     public override void LostBinah()
