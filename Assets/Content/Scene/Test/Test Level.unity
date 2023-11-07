@@ -1232,12 +1232,11 @@ GameObject:
   - component: {fileID: 506107976}
   - component: {fileID: 506107975}
   - component: {fileID: 506107974}
-  - component: {fileID: 506107973}
   - component: {fileID: 506107977}
   - component: {fileID: 506107979}
   - component: {fileID: 506107978}
-  - component: {fileID: 506107980}
   - component: {fileID: 506107981}
+  - component: {fileID: 506107982}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -1245,27 +1244,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &506107973
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506107972}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &506107974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1390,27 +1368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63eaeefbe7f1aae418b1e593206c5aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &506107980
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506107972}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 9.546357
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &506107981
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1433,6 +1390,27 @@ NavMeshAgent:
   m_BaseOffset: 2.83
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &506107982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506107972}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.71, y: 2, z: 12}
+  m_Center: {x: 0, y: 0, z: 6}
 --- !u!1 &544618772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,8 +3957,8 @@ GameObject:
   - component: {fileID: 1370816997}
   - component: {fileID: 1370816999}
   - component: {fileID: 1370816998}
-  - component: {fileID: 1370817000}
   - component: {fileID: 1370817001}
+  - component: {fileID: 1370817002}
   m_Layer: 0
   m_Name: Goliath
   m_TagString: Untagged
@@ -4070,7 +4048,7 @@ Transform:
   m_GameObject: {fileID: 1370816992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.87, y: 1.07, z: 7.19}
+  m_LocalPosition: {x: -7.2, y: 1.05, z: 6.68}
   m_LocalScale: {x: 1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4135,27 +4113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63eaeefbe7f1aae418b1e593206c5aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1370817000
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370816992}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 6.818182
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1370817001
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4178,6 +4135,27 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1370817002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370816992}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.7, y: 1.41, z: 9.82}
+  m_Center: {x: 0, y: 0, z: 4.9}
 --- !u!1001 &1380378566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4992,8 +4970,8 @@ GameObject:
   - component: {fileID: 1590599635}
   - component: {fileID: 1590599641}
   - component: {fileID: 1590599640}
-  - component: {fileID: 1590599642}
   - component: {fileID: 1590599643}
+  - component: {fileID: 1590599644}
   m_Layer: 0
   m_Name: Yakuza
   m_TagString: Untagged
@@ -5013,9 +4991,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbab1596c7f0e874bb2b8d7f2a3f4e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 0
-  useIdle: 1
-  usePatrol: 0
+  initialState: 1
+  useIdle: 0
+  usePatrol: 1
   useGettingCloser: 0
   useInvestigating: 1
   useChasing: 1
@@ -5116,7 +5094,7 @@ Transform:
   m_GameObject: {fileID: 1590599634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.39, y: 0.88, z: 7.4}
+  m_LocalPosition: {x: -4.41, y: 0.88, z: 6.77}
   m_LocalScale: {x: 0.75, y: 0.9, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5148,27 +5126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63eaeefbe7f1aae418b1e593206c5aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1590599642
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590599634}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 8.333333
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1590599643
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5191,6 +5148,27 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1590599644
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590599634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 2, z: 12}
+  m_Center: {x: 0, y: 0, z: 6}
 --- !u!1 &1622400980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,8 +5448,8 @@ GameObject:
   - component: {fileID: 1706357964}
   - component: {fileID: 1706357966}
   - component: {fileID: 1706357965}
-  - component: {fileID: 1706357967}
   - component: {fileID: 1706357968}
+  - component: {fileID: 1706357969}
   m_Layer: 0
   m_Name: Tracker
   m_TagString: Untagged
@@ -5626,27 +5604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63eaeefbe7f1aae418b1e593206c5aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1706357967
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706357959}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 4.237288
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1706357968
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5669,6 +5626,27 @@ NavMeshAgent:
   m_BaseOffset: 1.35
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1706357969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706357959}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.86, y: 2, z: 4.92}
+  m_Center: {x: 0, y: 0, z: 2.44}
 --- !u!1001 &1715170806
 PrefabInstance:
   m_ObjectHideFlags: 0

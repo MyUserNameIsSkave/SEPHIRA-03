@@ -10,6 +10,7 @@ public class Enemy_Idle : Enemy_NeutralState
 
         //Stop Moving
         BaseManager.MoveAgentTo(BaseManager.transform.position);
+        BaseManager.ChangeAgentSpeed(BaseManager.WalkSpeed);
     }
 
 
