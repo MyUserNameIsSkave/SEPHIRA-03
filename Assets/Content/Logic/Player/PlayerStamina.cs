@@ -78,6 +78,11 @@ public class PlayerStamina : MonoBehaviour
 
     private void UpdateUI()
     {
+        if (!stamBarForground)
+        {
+            Debug.LogWarning("No reference to the Stam UI");
+            return;
+        }
         float imageFill = (float)CurrentStam / (float)maxStam;
         stamBarForground.fillAmount = imageFill;
     }
