@@ -39,8 +39,7 @@ public class CameraBase : MonoBehaviour, IInteractable
         [Header("     ZOOM")]
         [Space(7)]
 
-    [SerializeField]
-    private float baseFOV;
+    public float baseFOV;
 
 
     [SerializeField, MinMaxSlider(10, 110)]

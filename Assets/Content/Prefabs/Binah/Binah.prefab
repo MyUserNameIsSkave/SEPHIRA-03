@@ -16,17 +16,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.57
+      value: 16.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000071525574
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: 7.92
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -36,17 +36,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: -2656431786303760210, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_TagString
-      value: Binah
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2084811680363313996, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 1082271958561512970, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_TagString
-      value: Binah
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1339101018200438765, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -405,7 +405,7 @@ PrefabInstance:
     - target: {fileID: 7882376022164389543, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       propertyPath: m_TagString
-      value: Binah
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8817898888258712963, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -510,8 +510,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -525,8 +525,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 4
-  m_Acceleration: 99999
+  m_Speed: 3.5
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 999999
   m_StoppingDistance: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Visibility: 1
   drawActionDetectionRadius: 0
-  displayScore: 0
+  displayScore: 1
   displayPath: 0
   logChosenAction: 0
   logInitiatives: 0

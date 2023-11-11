@@ -76,10 +76,12 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         camera = Camera.main;
+        camera.fieldOfView = currentCamera.baseFOV;
         referenceFOV = camera.fieldOfView;
         currentFOV = referenceFOV;
-
     }
+
+
 
 
     private void LateUpdate()

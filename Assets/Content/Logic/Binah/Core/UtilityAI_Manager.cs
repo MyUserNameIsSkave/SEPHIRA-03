@@ -212,12 +212,6 @@ public class UtilityAI_Manager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState();
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SwitchState(FleeState);
-        }
     }
 
 
