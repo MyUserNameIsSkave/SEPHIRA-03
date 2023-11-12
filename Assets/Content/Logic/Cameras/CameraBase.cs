@@ -192,7 +192,6 @@ public class CameraBase : MonoBehaviour, IInteractable
         //Stop if alreaddy at the limit
         if (cameraController.currentFOV + ZoomIncrement == FOVRange.x || cameraController.currentFOV + ZoomIncrement == FOVRange.y)
         {
-            Debug.Log("At the edge");
             ZoomLeft = 0;
             return;
         }

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-
-#if (UNITY_EDITOR) 
 
 [CustomEditor(typeof(LadderGenerator))]
 public class LadderGeneratorEditor : Editor
@@ -42,5 +41,3 @@ public class LadderGeneratorEditor : Editor
         ladderGenerator.bottomHandle = (Transform)EditorGUILayout.ObjectField("Bottom Handle", ladderGenerator.bottomHandle, typeof(Transform), true);
     }
 }
-
-#endif

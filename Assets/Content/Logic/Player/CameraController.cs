@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CameraController : MonoBehaviour
 {
@@ -113,6 +114,7 @@ public class CameraController : MonoBehaviour
     {
         while (true)
         {
+            // SHOULD ADD TIME DETLA TIME POUR LE BUILD, EN EDITOR CA POSE DES PROBLEME
             AjustedRotationSensivity = RotationSensivity * (currentFOV / referenceFOV);
             currentCamera.RotateCamera();
             yield return null;
@@ -120,7 +122,6 @@ public class CameraController : MonoBehaviour
     }
 
     #endregion
-
 
 
 
