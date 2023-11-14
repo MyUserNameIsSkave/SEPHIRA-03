@@ -58,6 +58,7 @@ public class ProceduralCable : MonoBehaviour
     [SerializeField] float pointDensity = 3;
     [SerializeField] float generalSagMultiplier = 1;
     [SerializeField] float generalSwayFrequency = 0.5f;
+    [SerializeField] float generalSwayMultiplier = 1f;
 
         [Space (7)]
 
@@ -351,7 +352,7 @@ public class ProceduralCable : MonoBehaviour
             // Add Sag Vector
             Vector3 sagAtPoint = sagDirection * section.sag * generalSagMultiplier;
             // Add Sway Vector
-            Vector3 swayAtPoint = swayMultiplier * section.swayMultiplier * section.start.transform.TransformDirection(new Vector3(Mathf.Sin(section.swayValue) * section.swayXMultiplier, Mathf.Cos(2 * section.swayValue + Mathf.PI) * .5f * section.swayYMultiplier, 0));
+            Vector3 swayAtPoint = generalSwayMultiplier * swayMultiplier * section.swayMultiplier * section.start.transform.TransformDirection(new Vector3(Mathf.Sin(section.swayValue) * section.swayXMultiplier, Mathf.Cos(2 * section.swayValue + Mathf.PI) * .5f * section.swayYMultiplier, 0));
 
 
 
