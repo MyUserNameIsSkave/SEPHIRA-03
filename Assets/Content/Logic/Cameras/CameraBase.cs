@@ -52,7 +52,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     //General
     private GameObject playerObject;
-    private CameraController cameraController;
+    protected CameraController cameraController;
 
     //Rotation
     private float BasePitch;
