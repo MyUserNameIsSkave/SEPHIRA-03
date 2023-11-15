@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 using GD.MinMaxSlider;
-using static UnityEngine.InputSystem.Controls.AxisControl;
-using System.Transactions;
 
-public class CameraBase : MonoBehaviour, IInteractable
+public abstract class CameraBase : MonoBehaviour, IInteractable
 {
     // ----- VARIABLES -----
 
@@ -90,10 +88,16 @@ public class CameraBase : MonoBehaviour, IInteractable
         //Change Camera
         cameraController.currentCamera = this;
         cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
+
+        //Send information to the new Camera that it is the new one
+        Transitionned();
     }
 
     #endregion
 
+
+    protected abstract void Transitionned();
+    
 
 
     private void OnValidate()

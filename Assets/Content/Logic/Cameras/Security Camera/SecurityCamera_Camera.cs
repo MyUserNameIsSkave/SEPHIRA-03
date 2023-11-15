@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SecurityCamera_Camera : CameraBase
 {
-
+    protected override void Transitionned()
+    {
+        return;
+    }
 }
