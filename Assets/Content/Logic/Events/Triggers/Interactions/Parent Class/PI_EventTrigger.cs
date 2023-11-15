@@ -2,25 +2,42 @@ using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEngine.Rendering.DebugUI;
 
-public class SecurityCameraEventTrigger_Camera : CameraBase
+public class PI_EventTrigger : Player_Interaction
 {
+    public override void Interaction()
+    {
+        return;
+    }
+    
+
+
+
+
+    [Space(40)]
+    [Header("  EVENT SETTINGS")]
+    [Space(10)]
 
 
     [SerializedDictionary("New Camera Script", "Trigger Delay")]
     public SerializedDictionary<CameraBase, float> NewCamera;
 
+    [Space(10)]
+
     [SerializedDictionary("Event to Trigger", "Trigger Delay")]
     public SerializedDictionary<MonoBehaviour, float> EventToTrigger;
 
 
-    protected override void Transitionned()
+
+
+
+
+    public override void TriggerEvent()
     {
         CheckForCameraChange();
         CheckForEventsToDo();
     }
+
 
 
 
@@ -38,8 +55,9 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
     IEnumerator ChangeCameraEvent(KeyValuePair<CameraBase, float> kvp)
     {
         yield return new WaitForSeconds(kvp.Value);
-        cameraController.currentCamera = kvp.Key;
+        GameManager.Instance.CameraController.currentCamera = kvp.Key;
     }
+
 
 
 
@@ -47,8 +65,12 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     private void CheckForEventsToDo()
     {
-
+        foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
+        {
+            StartCoroutine(ExecuteEvents(kvp));
+        }
     }
+
 
     IEnumerator ExecuteEvents(KeyValuePair<MonoBehaviour, float> kvp)
     {
@@ -60,8 +82,6 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
         }
 
         yield return null;
-        
+
     }
-
-
 }

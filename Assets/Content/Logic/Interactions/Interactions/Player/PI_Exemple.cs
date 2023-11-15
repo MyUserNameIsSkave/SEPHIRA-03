@@ -10,15 +10,8 @@ public class PI_Exemple : Player_Interaction
         Debug.Log("Action Executed");
     }
 
-    public override void SelectedByPlayer()
+    public override void TriggerEvent()
     {
-        if (CheckStamina())
-        {
-            Interaction();
-        }
-        else
-        {
-            Debug.Log("Action can't be Executed");
-        }
+        return;
     }
 }

@@ -38,6 +38,23 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
 
 
     public abstract void Interaction();
+    public abstract void TriggerEvent();
 
-    public abstract void SelectedByPlayer();
+
+
+    public void SelectedByPlayer()
+    {
+        if (CheckStamina())
+        {
+            Interaction();
+            TriggerEvent();
+        }
+        else
+        {
+            Debug.Log("Action can't be Executed");
+        }
+    }
+
+
+
 }

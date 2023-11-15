@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UtilityAIVariablesUpdater : MonoBehaviour
+public class UtilityAIVariablesUpdater : MonoBehaviour, IEventTriggerable
 {
     // ---------- VARIABLES ----------
+
+
+    #region VARIABLES   
 
     [Space(15)]
     [Header("     STATE VARIABLES")]
@@ -18,34 +21,10 @@ public class UtilityAIVariablesUpdater : MonoBehaviour
         Set
     }
 
-
     public StateVariablesModification variablesModification;
     private UtilityAI_Manager UtilityAI_Manager;
 
 
-
-
-
-    // ---------- LOGIC ----------
-
-    private void Start()
-    {
-        UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            //Apply Modification
-            ModifyStateVariables();
-
-
-            //Destroy
-            Destroy(gameObject);
-        }
-    }
 
 
 
@@ -154,8 +133,41 @@ public class UtilityAIVariablesUpdater : MonoBehaviour
     [SerializeField]
     private float newFleeDistance;
 
+    #endregion
 
 
+    // ---------- LOGIC ----------
+
+    private void Start()
+    {
+        UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            //Apply Modification
+            ModifyStateVariables();
+
+
+            //Destroy
+            Destroy(gameObject);
+        }
+    }
+
+
+
+    public void TriggerEvent()
+    {
+        //Apply Modification
+        ModifyStateVariables();
+
+
+        //Destroy
+        Destroy(gameObject);
+    }
 
     /// <summary>
     /// Method to use in order to modify the State Variables Values and other AI's Variables

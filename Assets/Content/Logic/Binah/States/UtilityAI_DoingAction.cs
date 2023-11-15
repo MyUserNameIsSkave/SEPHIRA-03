@@ -147,6 +147,7 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
     private void ExecuteAction()
     {
         action.Interaction();
+        action.TriggerEvent();
         UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);       //Stop AI Movement
         ResetVariables();
     }
