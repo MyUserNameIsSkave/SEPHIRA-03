@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4751848a5776e044d9cd2b34e5bc4375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCamera: {fileID: 0}
+  _currentCamera: {fileID: 0}
   HorizontalThreshold: 0.2
   VerticalThreshold: 0.2
   SensivityProgresion:
@@ -167,6 +167,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   RotationSensivity: 6
   ZoomSensivity: 6
+  ZoomDuration: 0.125
   camera: {fileID: 0}
   AjustedRotationSensivity: 0
   currentFOV: 0

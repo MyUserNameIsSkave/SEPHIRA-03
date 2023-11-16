@@ -42,9 +42,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     [MinMaxSlider(10, 110)]
     public Vector2 FOVRange;
-    [SerializeField]
 
-    private float ZoomDuration;
 
 
 
@@ -61,7 +59,10 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     //Zoom
     [HideInInspector]
     public float currentCameraFOV;
-    private float ZoomLeft = 0f;
+
+    [HideInInspector]
+    public float ZoomLeft = 0f;
+
     private float currentLerpedFOV = 0f;
     private Coroutine ZoomLerping;
 
@@ -199,14 +200,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     /// </summary>
     public void Zoom(float ZoomIncrement)
     {
-        //Stop if alreaddy at the limit
-        if (cameraController.currentFOV + ZoomIncrement == FOVRange.x || cameraController.currentFOV + ZoomIncrement == FOVRange.y)
-        {
-            ZoomLeft = 0;
-            return;
-        }
-
-
         //Variables
         ZoomLeft += ZoomIncrement;
         float currentFOV = cameraController.currentFOV;
@@ -219,9 +212,17 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         }
 
 
-        //Call ZoomLerping Coroutine
-        ZoomLerping = StartCoroutine(LerpFOV(currentFOV, currentFOV + ZoomLeft, ZoomDuration));
+        if (cameraController.ZoomDuration != 0)
+        {
+            //Call ZoomLerping Coroutine
+            ZoomLerping = StartCoroutine(LerpFOV(currentFOV, currentFOV + ZoomLeft, cameraController.ZoomDuration));
+        }
+        else
+        {
+            cameraController.ChangeFOV(Mathf.Clamp(currentFOV + ZoomIncrement, FOVRange.x, FOVRange.y));
+        }
     }
+
 
 
 
@@ -257,12 +258,14 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
             currentCameraFOV = lerpedFOV;
             ZoomLeft -= lerpedFOV - currentLerpedFOV;
 
+
             //Apply FOV
             cameraController.ChangeFOV(lerpedFOV);
 
 
             yield return null;
         }
+
 
 
 

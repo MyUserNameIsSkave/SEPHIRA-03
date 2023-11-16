@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
@@ -14,7 +15,16 @@ public class CameraController : MonoBehaviour
     public CameraBase CurrentCamera
     {
         get { return _currentCamera; }
-        set { _currentCamera = value; ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); }
+
+        set { //Stop Zoom Lerping
+            CurrentCamera.StopAllCoroutines(); 
+            CurrentCamera.ZoomLeft = 0; 
+
+            //Set FOV to New Camerra FOV
+            ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 
+
+            //Change Reference
+            _currentCamera = value; }
     }
 
 
@@ -42,6 +52,8 @@ public class CameraController : MonoBehaviour
         [Space(7)]
 
     public float ZoomSensivity;
+    [Tooltip ("Can't be equal to 0")]
+    public float ZoomDuration;
 
 
 
@@ -74,12 +86,6 @@ public class CameraController : MonoBehaviour
 
 
 
-
-
-
-
-
-
     // ----- LOGIC -----
 
 
@@ -91,6 +97,11 @@ public class CameraController : MonoBehaviour
         currentFOV = referenceFOV;
     }
 
+
+    private void Start()
+    {
+        CurrentCamera = CurrentCamera;
+    }
 
 
 
