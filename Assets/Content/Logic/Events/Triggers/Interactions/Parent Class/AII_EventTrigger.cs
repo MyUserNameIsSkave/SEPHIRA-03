@@ -61,7 +61,7 @@ public class AII_EventTrigger : AI_Interaction
     IEnumerator ChangeCameraEvent(KeyValuePair<CameraBase, float> kvp)
     {
         yield return new WaitForSeconds(kvp.Value);
-        GameManager.Instance.CameraController.currentCamera = kvp.Key;
+        GameManager.Instance.CameraController.CurrentCamera = kvp.Key;
     }
 
 

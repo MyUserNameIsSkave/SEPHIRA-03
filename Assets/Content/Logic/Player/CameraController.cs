@@ -8,10 +8,19 @@ public class CameraController : MonoBehaviour
 {
     // ----- SETTINGS VARIABLES -----
 
-    [Tooltip ("Serializable only for debugging purpose")]
-    public CameraBase currentCamera;
+    [SerializeField, Tooltip ("Serializable only for debugging purpose")]
+    private CameraBase _currentCamera;
 
-        [Space(15)]
+    public CameraBase CurrentCamera
+    {
+        get { return _currentCamera; }
+        set { _currentCamera = value; ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); }
+    }
+
+
+
+
+    [Space(15)]
         [Header("     ROTATION")]
         [Space(7)]
 
@@ -77,7 +86,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         camera = Camera.main;
-        camera.fieldOfView = currentCamera.baseFOV;
+        camera.fieldOfView = CurrentCamera.baseFOV;
         referenceFOV = camera.fieldOfView;
         currentFOV = referenceFOV;
     }
@@ -87,8 +96,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = currentCamera.CameraPoint.transform.position;
-        transform.rotation = currentCamera.CameraPoint.transform.rotation;
+        transform.position = CurrentCamera.CameraPoint.transform.position;
+        transform.rotation = CurrentCamera.CameraPoint.transform.rotation;
     }
 
 
@@ -116,7 +125,7 @@ public class CameraController : MonoBehaviour
         {
             // SHOULD ADD TIME DETLA TIME POUR LE BUILD, EN EDITOR CA POSE DES PROBLEME
             AjustedRotationSensivity = RotationSensivity * (currentFOV / referenceFOV);
-            currentCamera.RotateCamera();
+            CurrentCamera.RotateCamera();
             yield return null;
         }
     }
@@ -129,7 +138,7 @@ public class CameraController : MonoBehaviour
 
     private void OnZoom(InputValue value)
     {
-        currentCamera.Zoom(value.Get<float>() * ZoomSensivity);
+        CurrentCamera.Zoom(value.Get<float>() * ZoomSensivity);
     }
 
 

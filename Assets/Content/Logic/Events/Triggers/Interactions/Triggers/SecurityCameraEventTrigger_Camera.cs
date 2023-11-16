@@ -46,7 +46,7 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
     IEnumerator ChangeCameraEvent(KeyValuePair<CameraBase, float> kvp)
     {
         yield return new WaitForSeconds(kvp.Value);
-        cameraController.currentCamera = kvp.Key;
+        cameraController.CurrentCamera = kvp.Key;
     }
 
 

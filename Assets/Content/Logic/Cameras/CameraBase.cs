@@ -40,8 +40,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public float baseFOV;
 
 
-    [SerializeField, MinMaxSlider(10, 110)]
-    private Vector2 FOVRange;
+    [MinMaxSlider(10, 110)]
+    public Vector2 FOVRange;
     [SerializeField]
 
     private float ZoomDuration;
@@ -59,7 +59,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     private float BaseYaw;
 
     //Zoom
-    private float currentCameraFOV;
+    [HideInInspector]
+    public float currentCameraFOV;
     private float ZoomLeft = 0f;
     private float currentLerpedFOV = 0f;
     private Coroutine ZoomLerping;
@@ -75,6 +76,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
 
 
+
+
+
+
+
     #region INTERFACE
 
     public void SelectedByPlayer()
@@ -86,8 +92,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public void Interaction()
     {
         //Change Camera
-        cameraController.currentCamera = this;
-        cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
+        cameraController.CurrentCamera = this;
+
 
         //Send information to the new Camera that it is the new one
         Transitionned();
