@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Interaction", menuName = "AI Interaction")]
+
 public abstract class AI_Interaction : MonoBehaviour, IInteractable
 {
     // ----- SETTINGS VARIABLES -----
