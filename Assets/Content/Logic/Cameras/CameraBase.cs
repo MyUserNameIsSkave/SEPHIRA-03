@@ -64,7 +64,9 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public float ZoomLeft = 0f;
 
     private float currentLerpedFOV = 0f;
-    private Coroutine ZoomLerping;
+
+    [HideInInspector]
+    public Coroutine ZoomLerping;
 
 
 

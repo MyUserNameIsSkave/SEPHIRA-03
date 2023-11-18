@@ -17,8 +17,11 @@ public class CameraController : MonoBehaviour
         get { return _currentCamera; }
 
         set { //Stop Zoom Lerping
-            CurrentCamera.StopAllCoroutines(); 
-            CurrentCamera.ZoomLeft = 0; 
+            if (CurrentCamera.ZoomLerping != null)
+            {
+                CurrentCamera.StopCoroutine(CurrentCamera.ZoomLerping);
+                CurrentCamera.ZoomLeft = 0;
+            }
 
             //Set FOV to New Camerra FOV
             ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 

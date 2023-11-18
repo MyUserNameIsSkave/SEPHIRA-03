@@ -2,8 +2,7 @@ using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEngine.Rendering.DebugUI;
+
 
 public class SecurityCameraEventTrigger_Camera : CameraBase
 {
@@ -45,6 +44,7 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     IEnumerator ChangeCameraEvent(KeyValuePair<CameraBase, float> kvp)
     {
+
         yield return new WaitForSeconds(kvp.Value);
         cameraController.CurrentCamera = kvp.Key;
     }
@@ -55,21 +55,33 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     private void CheckForEventsToDo()
     {
+        print("ola");
+        foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
+        {
+            print("que");
 
+            StartCoroutine(ExecuteEvents(kvp));
+        }
     }
+
 
     IEnumerator ExecuteEvents(KeyValuePair<MonoBehaviour, float> kvp)
     {
+        print("tal");
+
+
         IEventTriggerable EvenTriggerInterface = kvp.Key.GetComponent<IEventTriggerable>();
         if (EvenTriggerInterface != null)
         {
+            print(kvp.Value);
             yield return new WaitForSeconds(kvp.Value);
+            print("!");
             EvenTriggerInterface.TriggerEvent();
         }
 
         yield return null;
-        
+
     }
 
-
+    
 }
