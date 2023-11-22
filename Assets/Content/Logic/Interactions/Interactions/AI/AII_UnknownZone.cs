@@ -16,11 +16,15 @@ public class AII_UnknownZone : AI_Interaction
 
     // ----- INTERFACE METHODS -----
 
-    public override void Interaction()
+    public override void InteractionSucceed()
     {
         //Useless
     }
 
+    public override void InteractionFailed()
+    {
+        //Useless
+    }
 
 
 
@@ -43,13 +47,6 @@ public class AII_UnknownZone : AI_Interaction
 
 
 
-
-
-
-
-
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Binah"))
@@ -68,18 +65,12 @@ public class AII_UnknownZone : AI_Interaction
     }
 
 
-
     private IEnumerator Discovering()
     {
         yield return new WaitForSeconds(discoveryTime);
 
         Discovered();
     }
-
-
-
-
-
 
 
     public void Discovered()
@@ -90,4 +81,13 @@ public class AII_UnknownZone : AI_Interaction
         Destroy(gameObject);
     }
 
+
+
+
+
+
+    public override void TriggerEvent()
+    {
+        throw new System.NotImplementedException();
+    }
 }

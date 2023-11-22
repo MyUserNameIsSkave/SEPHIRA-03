@@ -1,16 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CameraController : MonoBehaviour
 {
     // ----- SETTINGS VARIABLES -----
 
-    [Tooltip ("Serializable only for debugging purpose")]
-    public CameraBase currentCamera;
+    [SerializeField, Tooltip ("Serializable only for debugging purpose")]
+    private CameraBase _currentCamera;
 
-        [Space(15)]
+    public CameraBase CurrentCamera
+    {
+        get { return _currentCamera; }
+
+        set { //Stop Zoom Lerping
+            if (CurrentCamera.ZoomLerping != null)
+            {
+                CurrentCamera.StopCoroutine(CurrentCamera.ZoomLerping);
+                CurrentCamera.ZoomLeft = 0;
+            }
+
+            //Set FOV to New Camerra FOV
+            ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 
+
+            //Change Reference
+            _currentCamera = value; }
+    }
+
+
+
+
+    [Space(15)]
         [Header("     ROTATION")]
         [Space(7)]
 
@@ -32,6 +55,8 @@ public class CameraController : MonoBehaviour
         [Space(7)]
 
     public float ZoomSensivity;
+    [Tooltip ("Can't be equal to 0")]
+    public float ZoomDuration;
 
 
 
@@ -64,30 +89,29 @@ public class CameraController : MonoBehaviour
 
 
 
-
-
-
-
-
-
     // ----- LOGIC -----
 
 
     private void Awake()
     {
         camera = Camera.main;
-        camera.fieldOfView = currentCamera.baseFOV;
+        camera.fieldOfView = CurrentCamera.baseFOV;
         referenceFOV = camera.fieldOfView;
         currentFOV = referenceFOV;
     }
 
 
+    private void Start()
+    {
+        CurrentCamera = CurrentCamera;
+    }
+
 
 
     private void LateUpdate()
     {
-        transform.position = currentCamera.CameraPoint.transform.position;
-        transform.rotation = currentCamera.CameraPoint.transform.rotation;
+        transform.position = CurrentCamera.CameraPoint.transform.position;
+        transform.rotation = CurrentCamera.CameraPoint.transform.rotation;
     }
 
 
@@ -113,8 +137,9 @@ public class CameraController : MonoBehaviour
     {
         while (true)
         {
+            // SHOULD ADD TIME DETLA TIME POUR LE BUILD, EN EDITOR CA POSE DES PROBLEME
             AjustedRotationSensivity = RotationSensivity * (currentFOV / referenceFOV);
-            currentCamera.RotateCamera();
+            CurrentCamera.RotateCamera();
             yield return null;
         }
     }
@@ -125,10 +150,9 @@ public class CameraController : MonoBehaviour
 
 
 
-
     private void OnZoom(InputValue value)
     {
-        currentCamera.Zoom(value.Get<float>() * ZoomSensivity);
+        CurrentCamera.Zoom(value.Get<float>() * ZoomSensivity);
     }
 
 

@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
-using UnityEditor.ShaderGraph.Drawing;
+
 
 public class LadderLogic : MonoBehaviour
 {

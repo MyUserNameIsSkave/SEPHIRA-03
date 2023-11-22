@@ -19,7 +19,7 @@ public class PlayerWorldInteraction : MonoBehaviour
 
 
     private Camera _camera;
-    private UtilityAI_Manager UtilityAI_Manager;
+    //private UtilityAI_Manager UtilityAI_Manager;
 
 
 
@@ -33,7 +33,7 @@ public class PlayerWorldInteraction : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
-        UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
+        //UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
     }
 
 

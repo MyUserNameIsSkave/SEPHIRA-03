@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class AII_Exemple : AI_Interaction
 {
-    public override void Interaction()
+    public override void InteractionSucceed()
     {
-        if (CheckStamina())
-        {
-            Debug.Log("Action Executed");
-        }
-        else
-        {
-            Debug.Log("Action Failed");
-        }
+
     }
 
+    public override void InteractionFailed()
+    {
+
+    }
+
+    public override void TriggerEvent()
+    {
+        throw new System.NotImplementedException();
+    }
 }

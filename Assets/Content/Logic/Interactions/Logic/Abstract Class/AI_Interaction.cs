@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+
 public abstract class AI_Interaction : MonoBehaviour, IInteractable
 {
     // ----- SETTINGS VARIABLES -----
@@ -105,10 +107,50 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
 
 
+
+
+
     /// <summary>
     /// Methode contenant toute la logique nécessaire à l'execution de l'action
     /// </summary>
-    public abstract void Interaction();
+    public abstract void InteractionSucceed();
+
+    public abstract void InteractionFailed();
+
+    public abstract void TriggerEvent();
+
+
+    public void Interaction()
+    {
+        if (CheckStamina())
+        {
+            InteractionSucceed();
+        }
+        else
+        {
+            InteractionFailed();
+        }
+    }
+
+
+    /// <summary>
+    /// Return True if the Player has enought Stma for the Action.
+    /// </summary>
+    /// <returns></returns>
+    protected bool CheckStamina()
+    {
+        if (stamCost <= staminaScript.CurrentStam)
+        {
+            staminaScript.CurrentStam -= stamCost;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
 
 
 
@@ -144,9 +186,6 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
                                                                           variablesModification.Independence);
         }
     }
-
-
-
 
 
 
@@ -192,31 +231,6 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
 
 
-
-
-
-
-
-
-
-
-
-    /// <summary>
-    /// Return True if the Player has enought Stma for the Action.
-    /// </summary>
-    /// <returns></returns>
-    protected bool CheckStamina()
-    {
-        if (stamCost <= staminaScript.CurrentStam)
-        {
-            staminaScript.CurrentStam -= stamCost;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
 
 

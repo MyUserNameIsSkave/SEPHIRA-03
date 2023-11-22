@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 using GD.MinMaxSlider;
-using static UnityEngine.InputSystem.Controls.AxisControl;
-using System.Transactions;
 
-public class CameraBase : MonoBehaviour, IInteractable
+public abstract class CameraBase : MonoBehaviour, IInteractable
 {
     // ----- VARIABLES -----
 
@@ -42,11 +40,9 @@ public class CameraBase : MonoBehaviour, IInteractable
     public float baseFOV;
 
 
-    [SerializeField, MinMaxSlider(10, 110)]
-    private Vector2 FOVRange;
-    [SerializeField]
+    [MinMaxSlider(10, 110)]
+    public Vector2 FOVRange;
 
-    private float ZoomDuration;
 
 
 
@@ -54,17 +50,23 @@ public class CameraBase : MonoBehaviour, IInteractable
 
     //General
     private GameObject playerObject;
-    private CameraController cameraController;
+    protected CameraController cameraController;
 
     //Rotation
     private float BasePitch;
     private float BaseYaw;
 
     //Zoom
-    private float currentCameraFOV;
-    private float ZoomLeft = 0f;
+    [HideInInspector]
+    public float currentCameraFOV;
+
+    [HideInInspector]
+    public float ZoomLeft = 0f;
+
     private float currentLerpedFOV = 0f;
-    private Coroutine ZoomLerping;
+
+    [HideInInspector]
+    public Coroutine ZoomLerping;
 
 
 
@@ -74,6 +76,11 @@ public class CameraBase : MonoBehaviour, IInteractable
 
 
     // ----- lOGIC -----
+
+
+
+
+
 
 
 
@@ -88,12 +95,18 @@ public class CameraBase : MonoBehaviour, IInteractable
     public void Interaction()
     {
         //Change Camera
-        cameraController.currentCamera = this;
-        cameraController.ChangeFOV(Mathf.Clamp(currentCameraFOV, FOVRange.x, FOVRange.y));
+        cameraController.CurrentCamera = this;
+
+
+        //Send information to the new Camera that it is the new one
+        Transitionned();
     }
 
     #endregion
 
+
+    protected abstract void Transitionned();
+    
 
 
     private void OnValidate()
@@ -189,15 +202,6 @@ public class CameraBase : MonoBehaviour, IInteractable
     /// </summary>
     public void Zoom(float ZoomIncrement)
     {
-        //Stop if alreaddy at the limit
-        if (cameraController.currentFOV + ZoomIncrement == FOVRange.x || cameraController.currentFOV + ZoomIncrement == FOVRange.y)
-        {
-            Debug.Log("At the edge");
-            ZoomLeft = 0;
-            return;
-        }
-
-
         //Variables
         ZoomLeft += ZoomIncrement;
         float currentFOV = cameraController.currentFOV;
@@ -210,9 +214,17 @@ public class CameraBase : MonoBehaviour, IInteractable
         }
 
 
-        //Call ZoomLerping Coroutine
-        ZoomLerping = StartCoroutine(LerpFOV(currentFOV, currentFOV + ZoomLeft, ZoomDuration));
+        if (cameraController.ZoomDuration != 0)
+        {
+            //Call ZoomLerping Coroutine
+            ZoomLerping = StartCoroutine(LerpFOV(currentFOV, currentFOV + ZoomLeft, cameraController.ZoomDuration));
+        }
+        else
+        {
+            cameraController.ChangeFOV(Mathf.Clamp(currentFOV + ZoomIncrement, FOVRange.x, FOVRange.y));
+        }
     }
+
 
 
 
@@ -248,12 +260,14 @@ public class CameraBase : MonoBehaviour, IInteractable
             currentCameraFOV = lerpedFOV;
             ZoomLeft -= lerpedFOV - currentLerpedFOV;
 
+
             //Apply FOV
             cameraController.ChangeFOV(lerpedFOV);
 
 
             yield return null;
         }
+
 
 
 
