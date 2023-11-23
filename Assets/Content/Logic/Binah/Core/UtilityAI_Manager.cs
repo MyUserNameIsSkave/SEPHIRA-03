@@ -11,10 +11,6 @@ public class UtilityAI_Manager : MonoBehaviour
 
     #region Settings
 
-
-
-
-
     [Header("     ----- GENERAL -----")]
     [Space(7)]
 
@@ -126,6 +122,10 @@ public class UtilityAI_Manager : MonoBehaviour
     public UtilityAI_Moving MovingState = new UtilityAI_Moving();
     public UtilityAI_Scripted ScriptedState = new UtilityAI_Scripted();
 
+    //New State 
+    public UtilityAI_Struggling StrugglingState = new UtilityAI_Struggling();
+    public UtilityAI_Neutralized NeutralizedState = new UtilityAI_Neutralized();
+
 
 
     [HideInInspector]
@@ -192,6 +192,13 @@ public class UtilityAI_Manager : MonoBehaviour
         ScriptedState.UtilityAI_Manager = this;
 
 
+        //New Sate
+        StrugglingState.UtilityAI_Manager = this;
+        NeutralizedState.UtilityAI_Manager = this;
+
+
+
+
         currentState = IdleState;
         SwitchState(currentState);
 
@@ -200,6 +207,28 @@ public class UtilityAI_Manager : MonoBehaviour
         //Start CustomUpdate
         StartCoroutine(CustomUpdate());
     }
+
+
+
+    /// <summary>
+    /// The method use by external script to make Binah enter Struggling State
+    /// </summary>
+    public void StartStruggling()
+    {
+        SwitchState(StrugglingState);
+    }
+
+
+    /// <summary>
+    /// The method use by external script to make Binah her Neutralized State and the end game logic.
+    /// </summary>
+    public void GetNeutralized()
+    {
+        SwitchState(NeutralizedState);
+
+    }
+
+
 
 
 

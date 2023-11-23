@@ -1331,6 +1331,7 @@ MonoBehaviour:
   useNeutralization: 0
   useImmobilization: 0
   useWarning: 1
+  useStruggling: 0
   useSearch: 0
   detectionRate: 1000
   loseRate: 12.5
@@ -1343,6 +1344,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   Binah: {fileID: 0}
   displayCurrentState: 1
+  BinahManager: {fileID: 0}
 --- !u!114 &506107978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3554,6 +3556,11 @@ PrefabInstance:
       propertyPath: currentCamera
       value: 
       objectReference: {fileID: 1921611326}
+    - target: {fileID: 5725508484586793652, guid: 77ad084a3e8b39a47a3e33907933d5af,
+        type: 3}
+      propertyPath: _currentCamera
+      value: 
+      objectReference: {fileID: 1921611326}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4108,6 +4115,7 @@ MonoBehaviour:
   useNeutralization: 1
   useImmobilization: 0
   useWarning: 0
+  useStruggling: 0
   useSearch: 0
   detectionRate: 50
   loseRate: 12.5
@@ -4120,6 +4128,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   Binah: {fileID: 0}
   displayCurrentState: 1
+  BinahManager: {fileID: 0}
 --- !u!114 &1370816998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4950,7 +4959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1622400983}
+  - {fileID: 1545902303}
   - {fileID: 663017409}
   - {fileID: 1036076261}
   - {fileID: 78175419}
@@ -4978,7 +4987,6 @@ Transform:
   - {fileID: 1270657251}
   - {fileID: 1921611324}
   - {fileID: 86362613}
-  - {fileID: 1545902303}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1582197028 stripped
@@ -5029,9 +5037,10 @@ MonoBehaviour:
   useGettingCloser: 0
   useInvestigating: 1
   useChasing: 1
-  useNeutralization: 1
+  useNeutralization: 0
   useImmobilization: 0
   useWarning: 0
+  useStruggling: 1
   useSearch: 1
   detectionRate: 25
   loseRate: 12.5
@@ -5044,6 +5053,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   Binah: {fileID: 0}
   displayCurrentState: 1
+  BinahManager: {fileID: 0}
 --- !u!136 &1590599636
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5263,11 +5273,11 @@ Transform:
   m_GameObject: {fileID: 1622400980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 132.60294, y: 20.05102, z: -68.98316}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1566097864}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1637846061
 PrefabInstance:
@@ -5590,15 +5600,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da947f98cc852244bd13f43536598cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 0
-  useIdle: 1
+  initialState: 2
+  useIdle: 0
   usePatrol: 0
-  useGettingCloser: 0
+  useGettingCloser: 1
   useInvestigating: 1
   useChasing: 1
   useNeutralization: 0
   useImmobilization: 1
   useWarning: 0
+  useStruggling: 0
   useSearch: 1
   detectionRate: 100
   loseRate: 12.5
@@ -5611,6 +5622,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   Binah: {fileID: 0}
   displayCurrentState: 1
+  BinahManager: {fileID: 0}
 --- !u!114 &1706357965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7648,6 +7660,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1622400983}
   - {fileID: 808099474}
   - {fileID: 1509869754}
   - {fileID: 1566097864}

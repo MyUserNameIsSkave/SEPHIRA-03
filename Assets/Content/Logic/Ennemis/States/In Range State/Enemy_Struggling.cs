@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Neutralization : Enemy_InRangeState
+public class Enemy_Struggling : Enemy_InRangeState
 {
     public override void EnterState()
     {
         Debug.Log("Enemy Enter Struggleing");
 
         UtilityAI_Manager binahManager = BaseManager.BinahManager;
-        binahManager.GetNeutralized();
+        binahManager.StartStruggling();
 
+        BaseManager.MoveAgentTo(BaseManager.transform.position);
         Debug.Log("Start Struggling with Binah");
     }
 
@@ -29,5 +30,3 @@ public class Enemy_Neutralization : Enemy_InRangeState
         return;
     }
 }
-
-

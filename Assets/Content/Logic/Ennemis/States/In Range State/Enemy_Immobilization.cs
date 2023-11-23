@@ -9,7 +9,8 @@ public class Enemy_Immobilization : Enemy_InRangeState
     {
         Debug.Log("Enemy Enter Immobilization ");
 
-
+        UtilityAI_Manager binahManager = BaseManager.BinahManager;
+        binahManager.GetNeutralized();
 
         BaseManager.MoveAgentTo(BaseManager.transform.position);
         Debug.Log("BINAH MUST BE IMMOBILIZED");
