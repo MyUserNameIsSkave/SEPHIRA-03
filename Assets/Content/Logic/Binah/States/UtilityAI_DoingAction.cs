@@ -23,6 +23,8 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
 
     public override void EnterState()
     {
+        UtilityAI_Manager.CanRecieveInput = true;            
+
         action = UtilityAI_Manager.ActionToDo;
         ActionChosed(action);
     }
@@ -146,10 +148,15 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
     /// </summary>
     private void ExecuteAction()
     {
+        UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);       //Stop AI Movement
+
+        //UtilityAI_Manager.CanRecieveInput = false;
+        //Action Duration
+        //UtilityAI_Manager.CanRecieveInput = true;
+
+        ResetVariables();
         action.Interaction();
         action.TriggerEvent();
-        UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);       //Stop AI Movement
-        ResetVariables();
     }
 
 

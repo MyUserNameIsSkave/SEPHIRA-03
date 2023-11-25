@@ -33,6 +33,8 @@ public class UtilityAI_Idle : UtilityAI_BaseState
     public override void EnterState()
     {
         inactivityStartTime = Time.time;
+        UtilityAI_Manager.CanRecieveInput = true;
+
     }
 
     public override void ExitState()

@@ -6,17 +6,14 @@ public class Enemy_Warning : Enemy_InRangeState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Warning ");
-
-
         BaseManager.MoveAgentTo(BaseManager.transform.position);
         BaseManager.agent.speed = 0;
-        Debug.Log("ENEMIES MUST BE WARNED");
+        Debug.Log("ENEMIES ARE WARNED");
     }
 
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Warning ");
+
     }
 
     public override void FixedUpdateState()

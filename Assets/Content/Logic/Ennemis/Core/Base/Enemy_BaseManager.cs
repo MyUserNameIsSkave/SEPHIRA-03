@@ -178,8 +178,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         agent = GetComponent<NavMeshAgent>();
         Binah = GameObject.FindGameObjectWithTag("Binah");
 
-        print(Binah);
-
         //Prevent Bugs
         switch (initialState)
         {

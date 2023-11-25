@@ -127,8 +127,7 @@ public class BinahIndication : MonoBehaviour
 
 
         // Move
-        UtilityAI_Manager.IndicatedPosition = hit.point;
-        UtilityAI_Manager.SwitchState(UtilityAI_Manager.MovingState);
+        UtilityAI_Manager.SendBinahToLocation(hit.point);
     }
 
 

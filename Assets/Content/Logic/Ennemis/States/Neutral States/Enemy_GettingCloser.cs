@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy_GettingCloser : Enemy_NeutralState
 {
 
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter GettingCloser ");
-
         BaseManager.ChangeAgentSpeed(BaseManager.WalkSpeed);
     }
 
@@ -16,13 +15,14 @@ public class Enemy_GettingCloser : Enemy_NeutralState
     #region Useless
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite GettingCloser ");
+
     }
     #endregion
 
 
     public override void FixedUpdateState()
     {
+        // SE RENSEIGNER SUR "NavMesh.SamplePosition" POUR TROUVER UNE POSITION VALIDE PROCHE
         BaseManager.MoveAgentTo(BaseManager.Binah.transform.position);
     }
 

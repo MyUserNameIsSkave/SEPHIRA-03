@@ -16,6 +16,6 @@ public class AII_Exemple : AI_Interaction
 
     public override void TriggerEvent()
     {
-        throw new System.NotImplementedException();
+
     }
 }

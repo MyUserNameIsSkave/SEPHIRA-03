@@ -100,9 +100,8 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
     public void SelectedByPlayer()
     {
-        //Activate needed State
-        UtilityAI_Manager.SwitchState(UtilityAI_Manager.IdleState);
-        UtilityAI_Manager.IdleState.ScoreIndicatedAction(this);
+        //Transfert Input
+        UtilityAI_Manager.DoIndicatedAction(this);
     }
 
 

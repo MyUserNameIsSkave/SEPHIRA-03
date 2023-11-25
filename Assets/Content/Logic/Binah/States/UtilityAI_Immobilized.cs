@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UtilityAI_Struggling : UtilityAI_BaseState
+public class UtilityAI_Immobilized : UtilityAI_BaseState
 {
+
+
     public override void EnterState()
     {
-        Debug.Log("ENTER STRUGGLING STATE");
+        Debug.Log("ENTER IMMOBILIZED STATE");
 
         UtilityAI_Manager.CanRecieveInput = false;
         UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);
@@ -25,10 +27,11 @@ public class UtilityAI_Struggling : UtilityAI_BaseState
     public override void UpdateState()
     {
 
-    }
+    }    
     
     public override void CustomUdpateState()
     {
 
     }
 }
+

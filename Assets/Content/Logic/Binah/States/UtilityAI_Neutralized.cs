@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class UtilityAI_Neutralized : UtilityAI_BaseState
 {
-    public override void CustomUdpateState()
-    {
- 
-    }
 
     public override void EnterState()
     {
         Debug.Log("ENTER NEUTRALIZED STATE");
+
+        UtilityAI_Manager.CanRecieveInput = false;
+        UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);
     }
 
     public override void ExitState()
     {
-
+        UtilityAI_Manager.CanRecieveInput = true;
     }
 
     public override void FixedUpdateState()
@@ -27,5 +26,9 @@ public class UtilityAI_Neutralized : UtilityAI_BaseState
     public override void UpdateState()
     {
 
+    }
+    public override void CustomUdpateState()
+    {
+ 
     }
 }

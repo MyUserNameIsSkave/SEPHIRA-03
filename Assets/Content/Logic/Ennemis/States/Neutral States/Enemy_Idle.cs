@@ -6,8 +6,6 @@ public class Enemy_Idle : Enemy_NeutralState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Idle ");
-
         //Stop Moving
         BaseManager.MoveAgentTo(BaseManager.transform.position);
         BaseManager.ChangeAgentSpeed(BaseManager.WalkSpeed);
@@ -17,7 +15,7 @@ public class Enemy_Idle : Enemy_NeutralState
     #region Useless
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Idle ");
+
     }
     #endregion
 

@@ -10,12 +10,13 @@ public class UtilityAI_Scripted : UtilityAI_BaseState
 {
     public override void EnterState()
     {
-
+        UtilityAI_Manager.CanRecieveInput = false;
+        UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);
     }
 
     public override void ExitState()
     {
-
+        UtilityAI_Manager.CanRecieveInput = true;
     }
 
 

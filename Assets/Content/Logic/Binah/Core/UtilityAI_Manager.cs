@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
+using Unity.VisualScripting;
 
 public class UtilityAI_Manager : MonoBehaviour
 {
@@ -125,6 +125,7 @@ public class UtilityAI_Manager : MonoBehaviour
     //New State 
     public UtilityAI_Struggling StrugglingState = new UtilityAI_Struggling();
     public UtilityAI_Neutralized NeutralizedState = new UtilityAI_Neutralized();
+    public UtilityAI_Immobilized ImmobilizedState = new UtilityAI_Immobilized();
 
 
 
@@ -160,6 +161,8 @@ public class UtilityAI_Manager : MonoBehaviour
     [HideInInspector]
     public bool isCrouched = false;
 
+    [HideInInspector]
+    public bool CanRecieveInput = true;
 
 
 
@@ -195,6 +198,7 @@ public class UtilityAI_Manager : MonoBehaviour
         //New Sate
         StrugglingState.UtilityAI_Manager = this;
         NeutralizedState.UtilityAI_Manager = this;
+        ImmobilizedState.UtilityAI_Manager = this;
 
 
 
@@ -224,10 +228,9 @@ public class UtilityAI_Manager : MonoBehaviour
     /// </summary>
     public void GetNeutralized()
     {
-        SwitchState(NeutralizedState);
+        
 
     }
-
 
 
 
@@ -286,6 +289,14 @@ public class UtilityAI_Manager : MonoBehaviour
 
         //Notify New State
         newState.EnterState();
+
+
+        if (DebugTool != null && UseDebugTool)
+        {
+            DebugTool.DisplayCurrentState(newState);
+
+        }
+
     }
 
 
@@ -294,8 +305,44 @@ public class UtilityAI_Manager : MonoBehaviour
 
     // ---------- CONTROLS ----------
 
+    /// <summary>
+    /// This method has the purpose to centralize the input management.
+    /// </summary>
+    public void SendBinahToLocation(Vector3 position)
+    {
+        if (!CanRecieveInput)
+        {
+            return;
+        }
+
+        IndicatedPosition = position;
+        SwitchState(MovingState);
+    }
+
+
+    /// <summary>
+    /// This method has the purpose to centralize the input management.
+    /// </summary>
+    public void DoIndicatedAction(AI_Interaction action)
+    {
+        if (!CanRecieveInput)
+        {
+            return;
+        }
+
+        SwitchState(IdleState);
+        IdleState.ScoreIndicatedAction(action);
+    }
+
+
+    //Input System
     private void OnCrouch(InputValue value)
     {
+        if (!CanRecieveInput)
+        {
+            return;
+        }
+
         if (value.Get<float>() == 0)
         {
             return;
@@ -303,10 +350,6 @@ public class UtilityAI_Manager : MonoBehaviour
 
         Crouching(!isCrouched);
     }
-
-
-
-    // ---------- LOGIC ----------
 
     /// <summary>
     /// the Method used to make the IA Crouch / Uncrouch.

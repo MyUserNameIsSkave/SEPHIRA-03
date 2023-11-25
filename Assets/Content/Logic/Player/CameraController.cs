@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
     // ----- WORKING VARIABLES -----
 
     [HideInInspector]
-    public Camera camera;
+    public Camera cameraReference;
 
 
 
@@ -94,9 +94,9 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        camera = Camera.main;
-        camera.fieldOfView = CurrentCamera.baseFOV;
-        referenceFOV = camera.fieldOfView;
+        cameraReference = Camera.main;
+        cameraReference.fieldOfView = CurrentCamera.baseFOV;
+        referenceFOV = cameraReference.fieldOfView;
         currentFOV = referenceFOV;
     }
 
@@ -159,7 +159,7 @@ public class CameraController : MonoBehaviour
     public void ChangeFOV(float newFOV)
     {
         currentFOV = newFOV;
-        camera.fieldOfView = currentFOV;
+        cameraReference.fieldOfView = currentFOV;
     }
 
 }

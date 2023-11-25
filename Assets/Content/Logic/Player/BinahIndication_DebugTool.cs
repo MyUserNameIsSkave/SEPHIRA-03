@@ -16,7 +16,7 @@ public class BinahIndication_DebugTool : MonoBehaviour
     [SerializeField]
     float sphereScale;
 
-    Camera camera;
+    Camera cameraReference;
 
 
     //----------------------------------------------------------------

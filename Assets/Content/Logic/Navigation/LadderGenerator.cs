@@ -38,7 +38,7 @@ public class LadderGenerator : MonoBehaviour
 
 
     private NavMeshLink ladderLink;
-    private BoxCollider collider;
+    private BoxCollider ladderCollider;
 
    [Space(7)]
 
@@ -85,7 +85,7 @@ private void Awake()
 
 
         ladderLink = GetComponent<NavMeshLink>();
-        collider = GetComponent <BoxCollider>();
+        ladderCollider = GetComponent <BoxCollider>();
 
 
 
@@ -120,8 +120,8 @@ private void Awake()
         ladderLink.startPoint = new Vector3(ladderLink.startPoint.x, 0, ladderLink.startPoint.z);
         ladderLink.endPoint = new Vector3(ladderLink.startPoint.x, topHeight + 0.25f, ladderLink.startPoint.z);
 
-        collider.size = new Vector3(2.5f, topHeight, 2.5f);
-        collider.center = new Vector3(0, topHeight / 2, -1);
+        ladderCollider.size = new Vector3(2.5f, topHeight, 2.5f);
+        ladderCollider.center = new Vector3(0, topHeight / 2, -1);
 
 
 

@@ -15,9 +15,7 @@ public class Enemy_Patrol : Enemy_NeutralState
 
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Patrol ");
-
-
+        
         //Stop Moving
         BaseManager.MoveAgentTo(BaseManager.transform.position);
         BaseManager.ChangeAgentSpeed(BaseManager.WalkSpeed);
@@ -29,14 +27,13 @@ public class Enemy_Patrol : Enemy_NeutralState
     #region Useless
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Patrol ");
+
     }
     #endregion
 
 
     public override void FixedUpdateState()
     {
-        Debug.Log(enterTime);
         if (i < (Time.time - enterTime) / patrolFrequency)
         {
             i += 1;

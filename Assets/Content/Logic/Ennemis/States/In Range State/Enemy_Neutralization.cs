@@ -6,8 +6,6 @@ public class Enemy_Neutralization : Enemy_InRangeState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Struggleing");
-
         UtilityAI_Manager binahManager = BaseManager.BinahManager;
         binahManager.GetNeutralized();
 
@@ -16,7 +14,7 @@ public class Enemy_Neutralization : Enemy_InRangeState
 
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Neutralization");
+
     }
 
     public override void FixedUpdateState()
