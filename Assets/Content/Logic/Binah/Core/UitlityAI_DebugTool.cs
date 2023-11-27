@@ -16,6 +16,21 @@ public class UitlityAI_DebugTool : MonoBehaviour
         Always
     }
 
+
+
+
+
+
+
+    [Header("  Finite State Machine")]
+
+    [SerializeField]
+    private string currentState;
+
+
+    [Space (20)]
+
+
     [Header("     Visibility Setting")]
     [Space(5)]
 
@@ -167,6 +182,13 @@ public class UitlityAI_DebugTool : MonoBehaviour
 
 
 
+
+
+
+    public void DisplayCurrentState(UtilityAI_BaseState newState)
+    {
+        currentState = newState.ToString();
+    }
 
 
     public void LogChosedAction(AI_Interaction action)

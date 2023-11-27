@@ -61,7 +61,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public bool useImmobilization;
     [Tooltip ("Might only work if used alone")]
     public bool useWarning;
+    public bool useStruggling;
 
+    public Enemy_Struggling StrugglingState;
     public Enemy_Neutralization NeutralizationState;
     public Enemy_Immobilization ImmobilizationState;
     public Enemy_Warning WarningState;
@@ -162,16 +164,19 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
     }
 
-
-
+    [HideInInspector]
+    public UtilityAI_Manager BinahManager;
 
     protected void BaseAwake()
     {
+        //Get AI Manager references
+        BinahManager = GameManager.Instance.Binah.GetComponent<UtilityAI_Manager>();
+
+
+
         //Get References
         agent = GetComponent<NavMeshAgent>();
         Binah = GameObject.FindGameObjectWithTag("Binah");
-
-        print(Binah);
 
         //Prevent Bugs
         switch (initialState)
@@ -271,6 +276,11 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         {
             InRangeStates.Add(WarningState = new Enemy_Warning());
             WarningState.BaseManager = this;
+        }
+        if (useStruggling)
+        {
+            InRangeStates.Add(StrugglingState = new Enemy_Struggling());
+            StrugglingState.BaseManager = this;
         }
         #endregion
 

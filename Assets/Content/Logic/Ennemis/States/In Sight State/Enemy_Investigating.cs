@@ -7,8 +7,6 @@ public class Enemy_Investigating : Enemy_InSightState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Investigating ");
-
         //Prevent bug
         BaseManager.DetectionProgression += BaseManager.detectionRate * Time.deltaTime;
         BaseManager.isLosingInterest = false;
@@ -26,7 +24,7 @@ public class Enemy_Investigating : Enemy_InSightState
     #region Useless
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Investigating ");
+
     }
     #endregion
 

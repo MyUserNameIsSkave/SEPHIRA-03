@@ -7,9 +7,6 @@ public class Enemy_Chasing : Enemy_InSightState
 {
     public override void EnterState()
     {
-        Debug.Log("Enemy Enter Chasing ");
-
-
         //Change MoveSpeed
         BaseManager.ChangeAgentSpeed(BaseManager.RunSpeed);
 
@@ -34,7 +31,7 @@ public class Enemy_Chasing : Enemy_InSightState
     #region Useless
     public override void ExitState()
     {
-        Debug.Log("Enemy Exite Chasing ");
+
     }
 
     public override void FixedUpdateState()

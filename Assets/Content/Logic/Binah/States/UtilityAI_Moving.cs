@@ -10,6 +10,7 @@ public class UtilityAI_Moving : UtilityAI_BaseState
     public override void EnterState()
     {
         UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.IndicatedPosition);
+        UtilityAI_Manager.CanRecieveInput = true;
     }
 
     public override void ExitState()
