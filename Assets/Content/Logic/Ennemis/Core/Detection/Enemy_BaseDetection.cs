@@ -7,6 +7,9 @@ public class Enemy_BaseDetection : MonoBehaviour
     //Base Manager Reference
     private Enemy_BaseManager enemyManager;
 
+
+
+
     private void Start()
     {
         enemyManager = GetComponent<Enemy_BaseManager>();

@@ -50,10 +50,10 @@ public class Drone_Manager : Enemy_BaseManager
 
 
 
-    public override void HaveBeenWarned()
-    {
-        Debug.Log(gameObject.name + " Has Been Warned !");
-    }
+    //public override void GetWarned()
+    //{
+    //    Debug.Log(gameObject.name + " Has Been Warned !");
+    //}
 
     public override void IsWarning()
     {

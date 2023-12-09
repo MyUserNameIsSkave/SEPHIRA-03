@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Enemy_AudioDetection))]
 [RequireComponent(typeof(Enemy_VisualDetection))]
@@ -75,8 +75,11 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     [Header("   Binah Lost State")]
     public bool useSearch;
+    public bool useWarned;
 
     public Enemy_Search SearchState;
+    public Enemy_Warned WarnedState;
+
 
     public List<Enemy_LostState> LostStates = new List<Enemy_LostState>();
 
@@ -95,6 +98,8 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public float WalkSpeed = 1f;
     public float RunSpeed = 2.5f;
     public float canAttackDistance = 1f;
+
+    public float WarningRadius = 10f;
 
 
 
@@ -117,7 +122,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public Vector3 lastSeenPosition;
 
-
+    public Vector3 warningPosition;
 
 
 
@@ -290,7 +295,12 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
             LostStates.Add(SearchState = new Enemy_Search());
             SearchState.BaseManager = this;
         }
-       #endregion
+        if (useWarned)
+        {
+            LostStates.Add(WarnedState = new Enemy_Warned());
+            WarnedState.BaseManager = this;
+        }
+        #endregion
     }
 
 
@@ -370,7 +380,15 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    public abstract void HaveBeenWarned();
+    public void GetWarned(Vector3 _warningPosition)
+    {
+        if (useWarned)
+        {
+            warningPosition = _warningPosition;
+            SwitchState(WarnedState);
+        }
+    }
+
 
     public abstract void IsWarning();
 

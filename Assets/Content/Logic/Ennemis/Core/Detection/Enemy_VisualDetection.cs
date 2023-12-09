@@ -1,22 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem;
+
 
 
 [RequireComponent(typeof(BoxCollider))]
 public class Enemy_VisualDetection : Enemy_BaseDetection
 {
-    [SerializeField]
-    private SphereCollider overallCollider;
-
     private GameObject binah;
 
 
+    [SerializeField]
+    private float VisualDetectionDistanceThreshold = 1f;
+
     private void Awake()
     {
-        overallCollider = GetComponent<SphereCollider>();
         binah = GameObject.FindGameObjectWithTag("Binah");
     }
 
@@ -36,12 +34,14 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
 
     private void OnTriggerStay(Collider other)
     {
+     
         if (!other.CompareTag("Binah"))
         {
             return;
         }
 
-        if (Vector3.Distance(transform.position, other.transform.position) >= 4f)
+
+        if (Vector3.Distance(transform.position, other.transform.position) >= VisualDetectionDistanceThreshold)
         {
             //See Something
             SeenSomething();
@@ -56,12 +56,7 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
 
     private void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, binah.transform.position) < 4f)
-        {
-            //Detect Binah
-            SeenSomething();
-            DetectedBinah();
-        }
+
     }
 
 

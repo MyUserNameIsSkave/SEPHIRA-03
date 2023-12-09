@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IWarnable 
 {
-    public void HaveBeenWarned();
+    public void GetWarned(Vector3 _warningPosition);
 
     public void IsWarning();
 }
