@@ -14,6 +14,10 @@ public class Enemy_Immobilization : Enemy_InRangeState
         Debug.Log("IMMOBILIZING PLAYER");
     }
 
+
+
+
+    #region Useless
     public override void ExitState()
     {
 
@@ -31,27 +35,28 @@ public class Enemy_Immobilization : Enemy_InRangeState
 
 
 
-
     public override void HeardSuspectNoise()
     {
-        Debug.Log(BaseManager.gameObject.name + " Heard Something");
+        //Debug.Log(BaseManager.gameObject.name + " Heard Something");
+
     }
 
     public override void SeenSuspectThing()
     {
-        Debug.Log(BaseManager.gameObject.name + " Seen Something");
+        //Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
     }
 
     public override void DetectedBinah()
     {
-        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+        //Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
     }
 
     public override void LostBinah()
     {
-        Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+        //Debug.Log(BaseManager.gameObject.name + " Lost Binah");
 
     }
+    #endregion
 }

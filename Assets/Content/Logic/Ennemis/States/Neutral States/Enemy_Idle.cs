@@ -42,32 +42,25 @@ public class Enemy_Idle : Enemy_NeutralState
 
     public override void SeenSuspectThing()
     {
-        Debug.Log(BaseManager.gameObject.name + " Seen Something");
+        //Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
 
         //Switch State
-        if (BaseManager.InvestingatingState != null)
-        {
-            BaseManager.lastSeenPosition = BaseManager.Binah.transform.position;
-            BaseManager.SwitchState(BaseManager.InvestingatingState);
-        }
-        else
-        {
-            Debug.LogError("no InvestingatingState set on " + BaseManager.gameObject.name + ", it needs it to work currently");
-        }
+        BaseManager.SwitchToInvestingatingState();
     }
 
     public override void DetectedBinah()
     {
-        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+        //Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
         //Switch State
-        BaseManager.SwitchState(BaseManager.ChasingState);
+        BaseManager.SwitchToChasingState();
 
     }
 
     public override void LostBinah()
     {
-        Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+        //Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+
     }
 }

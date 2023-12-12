@@ -86,7 +86,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     #endregion
 
 
-    [Space(20)]
+    [Space(50)]
 
 
     #region Ennemy Settings and Variabes
@@ -390,10 +390,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     }
 
 
-    public abstract void IsWarning();
-
-
-
 
     public void MoveAgentTo(Vector3 targetPosition)
     {
@@ -417,4 +413,59 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     //IMPLEMENTER ICI DES METHODES PO
     //URCHANGER D ETAT AVEC LES CHANGEMENTS DE VARAIBLES APPROPRIES ETC.
     //PRENNANT EN COMPTE LES ETAT DISPONIBLES ET CONDITIONS
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void SwitchToNeutralState()
+    {
+        //Chose Randomly a Neutral State
+        SwitchState(NeutralStates[Random.Range(0, NeutralStates.Count)]);
+    }
+
+    public void SwitchToSearchState()
+    {
+        if (SearchState != null)
+        {
+            SwitchState(SearchState);
+        }
+        else
+        {
+            SwitchToNeutralState();
+        }
+
+    }
+
+    public void SwitchToChasingState()
+    {
+        SwitchState(ChasingState);
+    }
+
+
+
+    public void SwitchToInvestingatingState()
+    {
+        if (InvestingatingState != null)
+        {
+            lastSeenPosition = Binah.transform.position;
+            SwitchState(InvestingatingState);
+        }
+        else
+        {
+            Debug.LogError("no InvestingatingState set on " + gameObject.name + ", it needs it to work currently");
+        }
+    }
+
+
+
+
 }

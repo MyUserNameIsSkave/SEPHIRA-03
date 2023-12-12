@@ -33,7 +33,7 @@ public class Enemy_Investigating : Enemy_InSightState
     {
         if (BaseManager.DetectionProgression == 0)
         {
-            BaseManager.SwitchState(BaseManager.NeutralStates[Random.Range(0, BaseManager.NeutralStates.Count)]);
+            BaseManager.SwitchToNeutralState();
         }
     }
 

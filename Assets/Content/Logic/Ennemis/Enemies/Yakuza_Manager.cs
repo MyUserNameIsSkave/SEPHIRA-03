@@ -53,8 +53,4 @@ public class Yakuza_Manager : Enemy_BaseManager
     //    Debug.Log(gameObject.name + " Has Been Warned !");
     //}
 
-    public override void IsWarning()
-    {
-        Debug.Log(gameObject.name + " Is Warning !");
-    }
 }

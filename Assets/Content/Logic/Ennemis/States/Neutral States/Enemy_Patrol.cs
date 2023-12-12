@@ -61,16 +61,13 @@ public class Enemy_Patrol : Enemy_NeutralState
         Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
 
+
+        //Faudrait que l'IA continue sa ronde tant que son niveau de suspicion n'est pas assez haut
+
+
         //Switch State
-        if (BaseManager.InvestingatingState != null)
-        {
-            BaseManager.lastSeenPosition = BaseManager.Binah.transform.position;
-            BaseManager.SwitchState(BaseManager.InvestingatingState);
-        }
-        else
-        {
-            Debug.LogError("no InvestingatingState set on " + BaseManager.gameObject.name + ", it needs it to work currently");
-        }
+        BaseManager.SwitchToInvestingatingState();
+
     }
 
     public override void DetectedBinah()

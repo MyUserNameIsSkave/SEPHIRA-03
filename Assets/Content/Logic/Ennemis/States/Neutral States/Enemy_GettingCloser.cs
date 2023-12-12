@@ -43,15 +43,7 @@ public class Enemy_GettingCloser : Enemy_NeutralState
     public override void SeenSuspectThing()
     {
         //Switch State
-        if (BaseManager.InvestingatingState != null)
-        {
-            BaseManager.lastSeenPosition = BaseManager.Binah.transform.position;
-            BaseManager.SwitchState(BaseManager.InvestingatingState);
-        }
-        else
-        {
-            Debug.LogError("no InvestingatingState set on " + BaseManager.gameObject.name + ", it needs it to work currently");
-        }
+        BaseManager.SwitchToInvestingatingState();
 
     }
 

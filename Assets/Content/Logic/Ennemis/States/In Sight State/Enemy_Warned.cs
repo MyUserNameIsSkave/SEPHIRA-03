@@ -38,7 +38,7 @@ public class Enemy_Warned : Enemy_LostState
             }
             else
             {
-                BaseManager.SwitchState(BaseManager.NeutralStates[Random.Range(0, BaseManager.NeutralStates.Count)]);
+                BaseManager.SwitchToNeutralState();
             }
         }
     }
