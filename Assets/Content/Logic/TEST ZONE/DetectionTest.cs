@@ -8,10 +8,12 @@ public class DetectionTest : MonoBehaviour
     [SerializeField]
     private bool showViewAngle;
 
+    [SerializeField]
+    private float ViewVisualizationLength;
 
 
     [SerializeField]
-    private float sightOpening;
+    private float horizontalViewAngle, verticalViewAngle;
 
 
     [SerializeField]
@@ -29,15 +31,12 @@ public class DetectionTest : MonoBehaviour
             return;
         }
 
-        float angleStep = sightOpening / 90;
 
-        for (int i = 0; i <= 90; i++)
-        {
-            float angle = transform.eulerAngles.y - sightOpening / 2 + angleStep * i;
-            Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, horizontalViewAngle, 0) * transform.forward * ViewVisualizationLength, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, -horizontalViewAngle, 0) * transform.forward * ViewVisualizationLength, Color.yellow);
 
-            Debug.DrawLine(transform.position, transform.position + direction * 10f, Color.blue);
-        }
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0 , 0, verticalViewAngle) * transform.forward * ViewVisualizationLength, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0 , 0, -verticalViewAngle) * transform.forward * ViewVisualizationLength, Color.yellow);
     }
 
 
@@ -50,7 +49,13 @@ public class DetectionTest : MonoBehaviour
             Vector3 targetPosition = target.transform.position;
             float targetDistance = Vector3.Distance(targetPosition, transform.position);
 
-            if (sightOpening < Vector3.Angle(transform.forward, targetPosition - transform.position))
+
+            //Angle 
+            float horizontalAngle = Mathf.Abs(Vector3.SignedAngle(transform.forward, (targetPosition - transform.position).normalized, transform.up));
+            float verticalAngle = Mathf.Abs(Vector3.SignedAngle(transform.forward, (targetPosition - transform.position).normalized, transform.right));
+
+
+            if (horizontalViewAngle < horizontalAngle && verticalViewAngle < verticalAngle)
             {
                 Debug.DrawLine(transform.position, targetPosition, Color.grey);
                 continue;
