@@ -1,90 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DetectionTest : MonoBehaviour
 {
     [SerializeField]
-    private float horizontalAngle, verticalAngle, distance;
+    private bool showViewAngle;
+
+
 
     [SerializeField]
-    private int horizontalPrecision, verticalPrecision;
+    private float sightOpening;
 
-    private float _horizontalPrecision, _verticalPrecision;
 
-    private List<float> horizontalRotationOffsets = new List<float>();
-    private List<float> verticalRotationOffsets = new List<float>();
+    [SerializeField]
+    private GameObject[] sightTarget;
 
-    private void OnValidate()
+    [SerializeField]
+    private LayerMask layerToIgnore;
+
+
+
+    private void OnDrawGizmosSelected()
     {
-        _horizontalPrecision = horizontalPrecision + 0.1f;
-
-        float currentHorizontalAngle = horizontalAngle / _horizontalPrecision;
-
-        horizontalRotationOffsets.Clear();    
-
-        for (int i = 0; i < _horizontalPrecision; i++)
+        if (!showViewAngle)
         {
-            horizontalRotationOffsets.Add(horizontalAngle / _horizontalPrecision * i);
+            return;
         }
 
+        float angleStep = sightOpening / 90;
 
-
-
-        _verticalPrecision = verticalPrecision + 0.1f;
-
-        float currentVerticalAngle = horizontalAngle / _verticalPrecision;
-
-        verticalRotationOffsets.Clear();
-
-        for (int i = 0; i < _verticalPrecision; i++)
+        for (int i = 0; i <= 90; i++)
         {
-            verticalRotationOffsets.Add(verticalAngle / _verticalPrecision * i);
+            float angle = transform.eulerAngles.y - sightOpening / 2 + angleStep * i;
+            Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
+
+            Debug.DrawLine(transform.position, transform.position + direction * 10f, Color.blue);
         }
-
-
     }
+
 
 
 
     private void FixedUpdate()
     {
-        DoTraces();
-
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        if (Application.isPlaying)
+        foreach (GameObject target in sightTarget)
         {
-            return;
-        }
+            Vector3 targetPosition = target.transform.position;
+            float targetDistance = Vector3.Distance(targetPosition, transform.position);
 
-        DoTraces(); 
-    }
-
-
-
-
-    private void DoTraces()
-    {
-        foreach (float horizontalRotationOffset in horizontalRotationOffsets)
-        {
-            //Center     
-            Vector3 horizontalEndPosition = transform.position + Quaternion.AngleAxis(-horizontalAngle / 2 + horizontalRotationOffset, Vector3.up) * transform.forward * distance;
-            Debug.DrawLine(transform.position, horizontalEndPosition, Color.red);
-
-
-            foreach (float verticalRotationOffset in verticalRotationOffsets)
+            if (sightOpening < Vector3.Angle(transform.forward, targetPosition - transform.position))
             {
-                //Center
-                Vector3 direction = (horizontalEndPosition - transform.position).normalized;
-                Vector3 verticalEndPosition = transform.position + Quaternion.AngleAxis(-verticalAngle / 2 + verticalRotationOffset, Vector3.forward) * direction * distance;
-                Debug.DrawLine(transform.position, verticalEndPosition, Color.red);
+                Debug.DrawLine(transform.position, targetPosition, Color.grey);
+                continue;
             }
+
+            RaycastHit hit;
+            if (!Physics.Raycast(transform.position, targetPosition - transform.position, out hit, targetDistance, ~layerToIgnore))
+            {
+                IncreaseDetection();
+
+
+                Debug.DrawLine(transform.position, targetPosition, Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.white);
+            }
+
         }
     }
 
 
+    private void IncreaseDetection()
+    {
+
+    }
 }
