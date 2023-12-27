@@ -49,8 +49,11 @@ public class NavMesh_Updater : MonoBehaviour
     #region Update the Navmesh when back in Inspector
 
     private void OnValidate()
-    {
-        StartCoroutine(UpdateOnClose());
+    {   
+        if (surface.isActiveAndEnabled)
+        {
+            StartCoroutine(UpdateOnClose());
+        }
     }
 
 
