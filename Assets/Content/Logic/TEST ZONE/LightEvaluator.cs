@@ -9,13 +9,19 @@ public class LightEvaluator : MonoBehaviour
 
     [Header("    VALUE DEBUGING")]
 
+    [SerializeField]
+    private float rawLightIntensity;
 
-    public float rawLightIntensity;
-    public float normalizedLightIntensity; 
-    public float AdaptedLightIntensity;
+    [SerializeField]
+    private float normalizedLightIntensity;
+
+    [SerializeField]
+    private float AdaptedLightIntensity;
+
 
 
     [Space(20)]
+
 
 
     [Header("    NORMALIZING SETTINGS")]
@@ -36,9 +42,14 @@ public class LightEvaluator : MonoBehaviour
 
     [Header("    LIGHT INTENSITY SETTINGS")]
 
-    public float bakedLightAdjustment = 1f;
-    public float pointLightAdjustment = 0.5f;
-    public float spotLightAdjustment = 0.5f;
+    [SerializeField]
+    private float bakedLightAdjustment = 1f;
+
+    [SerializeField]
+    private float pointLightAdjustment = 0.5f;
+
+    [SerializeField]
+    private float spotLightAdjustment = 0.5f;
 
 
         [Space(20)]
@@ -54,9 +65,14 @@ public class LightEvaluator : MonoBehaviour
 
     [Space(7)]
 
-    public float sphereRadius = 10f; // Rayon de la sphère de collision
-    public LayerMask NonObstructingLayers;
-    public LayerMask DynamicLightLayer;
+    [SerializeField]
+    private float sphereRadius = 10f; // Rayon de la sphère de collision
+
+    [SerializeField]
+    private LayerMask NonObstructingLayers;
+
+    [SerializeField]
+    private LayerMask DynamicLightLayer;
 
 
 
@@ -128,15 +144,16 @@ public class LightEvaluator : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             //Check Obstruction
-            if (Physics.Raycast(transform.position, (collider.transform.position - transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, transform.position), ~NonObstructingLayers))
-            {
-                Debug.Log("Obstrué");
-                continue;
-            }
-            else
+            if (!Physics.Raycast(transform.position, (collider.transform.position - transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, transform.position), ~NonObstructingLayers))
             {
                 Debug.Log("Non Obstructed");
                 nonObstructedColliders.Add(collider);
+
+            }
+            else
+            {
+                Debug.Log("Obstrué");
+                continue;
             }
 
         }

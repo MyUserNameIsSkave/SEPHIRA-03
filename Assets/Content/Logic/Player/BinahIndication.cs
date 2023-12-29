@@ -14,7 +14,6 @@ public class BinahIndication : MonoBehaviour
     public LayerMask BinahLayer;
 
 
-
     //Working Variables
     [HideInInspector]
     public float maxSlop= 45f;
