@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -27,4 +28,8 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         CameraController = Player.GetComponent<CameraController>();
     }
+
+
+
+
 }

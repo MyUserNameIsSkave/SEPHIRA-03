@@ -32,8 +32,7 @@ public class LightEvaluator : MonoBehaviour
     [SerializeField]
     private float minValue;
 
-    [SerializeField]
-    private AnimationCurve modificationCurve;
+    public AnimationCurve modificationCurve;
 
 
     [Space (20)]
@@ -58,10 +57,11 @@ public class LightEvaluator : MonoBehaviour
     [Header("    COLLISION SETTINGS")]
 
 
-    [SerializeField]
-    private float refreshRate = 0.2f;
+    //[SerializeField]
+    //private float refreshRate = 0.2f;
 
-    public GameObject[] objectToCheck;
+    [SerializeField]
+    private GameObject[] objectToCheck;
 
     [Space(7)]
 
@@ -90,30 +90,30 @@ public class LightEvaluator : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        StartCoroutine(CheckLightLevelLoop());
-    }
+    //private void Start()
+    //{
+    //    StartCoroutine(CheckLightLevelLoop());
+    //}
 
 
 
-    IEnumerator CheckLightLevelLoop()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(refreshRate);
-            GetNearDynamicLights();
+    //IEnumerator CheckLightLevelLoop()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(refreshRate);
+    //        GetNearDynamicLights();
 
 
-            // Faire en sorte de verifier pour chacunes des Targets
+    //        // Faire en sorte de verifier pour chacunes des Targets
 
-            //foreach (GameObject item in objectToCheck)
-            //{
-            //    GetNearDynamicLights();
-            //}
+    //        //foreach (GameObject item in objectToCheck)
+    //        //{
+    //        //    GetNearDynamicLights();
+    //        //}
 
-        }
-    }
+    //    }
+    //}
 
 
 
@@ -124,7 +124,7 @@ public class LightEvaluator : MonoBehaviour
     /// <summary>
     /// Get all dynamic light in Range. The first step in the Light Intensity Evalutaion.
     /// </summary>
-    void GetNearDynamicLights()
+    public float GetNearDynamicLights(GameObject target)
     {
         //Reset the value to make the Light intensity additives
         rawLightIntensity = 0;
@@ -137,33 +137,26 @@ public class LightEvaluator : MonoBehaviour
 
 
         //Fill the Lights List with Lights within a radius
-        colliders = Physics.OverlapSphere(transform.position, sphereRadius, DynamicLightLayer);
+        colliders = Physics.OverlapSphere(target.transform.position, sphereRadius, DynamicLightLayer);
 
         //Fill the Non Obstructerd Light List with Lights in the Light
         RaycastHit hit;
         foreach (Collider collider in colliders)
         {
             //Check Obstruction
-            if (!Physics.Raycast(transform.position, (collider.transform.position - transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, transform.position), ~NonObstructingLayers))
+            if (!Physics.Raycast(transform.position, (collider.transform.position - target.transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, target.transform.position), ~NonObstructingLayers))
             {
-                Debug.Log("Non Obstructed");
+                //Debug.Log("Non Obstructed");
                 nonObstructedColliders.Add(collider);
 
             }
             else
             {
-                Debug.Log("Obstrué");
+                //Debug.Log("Obstrué");
                 continue;
             }
 
         }
-
-
-        //Get Bked Light Information if no Lights
-        //if (nonObstructedColliders.Count == 0)
-        //{
-        //    GetBakedLightIntenity();
-        //}
 
 
 
@@ -183,18 +176,18 @@ public class LightEvaluator : MonoBehaviour
             switch (lightComponent.type)
             {
                 case LightType.Point:
-                    AddPointLightIntensity(lightComponent);
+                    AddPointLightIntensity(lightComponent, target);
                     break;
 
                 case LightType.Spot:
-                    AddSpotLightIntensity(lightComponent);
+                    AddSpotLightIntensity(lightComponent, target);
                     break;
             }
         }
 
-        GetBakedLightIntenity();
+        GetBakedLightIntenity(target);
 
-
+        return AdaptedLightIntensity;
     }
 
 
@@ -204,17 +197,17 @@ public class LightEvaluator : MonoBehaviour
     /// <summary>
     /// Set the Light Intensity with Baked Informations;
     /// </summary>
-    private void GetBakedLightIntenity()
+    private void GetBakedLightIntenity(GameObject target)
     {
         
         // Renderer associé à l'objet auquel le LightProbe est attaché
-        Renderer renderer = GetComponent<Renderer>();
+        Renderer renderer = target.GetComponent<Renderer>();
 
         // Vérifiez si le rendu est présent sur l'objet
         if (renderer != null)
         {
             SphericalHarmonicsL2 harmonics = new SphericalHarmonicsL2();
-            LightProbes.GetInterpolatedProbe(gameObject.transform.position, renderer, out harmonics);
+            LightProbes.GetInterpolatedProbe(target.transform.position, renderer, out harmonics);
             rawLightIntensity += (0.2989f * harmonics[0, 0]) + (0.5870f * harmonics[1, 0]) + (0.1140f * harmonics[2, 0]) * bakedLightAdjustment;
             NormalizeLightIntensity();
         }
@@ -230,18 +223,18 @@ public class LightEvaluator : MonoBehaviour
     /// <summary>
     /// Set the Light Intensity with Point Light Informations;
     /// </summary>
-    public void AddPointLightIntensity(Light pointLight)
+    public void AddPointLightIntensity(Light pointLight, GameObject target)
     {
 
         //Check Range
         if (Vector3.Distance(transform.position, pointLight.transform.position) > pointLight.range)
         {
-            Debug.Log("PointLight too Far");
-            GetBakedLightIntenity();
+            //Debug.Log("PointLight too Far");
+            GetBakedLightIntenity(target);
             return;
         }
 
-        rawLightIntensity += Mathf.Lerp(pointLight.intensity * pointLightAdjustment, 0, Vector3.Distance(pointLight.transform.position, transform.position) / pointLight.range);
+        rawLightIntensity += Mathf.Lerp(pointLight.intensity * pointLightAdjustment, 0, Vector3.Distance(pointLight.transform.position, target.transform.position) / pointLight.range);
         NormalizeLightIntensity();
     }
 
@@ -250,37 +243,29 @@ public class LightEvaluator : MonoBehaviour
     /// <summary>
     /// Set the Light Intensity with Spot Light Informations;
     /// </summary>
-    public void AddSpotLightIntensity(Light spotLight)
+    public void AddSpotLightIntensity(Light spotLight, GameObject target)
     {
-        Debug.Log("start");
-
         //Check Range
-        if (Vector3.Distance(spotLight.transform.position, transform.position) > spotLight.range)
+        if (Vector3.Distance(spotLight.transform.position, target.transform.position) > spotLight.range)
         {
             
-            Debug.Log("SpotLight too Far");
-            GetBakedLightIntenity();
+            //Debug.Log("SpotLight too Far");
+            GetBakedLightIntenity(target);
             return;
         }
 
-        float angleToLight = Vector3.Angle(spotLight.transform.forward, (transform.position - spotLight.transform.position).normalized) * 2;
+        float angleToLight = Vector3.Angle(spotLight.transform.forward, (target.transform.position - spotLight.transform.position).normalized) * 2;
 
 
         //Check Angle
         if (angleToLight > spotLight.spotAngle)
         {
             Debug.Log("Out of SpotLight Radius");
-            GetBakedLightIntenity();
+            GetBakedLightIntenity(target);
             return;
         }
 
-        rawLightIntensity += spotLight.intensity * spotLightAdjustment;
-
-
-        // ----- ANCIENNCE VERSION "PLUS" PRECISE (c'est faux) -----
-        //float innerAngle = (spotLight.GetComponent<HDAdditionalLightData>().innerSpotPercent / 100 * spotLight.spotAngle) +0.1f;        // Le +.01f ser a éviter une division de 0 selon le réglage du SpotLight
-        //rawLightIntensity += Mathf.Lerp(0, spotLight.intensity * spotLightAdjustment, Mathf.Abs(innerAngle / angleToLight));
-        //NormalizeLightIntensity();      
+        rawLightIntensity += spotLight.intensity * spotLightAdjustment;   
     }
 
 
@@ -293,7 +278,7 @@ public class LightEvaluator : MonoBehaviour
     private void NormalizeLightIntensity()
     {
         normalizedLightIntensity = Mathf.Clamp01(rawLightIntensity / maxValue - minValue);
-        AdaptedLightIntensity = modificationCurve.Evaluate(normalizedLightIntensity);
+        AdaptedLightIntensity = modificationCurve.Evaluate(normalizedLightIntensity);         
     }
 
 
