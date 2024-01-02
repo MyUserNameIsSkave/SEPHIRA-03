@@ -10,30 +10,41 @@ using static UnityEngine.GraphicsBuffer;
 
 public class DetectionTest : MonoBehaviour
 {
+    [Header("   VALUES")]
+    [Space(15)]
+
+
 
     [SerializeField]
-    private float DetectionRate;
+    private float detectionRate;
 
     [SerializeField]
-    private float DetectionPerSecond;
+    private float detectionPerSecond;
 
 
 
-    [Space (40)]
+
+
+    [Space (25)]
+
+
 
 
 
     [Header ("   VIEW SETTINGS")]
+    [Space(15)]
 
 
-    [SerializeField]
-    private bool showViewAngle;
 
-    [SerializeField]
-    private float ViewVisualizationLength;
+    public float MaxViewDistance;
 
     [SerializeField]
     private float horizontalViewAngle, verticalViewAngle;
+
+
+
+    [Space(15)]
+
 
 
     [SerializeField]
@@ -41,19 +52,68 @@ public class DetectionTest : MonoBehaviour
 
 
 
-
-
+    [Space (15)]
 
 
 
     [SerializeField]
-    private GameObject[] sightTarget;
+    private bool showViewAngle;
+
+    [SerializeField]
+    private bool showViewLines;
 
 
-    public Dictionary<GameObject, float> Targets = new Dictionary<GameObject, float>();
+
+
+    [Space (25)]
 
 
 
+
+
+    [Header ("  SENSIVITY SETTINGS")]
+    [Space (15)]
+
+
+
+    [SerializeField, Range(0.1f, 10f), Tooltip("A Multiplicator applied After the Light and Distance logic.")]
+    float generalSensitivity = 1f;
+
+    [SerializeField, Range(0.1f, 5f)]
+    private float maxDetectionRatePerSecond;
+
+
+
+    [Space(15)]
+
+
+
+    [SerializeField, Range (0f, 1f), Tooltip ("The Lower the Value the Lower the Impact of Distance")]
+    float distanceSensivity = 1f;
+
+    [SerializeField, Tooltip("the curve must go from high to low, 0 is when the distance is the lowest and 1 is when distance is the highest.")]
+    AnimationCurve distanceCurve;
+
+
+
+    [Space(15)]
+
+
+
+    [SerializeField, Range(0f, 1f), Tooltip("The Lower the Value the Lower the Impact of Light")]
+    float lightSensivity = 1f;
+
+    [SerializeField, Tooltip("the curve must go from high to low, 0 is when the distance is the lowest and 1 is when distance is the highest.")]
+    AnimationCurve lightCurve;
+
+
+
+
+
+
+
+    public Dictionary<GameObject, float> targets = new Dictionary<GameObject, float>();
+    private float maxTargetPoints = 0;
 
 
 
@@ -67,29 +127,25 @@ public class DetectionTest : MonoBehaviour
     void Update()
     {
         LockVerticalRotation();
-
-        maxTargetPoints = 0;
-
-        //TEST TEMPORAIRE
-        //TEST TEMPORAIRE
-        //TEST TEMPORAIRE
-        Targets = GameManager.Instance.Binah.GetComponent<InfiltrationManager>().Targets;
-        foreach (KeyValuePair<GameObject, float> target in Targets)
-        {
-            maxTargetPoints += target.Value;
-        }
-        //TEST TEMPORAIRE
-        //TEST TEMPORAIRE
-        //TEST TEMPORAIRE
-
     }
 
 
 
 
-    //[SerializeField]
-    //private float timeBetweenUpdates;
 
+
+
+
+    private void Start()
+    {
+        targets = GameManager.Instance.Binah.GetComponent<InfiltrationManager>().Targets;
+
+
+        foreach (KeyValuePair<GameObject, float> target in targets)
+        {
+            maxTargetPoints += target.Value;
+        }
+    }
 
 
     private void LockVerticalRotation()
@@ -107,40 +163,16 @@ public class DetectionTest : MonoBehaviour
 
 
 
-    private float maxTargetPoints = 0;
 
-    private void Start()
+
+
+
+
+    public void GetVisionScore()
     {
-        Targets = GameManager.Instance.Binah.GetComponent<InfiltrationManager>().Targets;
-
-
-        foreach (KeyValuePair<GameObject, float> target in Targets)
-        {
-            maxTargetPoints += target.Value;
-        }
-
-        //StartCoroutine(CheckPosition());
+        detectionRate = Mathf.Clamp(CheckVision() * EnemyManager.Instance.UpdateTime / maxTargetPoints * generalSensitivity, 0, maxDetectionRatePerSecond * EnemyManager.Instance.UpdateTime);
+        detectionPerSecond = detectionRate / EnemyManager.Instance.UpdateTime;
     }
-
-
-
-
-    [Space (20)]
-
-    [SerializeField]
-    float multiplicateur;
-
-
-
-    public void CheckPosition()
-    {
-
-        DetectionRate = CheckVision() * EnemyManager.Instance.UpdateTime / maxTargetPoints * multiplicateur;
-        DetectionPerSecond = DetectionRate / EnemyManager.Instance.UpdateTime;        
-    }
-
-
-
 
 
 
@@ -152,9 +184,8 @@ public class DetectionTest : MonoBehaviour
         float rawVisionScore = 0;
 
 
-        foreach (KeyValuePair<GameObject, float> target in Targets)
+        foreach (KeyValuePair<GameObject, float> target in targets)
         {
-
             Vector3 targetPosition = target.Key.transform.position;
             float targetDistance = Vector3.Distance(targetPosition, transform.position);
 
@@ -175,7 +206,11 @@ public class DetectionTest : MonoBehaviour
             if (horizontalViewAngle < horizontalAngle || verticalViewAngle < verticalAngle)
             {
                 //Target Out of Viewing Angle
-                Debug.DrawLine(transform.position, targetPosition, Color.grey, EnemyManager.Instance.UpdateTime);
+                if (showViewLines)
+                {
+                    Debug.DrawLine(transform.position, targetPosition, Color.grey, EnemyManager.Instance.UpdateTime);
+                }
+
                 continue;
             }
 
@@ -186,47 +221,66 @@ public class DetectionTest : MonoBehaviour
             if (Physics.Raycast(transform.position, targetPosition - transform.position, out hit, targetDistance, ~layerToIgnore))
             {
                 //Target Not Visible
-                Debug.DrawLine(transform.position, hit.point, Color.white, EnemyManager.Instance.UpdateTime);
+                if (showViewLines)
+                {
+                    Debug.DrawLine(transform.position, hit.point, Color.white, EnemyManager.Instance.UpdateTime);
+                }
             }
             else
             {
                 //Target Visible
-                Debug.DrawLine(transform.position, targetPosition, Color.red, EnemyManager.Instance.UpdateTime);
+                if (showViewLines)
+                {
+                    Debug.DrawLine(transform.position, targetPosition, Color.red, EnemyManager.Instance.UpdateTime);
+
+                }
 
 
+                //Normalized Light value
                 float targetLightLevel = GameManager.Instance.Binah.GetComponent<LightEvaluator>().GetNearDynamicLights(target.Key);
-                rawVisionScore += target.Value * targetLightLevel;
 
 
-                //Check the Luminosity
+                // Modifiers 
+                float distanceModifier = distanceCurve.Evaluate(Mathf.Lerp(0, 1, Vector3.Distance(transform.position, targetPosition) / MaxViewDistance));
+                float adaptedTargetLightLevel = lightCurve.Evaluate(targetLightLevel);
+                float adaptedLightMultiplier = Mathf.Clamp01(adaptedTargetLightLevel / lightSensivity);
+                float adaptedDistanceMultiplier = Mathf.Clamp01(distanceModifier / distanceSensivity);
 
+
+
+                //Apply the Modifiers to Detection Score 
+                #region Detection Score Maths
+                if (distanceSensivity == 0 || lightSensivity == 0)
+                {
+                    if (distanceSensivity == 0 && lightSensivity == 0)
+                    {
+                        rawVisionScore += target.Value;
+                        continue;
+                    }
+
+                    if (distanceSensivity == 0 && lightSensivity !=0)
+                    {
+                        rawVisionScore += target.Value * adaptedLightMultiplier;
+                        continue;
+                    }
+
+                    if (lightSensivity == 0 && distanceSensivity != 0)
+                    {
+                        rawVisionScore += target.Value * adaptedDistanceMultiplier;
+                        continue;
+                    }
+                }
+                else
+                {
+                    rawVisionScore += target.Value * adaptedLightMultiplier * adaptedDistanceMultiplier;
+                }
+                #endregion
             }
 
         }
 
         return rawVisionScore;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -247,8 +301,8 @@ public class DetectionTest : MonoBehaviour
         }
 
         //Lignes Horizontales
-        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, horizontalViewAngle, 0) * transform.forward * ViewVisualizationLength, Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, -horizontalViewAngle, 0) * transform.forward * ViewVisualizationLength, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, horizontalViewAngle, 0) * transform.forward * MaxViewDistance, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + Quaternion.Euler(0, -horizontalViewAngle, 0) * transform.forward * MaxViewDistance, Color.yellow);
 
 
         //Ligne Verticales 
@@ -258,8 +312,8 @@ public class DetectionTest : MonoBehaviour
         Vector3 lineDirectionDown = transform.TransformDirection(Quaternion.Euler(verticalViewAngle, 0, 0) * Vector3.forward);
 
         // Dessiner les lignes
-        Debug.DrawLine(transform.position, transform.position + lineDirectionUp * 10f, Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + lineDirectionDown * 10f, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + lineDirectionUp * MaxViewDistance, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + lineDirectionDown * MaxViewDistance, Color.yellow);
     }
 
 

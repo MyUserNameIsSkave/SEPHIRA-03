@@ -12,11 +12,9 @@ public class LightEvaluator : MonoBehaviour
     [SerializeField]
     private float rawLightIntensity;
 
-    [SerializeField]
+    //[SerializeField]
     private float normalizedLightIntensity;
 
-    [SerializeField]
-    private float AdaptedLightIntensity;
 
 
 
@@ -31,8 +29,6 @@ public class LightEvaluator : MonoBehaviour
 
     [SerializeField]
     private float minValue;
-
-    public AnimationCurve modificationCurve;
 
 
     [Space (20)]
@@ -57,29 +53,19 @@ public class LightEvaluator : MonoBehaviour
     [Header("    COLLISION SETTINGS")]
 
 
-    //[SerializeField]
-    //private float refreshRate = 0.2f;
-
-    [SerializeField]
-    private GameObject[] objectToCheck;
-
-    [Space(7)]
-
     [SerializeField]
     private float sphereRadius = 10f; // Rayon de la sphère de collision
 
     [SerializeField]
-    private LayerMask NonObstructingLayers;
+    private LayerMask nonObstructingLayers;
 
     [SerializeField]
-    private LayerMask DynamicLightLayer;
+    private LayerMask dynamicLightLayer;
 
 
 
 
-
-
-
+    private GameObject[] objectToCheck;
     private Collider[] colliders;
     private List<Collider> nonObstructedColliders = new List<Collider>();
 
@@ -89,36 +75,7 @@ public class LightEvaluator : MonoBehaviour
 
 
 
-
-    //private void Start()
-    //{
-    //    StartCoroutine(CheckLightLevelLoop());
-    //}
-
-
-
-    //IEnumerator CheckLightLevelLoop()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(refreshRate);
-    //        GetNearDynamicLights();
-
-
-    //        // Faire en sorte de verifier pour chacunes des Targets
-
-    //        //foreach (GameObject item in objectToCheck)
-    //        //{
-    //        //    GetNearDynamicLights();
-    //        //}
-
-    //    }
-    //}
-
-
-
-
-
+ 
 
 
     /// <summary>
@@ -128,7 +85,7 @@ public class LightEvaluator : MonoBehaviour
     {
         //Reset the value to make the Light intensity additives
         rawLightIntensity = 0;
-        NormalizeLightIntensity();
+        //NormalizeLightIntensity(target);
 
         //Reset the Non Obstructerd Light List
         nonObstructedColliders.Clear();
@@ -137,14 +94,14 @@ public class LightEvaluator : MonoBehaviour
 
 
         //Fill the Lights List with Lights within a radius
-        colliders = Physics.OverlapSphere(target.transform.position, sphereRadius, DynamicLightLayer);
+        colliders = Physics.OverlapSphere(target.transform.position, sphereRadius, dynamicLightLayer);
 
         //Fill the Non Obstructerd Light List with Lights in the Light
         RaycastHit hit;
         foreach (Collider collider in colliders)
         {
             //Check Obstruction
-            if (!Physics.Raycast(transform.position, (collider.transform.position - target.transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, target.transform.position), ~NonObstructingLayers))
+            if (!Physics.Raycast(target.transform.position, (collider.transform.position - target.transform.position).normalized, out hit, Vector3.Distance(collider.transform.position, target.transform.position), ~nonObstructingLayers))
             {
                 //Debug.Log("Non Obstructed");
                 nonObstructedColliders.Add(collider);
@@ -152,7 +109,7 @@ public class LightEvaluator : MonoBehaviour
             }
             else
             {
-                //Debug.Log("Obstrué");
+                //Debug.Log("Obstructed");
                 continue;
             }
 
@@ -168,6 +125,7 @@ public class LightEvaluator : MonoBehaviour
 
             if (lightComponent == null || !lightComponent.isActiveAndEnabled)
             {
+                Debug.Log("Light Component Disabled");
                 continue;
             }
 
@@ -185,9 +143,12 @@ public class LightEvaluator : MonoBehaviour
             }
         }
 
-        GetBakedLightIntenity(target);
 
-        return AdaptedLightIntensity;
+        GetBakedLightIntenity(target);
+        NormalizeLightIntensity();
+
+
+        return normalizedLightIntensity;
     }
 
 
@@ -209,7 +170,6 @@ public class LightEvaluator : MonoBehaviour
             SphericalHarmonicsL2 harmonics = new SphericalHarmonicsL2();
             LightProbes.GetInterpolatedProbe(target.transform.position, renderer, out harmonics);
             rawLightIntensity += (0.2989f * harmonics[0, 0]) + (0.5870f * harmonics[1, 0]) + (0.1140f * harmonics[2, 0]) * bakedLightAdjustment;
-            NormalizeLightIntensity();
         }
         else
         {
@@ -235,7 +195,6 @@ public class LightEvaluator : MonoBehaviour
         }
 
         rawLightIntensity += Mathf.Lerp(pointLight.intensity * pointLightAdjustment, 0, Vector3.Distance(pointLight.transform.position, target.transform.position) / pointLight.range);
-        NormalizeLightIntensity();
     }
 
 
@@ -255,17 +214,17 @@ public class LightEvaluator : MonoBehaviour
         }
 
         float angleToLight = Vector3.Angle(spotLight.transform.forward, (target.transform.position - spotLight.transform.position).normalized) * 2;
-
+        
 
         //Check Angle
         if (angleToLight > spotLight.spotAngle)
         {
-            Debug.Log("Out of SpotLight Radius");
+            //Debug.Log("Out of SpotLight Radius");
             GetBakedLightIntenity(target);
             return;
         }
 
-        rawLightIntensity += spotLight.intensity * spotLightAdjustment;   
+        rawLightIntensity += spotLight.intensity * spotLightAdjustment;
     }
 
 
@@ -278,7 +237,7 @@ public class LightEvaluator : MonoBehaviour
     private void NormalizeLightIntensity()
     {
         normalizedLightIntensity = Mathf.Clamp01(rawLightIntensity / maxValue - minValue);
-        AdaptedLightIntensity = modificationCurve.Evaluate(normalizedLightIntensity);         
+        //adaptedLightIntensity = modificationCurve.Evaluate(normalizedLightIntensity);
     }
 
 
