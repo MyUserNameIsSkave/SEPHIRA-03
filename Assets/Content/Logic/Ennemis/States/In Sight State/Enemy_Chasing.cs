@@ -10,7 +10,6 @@ public class Enemy_Chasing : Enemy_InSightState
         //Change MoveSpeed
         BaseManager.ChangeAgentSpeed(BaseManager.RunSpeed);
 
-        BaseManager.isLosingInterest = false;
         BaseManager.DetectionProgression = 100;
 
 
@@ -58,47 +57,47 @@ public class Enemy_Chasing : Enemy_InSightState
 
 
 
-    public override void HeardSuspectNoise()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Heard Something");
-    }
+    //public override void HeardSuspectNoise()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Heard Something");
+    //}
     #endregion
 
 
-    public override void SeenSuspectThing()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Seen Something");
+    //public override void SeenSuspectThing(float detectionIncrement)
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
-        //Move agent
-        BaseManager.lastSeenPosition = BaseManager.Binah.transform.position;
-        BaseManager.MoveAgentTo(BaseManager.lastSeenPosition);
-    }
-
-
-    #region Useless
-    public override void DetectedBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
-
-    }
-    #endregion
+    //    //Move agent
+    //    BaseManager.lastSeenPosition = BaseManager.Binah.transform.position;
+    //    BaseManager.MoveAgentTo(BaseManager.lastSeenPosition);
+    //}
 
 
-    public override void LostBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+    //#region Useless
+    //public override void DetectedBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+
+    //}
+    //#endregion
+
+
+    //public override void LostBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Lost Binah");
 
         
-        //Search or Neutral State
-        if (BaseManager.SearchState != null)
-        {
-            BaseManager.SwitchState(BaseManager.SearchState);
-        }
-        else
-        {
-            BaseManager.SwitchState(BaseManager.NeutralStates[Random.Range(0, BaseManager.NeutralStates.Count)]);
-        }
-    }
+    //    //Search or Neutral State
+    //    if (BaseManager.SearchState != null)
+    //    {
+    //        BaseManager.SwitchState(BaseManager.SearchState);
+    //    }
+    //    else
+    //    {
+    //        BaseManager.SwitchState(BaseManager.NeutralStates[Random.Range(0, BaseManager.NeutralStates.Count)]);
+    //    }
+    //}
 
 }
 

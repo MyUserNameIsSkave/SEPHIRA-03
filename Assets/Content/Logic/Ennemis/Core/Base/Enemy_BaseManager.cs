@@ -113,7 +113,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         get { return _detectionProgression; }
 
         set { _detectionProgression = Mathf.Clamp(value, 0, 100); 
-              if (_detectionProgression == 100) {currentState.DetectedBinah(); }}
+              if (_detectionProgression == 100) {BinahDetected(); }}
 
     }
 
@@ -129,6 +129,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     //References
     public NavMeshAgent agent;
     public GameObject Binah;
+
+    [HideInInspector]
+    public UtilityAI_Manager BinahManager;
 
 
 
@@ -169,19 +172,19 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
     }
 
-    [HideInInspector]
-    public UtilityAI_Manager BinahManager;
+
+
 
     protected void BaseAwake()
     {
-        //Get AI Manager references
-        BinahManager = GameManager.Instance.Binah.GetComponent<UtilityAI_Manager>();
-
-
-
         //Get References
+        Binah = GameManager.Instance.Binah;
+        BinahManager = Binah.GetComponent<UtilityAI_Manager>();
+
         agent = GetComponent<NavMeshAgent>();
-        Binah = GameObject.FindGameObjectWithTag("Binah");
+
+
+
 
         //Prevent Bugs
         switch (initialState)
@@ -308,7 +311,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     protected void BaseStart()
     {
-
+        StartCoroutine(LoseInterest());
     }
 
 
@@ -329,14 +332,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     protected void BaseFixedUpdate()
     {
-        if (isLosingInterest)
-        {
-            LoseInterest();
-        }
-
-
-
-
         if (currentState == null)
         {
             return;
@@ -371,10 +366,42 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         currentState = newState;
 
         //Notify New State
-        newState.EnterState();
+        currentState.EnterState();
     }
 
 
+
+
+    public void SeeingSomething(float detectionIncrement)
+    {
+
+        //Increment
+        isLosingInterest = false;
+        DetectionProgression += detectionIncrement * detectionRate;
+
+    }
+
+
+
+    public void BinahDetected()
+    {
+        //Switch state to addapted state for detection (temporaire)
+        //SwitchState(ChasingState);
+    }
+
+
+    private IEnumerator LoseInterest()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(EnemyManager.Instance.timeBeteenEnemyUpdate);
+
+            if (isLosingInterest)
+            {
+                DetectionProgression -= loseRate * EnemyManager.Instance.timeBeteenEnemyUpdate;
+            }
+        }
+    }
 
 
 
@@ -404,10 +431,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    private void LoseInterest()
-    {
-        DetectionProgression -= loseRate * Time.deltaTime;
-    }
 
 
     //IMPLEMENTER ICI DES METHODES PO

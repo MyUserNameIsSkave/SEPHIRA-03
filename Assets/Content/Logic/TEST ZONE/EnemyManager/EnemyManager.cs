@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
 
 
 
-    private DetectionTest[] detectionScripts;
+    private Enemy_VisualDetection[] detectionScripts;
 
     private GameObject binah;
 
@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        detectionScripts = FindObjectsOfType<DetectionTest>();
+        detectionScripts = FindObjectsOfType<Enemy_VisualDetection>();
 
         StartCoroutine(UpdateEnemyDetection());
 
@@ -54,20 +54,20 @@ public class EnemyManager : MonoBehaviour
 
 
             // Update Each Ennemis
-            foreach (DetectionTest toUpdate in detectionScripts)
+            foreach (Enemy_VisualDetection toUpdate in detectionScripts)
             {
                 //Prevent error with potential change in the pull of Enemies to Update
                 if (!toUpdate)
                 {
                     //Changes in the pull of Enemies to Update
-                    detectionScripts = FindObjectsOfType<DetectionTest>();
+                    detectionScripts = FindObjectsOfType<Enemy_VisualDetection>();
                     continue;
                 }
 
                 //Check Distance
                 if (Vector3.Distance(toUpdate.transform.position, binah.transform.position) > toUpdate.MaxViewDistance)
                 {
-                    //To far
+                    toUpdate.gameObject.GetComponent<Enemy_BaseManager>().isLosingInterest = true;
                     continue;
                 }
 

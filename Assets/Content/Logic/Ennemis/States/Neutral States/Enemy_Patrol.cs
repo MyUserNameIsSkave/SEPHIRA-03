@@ -49,39 +49,39 @@ public class Enemy_Patrol : Enemy_NeutralState
         return;
     }
 
-    public override void HeardSuspectNoise()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Heard Something");
-    }
+    //public override void HeardSuspectNoise()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Heard Something");
+    //}
     #endregion
 
 
-    public override void SeenSuspectThing()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Seen Something");
+    //public override void SeenSuspectThing(float detectionIncrement)
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
 
 
-        //Faudrait que l'IA continue sa ronde tant que son niveau de suspicion n'est pas assez haut
+    //    //Faudrait que l'IA continue sa ronde tant que son niveau de suspicion n'est pas assez haut
 
 
-        //Switch State
-        BaseManager.SwitchToInvestingatingState();
+    //    //Switch State
+    //    BaseManager.SwitchToInvestingatingState();
 
-    }
+    //}
 
-    public override void DetectedBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+    //public override void DetectedBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
-        //Switch State
+    //    //Switch State
 
-        BaseManager.SwitchState(BaseManager.ChasingState);
-    }
+    //    BaseManager.SwitchState(BaseManager.ChasingState);
+    //}
 
-    public override void LostBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Lost Binah");
-    }
+    //public override void LostBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+    //}
 }
 

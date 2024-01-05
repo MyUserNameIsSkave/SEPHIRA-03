@@ -25,25 +25,25 @@ public class Enemy_InSightState : Enemy_BaseState
 
 
 
-    public override void HeardSuspectNoise()
-    {
+    //public override void HeardSuspectNoise()
+    //{
 
-    }
+    //}
 
-    public override void SeenSuspectThing()
-    {
+    //public override void SeenSuspectThing(float detectionIncrement)
+    //{
 
-    }
-
-
-    public override void DetectedBinah()
-    {
-
-    }
+    //}
 
 
-    public override void LostBinah()
-    {
+    //public override void DetectedBinah()
+    //{
 
-    }
+    //}
+
+
+    //public override void LostBinah()
+    //{
+
+    //}
 }

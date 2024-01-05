@@ -16,10 +16,6 @@ public class Enemy_Search : Enemy_LostState
     {
         Debug.Log("Enemy Enter Search ");
 
-
-        //Enable Detection Decrease
-        BaseManager.isLosingInterest = true;
-
         //Stop Moving
         BaseManager.MoveAgentTo(BaseManager.transform.position);
         BaseManager.ChangeAgentSpeed(BaseManager.WalkSpeed);
@@ -61,34 +57,34 @@ public class Enemy_Search : Enemy_LostState
         return;
     }
 
-    public override void HeardSuspectNoise()
-    {
-        //Debug.Log(BaseManager.gameObject.name + " Heard Something");
-    }
+    //public override void HeardSuspectNoise()
+    //{
+    //    //Debug.Log(BaseManager.gameObject.name + " Heard Something");
+    //}
     #endregion
 
 
-    public override void SeenSuspectThing()
-    {
-        //Debug.Log(BaseManager.gameObject.name + " Seen Something");
+    //public override void SeenSuspectThing(float detectionIncrement)
+    //{
+    //    //Debug.Log(BaseManager.gameObject.name + " Seen Something");
 
 
-        //Switch State
-        BaseManager.SwitchToInvestingatingState();
-    }
+    //    //Switch State
+    //    BaseManager.SwitchToInvestingatingState();
+    //}
 
-    public override void DetectedBinah()
-    {
-        //Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+    //public override void DetectedBinah()
+    //{
+    //    //Debug.Log(BaseManager.gameObject.name + " Detected Binah");
 
 
-        // Switch State
-        BaseManager.SwitchToChasingState();
-    }
+    //    // Switch State
+    //    BaseManager.SwitchToChasingState();
+    //}
 
-    public override void LostBinah()
-    {
-        //Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+    //public override void LostBinah()
+    //{
+    //    //Debug.Log(BaseManager.gameObject.name + " Lost Binah");
 
-    }
+    //}
 }

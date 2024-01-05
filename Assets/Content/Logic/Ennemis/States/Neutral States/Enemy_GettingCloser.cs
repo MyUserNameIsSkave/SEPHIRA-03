@@ -33,31 +33,31 @@ public class Enemy_GettingCloser : Enemy_NeutralState
         return;
     }
 
-    public override void HeardSuspectNoise()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Heard Something");
-    }
+    //public override void HeardSuspectNoise()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Heard Something");
+    //}
     #endregion
 
 
-    public override void SeenSuspectThing()
-    {
-        //Switch State
-        BaseManager.SwitchToInvestingatingState();
+    //public override void SeenSuspectThing(float detectionIncrement)
+    //{
+    //    //Switch State
+    //    BaseManager.SwitchToInvestingatingState();
 
-    }
+    //}
 
 
     #region Useless
-    public override void DetectedBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Detected Binah");
-    }
+    //public override void DetectedBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Detected Binah");
+    //}
 
-    public override void LostBinah()
-    {
-        Debug.Log(BaseManager.gameObject.name + " Lost Binah");
+    //public override void LostBinah()
+    //{
+    //    Debug.Log(BaseManager.gameObject.name + " Lost Binah");
 
-    }
+    //}
     #endregion
 }

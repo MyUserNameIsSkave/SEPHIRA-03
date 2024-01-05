@@ -19,23 +19,23 @@ public class Enemy_BaseDetection : MonoBehaviour
 
     public void HeardSomething()
     {
-        enemyManager.currentState.HeardSuspectNoise();
+        //enemyManager.currentState.HeardSuspectNoise();
 
     }
 
-    public void SeenSomething()
+    public void SeenSomething(float detectionIncrement)
     {
-        enemyManager.currentState.SeenSuspectThing();
+        //enemyManager.currentState.SeenSuspectThing(detectionIncrement);
     }
 
     public void DetectedBinah()
     {
-        enemyManager.currentState.DetectedBinah();
+        //enemyManager.currentState.DetectedBinah();
 
     }
 
     public void LostBinah()
     {
-        enemyManager.currentState.LostBinah();
+        //enemyManager.currentState.LostBinah();
     }
 }

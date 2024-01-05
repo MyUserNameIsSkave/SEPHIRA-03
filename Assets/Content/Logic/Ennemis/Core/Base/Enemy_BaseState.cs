@@ -35,9 +35,11 @@ public abstract class Enemy_BaseState
 
 
 
-    public abstract void HeardSuspectNoise();
-    public abstract void SeenSuspectThing();
-    public abstract void DetectedBinah();
-    public abstract void LostBinah();
+    //TO MOVE OUT OF THE STATES AND IN THE BASE MANAGER
+
+    //public abstract void HeardSuspectNoise();
+    //public abstract void SeenSuspectThing(float detectionIncrement);
+    //public abstract void DetectedBinah();
+    //public abstract void LostBinah();
 
 }
