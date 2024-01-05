@@ -15,16 +15,13 @@ public class EnemyManager : MonoBehaviour
     public float timeBeteenEnemyUpdate;
 
     //The duration the system took to update all the enemies
+    [HideInInspector, Tooltip ("The time between each ennemis view update")]
     public float UpdateTime;
 
-    public AnimationCurve LightMultiplierCurve;
 
 
 
     private DetectionTest[] detectionScripts;
-
-
-
 
     private GameObject binah;
 

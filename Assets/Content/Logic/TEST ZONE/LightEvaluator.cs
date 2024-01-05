@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using static UnityEngine.GraphicsBuffer;
 
 public class LightEvaluator : MonoBehaviour
 {
 
     [Header("    VALUE DEBUGING")]
 
-    [SerializeField]
+    [SerializeField, Tooltip("Variable used for debugging purpose.")]
     private float rawLightIntensity;
 
-    //[SerializeField]
+    [SerializeField, Tooltip("Variable used for debugging purpose.")]
     private float normalizedLightIntensity;
+
+    [SerializeField, Tooltip("Variable used for debugging purpose.")]
+    private float adaptedLightIntensity;
+
+    [Space(10)]
+
+    [SerializeField, Tooltip ("When true, always update the logic to get an evalutation of the light level even when out of enemy sight.")]
+    private bool alwaysUpdate;
 
 
 
@@ -24,11 +34,14 @@ public class LightEvaluator : MonoBehaviour
 
     [Header("    NORMALIZING SETTINGS")]
 
-    [SerializeField]
+    [SerializeField, Tooltip("NE PAS TOUCHER ! Voir avec Enzo.")]
     private float maxValue;
 
-    [SerializeField]
+    [SerializeField, Tooltip("NE PAS TOUCHER ! Voir avec Enzo.")]
     private float minValue;
+
+    [SerializeField, Tooltip("the curve must go from high to low, 0 is when the distance is the lowest and 1 is when distance is the highest.")]
+    AnimationCurve lightCurve;
 
 
     [Space (20)]
@@ -37,13 +50,13 @@ public class LightEvaluator : MonoBehaviour
 
     [Header("    LIGHT INTENSITY SETTINGS")]
 
-    [SerializeField]
+    [SerializeField, Tooltip("A multiplicator to adjust score given to a specific light source.")]
     private float bakedLightAdjustment = 1f;
 
-    [SerializeField]
+    [SerializeField, Tooltip("A multiplicator to adjust score given to a specific light source.")]
     private float pointLightAdjustment = 0.5f;
 
-    [SerializeField]
+    [SerializeField, Tooltip("A multiplicator to adjust score given to a specific light source.")]
     private float spotLightAdjustment = 0.5f;
 
 
@@ -53,13 +66,13 @@ public class LightEvaluator : MonoBehaviour
     [Header("    COLLISION SETTINGS")]
 
 
-    [SerializeField]
+    [SerializeField, Tooltip("The radius in wich the dynamic light can affect the light intensity evalutation.")]
     private float sphereRadius = 10f; // Rayon de la sphère de collision
 
-    [SerializeField]
+    [SerializeField, Tooltip ("NE PAS TOUCHER ! Voir avec Enzo.")]
     private LayerMask nonObstructingLayers;
 
-    [SerializeField]
+    [SerializeField, Tooltip("NE PAS TOUCHER ! Voir avec Enzo.")]
     private LayerMask dynamicLightLayer;
 
 
@@ -73,9 +86,29 @@ public class LightEvaluator : MonoBehaviour
 
 
 
+    #region DEBUG
+    private void Start()
+    {
+        StartCoroutine(DebuggingUpdate());
+    }
 
 
- 
+
+    IEnumerator DebuggingUpdate()
+    {
+        while (true)
+        {
+            if (alwaysUpdate)
+            {
+                GetNearDynamicLights(transform.GetChild(0).gameObject); //Récupération d'un enfant pour avoir un GameObject avec un Rederer, a changer quand on implementera le model de Binah.
+            }
+
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+    #endregion
+
+
 
 
     /// <summary>
@@ -148,7 +181,7 @@ public class LightEvaluator : MonoBehaviour
         NormalizeLightIntensity();
 
 
-        return normalizedLightIntensity;
+        return adaptedLightIntensity;
     }
 
 
@@ -160,7 +193,6 @@ public class LightEvaluator : MonoBehaviour
     /// </summary>
     private void GetBakedLightIntenity(GameObject target)
     {
-        
         // Renderer associé à l'objet auquel le LightProbe est attaché
         Renderer renderer = target.GetComponent<Renderer>();
 
@@ -237,7 +269,7 @@ public class LightEvaluator : MonoBehaviour
     private void NormalizeLightIntensity()
     {
         normalizedLightIntensity = Mathf.Clamp01(rawLightIntensity / maxValue - minValue);
-        //adaptedLightIntensity = modificationCurve.Evaluate(normalizedLightIntensity);
+        adaptedLightIntensity = lightCurve.Evaluate(normalizedLightIntensity);
     }
 
 

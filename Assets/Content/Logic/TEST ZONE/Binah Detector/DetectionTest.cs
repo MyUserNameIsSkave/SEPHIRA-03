@@ -15,10 +15,10 @@ public class DetectionTest : MonoBehaviour
 
 
 
-    [SerializeField]
+    //[SerializeField, Tooltip("Variable used for debugging purpose.")]
     private float detectionRate;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Variable used for debugging purpose. The DetectionRate adapted to the second.")]
     private float detectionPerSecond;
 
 
@@ -35,10 +35,10 @@ public class DetectionTest : MonoBehaviour
     [Space(15)]
 
 
-
+    [Tooltip("The view distance of the enemy")]
     public float MaxViewDistance;
 
-    [SerializeField]
+    [SerializeField, Tooltip("The opening of the enemy vision")]
     private float horizontalViewAngle, verticalViewAngle;
 
 
@@ -47,7 +47,7 @@ public class DetectionTest : MonoBehaviour
 
 
 
-    [SerializeField]
+    [SerializeField, Tooltip("NE PAS TOUCHER ! Voir avec Enzo.")]
     private LayerMask layerToIgnore;
 
 
@@ -56,10 +56,10 @@ public class DetectionTest : MonoBehaviour
 
 
 
-    [SerializeField]
+    [SerializeField, Tooltip("Debugging tool that show the view angle and the view distance of the enemy")]
     private bool showViewAngle;
 
-    [SerializeField]
+    [SerializeField, Tooltip("Debugging tool that show the line from the enemy to Binah target points.")]
     private bool showViewLines;
 
 
@@ -102,11 +102,6 @@ public class DetectionTest : MonoBehaviour
 
     [SerializeField, Range(0f, 1f), Tooltip("The Lower the Value the Lower the Impact of Light")]
     float lightSensivity = 1f;
-
-    [SerializeField, Tooltip("the curve must go from high to low, 0 is when the distance is the lowest and 1 is when distance is the highest.")]
-    AnimationCurve lightCurve;
-
-
 
 
 
@@ -232,7 +227,6 @@ public class DetectionTest : MonoBehaviour
                 if (showViewLines)
                 {
                     Debug.DrawLine(transform.position, targetPosition, Color.red, EnemyManager.Instance.UpdateTime);
-
                 }
 
 
@@ -242,8 +236,7 @@ public class DetectionTest : MonoBehaviour
 
                 // Modifiers 
                 float distanceModifier = distanceCurve.Evaluate(Mathf.Lerp(0, 1, Vector3.Distance(transform.position, targetPosition) / MaxViewDistance));
-                float adaptedTargetLightLevel = lightCurve.Evaluate(targetLightLevel);
-                float adaptedLightMultiplier = Mathf.Clamp01(adaptedTargetLightLevel / lightSensivity);
+                float adaptedLightMultiplier = Mathf.Clamp01(targetLightLevel / lightSensivity);
                 float adaptedDistanceMultiplier = Mathf.Clamp01(distanceModifier / distanceSensivity);
 
 

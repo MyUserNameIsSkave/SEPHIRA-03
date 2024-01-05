@@ -3024,7 +3024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621fda5d10dd5b448a16f8f601d7e99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRate: 0
   detectionPerSecond: 0
   MaxViewDistance: 10
   horizontalViewAngle: 45
@@ -3062,30 +3061,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lightSensivity: 1
-  lightCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!23 &1363337941
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3152,7 +3127,7 @@ PrefabInstance:
     - target: {fileID: 6706374117544772368, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.21
+      value: 11.36
       objectReference: {fileID: 0}
     - target: {fileID: 6706374117544772368, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
@@ -3162,7 +3137,7 @@ PrefabInstance:
     - target: {fileID: 6706374117544772368, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.2
+      value: -12.35
       objectReference: {fileID: 0}
     - target: {fileID: 6706374117544772368, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
@@ -3198,6 +3173,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
+        type: 3}
+      propertyPath: lightCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3903,8 +3923,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawLightIntensity: 0
+  normalizedLightIntensity: 0
+  adaptedLightIntensity: 0
+  alwaysUpdate: 0
   maxValue: 1
   minValue: 0
+  lightCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   bakedLightAdjustment: 30
   pointLightAdjustment: 0.009
   spotLightAdjustment: 0.0005
