@@ -77,7 +77,7 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
     float generalSensitivity = 1f;
 
     [SerializeField, Range(0.1f, 5f)]
-    private float maxDetectionRatePerSecond;
+    private float maxDetectionRatePerSecond = 1f;
 
 
 
@@ -113,13 +113,6 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
 
     [SerializeField, Tooltip ("A GameObject attached to the head bone.")]
     private GameObject head;
-
-    private Enemy_BaseManager enemyManager;
-
-    private void Awake()
-    {
-        enemyManager = GetComponent<Enemy_BaseManager>();
-    }
 
 
 
@@ -166,11 +159,18 @@ public class Enemy_VisualDetection : Enemy_BaseDetection
 
     public void GetVisionScore()
     {
-        // Je divise puis mutlipli ? Pourquoi
         detectionRate = Mathf.Clamp(CheckVision() * EnemyManager.Instance.UpdateTime / maxTargetPoints * generalSensitivity, 0, maxDetectionRatePerSecond * EnemyManager.Instance.UpdateTime);
         detectionPerSecond = detectionRate / EnemyManager.Instance.UpdateTime;
 
-        enemyManager.SeeingSomething(detectionRate);
+        if (detectionRate == 0)
+        {
+            enemyManager.IsLoosingInterest = true;
+        }
+        else
+        {
+            enemyManager.IsLoosingInterest = false;
+            enemyManager.SeeingBinah(detectionRate);
+        }
     }
 
 

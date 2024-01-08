@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class CurrentStateDebug : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class CurrentStateDebug : MonoBehaviour
     {
         cameraTransform = Camera.main.transform; // Assurez-vous que votre caméra principale est "taggée" comme "MainCamera"
     }
+
+
+
 
     private void LateUpdate()
     {

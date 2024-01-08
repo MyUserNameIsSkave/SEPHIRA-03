@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy_BaseDetection : MonoBehaviour
 {
     //Base Manager Reference
-    private Enemy_BaseManager enemyManager;
+    protected Enemy_BaseManager enemyManager;
 
 
 
 
-    private void Start()
+    private void Awake()
     {
         enemyManager = GetComponent<Enemy_BaseManager>();
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_NeutralState : Enemy_BaseState
+public class Enemy_AttackingState : Enemy_BaseState
 {
     public override void EnterState()
     {

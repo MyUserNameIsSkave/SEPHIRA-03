@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class EnemyManager : MonoBehaviour
 {
@@ -67,7 +65,7 @@ public class EnemyManager : MonoBehaviour
                 //Check Distance
                 if (Vector3.Distance(toUpdate.transform.position, binah.transform.position) > toUpdate.MaxViewDistance)
                 {
-                    toUpdate.gameObject.GetComponent<Enemy_BaseManager>().isLosingInterest = true;
+                    toUpdate.gameObject.GetComponent<Enemy_BaseManager>().IsLoosingInterest = true; 
                     continue;
                 }
 
