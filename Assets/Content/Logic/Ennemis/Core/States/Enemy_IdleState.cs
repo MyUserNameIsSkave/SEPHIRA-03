@@ -6,7 +6,8 @@ public class Enemy_IdleState : Enemy_NeutralState
 {
     public override void EnterState()
     {
-        
+        BaseManager.Agent.speed = BaseManager.WalkMoveSpeed;
+        BaseManager.MoveAgent(BaseManager.InitialPosition);
     }
 
     public override void ExitState()

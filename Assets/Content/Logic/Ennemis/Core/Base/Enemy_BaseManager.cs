@@ -169,21 +169,42 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [Space(15)]
 
 
-    [SerializeField]
-    private float walkMoveSpeed;
+    public float WalkMoveSpeed;
 
-    [SerializeField]
-    private float runMoveSpeed;
+    public float RunMoveSpeed;
+
+
+
+    public float AttackRange;
+
 
 
 
     public float WarningRadius;
 
+    [HideInInspector]
     public bool IsLoosingInterest = false;
 
 
-    [SerializeField]
+
+    public float WarnedDetectionFill;
+
+
+    [HideInInspector]
+    public bool ArrivedOnWarning = false;
+
+
+
     private bool isWarning = false;
+
+
+
+
+    [HideInInspector]
+    public Vector3 LastKnownPosition = Vector3.zero;
+
+
+
 
 
 
@@ -200,6 +221,11 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
+    [HideInInspector]
+    public Vector3 InitialPosition;
+
+
+
 
     protected void BaseAwake()
     {
@@ -210,9 +236,12 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         Agent = GetComponent<NavMeshAgent>();
 
 
+        //Get Variables
+        InitialPosition = transform.position;
+
 
         //Set Movement Speed
-        Agent.speed = walkMoveSpeed;
+        Agent.speed = WalkMoveSpeed;
 
 
 
@@ -460,7 +489,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
 
 
-
         if (DetectionProgression > highestDetectionProgression / 100 * searchThresholdPercent)       
         {
             return;
@@ -481,6 +509,29 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     private void ChangeFromSearchingState()
     {
+        if (currentState == WarnedState)
+        {
+            Debug.Log(" Warned State");
+
+
+            if (LostState == null)
+            {
+                Debug.Log(" State null");
+
+                return;
+            }
+
+            if (ArrivedOnWarning)
+            {
+                SwitchState(LostState);
+            }
+            else
+            {
+                return;
+            }
+        }
+        
+
 
         if (DetectionProgression == 0)              // Je peux remplacer le 0 par une variable
         {
@@ -560,6 +611,11 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     }
 
 
+    public void MoveAgent(Vector3 targetPosition)
+    {
+        Agent.SetDestination(targetPosition);
+
+    }
 
 
 

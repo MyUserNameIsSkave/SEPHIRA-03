@@ -6,7 +6,7 @@ public class Enemy_NeutralizationState : Enemy_AttackingState
 {
     public override void EnterState()
     {
-
+        BaseManager.Agent.speed = BaseManager.RunMoveSpeed;
     }
 
     public override void ExitState()
@@ -29,11 +29,12 @@ public class Enemy_NeutralizationState : Enemy_AttackingState
     }
     public override void FixedUpdateState()
     {
+        if (Vector3.Distance(BaseManager.transform.position, BaseManager.Binah.transform.position) > BaseManager.AttackRange)
+        {
+            //Neutralize
+        }
 
+        BaseManager.MoveAgent(BaseManager.Binah.transform.position);
     }
 
-    public override void UpdateState()
-    {
-
-    }
 }

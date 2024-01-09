@@ -11,7 +11,13 @@ public class Enemy_WarnedState : Enemy_SearchingState
 
     public override void EnterState()
     {
-        Debug.Log("Enter Warned State");
+        BaseManager.ArrivedOnWarning = false;
+
+        BaseManager.LastKnownPosition = WarningPosition;
+        BaseManager.DetectionProgression += BaseManager.WarnedDetectionFill;
+
+        BaseManager.Agent.speed = BaseManager.RunMoveSpeed;
+        BaseManager.MoveAgent(WarningPosition);
     }
 
     public override void ExitState()
@@ -32,8 +38,17 @@ public class Enemy_WarnedState : Enemy_SearchingState
     {
 
     }
+
+
+
     public override void FixedUpdateState()
     {
+        if (Vector3.Distance(BaseManager.transform.position, WarningPosition) > 2f) //Valeur arbitraire
+        {
+            return;
+        }
+
+        BaseManager.ArrivedOnWarning = true;
 
     }
 

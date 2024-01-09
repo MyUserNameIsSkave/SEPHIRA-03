@@ -6,8 +6,9 @@ public class Enemy_ImmobilizationState : Enemy_AttackingState
 {
     public override void EnterState()
     {
-
+        BaseManager.Agent.speed = BaseManager.RunMoveSpeed;
     }
+
 
     public override void ExitState()
     {
@@ -16,24 +17,25 @@ public class Enemy_ImmobilizationState : Enemy_AttackingState
 
 
 
-
-
     public override void AwakeState()
     {
 
     }
 
+
     public override void StartState()
     {
 
     }
+
+
     public override void FixedUpdateState()
     {
+        if (Vector3.Distance(BaseManager.transform.position, BaseManager.Binah.transform.position) > BaseManager.AttackRange)
+        {
+            //Immobilize
+        }
 
-    }
-
-    public override void UpdateState()
-    {
-
+        BaseManager.MoveAgent(BaseManager.Binah.transform.position);
     }
 }
