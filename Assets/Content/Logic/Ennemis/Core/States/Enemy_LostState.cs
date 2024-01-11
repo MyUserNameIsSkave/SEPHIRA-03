@@ -39,12 +39,6 @@ public class Enemy_LostState : Enemy_SearchingState
         }
 
         BaseManager.transform.Rotate(Vector3.up * Time.deltaTime * 100f);   //Valeur arbitraire
-
-
-
-
-
-
     }
 
 

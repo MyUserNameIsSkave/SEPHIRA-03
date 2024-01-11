@@ -169,6 +169,13 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
+
+    public GameObject[] PatrolPoints;
+
+
+
+
+
     public float AttackRange;
 
 
@@ -344,7 +351,14 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
 
         #endregion
-}
+
+
+
+        if (currentState != null)
+        {
+            currentState.AwakeState();
+        }
+    }
 
 
 

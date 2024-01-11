@@ -36,7 +36,5 @@ public class CurrentStateDebug : MonoBehaviour
         }
 
         textMeshPro.text = enemyManager.currentState.ToString();
-
-
     }
 }
