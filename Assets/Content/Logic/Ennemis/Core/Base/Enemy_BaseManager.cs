@@ -1,13 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Enemy_AudioDetection))]
 [RequireComponent(typeof(Enemy_VisualDetection))]
@@ -398,6 +392,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public void SeeingBinah(float detectionIncrement)
     {
         DetectionProgression += detectionIncrement* detectionMultiplier;
+        LastKnownPosition = Binah.transform.position;
     }
 
 
