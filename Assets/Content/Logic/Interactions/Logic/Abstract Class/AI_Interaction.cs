@@ -91,7 +91,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     //References and get Variables
     private void OnEnable()
     {
-        UtilityAI_Manager = FindAnyObjectByType<UtilityAI_Manager>();
+        UtilityAI_Manager = GameManager.Instance.BinahManager;
 
         ScoreRange = Consideration.ScoreRange;
     }
@@ -130,6 +130,13 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
             InteractionFailed();
         }
     }
+
+    
+    public void MakeInteractionFail()
+    {
+        InteractionFailed();
+    }
+
 
 
     /// <summary>

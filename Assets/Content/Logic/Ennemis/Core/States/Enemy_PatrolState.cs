@@ -39,8 +39,6 @@ public class Enemy_PatrolState : Enemy_NeutralState
             currentPatrol = 0;
         }
 
-        Debug.Log(currentPatrol);
-
         BaseManager.MoveAgent(BaseManager.PatrolPoints[currentPatrol].transform.position);
     }
 

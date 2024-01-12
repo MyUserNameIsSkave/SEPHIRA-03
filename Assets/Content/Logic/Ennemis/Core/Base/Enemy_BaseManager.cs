@@ -10,7 +10,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     #region State Selection
 
     [Header("Initial State")]
-    public Enemy_BaseState currentState;
+    public Enemy_BaseState CurrentState;
 
     public enum possibleInitialState
     {
@@ -354,9 +354,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-        if (currentState != null)
+        if (CurrentState != null)
         {
-            currentState.AwakeState();
+            CurrentState.AwakeState();
         }
     }
 
@@ -368,32 +368,32 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         StartCoroutine(NotSeeingBinah());
 
 
-        if (currentState == null)
+        if (CurrentState == null)
         {
             return;
         }
 
-        currentState.StartState();
+        CurrentState.StartState();
     }
 
     protected void BaseUpdate()
     {
-        if (currentState == null)
+        if (CurrentState == null)
         {
             return;
         }
 
-        currentState.UpdateState();
+        CurrentState.UpdateState();
     }
 
     protected void BaseFixedUpdate()
     {
-        if (currentState == null)
+        if (CurrentState == null)
         {
             return;
         }
 
-        currentState.FixedUpdateState();
+        CurrentState.FixedUpdateState();
     }
 
 
@@ -449,7 +449,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     //According to Detection
     private void ManageStateWithDetection()
     {
-        switch (currentState)
+        switch (CurrentState)
         {
             case Enemy_NeutralState:
                 //Debug.Log("Neutral State");
@@ -518,7 +518,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     private void ChangeFromSearchingState()
     {
-        if (currentState == WarnedState)
+        if (CurrentState == WarnedState)
         {
             Debug.Log(" Warned State");
 
@@ -637,18 +637,18 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
 
         //Notify Old State if Different
-        if (newState != currentState)
+        if (newState != CurrentState)
         {
-            if (currentState != null)
+            if (CurrentState != null)
             {
-                currentState.ExitState();
+                CurrentState.ExitState();
             }
         }
 
         //Set New State
-        currentState = newState;
+        CurrentState = newState;
 
         //Notify New State
-        currentState.EnterState();
+        CurrentState.EnterState();
     }
 }
