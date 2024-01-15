@@ -19,11 +19,12 @@ public class CurrentStateDebug : MonoBehaviour
         transform.parent.localScale = new Vector3(1 / transform.parent.lossyScale.x, 1 / transform.parent.lossyScale.y, 1 / transform.parent.lossyScale.z);
     }
 
+
+
     private void Start()
     {
         cameraTransform = Camera.main.transform; // Assurez-vous que votre caméra principale est "taggée" comme "MainCamera"
     }
-
 
 
 
