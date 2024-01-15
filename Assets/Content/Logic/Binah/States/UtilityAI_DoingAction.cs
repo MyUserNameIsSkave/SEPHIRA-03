@@ -150,10 +150,6 @@ public class UtilityAI_DoingAction : UtilityAI_BaseState
     {
         UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);       //Stop AI Movement
 
-        //UtilityAI_Manager.CanRecieveInput = false;
-        //Action Duration
-        //UtilityAI_Manager.CanRecieveInput = true;
-
         ResetVariables();
         action.Interaction();
         action.TriggerEvent();

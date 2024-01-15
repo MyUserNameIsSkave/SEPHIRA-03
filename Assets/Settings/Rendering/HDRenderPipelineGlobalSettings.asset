@@ -97,11 +97,60 @@ MonoBehaviour:
   supportRuntimeDebugDisplay: 0
   autoRegisterDiffusionProfiles: 1
   apvScenesData:
-    serializedBounds: []
-    serializedHasVolumes: []
-    serializedProfiles: []
-    serializedBakeSettings: []
-    serializedBakingSets: []
+    serializedBounds:
+    - sceneGUID: ea1103fc9ff2a964ea0cf9f87afebb77
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 162, y: 162, z: 162}
+    serializedHasVolumes:
+    - sceneGUID: ea1103fc9ff2a964ea0cf9f87afebb77
+      hasProbeVolumes: 1
+    serializedProfiles:
+    - sceneGUID: ea1103fc9ff2a964ea0cf9f87afebb77
+      profile: {fileID: 11400000, guid: 398bc96713984d640b8f3e7bd94375cb, type: 2}
+    serializedBakeSettings:
+    - sceneGUID: ea1103fc9ff2a964ea0cf9f87afebb77
+      settings:
+        m_Version: 1
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 2
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.149
+          rayOriginBias: -0.001
+          maxHitsPerRay: 10
+          collisionMask:
+            serializedVersion: 2
+            m_Bits: 4294967291
+    serializedBakingSets:
+    - name: New Baking Set
+      sceneGUIDs:
+      - ea1103fc9ff2a964ea0cf9f87afebb77
+      settings:
+        m_Version: 1
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 2
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.149
+          rayOriginBias: -0.001
+          maxHitsPerRay: 10
+          collisionMask:
+            serializedVersion: 2
+            m_Bits: 4294967291
+      profile: {fileID: 11400000, guid: 398bc96713984d640b8f3e7bd94375cb, type: 2}
+      lightingScenarios:
+      - Default
     m_LightingScenario: Default
   m_Version: 5
   m_ShaderVariantLogLevel: 0
