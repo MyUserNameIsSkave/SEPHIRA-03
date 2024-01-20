@@ -144,22 +144,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     [Space(15)]
 
 
@@ -170,7 +154,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    public GameObject[] PatrolPoints;
+    
 
 
 
@@ -224,6 +208,17 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     [HideInInspector]
     public Vector3 InitialPosition;
+
+
+
+
+
+
+
+    [SerializeField]
+    public float PatrolDetectionRadius;
+
+
 
 
 
