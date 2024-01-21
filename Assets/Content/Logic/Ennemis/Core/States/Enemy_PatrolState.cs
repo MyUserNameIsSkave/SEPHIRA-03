@@ -3,21 +3,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Enemy_PatrolState : Enemy_NeutralState
 {
     private int currentIndex = 0;
-    private int maxIndex;
-
-
-
-
-
-
-
-
-
-    PatrolRoute chosedRoute;
 
 
 
@@ -36,73 +26,124 @@ public class Enemy_PatrolState : Enemy_NeutralState
 
     public override void EnterState()
     {
-        partrolRoutes.Clear();
-
-
-        //Récupère
-        Collider[] colliders = Physics.OverlapSphere(BaseManager.transform.position, BaseManager.PatrolDetectionRadius, LayerMask.GetMask("Patrol Route"));
-
-        //Récupère les scripts
-        foreach (Collider collider in colliders)
-        {
-            partrolRoutes.Add(collider.GetComponent<PatrolRoute>());
-        }
-
-        chosedRoute = partrolRoutes[Random.Range(0, partrolRoutes.Count)];
+        //// Search for a Patrol Route
+        //#region
+        //if (BaseManager.ChosedPatrolRoute == null)
+        //{
+        //    partrolRoutes.Clear();
 
 
 
+        //    //Récupère
+        //    Collider[] colliders = Physics.OverlapSphere(BaseManager.transform.position, BaseManager.PatrolDetectionRadius, LayerMask.GetMask("Patrol Route"));
 
-        float currentDistance = Mathf.Infinity;
+        //    //Récupère les scripts
+        //    foreach (Collider collider in colliders)
+        //    {
+        //        partrolRoutes.Add(collider.GetComponent<PatrolRoute>());
+        //    }
 
-        foreach (GameObject partrolPoint in chosedRoute.PatrolPoints)
-        {
-            float testDistance = Vector3.Distance(BaseManager.transform.position, partrolPoint.transform.position);
-
-            if (testDistance > currentDistance)
-            {
-
-                currentDistance = testDistance;
-
-
-                currentIndex = System.Array.IndexOf(chosedRoute.PatrolPoints, partrolPoint) - 1;
-            }
-        }
+        //    BaseManager.ChosedPatrolRoute = partrolRoutes[Random.Range(0, partrolRoutes.Count)];
+        //}
+        //#endregion
 
 
 
-        maxIndex = chosedRoute.PatrolPoints.Length;
+
+
+        //// Start from Closest Point
+        //#region
+
+        //float currentDistance = Mathf.Infinity;
+
+        //foreach (GameObject partrolPoint in BaseManager.ChosedPatrolRoute.PatrolPoints)
+        //{
+        //    float testDistance = Vector3.Distance(BaseManager.transform.position, partrolPoint.transform.position);
+
+        //    if (testDistance > currentDistance)
+        //    {
+
+        //        currentDistance = testDistance;
+
+
+        //        currentIndex = System.Array.IndexOf(BaseManager.ChosedPatrolRoute.PatrolPoints, partrolPoint) - 1;
+        //    }
+        //}
+
+        //#endregion
+
+
+
+
+        BaseManager.StartPatrolling();
     }
+
+
+
 
     public override void ExitState()
     {
-        chosedRoute = null;
+        BaseManager.StopPatrolling();
+        BaseManager.ChosedPatrolRoute = null;
     }
+
+
+
+
+
+
+
+
+
+
+
 
     public override void FixedUpdateState()
     {
-        if (chosedRoute == null)
-        {
-            Debug.Log("chosedRoute not defined yet");
-            return;
-        }
+        //if (BaseManager.PatrolRoute == null)
+        //{
+        //    Debug.Log("chosedRoute not defined yet");
+        //    return;
+        //}
 
 
 
-        if (BaseManager.Agent.velocity.magnitude != 0)
-        {
-            return;
-        }
-
-        currentIndex += 1;
-        if (currentIndex >= maxIndex)
-        {
-            currentIndex = 0;
-        }
 
 
-        BaseManager.MoveAgent(chosedRoute.PatrolPoints[currentIndex].transform.position);
 
+        ////Return a en mouvement
+        //if (BaseManager.Agent.velocity.magnitude != 0)
+        //{
+        //    return;
+        //}
+
+
+        //Debug.Log("patrol side");
+        //isWaiting = true;
+
+
+        //int previousIndex = currentIndex;
+
+        //currentIndex += 1;
+        //if (currentIndex >= maxIndex)
+        //{
+        //    currentIndex = 0;
+        //}
+
+
+        //if (!doneOnce)
+        //{
+        //    BaseManager.TakeNextPatrolPoint(BaseManager.PatrolRoute.PatrolPoints[previousIndex].GetComponent<PatrolPoint>().WaitTime, BaseManager.PatrolRoute.PatrolPoints[currentIndex]);
+        //    doneOnce = true;
+        //}
+
+
+
+
+
+
+        // OPTION ALTERNATIVE: DEPLACER TOUTE LA LOGIQUE DANS LE BASE MANAGER   
+        // FAIRE EN SORTE DE SEULEMENT LANCER LA COROUTINE DANSLE ENTER ET LA COUPER DANS LE EXITE
     }
 
 

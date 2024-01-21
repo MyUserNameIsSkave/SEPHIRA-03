@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -131,6 +133,22 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
+    [Space(20)]
+
+    [SerializeField, Tooltip("Threshold to transition from Neutral to Attacking")]
+    private float detectionThreshold;
+
+    [SerializeField, Range(0f, 100f), Tooltip("Threshold in percentage of the Highest Detection Progression to transition from Attacking to Searching")]
+    private float searchThresholdPercent;
+
+
+
+
+
+
+
+
+
     //The highest detection progression since the ennemis started loosing interest
     //[SerializeField]
     private float highestDetectionProgression;
@@ -217,7 +235,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     [SerializeField]
     public float PatrolDetectionRadius;
-
 
 
 
@@ -429,16 +446,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Space(20)]
-
-    [SerializeField, Tooltip ("Threshold to transition from Neutral to Attacking")]
-    private float detectionThreshold;
-
-    [SerializeField, Range (0f, 100f), Tooltip("Threshold in percentage of the Highest Detection Progression to transition from Attacking to Searching")]
-    private float searchThresholdPercent;
-
-
-
 
 
     //According to Detection
@@ -618,7 +625,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public void MoveAgent(Vector3 targetPosition)
     {
         Agent.SetDestination(targetPosition);
-
     }
 
 
@@ -646,4 +652,183 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         //Notify New State
         CurrentState.EnterState();
     }
+
+
+
+
+    [SerializeField]
+    public PatrolRoute ChosedPatrolRoute;
+
+
+
+
+
+
+
+    private Coroutine patrolCoroutine;
+
+
+    public void StartPatrolling()
+    {
+        Debug.Log("Start Coroutine");
+
+        patrolCoroutine = StartCoroutine(PatrolCoroutine());
+    }
+
+
+    public void StopPatrolling()
+    {
+        Debug.Log("Stop Coroutine");
+
+        StopCoroutine(patrolCoroutine);
+        patrolCoroutine = null;
+    }
+
+
+
+
+    IEnumerator PatrolCoroutine()
+    {
+        List<PatrolRoute> partrolRoutes = new List<PatrolRoute>();
+        int currentIndex = 0;
+
+
+        // Search a,d Chose Patrol Route
+        #region
+        if (ChosedPatrolRoute == null)
+        {
+            partrolRoutes.Clear();
+
+
+            //Récupère
+            Collider[] colliders = Physics.OverlapSphere(transform.position, PatrolDetectionRadius, LayerMask.GetMask("Patrol Route"));
+
+            //Récupère les scripts
+            foreach (Collider collider in colliders)
+            {
+                partrolRoutes.Add(collider.GetComponent<PatrolRoute>());
+            }
+
+            ChosedPatrolRoute = partrolRoutes[Random.Range(0, partrolRoutes.Count)];
+        }
+        #endregion
+
+
+
+
+
+        // Start from Closest Point
+        #region
+
+        float currentDistance = Mathf.Infinity;
+
+
+
+        foreach (GameObject partrolPoint in ChosedPatrolRoute.PatrolPoints)
+        {
+            NavMeshPath path = new NavMeshPath();
+            Agent.CalculatePath(partrolPoint.transform.position, path);
+
+
+            float distanceToTarget = 0f;
+
+
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                for (int i = 0; i < path.corners.Length - 1; i++)
+                {
+                    distanceToTarget += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+                }
+
+
+            }
+
+
+
+
+
+            //float testDistance = Vector3.Distance(transform.position, partrolPoint.transform.position);
+
+            if (distanceToTarget < currentDistance)
+            {
+
+                currentDistance = distanceToTarget;
+
+
+                currentIndex = System.Array.IndexOf(ChosedPatrolRoute.PatrolPoints, partrolPoint);           
+            }
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+        MoveAgent(ChosedPatrolRoute.PatrolPoints[currentIndex].transform.position);
+        yield return new WaitForSeconds(0.1f);
+
+
+
+        while (true)
+        {
+
+            // No Patrol Route
+            if (ChosedPatrolRoute == null)
+            {
+                Debug.Log("No Patrol Route");
+
+                //Loop on FixedUpdate
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
+
+
+
+
+            // Should Not be Moving to Pass
+            if (Agent.velocity.magnitude != 0)
+            {
+                Debug.Log("Agent moving");
+
+                //Loop on FixedUpdate
+                yield return new WaitForFixedUpdate();
+                continue; 
+            }
+
+
+
+            int previousIndex = currentIndex;
+
+            currentIndex += 1;
+            if (currentIndex >= ChosedPatrolRoute.PatrolPoints.Length)  // CurrentIndex comapred to MaxIndex
+            {
+                currentIndex = 0;
+            }
+
+
+
+            //Delay frome the Waiting Time of the Current Point
+            yield return new WaitForSeconds(ChosedPatrolRoute.PatrolPoints[previousIndex].GetComponent<PatrolPoint>().WaitTime);         // Devrait pas etre current mais past
+
+
+            //Move Agent
+            MoveAgent(ChosedPatrolRoute.PatrolPoints[currentIndex].transform.position);
+
+
+
+            //Loop with delay top prevent the random skipping of points
+            yield return new WaitForSeconds(0.1f);
+
+        }
+    }
+
+
+
+
 }

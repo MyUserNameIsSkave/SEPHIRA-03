@@ -5,14 +5,6 @@ using UnityEngine;
 
 public class PatrolRoute : MonoBehaviour
 {
-    [HideInInspector]
-    public GameObject[] PatrolPoints;
-
-
-    public bool patrolRouteIsFree;
-
-
-
 
     [Header ("    DEBUG SETTINGS")]
     [Space (15)]
@@ -23,6 +15,16 @@ public class PatrolRoute : MonoBehaviour
     [SerializeField]
     private Color debugColor;
 
+
+
+
+
+    [HideInInspector]
+    public GameObject[] PatrolPoints;
+
+
+    [HideInInspector]
+    public bool isAvaliable;
 
 
 
@@ -84,6 +86,7 @@ public class PatrolRoute : MonoBehaviour
 
     private void UpdatePatrolPoints()
     {
+
         int childCount = transform.childCount;
 
         // Initialisez le tableau avec la taille du nombre d'enfants
