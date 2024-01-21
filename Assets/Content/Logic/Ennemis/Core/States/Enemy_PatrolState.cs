@@ -26,56 +26,7 @@ public class Enemy_PatrolState : Enemy_NeutralState
 
     public override void EnterState()
     {
-        //// Search for a Patrol Route
-        //#region
-        //if (BaseManager.ChosedPatrolRoute == null)
-        //{
-        //    partrolRoutes.Clear();
-
-
-
-        //    //Récupère
-        //    Collider[] colliders = Physics.OverlapSphere(BaseManager.transform.position, BaseManager.PatrolDetectionRadius, LayerMask.GetMask("Patrol Route"));
-
-        //    //Récupère les scripts
-        //    foreach (Collider collider in colliders)
-        //    {
-        //        partrolRoutes.Add(collider.GetComponent<PatrolRoute>());
-        //    }
-
-        //    BaseManager.ChosedPatrolRoute = partrolRoutes[Random.Range(0, partrolRoutes.Count)];
-        //}
-        //#endregion
-
-
-
-
-
-        //// Start from Closest Point
-        //#region
-
-        //float currentDistance = Mathf.Infinity;
-
-        //foreach (GameObject partrolPoint in BaseManager.ChosedPatrolRoute.PatrolPoints)
-        //{
-        //    float testDistance = Vector3.Distance(BaseManager.transform.position, partrolPoint.transform.position);
-
-        //    if (testDistance > currentDistance)
-        //    {
-
-        //        currentDistance = testDistance;
-
-
-        //        currentIndex = System.Array.IndexOf(BaseManager.ChosedPatrolRoute.PatrolPoints, partrolPoint) - 1;
-        //    }
-        //}
-
-        //#endregion
-
-
-
-
-        BaseManager.StartPatrolling();
+       BaseManager.StartPatrolling();
     }
 
 
@@ -84,7 +35,6 @@ public class Enemy_PatrolState : Enemy_NeutralState
     public override void ExitState()
     {
         BaseManager.StopPatrolling();
-        BaseManager.ChosedPatrolRoute = null;
     }
 
 

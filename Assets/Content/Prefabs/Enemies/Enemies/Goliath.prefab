@@ -376,22 +376,23 @@ MonoBehaviour:
   _detectionProgression: 0
   detectionMultiplier: 30
   detectionLoseRate: 10
-  warningDuration: 0
+  detectionThreshold: 30
+  searchThresholdPercent: 50
   WalkMoveSpeed: 0.5
   RunMoveSpeed: 8
-  PatrolPoints: []
+  ArrivedOnWarning: 0
   AttackRange: 0
   WarningRadius: 20
-  IsLoosingInterest: 0
+  warningDuration: 0
   WarnedDetectionFill: 0
-  ArrivedOnWarning: 0
-  LastKnownPosition: {x: 0, y: 0, z: 0}
+  patrolDetectionRadius: 20
+  chosedPatrolRoute: {fileID: 0}
   Binah: {fileID: 0}
   BinahManager: {fileID: 0}
   Agent: {fileID: 0}
   InitialPosition: {x: 0, y: 0, z: 0}
-  detectionThreshold: 30
-  searchThresholdPercent: 50
+  IsLoosingInterest: 0
+  LastKnownPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &7850627458809638530
 PrefabInstance:
   m_ObjectHideFlags: 0

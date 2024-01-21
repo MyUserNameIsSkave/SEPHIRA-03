@@ -240,22 +240,23 @@ MonoBehaviour:
   _detectionProgression: 0
   detectionMultiplier: 30
   detectionLoseRate: 10
-  warningDuration: 100000000
+  detectionThreshold: 30
+  searchThresholdPercent: 50
   WalkMoveSpeed: 1
   RunMoveSpeed: 3
-  PatrolPoints: []
+  ArrivedOnWarning: 0
   AttackRange: 1.5
   WarningRadius: 20
-  IsLoosingInterest: 0
+  warningDuration: 100000000
   WarnedDetectionFill: 50
-  ArrivedOnWarning: 0
-  LastKnownPosition: {x: 0, y: 0, z: 0}
+  patrolDetectionRadius: 20
+  chosedPatrolRoute: {fileID: 0}
   Binah: {fileID: 0}
   BinahManager: {fileID: 0}
   Agent: {fileID: 0}
   InitialPosition: {x: 0, y: 0, z: 0}
-  detectionThreshold: 30
-  searchThresholdPercent: 50
+  IsLoosingInterest: 0
+  LastKnownPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &3284874403271593919
 GameObject:
   m_ObjectHideFlags: 0
