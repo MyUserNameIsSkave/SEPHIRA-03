@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5425652867723695824}
   - component: {fileID: 2578505517304857259}
   m_Layer: 0
-  m_Name: Point
+  m_Name: Point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5224626110502472276}
   - component: {fileID: 3364614038251754511}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340c3bf084d6f44fbea753db07b89aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitTime: 5
+  WaitTime: 1
 --- !u!1 &6722152735781224191
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 7961864255121686154}
   - component: {fileID: 3655211551389917647}
   m_Layer: 0
-  m_Name: Point (3)
+  m_Name: Point 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340c3bf084d6f44fbea753db07b89aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitTime: 0
+  WaitTime: 1
 --- !u!1 &7141395019566157653
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,9 +304,8 @@ GameObject:
   - component: {fileID: 1810368108571847547}
   - component: {fileID: 881548751544886001}
   - component: {fileID: 6394930473830000189}
-  - component: {fileID: 370843255852034993}
   m_Layer: 22
-  m_Name: PatrolRoute
+  m_Name: Patrol Route
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,19 +420,7 @@ MonoBehaviour:
   - {fileID: 6331454054266613079}
   - {fileID: 7512611089953810701}
   - {fileID: 6722152735781224191}
-  isAvaliable: 0
---- !u!114 &370843255852034993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7141395019566157653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207f7a8621ea8e940ae93044e6514bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  isAvaliable: 1
 --- !u!1 &7512611089953810701
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +434,7 @@ GameObject:
   - component: {fileID: 3706160045388871063}
   - component: {fileID: 7998327113969329180}
   m_Layer: 0
-  m_Name: Point (2)
+  m_Name: Point 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -530,4 +517,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1340c3bf084d6f44fbea753db07b89aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitTime: 0
+  WaitTime: 1

@@ -17,14 +17,12 @@ public class PatrolRoute : MonoBehaviour
 
 
 
+    [Space(30)]
+    [Header ("    NE PAS TOUCHER - DEBUG ONLY")]
+    [Space (15)]
 
-
-    [HideInInspector]
     public GameObject[] PatrolPoints;
-
-
-    [HideInInspector]
-    public bool isAvaliable;
+    public bool isAvaliable = true;
 
 
 
