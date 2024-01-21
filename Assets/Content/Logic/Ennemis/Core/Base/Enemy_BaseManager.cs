@@ -146,7 +146,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Header ("    Movements")]
+    [Header ("    Movements Settings")]
     [Space(5)]
 
     public float WalkMoveSpeed;
