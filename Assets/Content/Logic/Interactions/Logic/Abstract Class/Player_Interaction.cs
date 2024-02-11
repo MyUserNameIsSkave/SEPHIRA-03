@@ -26,6 +26,7 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
         if (stamCost <= staminaScript.CurrentStam)
         {
             staminaScript.CurrentStam -= stamCost;
+
             return true;
         }
         else
