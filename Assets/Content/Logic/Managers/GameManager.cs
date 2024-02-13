@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         Binah = GameObject.FindGameObjectWithTag("Binah");
-        BinahManager = GameManager.Instance.BinahManager;
+        BinahManager = Binah.GetComponent<UtilityAI_Manager>();
 
         Player = GameObject.FindGameObjectWithTag("Player");
         CameraController = Player.GetComponent<CameraController>();

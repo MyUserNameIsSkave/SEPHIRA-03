@@ -53,6 +53,11 @@ public class PlayerStamina : MonoBehaviour
 
     private void Start()
     {
+        if (stamBarForground == null)
+        {
+            Debug.LogError("No reference to the Cost UI");
+        }
+
         StartCoroutine(StamRegen());
     }
 

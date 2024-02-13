@@ -8,6 +8,17 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 {
     // ----- VARIABLES -----
 
+    [Header("     ROTATION")]
+    [Space(7)]
+
+
+    public bool CanBeManualySelected = true;
+
+
+
+
+
+        [Space(15)]
         [Header ("     ROTATION")]
         [Space(7)]
 
@@ -89,7 +100,12 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public void SelectedByPlayer()
     {
         //Recieve Input
-        Interaction();
+
+
+        if (CanBeManualySelected)
+        {
+            Interaction();
+        }
     }
 
     public void Interaction()

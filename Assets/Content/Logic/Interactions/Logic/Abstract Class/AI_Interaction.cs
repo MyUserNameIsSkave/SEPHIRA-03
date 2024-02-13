@@ -85,12 +85,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     private void Awake()
     {
         staminaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStamina>();
-    }
 
-
-    //References and get Variables
-    private void OnEnable()
-    {
         UtilityAI_Manager = GameManager.Instance.BinahManager;
 
         ScoreRange = Consideration.ScoreRange;
@@ -98,8 +93,12 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
 
 
+
     public void SelectedByPlayer()
     {
+
+        UtilityAI_Manager = GameManager.Instance.BinahManager;
+
         //Transfert Input
         UtilityAI_Manager.DoIndicatedAction(this);
     }

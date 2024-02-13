@@ -36,7 +36,7 @@ public class SecurityCamera_Debug : MonoBehaviour
     [Header("     Other")]
     [Space(5)]
 
-    [SerializeField, Range(1f, 25f)]
+    [SerializeField, Range(1f, 500f)]
     float ForwardLength;
 
 
