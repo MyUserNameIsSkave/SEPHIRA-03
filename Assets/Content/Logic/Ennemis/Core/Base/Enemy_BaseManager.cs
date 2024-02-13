@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,8 +10,6 @@ using UnityEngine.AI;
 public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 {
     #region State Selection
-
-    [Header("Initial State")]
     public Enemy_BaseState CurrentState;
 
     public enum possibleInitialState
@@ -20,13 +20,14 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     }
 
 
-
+    [Header("    STATES SETTINGS")]
+    [Space (5)]
     public possibleInitialState initialState;
 
     #endregion
 
 
-        [Space(20)]
+        [Space(10)]
 
 
     #region State Settings
@@ -108,7 +109,8 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Header ("  ENEMY SETTINGS")]
+    [Header ("    ENEMY SETTINGS")]
+    [Space(15)]
 
 
     [SerializeField]
@@ -122,87 +124,80 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
               ManageStateWithDetection(); }
     }
 
+
+    [Header ("Detection Settings")]
+    [Space (5)]
+
     [SerializeField]
     private float detectionMultiplier;
 
     [SerializeField]
     private float detectionLoseRate;
 
+    [SerializeField, Tooltip("Threshold to transition from Neutral to Attacking")]
+    private float detectionThreshold;
+
+    [SerializeField, Range(0f, 100f), Tooltip("Threshold in percentage of the Highest Detection Progression to transition from Attacking to Searching")]
+    private float searchThresholdPercent;
 
 
 
-    //The highest detection progression since the ennemis started loosing interest
-    //[SerializeField]
-    private float highestDetectionProgression;
+    [Space(10)]
 
 
 
-
-
-    [SerializeField]
-    private float warningDuration;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    [Space(15)]
-
+    [Header ("    Movements Settings")]
+    [Space(5)]
 
     public float WalkMoveSpeed;
-
     public float RunMoveSpeed;
-
-
-
-
-    public GameObject[] PatrolPoints;
-
-
-
-
-
-    public float AttackRange;
-
-
-
-
-    public float WarningRadius;
-
-    [HideInInspector]
-    public bool IsLoosingInterest = false;
-
-
-
-    public float WarnedDetectionFill;
-
 
     [HideInInspector]
     public bool ArrivedOnWarning = false;
 
 
 
-    private bool isWarning = false;
+    [Space(10)]
 
 
 
+    [Header("    Attacking Settings")]
+    [Space(5)]
 
-    [HideInInspector]
-    public Vector3 LastKnownPosition = Vector3.zero;
+    public float AttackRange;
+
+
+
+    [Space(10)]
+
+
+
+    [Header("    Warining Settings")]
+    [Space(5)]
+
+    public float WarningRadius;
+
+    [SerializeField, Tooltip ("The duration in wich the AI stay locked in the Warning State")]
+    private float warningDuration;
+
+    public float WarnedDetectionFill;
+
+
+
+    [Space(20)]
+
+
+
+    [Header ("    Patrol Settings")]
+    [Space (5)]
+
+    [SerializeField, Tooltip ("The radius in wich the AI can detect a Patrol Route")]
+    private float patrolDetectionRadius;
+
+
+    [SerializeField, Tooltip ("The root selected by the IA, can be forced by selecting a scene reference.")]
+    private PatrolRoute chosedPatrolRoute;
+
 
 
 
@@ -220,10 +215,22 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [HideInInspector]
     public NavMeshAgent Agent;
 
-
-
     [HideInInspector]
     public Vector3 InitialPosition;
+
+    //The coroutine containing the patrol logic
+    private Coroutine patrolCoroutine;
+
+    private float highestDetectionProgression;
+
+    [HideInInspector]
+    public bool IsLoosingInterest = false;
+
+    [HideInInspector]
+    public Vector3 LastKnownPosition = Vector3.zero;
+
+    private bool isWarning = false;
+
 
 
 
@@ -434,16 +441,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Space(20)]
-
-    [SerializeField, Tooltip ("Threshold to transition from Neutral to Attacking")]
-    private float detectionThreshold;
-
-    [SerializeField, Range (0f, 100f), Tooltip("Threshold in percentage of the Highest Detection Progression to transition from Attacking to Searching")]
-    private float searchThresholdPercent;
-
-
-
 
 
     //According to Detection
@@ -623,7 +620,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public void MoveAgent(Vector3 targetPosition)
     {
         Agent.SetDestination(targetPosition);
-
     }
 
 
@@ -651,4 +647,213 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         //Notify New State
         CurrentState.EnterState();
     }
+
+
+
+
+
+    public void StartPatrolling()
+    {
+        Debug.Log("Start Coroutine");
+
+        patrolCoroutine = StartCoroutine(PatrolCoroutine());
+    }
+
+
+    public void StopPatrolling()
+    {
+        if (patrolCoroutine == null || chosedPatrolRoute == null)
+        {
+            return;
+        }
+
+
+        Debug.Log("Stop Coroutine");
+
+
+        chosedPatrolRoute.isAvaliable = true;
+
+        StopCoroutine(patrolCoroutine);
+        patrolCoroutine = null;
+        chosedPatrolRoute = null;
+    }
+
+
+
+
+    IEnumerator PatrolCoroutine()
+    {
+        List<PatrolRoute> partrolRoutes = new List<PatrolRoute>();
+        int currentIndex = 0;
+
+
+        // Search and Chose Patrol Route
+        #region
+        if (chosedPatrolRoute == null)
+        {
+            partrolRoutes.Clear();
+
+
+            //Get Route in Range
+            Collider[] colliders = Physics.OverlapSphere(transform.position, patrolDetectionRadius, LayerMask.GetMask("Patrol Route"));
+
+
+            //Stop if no Route in Range
+            if (colliders.Length == 0)
+            {
+                Debug.Log("SHOULD change state");
+
+                SwitchState(IdleState);
+                yield break;
+            }
+
+
+            //Récupère les scripts
+            foreach (Collider collider in colliders)
+            {
+                PatrolRoute patrolRoute = collider.GetComponent<PatrolRoute>();
+
+                //partrolRoutes.Add(patrolRoute);
+
+                Debug.Log(patrolRoute.isAvaliable);
+
+                if (patrolRoute.isAvaliable)
+                {
+                    partrolRoutes.Add(patrolRoute);
+                }
+
+            }
+
+            //Stop if no Route Avalaible
+            if (partrolRoutes.Count == 0)
+            {
+                Debug.Log("SHOULD change state");
+
+                SwitchState(IdleState);
+                yield break;
+            }
+
+
+            chosedPatrolRoute = partrolRoutes[Random.Range(0, partrolRoutes.Count)];
+            chosedPatrolRoute.isAvaliable = false;
+        }
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Start from Closest Point
+        #region
+
+        float currentDistance = Mathf.Infinity;
+
+
+
+        foreach (GameObject partrolPoint in chosedPatrolRoute.PatrolPoints)
+        {
+            NavMeshPath path = new NavMeshPath();
+            Agent.CalculatePath(partrolPoint.transform.position, path);
+
+
+            float distanceToTarget = 0f;
+
+
+            if (path.status == NavMeshPathStatus.PathComplete)
+            {
+                for (int i = 0; i < path.corners.Length - 1; i++)
+                {
+                    distanceToTarget += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+                }
+            }
+
+
+
+
+
+            //float testDistance = Vector3.Distance(transform.position, partrolPoint.transform.position);
+
+            if (distanceToTarget < currentDistance)
+            {
+
+                currentDistance = distanceToTarget;
+
+
+                currentIndex = System.Array.IndexOf(chosedPatrolRoute.PatrolPoints, partrolPoint);           
+            }
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+        MoveAgent(chosedPatrolRoute.PatrolPoints[currentIndex].transform.position);
+        yield return new WaitForSeconds(0.1f);
+
+
+
+        while (true)
+        {
+
+            // No Patrol Route
+            if (chosedPatrolRoute == null)
+            {
+                Debug.Log("No Patrol Route");
+
+                //Loop on FixedUpdate
+                yield return new WaitForFixedUpdate();
+                continue;
+            }
+
+
+            // Should Not be Moving to Pass
+            if (Agent.velocity.magnitude != 0)
+            {
+                //Loop on FixedUpdate
+                yield return new WaitForFixedUpdate();
+                continue; 
+            }
+
+
+            int previousIndex = currentIndex;
+
+            currentIndex += 1;
+            if (currentIndex >= chosedPatrolRoute.PatrolPoints.Length)  // CurrentIndex comapred to MaxIndex
+            {
+                currentIndex = 0;
+            }
+
+
+            //Delay frome the Waiting Time of the Current Point
+            yield return new WaitForSeconds(chosedPatrolRoute.PatrolPoints[previousIndex].GetComponent<PatrolPoint>().WaitTime);         // Devrait pas etre current mais past
+
+
+            //Move Agent
+            MoveAgent(chosedPatrolRoute.PatrolPoints[currentIndex].transform.position);
+
+
+            //Loop with delay top prevent the random skipping of points
+            yield return new WaitForSeconds(0.1f);
+
+        }
+    }
+
+
+
+
 }
