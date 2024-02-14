@@ -662,6 +662,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public void StopPatrolling()
     {
+
         if (patrolCoroutine == null || chosedPatrolRoute == null)
         {
             return;
@@ -683,6 +684,8 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     IEnumerator PatrolCoroutine()
     {
+        yield return new WaitForNextFrameUnit();
+
         List<PatrolRoute> partrolRoutes = new List<PatrolRoute>();
         int currentIndex = 0;
 

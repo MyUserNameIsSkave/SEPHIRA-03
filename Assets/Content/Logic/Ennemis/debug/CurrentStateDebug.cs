@@ -35,6 +35,12 @@ public class CurrentStateDebug : MonoBehaviour
             transform.Rotate(0, 180, 0);
         }
 
+
+        if (textMeshPro == null && enemyManager == null || enemyManager.CurrentState == null)
+        {
+            return;
+        }
+
         textMeshPro.text = enemyManager.CurrentState.ToString();
     }
 }

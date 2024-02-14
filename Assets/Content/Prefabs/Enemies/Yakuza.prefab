@@ -240,22 +240,23 @@ MonoBehaviour:
   _detectionProgression: 0
   detectionMultiplier: 30
   detectionLoseRate: 10
-  warningDuration: 100000000
+  detectionThreshold: 30
+  searchThresholdPercent: 50
   WalkMoveSpeed: 1
   RunMoveSpeed: 3
-  PatrolPoints: []
+  ArrivedOnWarning: 0
   AttackRange: 1.5
   WarningRadius: 20
-  IsLoosingInterest: 0
+  warningDuration: 100000000
   WarnedDetectionFill: 50
-  ArrivedOnWarning: 0
-  LastKnownPosition: {x: 0, y: 0, z: 0}
+  patrolDetectionRadius: 0
+  chosedPatrolRoute: {fileID: 0}
   Binah: {fileID: 0}
   BinahManager: {fileID: 0}
   Agent: {fileID: 0}
   InitialPosition: {x: 0, y: 0, z: 0}
-  detectionThreshold: 30
-  searchThresholdPercent: 50
+  IsLoosingInterest: 0
+  LastKnownPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &3284874403271593919
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,30 +612,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4809420562724785935, guid: a67d2e27c2cfc524c8f6e2f4484b893b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 123391675772811756}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a67d2e27c2cfc524c8f6e2f4484b893b, type: 3}
---- !u!1 &3178264811939084231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4809420562724785935, guid: a67d2e27c2cfc524c8f6e2f4484b893b,
-    type: 3}
-  m_PrefabInstance: {fileID: 7972789181718673608}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &123391675772811756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178264811939084231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3885234cf349a74baebbef2b69d5012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6300105068528198647 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4164547258952047423, guid: a67d2e27c2cfc524c8f6e2f4484b893b,
