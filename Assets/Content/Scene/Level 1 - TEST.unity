@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4582.2563, g: 2940.3127, b: 2183.9573, a: 1}
+  m_IndirectSpecularColor: {r: 4583.9536, g: 2939.3655, b: 2180.0042, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -99,7 +99,8 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 49504095b8bfe694b98caad0840a510b,
     type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 94c2f97f5b8fdb64db9615966fbcc70d,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2149,6 +2150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (54)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3859,6 +3865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5908,6 +5919,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6904,6 +6920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7836,6 +7857,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7992,6 +8018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8293,74 +8324,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132679318}
   m_Mesh: {fileID: -5495902117074765545, guid: d3041f420f609f248978db63454398ae, type: 3}
---- !u!1001 &134076152
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 144.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 40.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 75.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1297971427488943237, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7288036302932351502, guid: b1cc06bd5add30f4ebd2fe6343634168,
-        type: 3}
-      propertyPath: m_Name
-      value: MediumFloorWall (9)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b1cc06bd5add30f4ebd2fe6343634168, type: 3}
 --- !u!1001 &135545127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12603,6 +12566,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13875,6 +13843,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17161,6 +17134,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17317,6 +17295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18342,6 +18325,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (56)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18793,6 +18781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25090,6 +25083,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27348,6 +27346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30010,6 +30013,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32015,6 +32023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33220,6 +33233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37470,6 +37488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38015,6 +38038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43366,6 +43394,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43804,6 +43837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45539,6 +45577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -52623,6 +52666,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52801,6 +52849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53179,6 +53232,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53395,6 +53453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54035,6 +54098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -57635,6 +57703,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62994,6 +63067,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -66540,6 +66618,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67159,6 +67242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67896,6 +67984,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -68970,6 +69063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -71309,6 +71407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75941,6 +76044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77049,6 +77157,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -82376,6 +82489,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82706,6 +82824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -90438,6 +90561,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -95157,6 +95285,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -99837,6 +99970,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -100254,6 +100392,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -100327,6 +100470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -105126,6 +105274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -107060,6 +107213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -114766,6 +114924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -127685,6 +127848,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -127826,6 +127994,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Escalier_beton_pbld (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -130549,6 +130722,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Walkable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -130989,6 +131167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Escalier_beton_pbld (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -131150,6 +131333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Walkable
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6b3ec46ad8a920f48bbb655c0af7dbaf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -132966,7 +133154,6 @@ SceneRoots:
   - {fileID: 1187962239}
   - {fileID: 1774233475}
   - {fileID: 2139252673}
-  - {fileID: 134076152}
   - {fileID: 84715146}
   - {fileID: 71833458}
   - {fileID: 1577313059}
