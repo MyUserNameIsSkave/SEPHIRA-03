@@ -418,11 +418,11 @@ Tags { "LightMode" = "SceneSelectionPass" }
 		Pass {
 
 Name"Outline"
-Tags{"LightMode"="remove"}
+Tags{"LightMode"="SRPDefaultUnlit"}
 //OL_NRE
 			Blend [_BleModSour] [_BleModDest]
 
-//Cull [_DoubleSidedOutline]//OL_RCUL
+Cull [_DoubleSidedOutline]//OL_RCUL
 			ZTest LEqual
 			ZWrite On
 
