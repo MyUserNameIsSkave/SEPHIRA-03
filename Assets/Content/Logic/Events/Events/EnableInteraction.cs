@@ -15,7 +15,6 @@ public class EnableInteraction : MonoBehaviour, IEventTriggerable
 
     public void TriggerEvent()
     {
-        Debug.Log("TASAAAAAAAAAAAAA");
         Debug.Log("Layer changed to: " + LayerMask.LayerToName(gameObject.layer));
         gameObject.layer = GetLayerFromMask(ActivatedLayer);
         GetComponent<MeshRenderer>().material = activatedMaterial;
