@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 public class DialogueManager : MonoBehaviour, IEventTriggerable
 {
     //VARIABLES
@@ -38,12 +39,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     private void OnValidate()
     {
 
-        //Validity Check
-        if (dialogueData == null)
-        {
-            return;
-        }
-
+        //Check if not Empty
         if (dialogueData.audioLine == null)
         {
             return;
@@ -51,8 +47,8 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-        //Arrays Creation
 
+        //Arrays Creation
         if (dialogueData.audioLine.Length != nextInterlocutor.Length)
         {
             nextInterlocutor = new DialogueManager[dialogueData.audioLine.Length];
@@ -63,6 +59,22 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
             eventToTrigger = new MonoBehaviour[dialogueData.audioLine.Length];
         }
 
+
+        //Check Validity of Arrays
+        foreach (MonoBehaviour toTrigger in eventToTrigger)
+        {
+            if (toTrigger != null)
+            {
+                int index = 0;
+
+                if (!(toTrigger is IEventTriggerable eventTriggableInterface))
+                {
+                    eventToTrigger[index] = null;
+                }
+
+                index += 1;
+            }
+        }
     }
 
 
