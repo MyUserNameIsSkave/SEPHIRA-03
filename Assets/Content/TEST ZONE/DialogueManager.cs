@@ -1,26 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
 
 public class DialogueManager : MonoBehaviour, IEventTriggerable
 {
     //VARIABLES
 
-    [Header ("  DEBUG")]
+    [Header("  DEBUG")]
     [SerializeField]
     private int audioIndex = 0;
 
-    [SerializeField]
-    private int subtitbleIndex = 0;
+    //[SerializeField]
+    //private int subtitbleIndex = 0;
 
     [SerializeField]
     private AudioSource audioSource;
 
+    [SerializeField]
+    private bool manualyActivated = false;
 
 
-    [Space (40)]
+    [Space(40)]
 
 
 
@@ -28,8 +28,8 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     private DialogueData dialogueData = null;
 
 
-    [Space (20)]
-    [Header ("  DONT CHANGE LENGHT")]
+    [Space(20)]
+    [Header("  DONT CHANGE LENGHT")]
     public DialogueManager[] nextInterlocutor;                      // Must use IEventTriggerable - Either Next Dialogue or External Event
     public MonoBehaviour[] eventToTrigger;                          // Must use IEventTriggerable - Either Next Dialogue or External Event
 
@@ -67,6 +67,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
             {
                 int index = 0;
 
+                //Erase non valid reference
                 if (!(toTrigger is IEventTriggerable eventTriggableInterface))
                 {
                     eventToTrigger[index] = null;
@@ -77,6 +78,17 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
         }
     }
 
+
+
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && manualyActivated)
+        {
+            PlayerNextLine();
+        }
+    }
 
 
 
@@ -94,7 +106,15 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     private void PlayerNextLine()
     {
         //Play Sound
-        audioSource.clip = dialogueData.audioLine[audioIndex];
+        //subtitbleIndex = 0;
+
+        //audioSource.clip = dialogueData.audioLine[audioIndex];
+
+
+
+
+
+        StartCoroutine(SubtitleCoroutine());
     }
 
 
@@ -104,9 +124,79 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     IEnumerator SubtitleCoroutine()
     {
+
+
+        int dictionnaryIndex = 0;
+
+        foreach (KeyValuePair<string[], float[]> subtitles in dialogueData.subtitles)
+        {
+            if (dictionnaryIndex == audioIndex)
+            {
+                int subIndex = 0;
+                foreach (string sub in subtitles.Key)
+                {
+                    //Display Subtitle
+                    DisplaySubtitles(sub);
+
+                    yield return new WaitForSeconds(subtitles.Value[subIndex]);
+
+                    subIndex += 1;
+                }
+            }
+
+
+            
+            dictionnaryIndex += 1;
+        }
+
+
+        StartEvents();
+
+
+        audioIndex += 1;
+        
+
+
+
+
         yield return null;
     }
 
 
+    private void DisplaySubtitles(string sub)
+    {
+        print(sub);
+    }
 
+
+
+
+
+    private void StartEvents()
+    {
+        //Next Dialogue
+        if (nextInterlocutor.Length <= audioIndex)
+        {
+            return;
+        }
+
+        if (nextInterlocutor[audioIndex] != null)
+        {
+            IEventTriggerable eventInterface = nextInterlocutor[audioIndex] as IEventTriggerable;
+            eventInterface.TriggerEvent();
+        }
+
+
+        //Trigger Event
+        if (eventToTrigger.Length <= audioIndex)
+        {
+            return;
+        }
+
+        if (eventToTrigger[audioIndex] != null)
+        {
+            IEventTriggerable eventInterface = eventToTrigger[audioIndex] as IEventTriggerable;
+            eventInterface.TriggerEvent();
+        }
+    }
 }
