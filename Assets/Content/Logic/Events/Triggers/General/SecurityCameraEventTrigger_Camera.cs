@@ -1,6 +1,7 @@
 using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -20,6 +21,20 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     [SerializedDictionary("Event to Trigger", "Trigger Delay")]
     public SerializedDictionary<MonoBehaviour, float> EventToTrigger;
+
+
+
+
+    private void Start()
+    {
+        if (cameraController.CurrentCamera == this)
+        {
+            if (this is IInteractable interactionInterface)
+            {
+                interactionInterface.Interaction();
+            }
+        }
+    }
 
 
 
@@ -75,5 +90,5 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     }
 
-    
+
 }
