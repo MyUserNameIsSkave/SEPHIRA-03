@@ -55,11 +55,8 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     private void CheckForEventsToDo()
     {
-        print("ola");
         foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
         {
-            print("que");
-
             StartCoroutine(ExecuteEvents(kvp));
         }
     }
@@ -67,15 +64,10 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     IEnumerator ExecuteEvents(KeyValuePair<MonoBehaviour, float> kvp)
     {
-        print("tal");
-
-
         IEventTriggerable EvenTriggerInterface = kvp.Key.GetComponent<IEventTriggerable>();
         if (EvenTriggerInterface != null)
         {
-            print(kvp.Value);
             yield return new WaitForSeconds(kvp.Value);
-            print("!");
             EvenTriggerInterface.TriggerEvent();
         }
 
