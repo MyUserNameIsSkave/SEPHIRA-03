@@ -139,17 +139,17 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         currentCameraFOV = baseFOV;
         playerObject = GameObject.FindGameObjectWithTag("Player");
         cameraController = GameManager.Instance.CameraController;
+
+        currentCameraFOV = baseFOV;
+
+        BaseYaw = BaseHorizontalRotation;
+        BasePitch = -BaseVerticalRotation;
     }
 
 
     private void Start()
     {
-        currentCameraFOV = baseFOV;
 
-
-
-        BaseYaw = BaseHorizontalRotation;
-        BasePitch = -BaseVerticalRotation;
     }
 
 

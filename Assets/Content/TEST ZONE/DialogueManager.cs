@@ -8,10 +8,8 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     [Header("  DEBUG")]
     [SerializeField]
-    private int audioIndex = 0;
+    private int audioIndex = -1;
 
-    //[SerializeField]
-    //private int subtitbleIndex = 0;
 
     [SerializeField]
     private AudioSource audioSource;
@@ -29,7 +27,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
     [Space(20)]
-    [Header("  DONT CHANGE LENGHT")]
+    [Header("  DONT CHANGE LENGTH")]
     public DialogueManager[] nextInterlocutor;                      // Must use IEventTriggerable - Either Next Dialogue or External Event
     public MonoBehaviour[] eventToTrigger;                          // Must use IEventTriggerable - Either Next Dialogue or External Event
 
@@ -72,8 +70,6 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
                 {
                     eventToTrigger[index] = null;
                 }
-
-                index += 1;
             }
         }
     }
@@ -93,10 +89,6 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-
-
-
-
     public void TriggerEvent()
     {
         PlayerNextLine();
@@ -105,14 +97,28 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     private void PlayerNextLine()
     {
-        //Play Sound
-        //subtitbleIndex = 0;
-
-        //audioSource.clip = dialogueData.audioLine[audioIndex];
+        print("PUTE");
 
 
 
 
+
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            StopAllCoroutines();
+        }
+        
+
+
+
+
+        if (dialogueData.audioLine[audioIndex] != null)
+        {
+            audioSource.clip = dialogueData.audioLine[audioIndex];
+            audioSource.Play();
+        }
 
         StartCoroutine(SubtitleCoroutine());
     }
@@ -124,7 +130,6 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     IEnumerator SubtitleCoroutine()
     {
-
 
         int dictionnaryIndex = 0;
 
@@ -138,6 +143,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
                     //Display Subtitle
                     DisplaySubtitles(sub);
 
+                    print(subtitles.Value[subIndex]);
                     yield return new WaitForSeconds(subtitles.Value[subIndex]);
 
                     subIndex += 1;
@@ -149,18 +155,15 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
             dictionnaryIndex += 1;
         }
 
+        audioIndex += 1;
 
         StartEvents();
 
-
-        audioIndex += 1;
-        
-
-
-
-
         yield return null;
     }
+
+
+
 
 
     private void DisplaySubtitles(string sub)
