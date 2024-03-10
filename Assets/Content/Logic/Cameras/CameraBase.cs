@@ -63,9 +63,14 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     private GameObject playerObject;
     protected CameraController cameraController;
 
+
     //Rotation
-    private float BasePitch;
-    private float BaseYaw;
+    [HideInInspector]
+    public float BasePitch;
+
+    [HideInInspector]
+    public float BaseYaw;
+
 
     //Zoom
     [HideInInspector]
@@ -89,12 +94,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     // ----- lOGIC -----
 
 
-
-
-
-
-
-
     #region INTERFACE
 
     public void SelectedByPlayer()
@@ -112,6 +111,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     {
         //Change Camera
         cameraController.CurrentCamera = this;
+        UiCamerBars.Instance.UpdateUI();
 
 
         //Send information to the new Camera that it is the new one
@@ -167,6 +167,13 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     {
         Vector2 inputs = GetCameraInput();
 
+
+        if (inputs == Vector2.zero)
+        {
+            return;
+        }
+        
+        
         float HorizontalInput = inputs.y;
         float VerticalInput = -inputs.x;
 
@@ -174,6 +181,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         BaseYaw = Mathf.Clamp(BaseYaw + HorizontalInput, HorizontalRange.x, HorizontalRange.y);
 
         PivotPoint.transform.localRotation = Quaternion.Euler(-BasePitch, BaseYaw, 0);
+
+        UiCamerBars.Instance.UpdateUI();
     }
 
 
@@ -284,6 +293,9 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
             //Apply FOV
             cameraController.ChangeFOV(lerpedFOV);
+
+
+            UiCamerBars.Instance.UpdateUI();
 
 
             yield return null;
