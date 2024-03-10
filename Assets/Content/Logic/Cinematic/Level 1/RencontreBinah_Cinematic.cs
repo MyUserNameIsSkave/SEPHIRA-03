@@ -2,52 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RencontreBinah_Cinematic : MonoBehaviour
+public class RencontreBinah_Cinematic : MonoBehaviour, IEventTriggerable
 {
-    public Animator Animator;
-    public float delay;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Invoke("StartCinematic",5f);
-    }
+    public Animator animator;
 
-    // Update is called once per frame
-    void Update()
-    {
 
-        
+    public int index = 0;
 
-    }
-    void StartCinematic()
+    public void TriggerEvent()
     {
-        Animator.SetBool("StartCinematic", true);
-        delay = 7f;
-        Invoke("NextAnim1", delay);
-    }
-    void NextAnim1()
-    {
-        Animator.SetBool("NextAnim1", true);
-        delay = 5f;
-        Invoke("NextAnim2", delay);
-    }
+        print("activated");
 
-    void NextAnim2()
-    {
-        Animator.SetBool("NextAnim2", true);
-        delay = 10f;
-        Invoke("NextAnim3", delay);
 
-    }
-    void NextAnim3()
-    {
-        Animator.SetBool("NextAnim3", true);
-        delay = 1f;
-        Invoke("Idle", delay);
-    }
-    void Idle()
-    {
-        Animator.SetBool("Idle", true);
+        switch (index)
+        {
+            case 0:
+                animator.SetTrigger("StartCinematic");
+                print("StartCinematic");
+                break;
 
+            case 1:
+                animator.SetTrigger("NextAnim1");
+                print("NextAnim1");
+                break;
+
+            case 2:
+                animator.SetTrigger("NextAnim2");
+                print("NextAnim2");
+                break;
+
+            case 3:
+                animator.SetTrigger("NextAnim3");
+                print("NextAnim3");
+                break;
+
+            case 4:
+                animator.SetTrigger("Idle");
+                print("Idle");
+                break;
+        }
+
+        index += 1;
     }
 }

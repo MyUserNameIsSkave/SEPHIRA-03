@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     [Header("  DEBUG")]
     [SerializeField]
-    private int audioIndex = -1;
+    private int audioIndex = 0;
 
 
     [SerializeField]

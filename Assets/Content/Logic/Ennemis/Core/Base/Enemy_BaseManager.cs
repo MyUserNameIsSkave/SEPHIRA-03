@@ -654,8 +654,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public void StartPatrolling()
     {
-        Debug.Log("Start Coroutine");
-
         patrolCoroutine = StartCoroutine(PatrolCoroutine());
     }
 
@@ -667,9 +665,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         {
             return;
         }
-
-
-        Debug.Log("Stop Coroutine");
 
 
         chosedPatrolRoute.isAvaliable = true;
