@@ -57,6 +57,9 @@ namespace AYellowpaper.SerializedCollections.Editor
 
         public SerializedDictionaryInstanceDrawer(SerializedProperty property, FieldInfo fieldInfo)
         {
+
+
+
             _fieldInfo = fieldInfo;
             ListProperty = property.FindPropertyRelative(SerializedDictionaryDrawer.SerializedListName);
 

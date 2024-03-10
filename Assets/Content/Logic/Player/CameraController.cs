@@ -101,12 +101,6 @@ public class CameraController : MonoBehaviour
     }
 
 
-    private void Start()
-    {
-        CurrentCamera = CurrentCamera;
-    }
-
-
 
     private void LateUpdate()
     {
