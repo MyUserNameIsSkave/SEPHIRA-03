@@ -39,8 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00012398839, g: 0.000089397894, b: 0.00013287483,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0.0001602357, g: 0.00011552802, b: 0.00017171774, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -36472,7 +36471,8 @@ Transform:
   m_LocalPosition: {x: -4.823, y: 4.8611526, z: -21.498}
   m_LocalScale: {x: 2.3207998, y: 0.117204994, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1541452345}
   m_Father: {fileID: 563551710}
   m_LocalEulerAnglesHint: {x: 0, y: 143.53, z: 68.778}
 --- !u!65 &1518497710
@@ -36570,11 +36570,13 @@ MonoBehaviour:
     - Key: {fileID: 548163842}
       Value: 0.6
     - Key: {fileID: 1042030970}
-      Value: 15
+      Value: 13
     - Key: {fileID: 264437421}
       Value: 1
     - Key: {fileID: 1460452394}
       Value: 5
+    - Key: {fileID: 1541452344}
+      Value: 25
 --- !u!114 &1518497714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38637,6 +38639,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProceduralCable: {fileID: 740007175}
+--- !u!1 &1541452343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541452345}
+  - component: {fileID: 1541452344}
+  m_Layer: 0
+  m_Name: NextLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541452344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541452343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4a22849eb49a149ba9ff2ac587a84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1541452345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541452343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1518497709}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1544223211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5170704342263869748, guid: 0daa4915b05a8624c8dfac4b3d421eca,
