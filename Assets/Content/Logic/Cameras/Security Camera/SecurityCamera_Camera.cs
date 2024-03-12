@@ -8,4 +8,13 @@ public class SecurityCamera_Camera : CameraBase
     {
         return;
     }
+
+    private void Start()
+    {
+        if (cameraController.CurrentCamera == this)
+        {
+            alreadyUsed = true;
+        }
+    }
+
 }
