@@ -84,9 +84,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     [HideInInspector]
     public Coroutine ZoomLerping;
 
+    [HideInInspector]
+    public bool alreadyUsed = false;
 
 
-
+    private CameraIndicator cameraIndicatorScript;
 
 
 
@@ -103,6 +105,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
         if (CanBeManualySelected)
         {
+            alreadyUsed = true;
             Interaction();
         }
     }
@@ -116,6 +119,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
         //Send information to the new Camera that it is the new one
         Transitionned();
+
+        cameraIndicatorScript.TransitionnedFrom();
     }
 
     #endregion
@@ -140,20 +145,13 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         playerObject = GameObject.FindGameObjectWithTag("Player");
         cameraController = GameManager.Instance.CameraController;
 
+        cameraIndicatorScript = GetComponent<CameraIndicator>();
+
         currentCameraFOV = baseFOV;
 
         BaseYaw = BaseHorizontalRotation;
         BasePitch = -BaseVerticalRotation;
     }
-
-
-    private void Start()
-    {
-
-    }
-
-
-
 
 
 
@@ -219,8 +217,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     }
 
     #endregion
-
-
 
 
 

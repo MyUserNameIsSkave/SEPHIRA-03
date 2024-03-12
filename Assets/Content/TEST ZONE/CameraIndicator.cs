@@ -12,6 +12,15 @@ public class CameraIndicator : MonoBehaviour
     private GameObject player;
     private Transform cameraOutlineParent;
     private GameObject curentCameraOutline;
+    private CameraOutlineVisualChange currentOutlineScript;
+    private CameraBase cameraScript;
+
+
+
+
+    [SerializeField]
+    private float outOfScreenMargin = 0;
+
 
 
 
@@ -23,9 +32,23 @@ public class CameraIndicator : MonoBehaviour
 
 
 
+    [SerializeField]
+    private bool isVisible = false;
+    private bool inMargin = false;
+    private bool inScreen = false;
+
+
+
+
+
+
+
+
+
     private void Awake()
     {
         cameraOutlineParent = GameObject.FindWithTag("CameraOutlineParent").transform;
+        cameraScript = GetComponent<CameraBase>();
     }
 
 
@@ -35,51 +58,133 @@ public class CameraIndicator : MonoBehaviour
     }
 
 
-    //private void Update()
-    //{
-    //    RectTransform rect = curentCameraOutline.GetComponent<RectTransform>();
-
-    //    Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
-    //    screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
-
-    //    rect.transform.localPosition = new Vector2(-screenPosition.x + Screen.width / 2, -screenPosition.y + Screen.height / 2);
-
-    //}
-
-
-
-
-
-    //PAS FIABLE
-    private void OnBecameVisible()
+    void FixedUpdate()
     {
-        if (transform.parent.GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
-        {
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
-            return;
+
+
+        if ((screenPosition.x > -outOfScreenMargin && screenPosition.x < 0) || (screenPosition.x > Screen.width && screenPosition.x < Screen.width + outOfScreenMargin) || 
+            (screenPosition.y > -outOfScreenMargin && screenPosition.y < 0) || (screenPosition.y > Screen.height && screenPosition.y < Screen.height + outOfScreenMargin))
+        {
+            // In Margin
+            if (!isVisible)
+            {
+                SpawnUI();
+            }
+            if (!inMargin)
+            {
+                inMargin = true;
+                inScreen = false;
+
+                if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+                {
+                    return;
+                }
+
+                currentOutlineScript.ChangeOutlineSprite(CameraOutlineVisualChange.OutlineSprite.InMargin, cameraScript.alreadyUsed);
+            }
+        }
+        else if ((0 < screenPosition.x && screenPosition.x < Screen.width) && 
+            (0 < screenPosition.y && screenPosition.y < Screen.height))
+        {
+            // In Screen
+            if (!isVisible)
+            {
+                SpawnUI();
+            }
+            if (!inScreen)
+            {
+                inMargin = false;
+                inScreen = true;
+
+                if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+                {
+                    return;
+                }
+
+                currentOutlineScript.ChangeOutlineSprite(CameraOutlineVisualChange.OutlineSprite.OnScreen, cameraScript.alreadyUsed);
+            }
+        }
+        else
+        {
+            //Out of Margin and Screen
+            DestroyUI();
+
+            isVisible = false;
+            inMargin = false;
+            inScreen = false;
         }
 
-        SpawnUI();
+
+
+
+
+
+        if ((-outOfScreenMargin < screenPosition.x && screenPosition.x < Screen.width + outOfScreenMargin) && (-outOfScreenMargin < screenPosition.y && screenPosition.y < Screen.height + outOfScreenMargin))
+        {
+            if (!isVisible)
+            {
+                if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+                {
+                    return;
+                }
+
+
+                isVisible = true;
+                SpawnUI();
+            }
+        }
+        else
+        {
+            if (isVisible)
+            {
+                isVisible = false;
+                DestroyUI();
+            }
+        }
     }
 
-    //PAS FIABLE
-    private void OnBecameInvisible()
+
+
+
+
+
+    public void TransitionnedFrom()
     {
-        DestroyUI();
+        //isVisible = false;
+
+        //Reupdate current ?
+
+        gameObject.GetComponent<CameraBase>().alreadyUsed = false;
+
+
     }
-
-
 
 
     private void SpawnUI()
     {
+        if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+        {
+            return;
+        }
+
+        isVisible = true;
+
         curentCameraOutline = Instantiate(cameraOutlinePrefab, cameraOutlineParent);
+        currentOutlineScript = curentCameraOutline.GetComponent<CameraOutlineVisualChange>();
+        
+
         StartCoroutine(UpdateUI());
     }
 
 
     private void DestroyUI()
     {
+        if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+        {
+            return;
+        }
 
         StopAllCoroutines();
         Destroy(curentCameraOutline);
@@ -92,12 +197,21 @@ public class CameraIndicator : MonoBehaviour
 
         while (true)
         {
+            yield return new LateUpdate();
+
+            if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+            {
+                DestroyUI();
+                yield return null;
+            }
+
+
+
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
             screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
 
             rect.transform.localPosition = new Vector2(-screenPosition.x + Screen.width / 2, -screenPosition.y + Screen.height / 2);
 
-            yield return new LateUpdate();
         }
     }
 

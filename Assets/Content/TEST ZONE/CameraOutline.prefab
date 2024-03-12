@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6692055204698216547}
   - component: {fileID: 6585923719581565944}
   - component: {fileID: 335828385163562645}
+  - component: {fileID: 4751386938708224144}
   m_Layer: 5
   m_Name: CameraOutline
   m_TagString: Untagged
@@ -58,14 +59,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.52156866}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5027a3e2c7bfe544eb96c1bf59d4a086, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f35459fc03454c4e8247c762372bee7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4751386938708224144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350111341981392299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb45cf33e92f8e44913f079c7145fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alreadyUsedColor: {r: 1, g: 1, b: 1, a: 0.22352941}
+  onScreen: {fileID: 21300000, guid: 5027a3e2c7bfe544eb96c1bf59d4a086, type: 3}
+  inMargin: {fileID: 21300000, guid: 4f35459fc03454c4e8247c762372bee7, type: 3}
