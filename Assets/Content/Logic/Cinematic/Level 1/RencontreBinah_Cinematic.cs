@@ -5,10 +5,15 @@ using UnityEngine;
 public class RencontreBinah_Cinematic : MonoBehaviour, IEventTriggerable
 {
     public Animator animator;
+    public GameObject Binah;
 
 
     public int index = 0;
 
+    void Start()
+    {
+        Binah.SetActive(false);
+    }
     public void TriggerEvent()
     {
         print("activated");
@@ -39,6 +44,11 @@ public class RencontreBinah_Cinematic : MonoBehaviour, IEventTriggerable
             case 4:
                 animator.SetTrigger("Idle");
                 print("Idle");
+                break;
+
+            case 5:
+                Binah.SetActive(true);
+                print("SetActive");
                 break;
         }
 
