@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -28,12 +29,13 @@ public class CameraIndicator : MonoBehaviour
     [SerializeField]
     private GameObject cameraOutlinePrefab;
 
-
-
-
-
-
     [SerializeField]
+    private LayerMask layerMask;
+
+
+
+
+
     private bool isVisible = false;
     private bool inMargin = false;
     private bool inScreen = false;
@@ -66,12 +68,21 @@ public class CameraIndicator : MonoBehaviour
 
 
 
-        IsCameraInFront();
+        
         if (!IsCameraInFront())
         {
             DestroyUI();
             return;
         }
+
+        if (!IsCameraVisible())
+        {
+            DestroyUI();
+            return;
+        }
+
+
+
 
         if ((screenPosition.x > -outOfScreenMargin && screenPosition.x < 0) || (screenPosition.x > Screen.width && screenPosition.x < Screen.width + outOfScreenMargin) || 
             (screenPosition.y > -outOfScreenMargin && screenPosition.y < 0) || (screenPosition.y > Screen.height && screenPosition.y < Screen.height + outOfScreenMargin))
@@ -236,6 +247,38 @@ public class CameraIndicator : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+
+
+    private bool IsCameraVisible()
+    {
+
+        GameObject objA = GameManager.Instance.Player;
+        GameObject objB = gameObject;
+
+
+
+        Vector3 direction = (objB.transform.position - objA.transform.position).normalized; // Calcule la direction du raycast
+        float distance = Vector3.Distance(objA.transform.position, objB.transform.position); // Calcule la distance entre les deux objets
+
+
+        Ray ray = new Ray(objA.transform.position, direction); // Crée un rayon
+
+     
+
+        RaycastHit hit; // Variable pour stocker les informations de collision
+
+        bool isHit = Physics.Raycast(ray, out hit, distance, ~layerMask);
+
+        if (isHit)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
