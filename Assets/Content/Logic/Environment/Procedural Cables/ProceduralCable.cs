@@ -128,8 +128,8 @@ public class ProceduralCable : MonoBehaviour
 
 
 
-
-    private void OnEnable()
+    //On Enable de base !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    private void Start()
     {
         StartCoroutine(Loop());
         StartCoroutine(ShowRange());

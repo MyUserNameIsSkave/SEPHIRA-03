@@ -27,6 +27,6 @@ public class Insert_key : MonoBehaviour
 
     private void NextLevel()
     {
-        SceneManager.LoadScene("Level 0.5");
+        SceneManager.LoadSceneAsync("Level 0.5");
     }
 }
