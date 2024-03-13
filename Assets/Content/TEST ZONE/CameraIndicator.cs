@@ -4,6 +4,7 @@ using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 
 public class CameraIndicator : MonoBehaviour
@@ -64,6 +65,14 @@ public class CameraIndicator : MonoBehaviour
 
 
 
+
+        IsCameraInFront();
+        if (!IsCameraInFront())
+        {
+            DestroyUI();
+            return;
+        }
+
         if ((screenPosition.x > -outOfScreenMargin && screenPosition.x < 0) || (screenPosition.x > Screen.width && screenPosition.x < Screen.width + outOfScreenMargin) || 
             (screenPosition.y > -outOfScreenMargin && screenPosition.y < 0) || (screenPosition.y > Screen.height && screenPosition.y < Screen.height + outOfScreenMargin))
         {
@@ -110,10 +119,6 @@ public class CameraIndicator : MonoBehaviour
         {
             //Out of Margin and Screen
             DestroyUI();
-
-            isVisible = false;
-            inMargin = false;
-            inScreen = false;
         }
 
 
@@ -131,7 +136,6 @@ public class CameraIndicator : MonoBehaviour
                 }
 
 
-                isVisible = true;
                 SpawnUI();
             }
         }
@@ -139,7 +143,6 @@ public class CameraIndicator : MonoBehaviour
         {
             if (isVisible)
             {
-                isVisible = false;
                 DestroyUI();
             }
         }
@@ -152,14 +155,10 @@ public class CameraIndicator : MonoBehaviour
 
     public void TransitionnedFrom()
     {
-        //isVisible = false;
-
-        //Reupdate current ?
-
-        gameObject.GetComponent<CameraBase>().alreadyUsed = false;
-
-
+        DestroyUI();
     }
+
+
 
 
     private void SpawnUI()
@@ -168,6 +167,7 @@ public class CameraIndicator : MonoBehaviour
         {
             return;
         }
+
 
         isVisible = true;
 
@@ -181,10 +181,9 @@ public class CameraIndicator : MonoBehaviour
 
     private void DestroyUI()
     {
-        if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
-        {
-            return;
-        }
+        isVisible = false;
+        inMargin = false;
+        inScreen = false;
 
         StopAllCoroutines();
         Destroy(curentCameraOutline);
@@ -199,12 +198,11 @@ public class CameraIndicator : MonoBehaviour
         {
             yield return new LateUpdate();
 
-            if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
-            {
-                DestroyUI();
-                yield return null;
-            }
-
+            //if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
+            //{
+            //    DestroyUI();
+            //    yield return null;
+            //}
 
 
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
@@ -215,5 +213,30 @@ public class CameraIndicator : MonoBehaviour
         }
     }
 
+
+
+
+
+
+    private bool IsCameraInFront()
+    {
+        Vector3 cameraDirection = Camera.main.transform.forward;
+
+        Vector3 viewDirection = Camera.main.transform.forward;
+        Vector3 directionToCamera = (transform.position - Camera.main.transform.position).normalized;
+
+        float FrontAngle = Vector3.Angle(viewDirection, directionToCamera);
+        float BackAngle = Vector3.Angle(-viewDirection, directionToCamera);
+
+
+        if (FrontAngle < BackAngle)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
