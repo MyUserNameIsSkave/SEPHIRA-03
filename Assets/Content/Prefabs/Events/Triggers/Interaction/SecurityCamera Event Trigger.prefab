@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5796144824269487305}
   - component: {fileID: 5501097133711414859}
   - component: {fileID: 2391951725894705392}
+  - component: {fileID: 5753834882536531832}
   m_Layer: 31
   m_Name: SecurityCamera Event Trigger
   m_TagString: Untagged
@@ -107,6 +108,25 @@ MonoBehaviour:
   CameraDirectionCrossOn: 1
   GridPatern: 1
   ForwardLength: 1
+--- !u!114 &5753834882536531832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56573516906362288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8314687a93423cc4dbb8c7fe014157e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outOfScreenMargin: 300
+  cameraOutlinePrefab: {fileID: 1350111341981392299, guid: 1a713a63775b9284f89970e4b8a982c0,
+    type: 3}
+  isVisible: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!1 &5876181552797680484
 GameObject:
   m_ObjectHideFlags: 0

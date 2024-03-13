@@ -114,6 +114,7 @@ MonoBehaviour:
   BaseYaw: 0
   currentCameraFOV: 0
   ZoomLeft: 0
+  alreadyUsed: 0
 --- !u!114 &450508138179445812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,9 @@ MonoBehaviour:
   cameraOutlinePrefab: {fileID: 1350111341981392299, guid: 1a713a63775b9284f89970e4b8a982c0,
     type: 3}
   isVisible: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2147483648
 --- !u!1 &7239958585332854039
 GameObject:
   m_ObjectHideFlags: 0
