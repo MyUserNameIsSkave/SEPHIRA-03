@@ -97,13 +97,6 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     private void PlayerNextLine()
     {
-        print("PUTE");
-
-
-
-
-
-
         if (audioSource.isPlaying)
         {
             audioSource.Stop();

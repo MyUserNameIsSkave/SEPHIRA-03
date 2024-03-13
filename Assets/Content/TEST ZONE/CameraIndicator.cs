@@ -270,7 +270,7 @@ public class CameraIndicator : MonoBehaviour
 
         RaycastHit hit; // Variable pour stocker les informations de collision
 
-        bool isHit = Physics.Raycast(ray, out hit, distance, ~layerMask);
+        bool isHit = Physics.Raycast(ray, out hit, distance - 1, ~layerMask);
 
         if (isHit)
         {
