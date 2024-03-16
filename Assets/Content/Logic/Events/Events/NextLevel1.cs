@@ -20,6 +20,6 @@ public class NextLevel1 : MonoBehaviour, IEventTriggerable
     }
     public void TriggerEvent()
     {
-        SceneManager.LoadScene("Level 1 - TEST");
+        SceneManager.LoadScene("Level 1");
     }
 }

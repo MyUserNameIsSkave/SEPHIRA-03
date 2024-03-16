@@ -131,11 +131,13 @@ public class ProceduralCable : MonoBehaviour
     //On Enable de base !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private void Start()
     {
+
+
+
+
         StartCoroutine(Loop());
         StartCoroutine(ShowRange());
     }
-
-
 
 
 
@@ -202,42 +204,38 @@ public class ProceduralCable : MonoBehaviour
     IEnumerator Loop()
     {
 
-        if (useCustomeFramerate)
+        while (true)
         {
-            frameTime = (1000 / framerate) / 1000;
+            if (useCustomeFramerate)
+            {
+                frameTime = (1000 / framerate) / 1000;
+            }
+            else
+            {
+                frameTime = Time.deltaTime;
+            }
+
+
+
+            if (Vector3.Distance(_camera.transform.position, position) <= MakeStaticDistance || MakeStaticDistance == 0f)
+            {
+                inRange = true;
+
+            }
+            else
+            {
+                inRange = false;
+                frameTime = 1f;
+            }
+
+
+
+            Preview(cableSections);
+
+            yield return new WaitForSeconds(frameTime);
+
         }
-        else
-        {
-            frameTime = Time.deltaTime;
-        }
-
-
-
-        if (Vector3.Distance(_camera.transform.position, position) <= MakeStaticDistance || MakeStaticDistance == 0f)
-        {
-            inRange = true;
-
-        }
-        else
-        {
-            inRange = false;
-            frameTime = 1f;
-        }
-
-
-
-        Preview(cableSections);
-        
-
-
-        yield return new WaitForSeconds(frameTime);
-
-
-        StartCoroutine(Loop());
-
     }
-
-
 
 
 
@@ -267,7 +265,7 @@ public class ProceduralCable : MonoBehaviour
 
 
         // The Direction of SAG is the direction of gravity
-        sagDirection = Physics.gravity.normalized;
+        sagDirection = Vector3.down;
 
 
 
@@ -313,6 +311,11 @@ public class ProceduralCable : MonoBehaviour
         section.start.forward = vectorFromStartToEnd.normalized;
         // Get number of points in the cable using the distance from the start to end, and the point density
         int pointsCount = Mathf.FloorToInt(pointDensity * vectorFromStartToEnd.magnitude);
+
+
+
+
+
 
 
 

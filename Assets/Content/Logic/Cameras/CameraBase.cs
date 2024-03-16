@@ -124,7 +124,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
         if (CanBeManualySelected)
         {
-            alreadyUsed = true;
             Interaction();
         }
     }
@@ -133,6 +132,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     {
 
         //Change Camera
+        cameraController.CurrentCamera.alreadyUsed = true;
         cameraController.CurrentCamera = this;
         UiCamerBars.Instance.UpdateUI();
 

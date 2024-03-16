@@ -225,7 +225,6 @@ public class CameraIndicator : MonoBehaviour
 
         while (true)
         {
-            yield return new LateUpdate();
 
             //if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
             //{
@@ -239,6 +238,7 @@ public class CameraIndicator : MonoBehaviour
 
             rect.transform.localPosition = new Vector2(-screenPosition.x + Screen.width / 2, -screenPosition.y + Screen.height / 2);
 
+            yield return 0;
         }
     }
 

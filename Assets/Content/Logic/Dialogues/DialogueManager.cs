@@ -135,8 +135,6 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
                 {
                     //Display Subtitle
                     DisplaySubtitles(sub);
-
-                    print(subtitles.Value[subIndex]);
                     yield return new WaitForSeconds(subtitles.Value[subIndex]);
 
                     subIndex += 1;
