@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3168252078074909372}
   - component: {fileID: 4960861207644614604}
   - component: {fileID: 1832065887869298196}
+  - component: {fileID: 5266940150610852403}
   m_Layer: 0
   m_Name: LightBalcony
   m_TagString: Untagged
@@ -84,6 +85,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5266940150610852403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476366600609740341}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.010000001, z: 0.01}
+  m_Center: {x: -4.656613e-10, y: 0.0050000004, z: 0.005}
 --- !u!1 &6572024344451227317
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +200,7 @@ GameObject:
   - component: {fileID: 8082864743973088639}
   - component: {fileID: 869342657235794296}
   - component: {fileID: 6938803060770106749}
+  - component: {fileID: 1761312794618004139}
   m_Layer: 0
   m_Name: Balcon (1)
   m_TagString: Untagged
@@ -251,3 +274,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1761312794618004139
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201504281165197312}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4999998, y: 0.2306278, z: 1.2791641}
+  m_Center: {x: 0, y: -0.11531487, z: 0.56042165}

@@ -7,6 +7,7 @@ namespace SimpleFolderIcon.Editor
     [InitializeOnLoad]
     public class CustomFolder
     {
+
         static CustomFolder()
         {
             IconDictionaryCreator.BuildDictionary();
