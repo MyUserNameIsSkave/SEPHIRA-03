@@ -55,6 +55,14 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public Vector2 FOVRange;
 
 
+        [Space(15)]
+        [Header("     INTERACTION")]
+        [Space(7)]
+
+    public float MaxInteractionDistance = 0;
+
+
+
 
 
     // ----- WORKING VARIABLES -----
@@ -90,7 +98,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private CameraIndicator cameraIndicatorScript;
 
-
+    [HideInInspector]
+    public float DistanceWithPlayer;
 
 
     // ----- lOGIC -----
@@ -103,6 +112,16 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         //Recieve Input
 
 
+        if (MaxInteractionDistance != 0)
+        {
+            if (DistanceWithPlayer > MaxInteractionDistance)
+            {
+                return;
+            }
+        }
+
+
+
         if (CanBeManualySelected)
         {
             alreadyUsed = true;
@@ -112,6 +131,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     public void Interaction()
     {
+
         //Change Camera
         cameraController.CurrentCamera = this;
         UiCamerBars.Instance.UpdateUI();
@@ -154,7 +174,10 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     }
 
 
-
+    private void FixedUpdate()
+    {
+        DistanceWithPlayer = Vector3.Distance(transform.position, playerObject.transform.position);
+    }
 
     #region CAMERA ROTATION
 

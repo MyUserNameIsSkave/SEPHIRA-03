@@ -62,10 +62,19 @@ public class CameraIndicator : MonoBehaviour
     {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
 
+        if (cameraScript.MaxInteractionDistance != 0)
+        {
+            if (cameraScript.DistanceWithPlayer > cameraScript.MaxInteractionDistance)
+            {
+                DestroyUI();
+                return;
+            }
+        }
 
 
 
-        
+
+
         if (!IsCameraInFront())
         {
             DestroyUI();
@@ -171,6 +180,12 @@ public class CameraIndicator : MonoBehaviour
 
     private void SpawnUI()
     {
+        if (currentOutlineScript != null)
+        {
+            return;
+        }
+
+
         if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
         {
             return;
@@ -189,10 +204,16 @@ public class CameraIndicator : MonoBehaviour
 
     private void DestroyUI()
     {
+
+
         isVisible = false;
         inMargin = false;
         inScreen = false;
 
+        if (currentOutlineScript == null)
+        {
+            return;
+        }
         StopAllCoroutines();
         Destroy(curentCameraOutline);
     }

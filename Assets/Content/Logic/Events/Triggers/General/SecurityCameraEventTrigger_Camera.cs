@@ -25,6 +25,7 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
 
 
+
     private void Start()
     {
         if (cameraController.CurrentCamera == this)
@@ -70,6 +71,11 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     private void CheckForEventsToDo()
     {
+        if (alreadyUsed)
+        {
+            return;
+        }
+
         foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
         {
             StartCoroutine(ExecuteEvents(kvp));
