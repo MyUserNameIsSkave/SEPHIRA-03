@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00003867946, g: 0.000027875187, b: 0.000041448282,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3224,50 +3223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 487016602832949080, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487016602832949080, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3338353945509453955, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: IndicatedActionMinScore
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3338353945509453955, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: StateVariablesDictionnary.StateVariables.Array.data[3].Value
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6222289231504546218, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
       propertyPath: m_Name
       value: Binah
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443686216564134109, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443686216564134109, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443686216564134109, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443686216564134109, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6706374117544772368, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
         type: 3}
@@ -3318,36 +3277,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7340013218034187450, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: displayScore
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456275914207007011, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: alwaysUpdate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401332345009082934, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_Speed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401332345009082934, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401332345009082934, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8401332345009082934, guid: 1b2efeb905d52b340bf70d5bf1439ac1,
-        type: 3}
-      propertyPath: m_AutoTraverseOffMeshLink
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -283,9 +283,6 @@ public class CameraIndicator : MonoBehaviour
 
 
         Ray ray = new Ray(objA.transform.position, direction); // Crée un rayon
-
-     
-
         RaycastHit hit; // Variable pour stocker les informations de collision
 
         bool isHit = Physics.Raycast(ray, out hit, distance - 1, ~layerMask);
