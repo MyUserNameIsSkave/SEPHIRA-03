@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -14,7 +15,7 @@ public class NavMesh_Updater : MonoBehaviour
     [SerializeField, Range (0.1f, 1f)]
     private float UpdateRate = 0.5f;
 
-
+    private GameObject binah;
 
 
     // ----- LOGIC -----
@@ -24,18 +25,29 @@ public class NavMesh_Updater : MonoBehaviour
 
     private void Start()
     {
+        binah = GameManager.Instance.Binah;
         StartCoroutine(KeepNavmeshUpdated());
     }
-   
-    
+
+    private void MoveBounds()
+    {
+        surface.center = binah.transform.position - transform.position;
+
+    }
+
+
+
     private IEnumerator KeepNavmeshUpdated()
     {
-        surface.UpdateNavMesh(surface.navMeshData);
+        while (true)
+        {
+            //yield return new WaitForNextFrameUnit();
 
-        yield return new WaitForSeconds(UpdateRate);
+            MoveBounds();
+            surface.UpdateNavMesh(surface.navMeshData);
 
-        //Loop
-        StartCoroutine(KeepNavmeshUpdated());
+            yield return new WaitForSeconds(UpdateRate);
+        }
     }
 
 
@@ -53,6 +65,10 @@ public class NavMesh_Updater : MonoBehaviour
         if (surface.isActiveAndEnabled)
         {
             StartCoroutine(UpdateOnClose());
+        }
+        else
+        {
+            StopAllCoroutines();
         }
     }
 
