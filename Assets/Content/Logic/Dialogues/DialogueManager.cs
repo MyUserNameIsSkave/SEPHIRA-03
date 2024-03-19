@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Hardware;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +35,41 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     [Header("  DONT CHANGE LENGTH")]
     public DialogueManager[] nextInterlocutor;                      // Must use IEventTriggerable - Either Next Dialogue or External Event
     public MonoBehaviour[] eventToTrigger;                          // Must use IEventTriggerable - Either Next Dialogue or External Event
+
+
+
+
+
+    [Space(40)]
+
+
+
+    [SerializeField]
+    private bool isBackgroundDialogue;
+
+    [SerializeField]
+    private GameObject backgroundDialoguePrefab;
+
+
+
+    private Transform backgroundDialogueParent;
+
+
+    private GameObject currentBackgroundDialogue;
+
+
+    [SerializeField]
+    private GameObject anchorPoint;
+
+
+
+
+
+
+
+    private TextMeshProUGUI subtitleText;
+
+
 
 
 
@@ -78,6 +116,11 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
+    private void Start()
+    {
+        subtitleText = GameObject.FindGameObjectWithTag("General Subtitle").GetComponent<TextMeshProUGUI>();
+        backgroundDialogueParent = GameObject.FindGameObjectWithTag("Background Subtitle").transform;
+    }
 
 
     private void Update()
@@ -91,16 +134,32 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
+
+
+
+
+
+
+
+
+
     public void TriggerEvent()
     {
-        print("Trigger");
         PlayerNextLine();
     }
 
 
     private void PlayerNextLine()
     {
-        
+
+        if (isBackgroundDialogue && currentBackgroundDialogue == null)
+        {
+            currentBackgroundDialogue = Instantiate(backgroundDialoguePrefab, backgroundDialogueParent);
+            currentBackgroundDialogue.GetComponent<BackgroundSubtitle>().AnchorPoint = anchorPoint;
+        }
+
+
+
 
         if (audioSource.isPlaying)
         {
@@ -130,6 +189,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     {
 
         int dictionnaryIndex = 0;
+
 
         foreach (KeyValuePair<string[], float[]> subtitles in dialogueData.subtitles)
         {
@@ -162,52 +222,65 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-    private TextMeshProUGUI subtitleText;
-
-    private void Start()
-    {
-        subtitleText = GameObject.FindGameObjectWithTag("General Subtitle").GetComponent<TextMeshProUGUI>();
-    }
-
-
-
 
     IEnumerator DisplaySubtitles(string sub)
     {
         yield return new WaitForSeconds(0.5f);
-        subtitleText.text = sub;
+
+
+        if (!isBackgroundDialogue)
+        {
+            subtitleText.text = sub;
+        }
+        else
+        {
+            currentBackgroundDialogue.GetComponent<BackgroundSubtitle>().SetSubtittleTo(sub);
+        }
+
     }
-
-
-
 
 
 
     private void StartEvents()
     {
+        int eventIndex = audioIndex - 1;
+
+
         //Next Dialogue
-        if (nextInterlocutor.Length <= audioIndex)
+        if (nextInterlocutor.Length == audioIndex)
         {
-            subtitleText.text = " ";
+            if (isBackgroundDialogue)
+            {
+                Destroy(currentBackgroundDialogue);
+                currentBackgroundDialogue = null;
+            }
+            else
+            {
+                DisplaySubtitles("");
+            }
+        }
+
+        if (nextInterlocutor.Length <= eventIndex)
+        {
             return;
         }
 
-        if (nextInterlocutor[audioIndex] != null)
+        if (nextInterlocutor[eventIndex] != null)
         {
-            IEventTriggerable eventInterface = nextInterlocutor[audioIndex] as IEventTriggerable;
+            IEventTriggerable eventInterface = nextInterlocutor[eventIndex] as IEventTriggerable;
             eventInterface.TriggerEvent();
         }
 
 
         //Trigger Event
-        if (eventToTrigger.Length <= audioIndex)
+        if (eventToTrigger.Length <= eventIndex)
         {
             return;
         }
 
-        if (eventToTrigger[audioIndex] != null)
+        if (eventToTrigger[eventIndex] != null)
         {
-            IEventTriggerable eventInterface = eventToTrigger[audioIndex] as IEventTriggerable;
+            IEventTriggerable eventInterface = eventToTrigger[eventIndex] as IEventTriggerable;
             eventInterface.TriggerEvent();
         }
     }
