@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour, IEventTriggerable
 {
@@ -91,12 +93,15 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     public void TriggerEvent()
     {
+        print("Trigger");
         PlayerNextLine();
     }
 
 
     private void PlayerNextLine()
     {
+        
+
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
@@ -134,7 +139,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
                 foreach (string sub in subtitles.Key)
                 {
                     //Display Subtitle
-                    DisplaySubtitles(sub);
+                    StartCoroutine(DisplaySubtitles(sub));
                     yield return new WaitForSeconds(subtitles.Value[subIndex]);
 
                     subIndex += 1;
@@ -157,10 +162,22 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-    private void DisplaySubtitles(string sub)
+    private TextMeshProUGUI subtitleText;
+
+    private void Start()
     {
-        print(sub);
+        subtitleText = GameObject.FindGameObjectWithTag("General Subtitle").GetComponent<TextMeshProUGUI>();
     }
+
+
+
+
+    IEnumerator DisplaySubtitles(string sub)
+    {
+        yield return new WaitForSeconds(0.5f);
+        subtitleText.text = sub;
+    }
+
 
 
 
@@ -171,6 +188,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
         //Next Dialogue
         if (nextInterlocutor.Length <= audioIndex)
         {
+            subtitleText.text = " ";
             return;
         }
 

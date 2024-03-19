@@ -41,6 +41,12 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     protected override void Transitionned()
     {
+        if (alreadyUsed)
+        {
+            return;
+        }
+
+
         CheckForCameraChange();
         CheckForEventsToDo();
     }
@@ -71,11 +77,6 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     private void CheckForEventsToDo()
     {
-        if (alreadyUsed)
-        {
-            return;
-        }
-
         foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
         {
             StartCoroutine(ExecuteEvents(kvp));

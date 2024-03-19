@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8902924232631902067}
   - component: {fileID: 115605908900736528}
   - component: {fileID: 4197327466528465252}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Cost
   m_TagString: Stam Cost Text (TEMPORARY)
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8038924533257637138}
   - component: {fileID: 4648224820766046425}
   - component: {fileID: 5587913764183921480}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Zoom Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4648224820766046425
@@ -152,6 +152,142 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2155882589416138042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6274494087885238701}
+  - component: {fileID: 5891110435210863181}
+  - component: {fileID: 4274362401655678571}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: General Subtitle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6274494087885238701
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155882589416138042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5458525404151793952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5891110435210863181
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155882589416138042}
+  m_CullTransparentMesh: 1
+--- !u!114 &4274362401655678571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155882589416138042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Subtitle
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 35
+  m_fontSizeBase: 35
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2793672233655980435
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +299,7 @@ GameObject:
   - component: {fileID: 6262750137878948391}
   - component: {fileID: 3167813155707058924}
   - component: {fileID: 2043447998784947230}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Left Rotation Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +377,7 @@ GameObject:
   - component: {fileID: 1626450998686509465}
   - component: {fileID: 6269547786813494283}
   - component: {fileID: 2001851824048907873}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Zoom Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +453,7 @@ GameObject:
   - component: {fileID: 2235580092507977534}
   - component: {fileID: 4646425717698965077}
   - component: {fileID: 2739350376011122142}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Left Rotation Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +529,7 @@ GameObject:
   - component: {fileID: 2788770704440342127}
   - component: {fileID: 1745372551488567205}
   - component: {fileID: 3429688793260549531}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4314710934451455971}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +641,7 @@ GameObject:
   - component: {fileID: 4748436980100685845}
   - component: {fileID: 7527473905903532453}
   - component: {fileID: 1541895984855334071}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Camera Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +734,7 @@ GameObject:
   - component: {fileID: 4920464443701940514}
   - component: {fileID: 8075198635986078535}
   - component: {fileID: 66631769812941379}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +809,7 @@ GameObject:
   - component: {fileID: 2265437239188200103}
   - component: {fileID: 3454424895003456107}
   - component: {fileID: 6739531688056298857}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Right Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +884,7 @@ GameObject:
   - component: {fileID: 7953331021315039563}
   - component: {fileID: 3137300854394632063}
   - component: {fileID: 5923689180437746008}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Camera Position
   m_TagString: CameraOutlineParent
   m_Icon: {fileID: 0}
@@ -823,7 +959,7 @@ GameObject:
   - component: {fileID: 6205060272902417546}
   - component: {fileID: 398517299137899214}
   - component: {fileID: 8336532916700772996}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,6 +1026,82 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4889423263857818704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5458525404151793952}
+  - component: {fileID: 3017693777259011536}
+  - component: {fileID: 5620133452795861455}
+  m_Layer: 5
+  m_Name: Panel - General Subtitle
+  m_TagString: General Subtitle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5458525404151793952
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889423263857818704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6274494087885238701}
+  m_Father: {fileID: 7052017607976168797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -378}
+  m_SizeDelta: {x: -451.0539, y: -935.4242}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3017693777259011536
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889423263857818704}
+  m_CullTransparentMesh: 1
+--- !u!114 &5620133452795861455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889423263857818704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5259003119924183661
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +1113,7 @@ GameObject:
   - component: {fileID: 4816564063969148274}
   - component: {fileID: 2557948526114604361}
   - component: {fileID: 4079019402028895620}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: 'Stam Bar Forground '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +1188,7 @@ GameObject:
   - component: {fileID: 6350252749201977748}
   - component: {fileID: 7766699475500629232}
   - component: {fileID: 3393808623851246480}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Top Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4930493692029698868}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1299,7 @@ GameObject:
   - component: {fileID: 7128455084360097095}
   - component: {fileID: 6394698320776616046}
   - component: {fileID: 8586429272043881001}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Left Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1374,7 @@ GameObject:
   - component: {fileID: 5377178300968008696}
   - component: {fileID: 6364271189272031219}
   - component: {fileID: 6088609913403001401}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Top Rotation Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1453,7 @@ GameObject:
   - component: {fileID: 8460520846035919191}
   - component: {fileID: 3852093174795203427}
   - component: {fileID: 8537200864850961909}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Canvas - Gameplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,6 +1475,7 @@ RectTransform:
   - {fileID: 6205060272902417546}
   - {fileID: 2270756776131864809}
   - {fileID: 7953331021315039563}
+  - {fileID: 5458525404151793952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1342,7 +1555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3084766336008049811}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8921860917231920142}
   - component: {fileID: 8152118365283967304}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1468,7 +1681,7 @@ GameObject:
   - component: {fileID: 7234510609940704195}
   - component: {fileID: 7939765112604293163}
   - component: {fileID: 8487754285020738436}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Stam Bar Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1542,7 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4769829592795510084}
   - component: {fileID: 9187619410484480243}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1844,7 @@ GameObject:
   - component: {fileID: 1872522760941053287}
   - component: {fileID: 8902911326318382423}
   - component: {fileID: 9065566149273406498}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1706,7 +1919,7 @@ GameObject:
   - component: {fileID: 1394427463003502716}
   - component: {fileID: 4169343612951347238}
   - component: {fileID: 5122846558290845130}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Panel - Top Rotation Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1782,7 +1995,7 @@ GameObject:
   - component: {fileID: 464262987403404535}
   - component: {fileID: 415529406511065706}
   - component: {fileID: 2381225521496025652}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Bottom Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1857,7 +2070,7 @@ GameObject:
   - component: {fileID: 2543685983604300192}
   - component: {fileID: 4494375505113473051}
   - component: {fileID: 7597083133129954447}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1992,7 +2205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4541605118910022869}
   - component: {fileID: 8568004786756585148}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

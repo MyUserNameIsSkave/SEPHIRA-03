@@ -102,7 +102,29 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public float DistanceWithPlayer;
 
 
+    private bool isFirstCamera = false;
+
+
+
+
     // ----- lOGIC -----
+
+
+
+
+
+    private void Start()
+    {
+        if (this == cameraController.CurrentCamera)
+        {
+            isFirstCamera = true;
+        }
+    }
+
+
+
+
+
 
 
     #region INTERFACE
@@ -131,8 +153,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public void Interaction()
     {
 
+
         //Change Camera
-        cameraController.CurrentCamera.alreadyUsed = true;
+
+
+
         cameraController.CurrentCamera = this;
         UiCamerBars.Instance.UpdateUI();
 
@@ -141,6 +166,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         Transitionned();
 
         cameraIndicatorScript.TransitionnedFrom();
+        cameraController.CurrentCamera.alreadyUsed = true;
+        print(cameraController.CurrentCamera);
     }
 
     #endregion
