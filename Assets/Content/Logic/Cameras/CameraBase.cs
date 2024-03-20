@@ -167,7 +167,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
         cameraIndicatorScript.TransitionnedFrom();
         cameraController.CurrentCamera.alreadyUsed = true;
-        print(cameraController.CurrentCamera);
     }
 
     #endregion

@@ -222,28 +222,25 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-
-    IEnumerator DisplaySubtitles(string sub)
-    {
-        yield return new WaitForSeconds(0.5f);
-
-
-        if (!isBackgroundDialogue)
-        {
-            subtitleText.text = sub;
-        }
-        else
-        {
-            currentBackgroundDialogue.GetComponent<BackgroundSubtitle>().SetSubtittleTo(sub);
-        }
-
-    }
-
-
-
     private void StartEvents()
     {
         int eventIndex = audioIndex - 1;
+
+
+        if (audioIndex >= nextInterlocutor.Length)
+        {
+            if (isBackgroundDialogue)
+            {
+                Destroy(currentBackgroundDialogue);
+                currentBackgroundDialogue = null;
+            }
+            else
+            {
+                DisplaySubtitles("");
+            }
+        }
+
+
 
 
         //Next Dialogue
@@ -284,4 +281,27 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
             eventInterface.TriggerEvent();
         }
     }
+
+
+
+
+
+
+
+
+    IEnumerator DisplaySubtitles(string sub)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+
+        if (!isBackgroundDialogue)
+        {
+            subtitleText.text = sub;
+        }
+        else
+        {
+            currentBackgroundDialogue.GetComponent<BackgroundSubtitle>().SetSubtittleTo(sub);
+        }
+
+    }    
 }
