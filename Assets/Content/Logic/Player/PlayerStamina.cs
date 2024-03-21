@@ -27,37 +27,43 @@ public class PlayerStamina : MonoBehaviour
         }
         set
         {
+            staminaUI.previousPoints = _currentStam;
+
             _currentStam = Mathf.Clamp(value, 0, maxStam);
-            UpdateUI();
+
+            if (value == maxStam)
+            {
+                isRegenerating = false;
+            }
+            else if (!isRegenerating)
+            {
+                isRegenerating = true;
+                StartCoroutine(StamRegen());
+            }
+
+
+
+
+            if (value <= maxStam)
+                staminaUI.ValueChanged();
         }
     }
 
+    private StaminaUI staminaUI;
 
 
-    [Header("    REFERENCE")]
-
-    [SerializeField]
-    private Image stamBarForground;
-
+    private bool isRegenerating = true;
 
 
 
-
-
-
-
-
-
-
+    private void Awake()
+    {
+        staminaUI = GameObject.FindGameObjectWithTag("Stamina").GetComponent<StaminaUI>();
+    }
 
 
     private void Start()
     {
-        if (stamBarForground == null)
-        {
-            Debug.LogError("No reference to the Cost UI");
-        }
-
         StartCoroutine(StamRegen());
     }
 
@@ -68,28 +74,11 @@ public class PlayerStamina : MonoBehaviour
 
     private IEnumerator StamRegen()
     {
-        while (true)
+        while (isRegenerating)
         {
             yield return new WaitForSeconds(1 / Mathf.Clamp(stamRegenRate, 0.01f, Mathf.Infinity));
             CurrentStam += 1;
         }
 
-    }
-
-
-
-
-
-
-    private void UpdateUI()
-    {
-        if (stamBarForground == null)
-        {
-            //Debug.LogWarning("No reference to the Stam UI");
-            return;
-        }
-
-        float imageFill = (float)CurrentStam / (float)maxStam;
-        stamBarForground.fillAmount = imageFill;
     }
 }

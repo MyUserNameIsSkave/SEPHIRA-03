@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public Camera mainCamera;
 
+    public PlayerStamina PlayerStam;
 
 
     private void Awake()
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
         CameraController = Player.GetComponent<CameraController>();
 
         mainCamera = Camera.main;
+
+        PlayerStam = Player.GetComponent<PlayerStamina>();
+
     }
 
 
