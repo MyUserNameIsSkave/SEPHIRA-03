@@ -199,7 +199,7 @@ public class BinahIndicator : MonoBehaviour
         while (true)
         {
 
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(transform.position);
             screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
 
             rect.transform.localPosition = new Vector2(-screenPosition.x + Screen.width / 2, -screenPosition.y + Screen.height / 2);

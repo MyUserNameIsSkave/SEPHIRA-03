@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public CameraController CameraController;
     //each components
 
+    public Camera mainCamera;
+
+
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
 
         Player = GameObject.FindGameObjectWithTag("Player");
         CameraController = Player.GetComponent<CameraController>();
+
+        mainCamera = Camera.main;
     }
 
 
