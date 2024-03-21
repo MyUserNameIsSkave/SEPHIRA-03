@@ -31,6 +31,14 @@ public class InteractionCostUI : MonoBehaviour
     private int stamCost;
 
 
+
+
+
+    //If the text disapear with zoom, it's not a code issue
+
+
+
+
     private void Awake()
     {
         parentPanel = GameObject.FindGameObjectWithTag("Interaction Informations").transform;
@@ -39,13 +47,19 @@ public class InteractionCostUI : MonoBehaviour
 
 
 
-
-
-
-
     private void OnMouseEnter()
     {
         uiObject = Instantiate(informationsPrefab, parentPanel);
+
+
+
+        //Cost Text
+        uiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stamCost.ToString();
+
+        //Get child text and set text to cost
+        uiObject.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = interactionName;
+
+
 
         UpdatePosition();
     }
@@ -90,16 +104,13 @@ public class InteractionCostUI : MonoBehaviour
 
 
 
+
     private void UpdatePosition()
     {
-        Vector3 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(anchorPoint.transform.position);
-        uiObject.GetComponent<RectTransform>().transform.position = new Vector2(screenPosition.x + horizontalOffset, screenPosition.y);
+        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(anchorPoint.transform.position);
+        screenPosition = new Vector2(screenPosition.x - Screen.width / 2, screenPosition.y - Screen.height / 2);
 
-        //Cost Text
-        uiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stamCost.ToString();
-
-        //Get child text and set text to cost
-        uiObject.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = interactionName;
+        uiObject.GetComponent<RectTransform>().transform.localPosition = new Vector2(screenPosition.x + horizontalOffset, screenPosition.y);
     }
 
 
