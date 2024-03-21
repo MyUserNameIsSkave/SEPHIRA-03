@@ -60,7 +60,7 @@ public class CameraIndicator : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(transform.position);
 
         if (cameraScript.MaxInteractionDistance != 0)
         {

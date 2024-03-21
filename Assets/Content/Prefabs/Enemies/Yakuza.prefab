@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 1705336699050724317}
   - component: {fileID: 7081505783219189027}
   - component: {fileID: 5213833547853311689}
+  - component: {fileID: 3662253222846387129}
   m_Layer: 30
   m_Name: Stealth Neutralisation Collision
   m_TagString: Untagged
@@ -499,6 +500,23 @@ MonoBehaviour:
     Curiosity: 0
     Independence: 0
   ScoreRange: {x: 0, y: 0}
+--- !u!114 &3662253222846387129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752407141459696984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2089fe5f38f7b4241a0a159459d01c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionName: Neutralization
+  anchorPoint: {fileID: 4752407141459696984}
+  horizontalOffset: 0
+  informationsPrefab: {fileID: 594139075158252633, guid: e7d755c55ae29d540a1702b43c7d269e,
+    type: 3}
 --- !u!1 &6941645472654991970
 GameObject:
   m_ObjectHideFlags: 0
