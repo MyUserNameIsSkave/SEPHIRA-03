@@ -25,16 +25,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        mainCamera = Camera.main;
+        PlayerStam = Player.GetComponent<PlayerStamina>();
 
-        Binah = GameObject.FindGameObjectWithTag("Binah");
-        BinahManager = Binah.GetComponent<UtilityAI_Manager>();
 
         Player = GameObject.FindGameObjectWithTag("Player");
         CameraController = Player.GetComponent<CameraController>();
 
-        mainCamera = Camera.main;
+        Binah = GameObject.FindGameObjectWithTag("Binah");
+        BinahManager = Binah.GetComponent<UtilityAI_Manager>();
 
-        PlayerStam = Player.GetComponent<PlayerStamina>();
 
     }
 

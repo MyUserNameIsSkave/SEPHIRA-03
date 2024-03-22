@@ -99,6 +99,13 @@ public class StaminaUI : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.PlayerStam.CurrentStam == GameManager.Instance.PlayerStam.maxStam)
+        {
+            FadeOut();
+            return;
+        }
+
+
         StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam));
     }
 

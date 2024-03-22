@@ -595,6 +595,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4678253532374121765, guid: 77ad084a3e8b39a47a3e33907933d5af,
+        type: 3}
+      propertyPath: _currentStam
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5725508484586793652, guid: 77ad084a3e8b39a47a3e33907933d5af,
         type: 3}
       propertyPath: _currentCamera
@@ -5582,12 +5587,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 261341710243266031, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 4b7c1aedadab5b041ab3e8c05b855d47,
-        type: 3}
     - target: {fileID: 1872522760941053287, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5602,26 +5601,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907648423408148164, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: testValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907648423408148164, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: timeBeforeFading
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907648423408148164, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: lowOpacityColor.a
-      value: 0.4117647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907648423408148164, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: gainAnimationDuration
-      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2788770704440342127, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
@@ -5651,6 +5630,11 @@ PrefabInstance:
     - target: {fileID: 4920464443701940514, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620133452795861455, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598584829934890269, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
@@ -5758,21 +5742,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8415492600956574906, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: m_TagString
-      value: Stamina
-      objectReference: {fileID: 0}
     - target: {fileID: 8460520846035919191, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1762400597}
-    - target: {fileID: 8460520846035919191, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

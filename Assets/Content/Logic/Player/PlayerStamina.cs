@@ -8,8 +8,7 @@ public class PlayerStamina : MonoBehaviour
     [Header ("    SETTINGS")]                                   
 
 
-    [SerializeField]
-    private int maxStam;
+    public int maxStam;
 
     [SerializeField, Tooltip ("The amount of Stamina regenerate each second. Must be superior to 0")]
     private float stamRegenRate;
@@ -27,9 +26,18 @@ public class PlayerStamina : MonoBehaviour
         }
         set
         {
-            staminaUI.previousPoints = _currentStam;
+            int temp = Mathf.Clamp(value, 0, maxStam);
+            if (temp == CurrentStam)
+            {
+                return;
+            }
 
-            _currentStam = Mathf.Clamp(value, 0, maxStam);
+
+
+            staminaUI.previousPoints = _currentStam;
+            _currentStam = temp;
+
+
 
             if (value == maxStam)
             {
@@ -64,6 +72,11 @@ public class PlayerStamina : MonoBehaviour
 
     private void Start()
     {
+        if (CurrentStam == maxStam)
+        {
+            isRegenerating = false;
+            return;
+        }
         StartCoroutine(StamRegen());
     }
 
