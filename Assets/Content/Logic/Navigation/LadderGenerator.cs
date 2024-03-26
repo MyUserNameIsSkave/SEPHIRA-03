@@ -30,7 +30,7 @@ public class LadderGenerator : MonoBehaviour
 
     // WORKING VARIABLES
 
-    public float pieceSpacing = 2f;
+    public float pieceSpacing = 0.66f;
     private float baseHeight;
     private float pieceNumber;
     private float ladderLength;

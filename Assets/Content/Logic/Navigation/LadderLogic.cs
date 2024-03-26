@@ -6,8 +6,7 @@ using Unity.AI.Navigation;
 
 public class LadderLogic : MonoBehaviour
 {
-    //Settings
-    public float climbingSpeed;
+
 
     //References
     private NavMeshLink link;
@@ -105,7 +104,7 @@ public class LadderLogic : MonoBehaviour
 
             GameManager.Instance.BinahManager.usingLadder = true;
 
-            agent.speed = climbingSpeed;
+
             agent.GetComponent<Animator>().SetBool("ClimbingLader", true);
 
 

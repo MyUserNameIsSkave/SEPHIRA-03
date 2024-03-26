@@ -29,6 +29,7 @@ public class LadderGeneratorEditor : Editor
 
 
 
+
         EditorGUILayout.LabelField("Structure Settings", EditorStyles.boldLabel);
         ladderGenerator.pieceParent = (Transform)EditorGUILayout.ObjectField("Piece Parent", ladderGenerator.pieceParent, typeof(Transform), true);
         ladderGenerator.ladderPiece = (GameObject)EditorGUILayout.ObjectField("Ladder Piece", ladderGenerator.ladderPiece, typeof(GameObject), true);
