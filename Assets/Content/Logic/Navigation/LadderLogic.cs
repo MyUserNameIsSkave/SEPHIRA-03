@@ -18,7 +18,6 @@ public class LadderLogic : MonoBehaviour
     private Vector3 startPoint;
     private Vector3 endPoint;
 
-    float baseAgentSpeed;
     bool inUse = false;
 
 
@@ -53,12 +52,6 @@ public class LadderLogic : MonoBehaviour
         if (_agent)
         {
             agent = _agent;
-
-            if (agent.speed != climbingSpeed)
-            {
-                baseAgentSpeed = agent.speed;
-            }
-
             StartCoroutine(CheckForUse());
         }
     }
@@ -109,6 +102,9 @@ public class LadderLogic : MonoBehaviour
         if (!inUse)
         {
             inUse = true;
+
+            GameManager.Instance.BinahManager.usingLadder = true;
+
             agent.speed = climbingSpeed;
             agent.GetComponent<Animator>().SetBool("ClimbingLader", true);
 
@@ -134,8 +130,9 @@ public class LadderLogic : MonoBehaviour
     private void EndUsing()
     {
         agent.GetComponent<Animator>().SetBool("ClimbingLader", false);
-        agent.speed = baseAgentSpeed;
         inUse = false;
+        GameManager.Instance.BinahManager.usingLadder = false;
+
     }
 
 }

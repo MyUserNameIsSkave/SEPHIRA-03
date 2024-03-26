@@ -25,11 +25,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = Camera.main;
         PlayerStam = Player.GetComponent<PlayerStamina>();
 
 
-        Player = GameObject.FindGameObjectWithTag("Player");
         CameraController = Player.GetComponent<CameraController>();
 
         Binah = GameObject.FindGameObjectWithTag("Binah");
