@@ -29,7 +29,8 @@ public class LadderGenerator : MonoBehaviour
 
 
     // WORKING VARIABLES
-    private float pieceSpacing = 0.36f;
+
+    public float pieceSpacing = 2f;
     private float baseHeight;
     private float pieceNumber;
     private float ladderLength;
@@ -125,12 +126,12 @@ private void Awake()
             if (i == 0)
             {
                 //First Ladder
-                ladderPieces.Add(Instantiate(ladderPiece, instanciatePosition, Quaternion.identity * Quaternion.Euler(-90, 0, 0)));
+                ladderPieces.Add(Instantiate(ladderPiece, instanciatePosition, Quaternion.identity * Quaternion.Euler(0, 0, 0)));
             }
             else
             {
                 //Place others
-                ladderPieces.Add(Instantiate(ladderPiece, instanciatePosition, Quaternion.identity * Quaternion.Euler(-90, 0, 0)));
+                ladderPieces.Add(Instantiate(ladderPiece, instanciatePosition, Quaternion.identity * Quaternion.Euler(0, 0, 0)));
             }
 
             print("iNSTANCIATE");

@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 1655978191093780055}
   - component: {fileID: 3674048304528042314}
   m_Layer: 26
-  m_Name: Binah Outline
+  m_Name: Binah Position Indication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,6 +1551,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7685322453364024352}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 3338353945509453955}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: faff45e86baf5a740bc65b9e3cb8edc2,
         type: 3}
@@ -1700,7 +1704,7 @@ NavMeshAgent:
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 10
+  m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 999999
   m_StoppingDistance: 0.25
@@ -1807,6 +1811,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6bbee5761b6eb44fa645a613acc619f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7685322453364024352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222289231504546218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8767034ac7dc846a380a0126ca2a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outOfScreenMargin: 800
 --- !u!114 &3338353945509453955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,6 +1838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 3.5
   CrouchSpeed: 1.5
+  outOfScreenSpeedMultiplier: 3
+  currentSpeed: 0
+  speedMultiplier: 1
   CustomUpdateFrequency: 0.5
   StateVariablesDictionnary:
     StateVariables:

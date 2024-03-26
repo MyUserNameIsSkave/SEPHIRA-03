@@ -60,7 +60,6 @@ public class UiCamerBars : MonoBehaviour
     public void UpdateUI()
     {
         StartCoroutine(UpdateBarsPositions());
-        print("camera switch");
 
     }
 

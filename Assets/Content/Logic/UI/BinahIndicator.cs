@@ -38,12 +38,10 @@ public class BinahIndicator : MonoBehaviour
 
 
 
-
-
-
     private void Awake()
     {
         cameraOutlineParent = GameObject.FindWithTag("CameraOutlineParent").transform;
+        
     }
 
 
