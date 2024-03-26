@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem.iOS;
 
 public class UtilityAI_Manager : MonoBehaviour
 {
@@ -15,8 +16,15 @@ public class UtilityAI_Manager : MonoBehaviour
     [Space(7)]
 
     public float WalkSpeed;
-
     public float CrouchSpeed;
+    public float LadderSpeed;
+
+    [Range(1f, 4f)]
+    public float outOfScreenSpeedMultiplier;
+
+    [HideInInspector]
+    public float currentSpeed;
+    public float speedMultiplier;
 
 
 
@@ -154,7 +162,8 @@ public class UtilityAI_Manager : MonoBehaviour
     [HideInInspector]
     public bool isHidenBehindCover = false;
 
-
+    [HideInInspector]
+    public bool usingLadder;
 
 
 
@@ -248,7 +257,7 @@ public class UtilityAI_Manager : MonoBehaviour
     private void FixedUpdate()
     {
         currentState.FixedUpdateState();
-
+        UpdateMoveSpeed();
 
         if (Agent.velocity.magnitude == 0 && currentState == MovingState)
         {
@@ -262,7 +271,7 @@ public class UtilityAI_Manager : MonoBehaviour
     {
         //Call Method
         currentState.CustomUdpateState();
-
+        
         //Loop
         yield return new WaitForSeconds(CustomUpdateFrequency);
         StartCoroutine(CustomUpdate());
@@ -357,17 +366,32 @@ public class UtilityAI_Manager : MonoBehaviour
     public void Crouching(bool newCrouchingState)
     {
         isCrouched = newCrouchingState;
-
-        if (isCrouched)
-        {
-            Agent.speed = CrouchSpeed;
-        }
-        else
-        {
-            Agent.speed = WalkSpeed;
-        }
     }
 
 
+
+
+
+
+    private void UpdateMoveSpeed()
+    {
+        if (usingLadder)
+        {
+            currentSpeed = LadderSpeed;
+        }
+        else
+        {
+            if (isCrouched)
+            {
+                currentSpeed = CrouchSpeed;
+            }
+            else
+            {
+                currentSpeed = WalkSpeed;
+            }
+        }
+
+        Agent.speed = currentSpeed * speedMultiplier;
+    }
 
 }
