@@ -136,7 +136,7 @@ MonoBehaviour:
       bufferFormat: 74
     dynamicResolutionSettings:
       enabled: 1
-      useMipBias: 0
+      useMipBias: 1
       enableDLSS: 1
       DLSSPerfQualitySetting: 2
       DLSSInjectionPoint: 0
@@ -145,9 +145,9 @@ MonoBehaviour:
       fsrOverrideSharpness: 0
       fsrSharpness: 0.92
       maxPercentage: 100
-      minPercentage: 100
-      dynResType: 0
-      upsampleFilter: 1
+      minPercentage: 70
+      dynResType: 1
+      upsampleFilter: 5
       forceResolution: 0
       forcedPercentage: 100
       lowResTransparencyMinimumThreshold: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000001
+        m_Values: 010101
         m_SchemaId:
           m_Id: With3Levels
     maximumLODLevel:
