@@ -49,7 +49,10 @@ public class UiCamerBars : MonoBehaviour
     }
 
 
-
+    private void Start()
+    {
+        StartCoroutine(UpdateBarsPositions());
+    }
 
 
 

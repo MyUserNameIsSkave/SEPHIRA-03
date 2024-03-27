@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 4331322885855616850}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.19927979, z: -0.0049996376}
+  m_LocalPosition: {x: 0, y: -0.19927979, z: -1.8}
   m_LocalScale: {x: 17.330622, y: 0.54385, z: 6.9124146}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,6 +453,7 @@ MonoBehaviour:
   pieceParent: {fileID: 8399238413294083731}
   topHandle: {fileID: 6753777894502743718}
   bottomHandle: {fileID: 5407951125350975676}
+  pieceSpacing: 0.66
 --- !u!114 &2866497823286961579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90989ca3039d6cf4b88519637951f84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  climbingSpeed: 0.7
 --- !u!114 &1017270178555158091
 MonoBehaviour:
   m_ObjectHideFlags: 0
