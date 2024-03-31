@@ -26,7 +26,7 @@ public class BinahOutlineVisualChange : MonoBehaviour
 
     private Image image;
 
-
+    private OutlineSprite currentOutlineType;
 
 
     private void Awake()
@@ -39,17 +39,38 @@ public class BinahOutlineVisualChange : MonoBehaviour
 
     public void ChangeOutlineSprite(OutlineSprite currentState)
     {
+        currentOutlineType = currentState;
+
         switch (currentState)
         {
             case OutlineSprite.OnScreen:
                 image.sprite = onScreen;
-                image.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
+                //image.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 150);
                 break;
 
             case OutlineSprite.InMargin:
                 image.sprite = inMargin;
-                image.GetComponent<RectTransform>().sizeDelta = new Vector2(66, 66);
+                //image.GetComponent<RectTransform>().sizeDelta = new Vector2(66, 66);
                 break;
         }
     }
+
+
+
+    public void ChangeOutlineSize(Vector2 visibleSize, Vector2 marginSize)
+    {
+        switch (currentOutlineType)
+        {
+            case OutlineSprite.OnScreen:
+
+                image.GetComponent<RectTransform>().sizeDelta = visibleSize;
+                break;
+
+            case OutlineSprite.InMargin:
+
+                image.GetComponent<RectTransform>().sizeDelta = marginSize;
+                break;
+        }
+    }
+
 }

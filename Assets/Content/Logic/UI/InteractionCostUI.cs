@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using Unity.VisualScripting;
+using static UnityEngine.UI.GridLayoutGroup;
+using System.Runtime.CompilerServices;
 
 public class InteractionCostUI : MonoBehaviour
 {
@@ -18,7 +20,10 @@ public class InteractionCostUI : MonoBehaviour
     private GameObject anchorPoint;
 
     [SerializeField]
-    private float horizontalOffset;
+    private float horizontalPercentOffset;
+
+
+    private float appliedHorizontalOffset;
 
 
     [SerializeField]
@@ -31,7 +36,8 @@ public class InteractionCostUI : MonoBehaviour
     private int stamCost;
 
 
-
+    [SerializeField]
+    private MeshRenderer targetMesh;
 
 
     //If the text disapear with zoom, it's not a code issue
@@ -39,8 +45,16 @@ public class InteractionCostUI : MonoBehaviour
 
 
 
+
+    private void OnValidate()
+    {
+        appliedHorizontalOffset = (Screen.width * horizontalPercentOffset) / 100;
+    }
+
     private void Awake()
     {
+        appliedHorizontalOffset = (Screen.width * horizontalPercentOffset) / 100;
+
         parentPanel = GameObject.FindGameObjectWithTag("Interaction Informations").transform;
         stamCost = GetCost();
     }
@@ -105,13 +119,40 @@ public class InteractionCostUI : MonoBehaviour
 
 
 
+    [SerializeField]
+    private GameObject[] corners;
+
+
+
     private void UpdatePosition()
     {
-        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(anchorPoint.transform.position);
-        screenPosition = new Vector2(screenPosition.x - Screen.width / 2, screenPosition.y - Screen.height / 2);
+        float leftestPoint = -Mathf.Infinity;
+        foreach (GameObject corner in corners)
+        {
+            float currentCornerPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(corner.transform.position).x - Screen.width / 2;
 
-        uiObject.GetComponent<RectTransform>().transform.localPosition = new Vector2(screenPosition.x + horizontalOffset, screenPosition.y);
+            if (currentCornerPosition > leftestPoint)
+            {
+                print("test");
+                leftestPoint = currentCornerPosition;
+            }
+        }
+
+        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targetMesh.bounds.center);
+        screenPosition = new Vector2(leftestPoint + appliedHorizontalOffset, screenPosition.y - Screen.height / 2);
+
+        uiObject.GetComponent<RectTransform>().transform.localPosition = screenPosition;
     }
 
+
+    private void UpdateSize()
+    {
+        // Logique: https://discord.com/channels/1096475787860906074/1096475788301320206/1224048736242634852
+
+
+        //For 1, Get the Screen Height of the object with Corners Screen Position
+        //For 2 Just put a settings in the Inspector
+        //See to adjust "appliedHorizontalOffset" with Object Screen Size (Percentage of the On Screen Width of the Object ?
+    }
 
 }

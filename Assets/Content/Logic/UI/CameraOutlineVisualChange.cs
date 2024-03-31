@@ -58,7 +58,6 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
                     image.sprite = onScreen;
                     image.color = alreadyUsedColor;
-                    image.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
                 }
                 else
                 {
@@ -69,7 +68,6 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
                     image.sprite = onScreen;
                     image.color = Color.white;
-                    image.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
                 }
                 break;
 
@@ -84,7 +82,6 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
                     image.sprite = inMargin;
                     image.color = alreadyUsedColor;
-                    image.GetComponent<RectTransform>().sizeDelta = new Vector2(44, 44);
 
                 }
                 else
@@ -96,7 +93,6 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
                     image.sprite = inMargin;
                     image.color = Color.white;
-                    image.GetComponent<RectTransform>().sizeDelta = new Vector2(44, 44);
                 }
                 break;
         }

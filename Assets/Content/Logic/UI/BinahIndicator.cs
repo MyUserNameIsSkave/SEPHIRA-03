@@ -37,7 +37,6 @@ public class BinahIndicator : MonoBehaviour
 
 
 
-
     private void Awake()
     {
         cameraOutlineParent = GameObject.FindWithTag("CameraOutlineParent").transform;
@@ -196,6 +195,7 @@ public class BinahIndicator : MonoBehaviour
 
         while (true)
         {
+            currentOutlineScript.ChangeOutlineSize(GetAdaptedVisibleSize(), GetAdaptedMargineSize());
 
             Vector3 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(transform.position);
             screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
@@ -262,6 +262,104 @@ public class BinahIndicator : MonoBehaviour
             return true;
         }
     }
+
+
+
+
+
+
+    [Space(20)]
+
+    [SerializeField]
+    private MeshRenderer targeRenderer;
+
+
+
+
+    [Space(20)]
+    [Header("  VISIBLE ICON SIZE SETTINGS")]
+    [Space(7)]
+
+    [SerializeField]
+    private float minPercentMargin;
+
+    [SerializeField]
+    private float maxPercentMargin;
+
+
+    [SerializeField]
+    private float minObjectScreenSize;
+
+    [SerializeField]
+    private float maxObjectScreenSize;
+
+    [Space(20)]
+    [Header("  MARGINE ICON SIZE SETTINGS")]
+    [Space(7)]
+
+    [SerializeField]
+    private float minMarginPercentSize;
+
+    [SerializeField]
+    private float maxMarginPercentSize;
+
+
+    [SerializeField]
+    private float minMarginDistance;
+
+    [SerializeField]
+    private float maxMarginDistance;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private Vector2 GetAdaptedVisibleSize()
+    {
+        Vector2 minScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.min);
+        Vector2 maxScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.max);
+
+        float screenSize = Vector2.Distance(minScreenPosition, maxScreenPosition);
+        float minPercent = Screen.width * minPercentMargin / 100;
+        float maxPercent = Screen.width * maxPercentMargin / 100;
+
+        float sizeLerp = Mathf.Clamp01(screenSize / maxObjectScreenSize);
+
+        Vector2 size = Vector2.one * Mathf.Lerp(minPercent, maxPercent, sizeLerp);
+
+        return size;
+    }
+
+
+
+
+
+    private Vector2 GetAdaptedMargineSize()
+    {
+        float minPercent = Screen.width * minMarginPercentSize / 100;
+        float maxPercent = Screen.width * maxMarginPercentSize / 100;
+
+        float lerpValue = (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) - minMarginDistance) / (maxMarginDistance - minMarginDistance);
+
+        Vector2 size = Vector2.one * Mathf.Lerp(maxPercent, minPercent, lerpValue);
+
+        return size;
+    }
+
 
 
 
