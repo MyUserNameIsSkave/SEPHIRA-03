@@ -26,7 +26,7 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
 
 
-
+    private OutlineSprite currentOutlineType;
 
     private Image image;
 
@@ -43,7 +43,9 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
     public void ChangeOutlineSprite(OutlineSprite currentState, bool alreadyUsed)
     {
-        switch (currentState)
+        currentOutlineType = currentState;
+
+        switch (currentOutlineType)
         {
             case OutlineSprite.OnScreen:
 
@@ -99,4 +101,25 @@ public class CameraOutlineVisualChange : MonoBehaviour
                 break;
         }
     }
+
+
+
+
+    public void ChangeOutlineSize(Vector2 visibleSize, Vector2 marginSize)
+    {
+        switch (currentOutlineType)
+        {
+            case OutlineSprite.OnScreen:
+
+                image.GetComponent<RectTransform>().sizeDelta = visibleSize;
+                break;
+
+            case OutlineSprite.InMargin:
+
+                image.GetComponent<RectTransform>().sizeDelta = marginSize;
+                break;
+        }
+    }
+
+
 }

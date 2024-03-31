@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
+using System.Security;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,34 +11,100 @@ using UnityEngine;
 public class CameraIndicator : MonoBehaviour
 {
 
-    private GameObject player;
-    private Transform cameraOutlineParent;
-    private GameObject curentCameraOutline;
-    private CameraOutlineVisualChange currentOutlineScript;
-    private CameraBase cameraScript;
-
-
-
-
     [SerializeField]
     private float outOfScreenMargin = 0;
 
 
+    [SerializeField]
+    private LayerMask layerMask;
+
+
+        [Space(20)]
 
 
     [SerializeField]
     private GameObject cameraOutlinePrefab;
 
     [SerializeField]
-    private LayerMask layerMask;
+    private GameObject indicatorCenter;
 
 
 
 
 
+    [Space(20)]
+    [Header("  VISIBLE ICON SIZE SETTINGS")]
+    [Space(7)]
+
+    [SerializeField]
+    private float minPercentMargin;
+
+    [SerializeField]
+    private float maxPercentMargin;
+
+
+    [SerializeField]
+    private float minObjectScreenSize;
+
+    [SerializeField]
+    private float maxObjectScreenSize;
+
+    [Space(20)]
+    [Header("  MARGINE ICON SIZE SETTINGS")]
+    [Space(7)]
+
+    [SerializeField]
+    private float minMarginPercentSize;
+
+    [SerializeField]
+    private float maxMarginPercentSize;
+
+
+    [SerializeField]
+    private float minMarginDistance;
+
+    [SerializeField]
+    private float maxMarginDistance;
+
+
+
+
+
+
+
+
+    private GameObject player;
+    private Transform cameraOutlineParent;
+    private GameObject curentCameraOutline;
+    private CameraOutlineVisualChange currentOutlineScript;
+    private CameraBase cameraScript;
     private bool isVisible = false;
     private bool inMargin = false;
     private bool inScreen = false;
+
+
+
+    [SerializeField]
+    private MeshRenderer targeRenderer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,7 +129,7 @@ public class CameraIndicator : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(transform.position);
+        Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(indicatorCenter.transform.position);
 
         if (cameraScript.MaxInteractionDistance != 0)
         {
@@ -225,15 +294,9 @@ public class CameraIndicator : MonoBehaviour
 
         while (true)
         {
+            currentOutlineScript.ChangeOutlineSize(GetAdaptedVisibleSize(), GetAdaptedMargineSize());
 
-            //if (GetComponent<CameraBase>() == GameManager.Instance.CameraController.CurrentCamera)
-            //{
-            //    DestroyUI();
-            //    yield return null;
-            //}
-
-
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(indicatorCenter.transform.position);
             screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
 
             rect.transform.localPosition = new Vector2(-screenPosition.x + Screen.width / 2, -screenPosition.y + Screen.height / 2);
@@ -252,7 +315,7 @@ public class CameraIndicator : MonoBehaviour
         Vector3 cameraDirection = Camera.main.transform.forward;
 
         Vector3 viewDirection = Camera.main.transform.forward;
-        Vector3 directionToCamera = (transform.position - Camera.main.transform.position).normalized;
+        Vector3 directionToCamera = (indicatorCenter.transform.position - Camera.main.transform.position).normalized;
 
         float FrontAngle = Vector3.Angle(viewDirection, directionToCamera);
         float BackAngle = Vector3.Angle(-viewDirection, directionToCamera);
@@ -274,7 +337,7 @@ public class CameraIndicator : MonoBehaviour
     {
 
         GameObject objA = GameManager.Instance.Player;
-        GameObject objB = gameObject;
+        GameObject objB = indicatorCenter;
 
 
 
@@ -296,5 +359,45 @@ public class CameraIndicator : MonoBehaviour
             return true;
         }
     }
+
+
+
+
+
+
+    private Vector2 GetAdaptedVisibleSize()
+    {
+        Vector2 minScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.min);
+        Vector2 maxScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.max);
+
+        float screenSize = Vector2.Distance(minScreenPosition, maxScreenPosition);
+        float minPercent = Screen.width * minPercentMargin / 100;
+        float maxPercent = Screen.width * maxPercentMargin / 100;
+
+        float sizeLerp = Mathf.Clamp01(screenSize / maxObjectScreenSize);
+
+        Vector2 size = Vector2.one * Mathf.Lerp(minPercent, maxPercent, sizeLerp);
+
+        return size;
+    }
+
+
+
+
+
+    private Vector2 GetAdaptedMargineSize()
+    {
+        float minPercent = Screen.width * minMarginPercentSize / 100;
+        float maxPercent = Screen.width * maxMarginPercentSize / 100;
+
+        float lerpValue = (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) - minMarginDistance) / (maxMarginDistance - minMarginDistance);
+
+        Vector2 size = Vector2.one * Mathf.Lerp(maxPercent, minPercent, lerpValue);
+
+        return size;
+    }
+
+
+
 
 }

@@ -45,7 +45,6 @@ public class AdaptiveMovementSpeed : MonoBehaviour
         {
             binahManager.speedMultiplier = binahManager.outOfScreenSpeedMultiplier;
             isOutOfScreen = true;
-            print("Out");
         }
         else if (isOutOfScreen)
         {
