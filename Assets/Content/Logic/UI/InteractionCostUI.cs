@@ -63,9 +63,12 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        UpdateStamPreview(stamCost);
+
+
+
+
         uiObject = Instantiate(informationsPrefab, parentPanel);
-
-
 
         //Cost Text
         uiObject.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = stamCost.ToString();
@@ -90,6 +93,8 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseExit()
     {
+        UpdateStamPreview(0);
+
         Destroy(uiObject);
     }
 
@@ -117,6 +122,15 @@ public class InteractionCostUI : MonoBehaviour
     }
 
 
+    private void UpdateStamPreview(int newCurrentCost)
+    {
+        GameManager.Instance.PlayerStam.staminaUI.currentCost = newCurrentCost;
+        GameManager.Instance.PlayerStam.staminaUI.FadeIn();
+        GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+    }
+
+
+
 
 
     [SerializeField]
@@ -133,7 +147,6 @@ public class InteractionCostUI : MonoBehaviour
 
             if (currentCornerPosition > leftestPoint)
             {
-                print("test");
                 leftestPoint = currentCornerPosition;
             }
         }
@@ -154,5 +167,10 @@ public class InteractionCostUI : MonoBehaviour
         //For 2 Just put a settings in the Inspector
         //See to adjust "appliedHorizontalOffset" with Object Screen Size (Percentage of the On Screen Width of the Object ?
     }
+
+
+
+
+
 
 }

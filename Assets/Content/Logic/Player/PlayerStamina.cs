@@ -53,11 +53,12 @@ public class PlayerStamina : MonoBehaviour
 
 
             if (value <= maxStam)
-                staminaUI.ValueChanged();
+                staminaUI.ValueChanged(true);
         }
     }
 
-    private StaminaUI staminaUI;
+    [HideInInspector]
+    public StaminaUI staminaUI;
 
 
     private bool isRegenerating = true;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.PlayerLoop.PreUpdate;
 
 
 public class StaminaUI : MonoBehaviour
@@ -46,7 +47,21 @@ public class StaminaUI : MonoBehaviour
     [SerializeField]
     private Color lowOpacityColor;
 
+
     [Space(10)]
+
+    [SerializeField]
+    private bool useCostPreview;
+
+    [SerializeField]
+    private Color previewColor;
+
+    [SerializeField]
+    private Color lowOpacityPreviewColor;
+
+
+    [Space(10)]
+
 
     [SerializeField]
     private bool useGainAnimation;
@@ -66,6 +81,15 @@ public class StaminaUI : MonoBehaviour
 
 
 
+    [Range(0, 9)]
+    public int currentCost;
+
+
+
+
+
+
+
     #region Debugging
     [Header ("  DEBUG")]
 
@@ -76,7 +100,7 @@ public class StaminaUI : MonoBehaviour
 
     private void OnValidate()
     {
-        UpdateVisuals(testValue);
+        UpdateVisuals(testValue, true);
 
         foreach (var image in points)
         {
@@ -105,16 +129,16 @@ public class StaminaUI : MonoBehaviour
             return;
         }
 
+        StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam, true));
 
-        StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam));
     }
 
 
 
-    public void ValueChanged()
+    public void ValueChanged(bool gainUpdate)
     {
         StopAllCoroutines();
-        StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam));
+        StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam, gainUpdate));
     }
 
 
@@ -125,12 +149,9 @@ public class StaminaUI : MonoBehaviour
 
 
 
-    IEnumerator UpdateVisuals(int currentPoints)
+    IEnumerator UpdateVisuals(int currentPoints, bool gainUpdate)
     {
         FadeIn();
-
-
-
 
 
         //Reset All Points
@@ -155,6 +176,8 @@ public class StaminaUI : MonoBehaviour
             //Base
             points[i].sprite = full;
 
+
+
             // ---------------------- Tests ----------------------
 
             //Variable Opacity
@@ -167,12 +190,62 @@ public class StaminaUI : MonoBehaviour
             //Gain Animation
             if (useGainAnimation)
             {
-                if (i == currentPoints - 1 && currentPoints > previousPoints)
+                if (gainUpdate)
                 {
-                    StartCoroutine(GainAnimation(points[i]));
+                    if (i == currentPoints - 1 && currentPoints > previousPoints)
+                    {
+                        if (previousGainAnimated != null)
+                        {
+                            previousGainAnimated.rectTransform.sizeDelta = Vector2.one * 22;
+                        }
+
+                        StartCoroutine(GainAnimation(points[i]));
+                    }
+                }
+            }
+
+
+            //Preview Cost - Have the Points
+            if (useCostPreview)
+            {
+                if (i >= currentPoints - currentCost)
+                {
+                    points[i].color = previewColor;
+                    points[i].transform.GetChild(0).GetComponent<Image>().color = previewColor;
+
                 }
             }
         }
+
+
+        //Preview Cost - Missing Points
+
+        if (useCostPreview)
+        {
+            int i = 0;
+            foreach (Image image in points)
+            {
+                if (currentPoints - currentCost < 0 && i < currentCost)
+                {
+                    if (i! < currentPoints)
+                    {
+                        image.color = previewColor;
+                        image.transform.GetChild(0).GetComponent<Image>().color = previewColor;
+                    }
+                    else
+                    {
+                        image.color = lowOpacityPreviewColor;
+                        image.transform.GetChild(0).GetComponent<Image>().color = lowOpacityPreviewColor;
+                    }
+                }
+
+                i += 1;
+            }
+        }
+
+        
+
+
 
         yield return new WaitForSeconds(timeBeforeFading);
         FadeOut();
@@ -181,17 +254,18 @@ public class StaminaUI : MonoBehaviour
 
 
 
+    private Image previousGainAnimated;
+
+
+    //Voir pour ajouter un buffer du dernier Gained Point et le forcement le reset a l'activation de la Coroutine (Pour régler un bug ou un point vide peut rester grand)
     IEnumerator GainAnimation(Image gainedPoint)
     {
+        previousGainAnimated = gainedPoint;
         gainedPoint.rectTransform.sizeDelta = Vector2.one * 22 * gainAnimationSizeMultiplier;
 
         yield return new WaitForSeconds(gainAnimationDuration);
 
         gainedPoint.rectTransform.sizeDelta = Vector2.one * 22;
-
-
-
-
     }
 
 
@@ -202,16 +276,20 @@ public class StaminaUI : MonoBehaviour
 
 
 
-    private void FadeIn()
+    public void FadeIn()
     {
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
 
-    private void FadeOut()
+    public void FadeOut()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
+        if (currentCost != 0)
+        {
+            return;
+        }
 
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
 }

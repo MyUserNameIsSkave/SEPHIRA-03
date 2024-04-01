@@ -388,6 +388,11 @@ PrefabInstance:
       propertyPath: _currentStam
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4678253532374121765, guid: 77ad084a3e8b39a47a3e33907933d5af,
+        type: 3}
+      propertyPath: stamRegenRate
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5725508484586793652, guid: 77ad084a3e8b39a47a3e33907933d5af,
         type: 3}
       propertyPath: _currentCamera
@@ -4765,6 +4770,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485026205186273197, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1872522760941053287, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4814,6 +4824,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: previewColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: previewColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: previewColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: previewColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: useCostPreview
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: timeBeforeFading
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: lowOpacityPreviewColor.a
+      value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: lowOpacityPreviewColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: lowOpacityPreviewColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897642796253995057, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
+        type: 3}
+      propertyPath: lowOpacityPreviewColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6531418217681412757, guid: 45c2ec3a344baa548b9f5cc50d3e0e77,
         type: 3}
@@ -5369,17 +5429,17 @@ PrefabInstance:
     - target: {fileID: 3179485383176077168, guid: daf52d82ec1d53747944d64e4c8348e8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 150.0258
+      value: 150.72704
       objectReference: {fileID: 0}
     - target: {fileID: 3179485383176077168, guid: daf52d82ec1d53747944d64e4c8348e8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.805052
+      value: 25.80505
       objectReference: {fileID: 0}
     - target: {fileID: 3179485383176077168, guid: daf52d82ec1d53747944d64e4c8348e8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -48.128162
+      value: -47.433884
       objectReference: {fileID: 0}
     - target: {fileID: 3179485383176077168, guid: daf52d82ec1d53747944d64e4c8348e8,
         type: 3}
@@ -5470,6 +5530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: horizontalPercentOffset
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6388399340161931417, guid: daf52d82ec1d53747944d64e4c8348e8,
+        type: 3}
+      propertyPath: stamCost
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8497370347976206464, guid: daf52d82ec1d53747944d64e4c8348e8,
         type: 3}
