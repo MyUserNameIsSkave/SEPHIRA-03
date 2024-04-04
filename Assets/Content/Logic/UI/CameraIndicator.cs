@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Security;
-using Unity.VisualScripting;
 using UnityEngine;
+
 
 
 public class CameraIndicator : MonoBehaviour
@@ -13,7 +10,6 @@ public class CameraIndicator : MonoBehaviour
 
     [SerializeField]
     private float outOfScreenMargin = 0;
-
 
     [SerializeField]
     private LayerMask layerMask;
@@ -37,17 +33,11 @@ public class CameraIndicator : MonoBehaviour
     [Space(7)]
 
     [SerializeField]
-    private float minPercentMargin;
+    private float minScreenPercentSize;
 
     [SerializeField]
-    private float maxPercentMargin;
+    private float screenPercentSizeAdd;
 
-
-    [SerializeField]
-    private float minObjectScreenSize;
-
-    [SerializeField]
-    private float maxObjectScreenSize;
 
     [Space(20)]
     [Header("  MARGINE ICON SIZE SETTINGS")]
@@ -68,6 +58,13 @@ public class CameraIndicator : MonoBehaviour
 
 
 
+
+    [Space(20)]
+    [Header("  SETTINGS")]
+    [Space(7)]
+
+    [SerializeField]
+    private List<GameObject> corners;
 
 
 
@@ -294,7 +291,14 @@ public class CameraIndicator : MonoBehaviour
 
         while (true)
         {
-            currentOutlineScript.ChangeOutlineSize(GetAdaptedVisibleSize(), GetAdaptedMargineSize());
+            if (isVisible)
+            {
+                currentOutlineScript.ChangeOutlineSize(GetAdaptedVisibleSize(), new Vector2(0, 0));
+            }
+            if (inMargin)
+            {
+                currentOutlineScript.ChangeOutlineSize(new Vector2(0, 0), GetAdaptedMargineSize());
+            }
 
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(indicatorCenter.transform.position);
             screenPosition = new Vector2(Mathf.Lerp(Screen.width, 0, screenPosition.x / Screen.width), Mathf.Lerp(Screen.height, 0, screenPosition.y / Screen.height));
@@ -362,26 +366,47 @@ public class CameraIndicator : MonoBehaviour
 
 
 
-
-
-
     private Vector2 GetAdaptedVisibleSize()
     {
-        Vector2 minScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.min);
-        Vector2 maxScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targeRenderer.bounds.max);
+        float largestDistance = -Mathf.Infinity;
+        List<GameObject> targetCorners = corners;
+        List<GameObject> alreadyTestedCorners = new List<GameObject>();
 
-        float screenSize = Vector2.Distance(minScreenPosition, maxScreenPosition);
-        float minPercent = Screen.width * minPercentMargin / 100;
-        float maxPercent = Screen.width * maxPercentMargin / 100;
 
-        float sizeLerp = Mathf.Clamp01(screenSize / maxObjectScreenSize);
+        float distance = 0;
 
-        Vector2 size = Vector2.one * Mathf.Lerp(minPercent, maxPercent, sizeLerp);
+        foreach (GameObject corner in corners)
+        {
+            alreadyTestedCorners.Add(corner);
 
-        return size;
+            Vector3 rawScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(corner.transform.position);
+            Vector2 screenPosition = new Vector2(rawScreenPosition.x, rawScreenPosition.y);
+
+
+            foreach (GameObject targetCorner in targetCorners)
+            {
+                //Optimisation (?)
+                if (alreadyTestedCorners.Contains(targetCorner))
+                {
+                    continue;
+                }
+
+                Vector3 targetRawScreenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targetCorner.transform.position);
+                Vector2 targetScreenPosition = new Vector2(targetRawScreenPosition.x, targetRawScreenPosition.y);
+
+                distance = Vector2.Distance(screenPosition, targetScreenPosition);
+
+                if (distance > largestDistance)
+                {
+                    largestDistance = distance;
+                }
+            }
+
+        }
+
+        largestDistance = Mathf.Clamp(largestDistance + Screen.width * screenPercentSizeAdd / 100, Screen.width * minScreenPercentSize / 100, Mathf.Infinity);
+        return new Vector2(largestDistance, largestDistance);
     }
-
-
 
 
 
