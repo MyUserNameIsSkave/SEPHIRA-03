@@ -229,6 +229,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
         PivotPoint.transform.localRotation = Quaternion.Euler(-BasePitch, BaseYaw, 0);
 
+        if (UiCamerBars.Instance == null)
+        {
+            Debug.LogError("NO CANVAS REFERENCE IN GAME MANAGER");
+        }
+
         UiCamerBars.Instance.UpdateUI();
     }
 

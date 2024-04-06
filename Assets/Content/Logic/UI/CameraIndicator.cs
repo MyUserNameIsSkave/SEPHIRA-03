@@ -175,6 +175,9 @@ public class CameraIndicator : MonoBehaviour
                 }
 
                 currentOutlineScript.ChangeOutlineSprite(CameraOutlineVisualChange.OutlineSprite.InMargin, cameraScript.alreadyUsed);
+                currentOutlineScript.ChangeOutlineSize(new Vector2(0, 0), GetAdaptedMargineSize()); // Spawn it with the right size
+
+
             }
         }
         else if ((0 < screenPosition.x && screenPosition.x < Screen.width) && 
@@ -196,6 +199,8 @@ public class CameraIndicator : MonoBehaviour
                 }
 
                 currentOutlineScript.ChangeOutlineSprite(CameraOutlineVisualChange.OutlineSprite.OnScreen, cameraScript.alreadyUsed);
+                currentOutlineScript.ChangeOutlineSize(GetAdaptedVisibleSize(), new Vector2(0, 0)); // Spawn it with the right size
+
             }
         }
         else
@@ -262,7 +267,6 @@ public class CameraIndicator : MonoBehaviour
 
         curentCameraOutline = Instantiate(cameraOutlinePrefab, cameraOutlineParent);
         currentOutlineScript = curentCameraOutline.GetComponent<CameraOutlineVisualChange>();
-        
 
         StartCoroutine(UpdateUI());
     }
