@@ -21,7 +21,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     public Consideration Consideration;
 
     [Tooltip ("The distance from the center at witch the action can be executed by the AI")]
-    public float ActionRange;
+    public float ActionRange = 1f;
 
 
 

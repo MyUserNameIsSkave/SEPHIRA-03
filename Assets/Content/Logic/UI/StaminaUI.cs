@@ -151,7 +151,10 @@ public class StaminaUI : MonoBehaviour
 
     IEnumerator UpdateVisuals(int currentPoints, bool gainUpdate)
     {
-        FadeIn();
+        if (currentCost != 0)
+        {
+            FadeIn();
+        }
 
 
         //Reset All Points

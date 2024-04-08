@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BinahIndicator : MonoBehaviour
 {
@@ -167,6 +168,8 @@ public class BinahIndicator : MonoBehaviour
         binahOutline = Instantiate(cameraOutlinePrefab, cameraOutlineParent);
         currentOutlineScript = binahOutline.GetComponent<BinahOutlineVisualChange>();
 
+        currentOutlineScript.ChangeOutlineSprite(BinahOutlineVisualChange.OutlineSprite.InMargin);
+        currentOutlineScript.ChangeOutlineSize(new Vector2(0, 0), new Vector2(0, 0));           //
 
         StartCoroutine(UpdateUI());
     }
@@ -191,6 +194,8 @@ public class BinahIndicator : MonoBehaviour
 
     IEnumerator UpdateUI()
     {
+
+
         RectTransform rect = binahOutline.GetComponent<RectTransform>();
 
         while (true)

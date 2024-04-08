@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using static UnityEngine.UI.GridLayoutGroup;
 using System.Runtime.CompilerServices;
+using static UnityEngine.PlayerLoop.PreUpdate;
 
 public class InteractionCostUI : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class InteractionCostUI : MonoBehaviour
     private MeshRenderer targetMesh;
 
 
+    public bool IsActive = true;
+
+
     //If the text disapear with zoom, it's not a code issue
 
 
@@ -59,10 +63,18 @@ public class InteractionCostUI : MonoBehaviour
         stamCost = GetCost();
     }
 
-
+    private void Start()
+    {
+        //do not remove
+    }
 
     private void OnMouseEnter()
     {
+        if (!IsActive)
+        {
+            return;
+        }
+
         UpdateStamPreview(stamCost);
 
 
@@ -84,6 +96,14 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (!IsActive)
+        {
+            if (uiObject != null)
+            {
+                Destroy(uiObject);
+            }
+            return;
+        }
         //Utile en cas de zoom
         UpdatePosition();
     }
@@ -93,9 +113,9 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseExit()
     {
-        UpdateStamPreview(0);
-
         Destroy(uiObject);
+        UpdateStamPreview(0);
+        GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
     }
 
 
@@ -125,8 +145,11 @@ public class InteractionCostUI : MonoBehaviour
     private void UpdateStamPreview(int newCurrentCost)
     {
         GameManager.Instance.PlayerStam.staminaUI.currentCost = newCurrentCost;
-        GameManager.Instance.PlayerStam.staminaUI.FadeIn();
-        GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+
+        if (newCurrentCost != 0)
+        {
+            GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+        }
     }
 
 
