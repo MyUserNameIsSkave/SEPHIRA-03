@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 using GD.MinMaxSlider;
+using Unity.VisualScripting;
+using System.Linq;
 
 public abstract class CameraBase : MonoBehaviour, IInteractable
 {
@@ -59,7 +61,10 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         [Header("     INTERACTION")]
         [Space(7)]
 
-    public float MaxInteractionDistance = 0;
+    public CameraBase[] accessibleCameras;
+
+    [HideInInspector]
+    public bool isCameraAccessible;
 
 
 
@@ -134,12 +139,22 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         //Recieve Input
 
 
-        if (MaxInteractionDistance != 0)
+        print(GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length + " + " + gameObject);
+
+
+        if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
-            if (DistanceWithPlayer > MaxInteractionDistance)
+            if (!isCameraAccessible)
             {
+                print("Dont Contain");
                 return;
             }
+            print("Contain");
+
+        }
+        else
+        {
+            print("No Limitation");
         }
 
 
@@ -202,8 +217,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
-        DistanceWithPlayer = Vector3.Distance(transform.position, playerObject.transform.position);
+        isCameraAccessible = GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Contains(this);
     }
+
+
+
 
     #region CAMERA ROTATION
 

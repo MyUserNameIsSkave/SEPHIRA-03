@@ -128,9 +128,10 @@ public class CameraIndicator : MonoBehaviour
     {
         Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(indicatorCenter.transform.position);
 
-        if (cameraScript.MaxInteractionDistance != 0)
+
+        if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
-            if (cameraScript.DistanceWithPlayer > cameraScript.MaxInteractionDistance)
+            if (!cameraScript.isCameraAccessible)
             {
                 DestroyUI();
                 return;
@@ -138,9 +139,7 @@ public class CameraIndicator : MonoBehaviour
         }
 
 
-
-
-
+        
         if (!IsCameraInFront())
         {
             DestroyUI();
