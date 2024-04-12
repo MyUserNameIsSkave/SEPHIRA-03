@@ -5,6 +5,12 @@ using UnityEngine;
 public class Disjoncteur : AII_EventTrigger, IEventTriggerable
 {
     [SerializeField]
+    private Transform coverPosition;
+
+    [Space(20)]
+
+
+    [SerializeField]
     private MeshRenderer _light;
 
     [SerializeField]
@@ -31,5 +37,12 @@ public class Disjoncteur : AII_EventTrigger, IEventTriggerable
         _light.material.color = Color.green;
 
         GetComponent<BoxCollider>().enabled = false;
+
+        if (coverPosition != null)
+        {
+            GameManager.Instance.BinahManager.Crouching(true);
+            GameManager.Instance.BinahManager.SendBinahToLocation(coverPosition.position);
+        }
+
     }
 }

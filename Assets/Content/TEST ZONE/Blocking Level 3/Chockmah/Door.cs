@@ -9,6 +9,12 @@ using UnityEngine.InputSystem.iOS;
 public class Door : AII_EventTrigger
 {
     [SerializeField]
+    private Transform coverPosition;
+
+    [Space (20)]
+
+
+    [SerializeField]
     private MeshRenderer _light;
 
     [HideInInspector]
@@ -53,6 +59,10 @@ public class Door : AII_EventTrigger
             gameObject.layer = 0;           //Default
             GetComponent<InteractionCostUI>().IsActive = false;
             alreadyInteracted = true;
+
+            GameManager.Instance.BinahManager.Crouching(true);
+            GameManager.Instance.BinahManager.SendBinahToLocation(coverPosition.position);
+
         }
         else if (!doorIsLocked)
         {
