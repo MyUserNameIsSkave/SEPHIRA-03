@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
+
 
 public class AutomaticalyTakeCover : MonoBehaviour
 {
@@ -11,6 +10,9 @@ public class AutomaticalyTakeCover : MonoBehaviour
 
     [SerializeField]
     private CameraBase associatedEventCamera;
+
+    [SerializeField]
+    private float eventDelay;
 
 
     [Header("   BINAH")]
@@ -28,6 +30,8 @@ public class AutomaticalyTakeCover : MonoBehaviour
 
     [SerializeField]
     private Transform[] targetPositions;
+
+
 
 
     //WORKING VARIABLES
@@ -49,6 +53,11 @@ public class AutomaticalyTakeCover : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Binah"))
+        {
+            return;
+        }
+
         if (!AlreadyTriggered)
         {
             TakeCover();

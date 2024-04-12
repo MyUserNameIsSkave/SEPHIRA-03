@@ -7,7 +7,10 @@ public class InteruptMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.BinahManager.SendBinahToLocation(GameManager.Instance.Binah.gameObject.transform.position);
-        Destroy(gameObject);
+        if (other.CompareTag("Binah"))
+        {
+            GameManager.Instance.BinahManager.SendBinahToLocation(GameManager.Instance.Binah.gameObject.transform.position);
+            Destroy(gameObject);
+        }
     }
 }
