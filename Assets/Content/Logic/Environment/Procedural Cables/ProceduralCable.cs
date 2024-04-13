@@ -50,7 +50,7 @@ public class ProceduralCable : MonoBehaviour
     [SerializeField, Tooltip("Should the cable move ?")] 
     bool StaticSettings = true;
 
-    [SerializeField, Range (20, 150f), Tooltip("The distance at wich the cable become static")] 
+    [SerializeField, Range (20, 500f), Tooltip("The distance at wich the cable become static")] 
     float MakeStaticDistance;
 
     [Space(7)]
