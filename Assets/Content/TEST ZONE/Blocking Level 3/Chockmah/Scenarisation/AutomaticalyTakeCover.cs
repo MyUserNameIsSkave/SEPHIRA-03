@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 
@@ -21,15 +22,16 @@ public class AutomaticalyTakeCover : MonoBehaviour
     [SerializeField]
     private Transform CoverPoint;
 
+
     [Space(20)]
     [Header("   CHOCKMAH")]
     [Space(10)]
 
     [SerializeField]
-    private GameObject chokmahPrefab;
+    private ChokmahManager chokmahManager;
 
     [SerializeField]
-    private Transform[] targetPositions;
+    private ChokmahPath targetPath;
 
 
 
@@ -37,9 +39,6 @@ public class AutomaticalyTakeCover : MonoBehaviour
     //WORKING VARIABLES
 
     private bool AlreadyTriggered;
-
-    private GameObject chokmahReference;
-
     private UtilityAI_Manager binah;
 
 
@@ -61,7 +60,9 @@ public class AutomaticalyTakeCover : MonoBehaviour
         if (!AlreadyTriggered)
         {
             TakeCover();
+            StartCoroutine(TriggerChockmah());
         }
+
     }
 
 
@@ -70,6 +71,11 @@ public class AutomaticalyTakeCover : MonoBehaviour
 
     private void TakeCover()
     {
+        if (CoverPoint == null)
+        {
+            return;
+        }
+
         //Crouch
         binah.Crouching(true);
 
@@ -78,16 +84,22 @@ public class AutomaticalyTakeCover : MonoBehaviour
     }
 
 
+
+
+
     IEnumerator TriggerChockmah()
     {
-        //Spawn
+        while (associatedEventCamera != GameManager.Instance.CameraController.CurrentCamera)
+        {
+            yield return new WaitForFixedUpdate();
+        }
 
-        //Loop Movement
-        //  Wait
-
-        //Destroy
+        yield return new WaitForSeconds(eventDelay);
 
 
+        chokmahManager.TargetPath = targetPath;
+        IEventTriggerable eventInterface = chokmahManager.GetComponent<IEventTriggerable>();
+        eventInterface.TriggerEvent();
 
         yield return 0;
     }

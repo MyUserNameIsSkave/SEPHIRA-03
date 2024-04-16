@@ -138,23 +138,12 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     {
         //Recieve Input
 
-
-        print(GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length + " + " + gameObject);
-
-
         if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
             if (!isCameraAccessible)
             {
-                print("Dont Contain");
                 return;
             }
-            print("Contain");
-
-        }
-        else
-        {
-            print("No Limitation");
         }
 
 
