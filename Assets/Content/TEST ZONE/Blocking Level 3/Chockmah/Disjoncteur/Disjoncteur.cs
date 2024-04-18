@@ -17,6 +17,16 @@ public class Disjoncteur : AII_EventTrigger, IEventTriggerable
     private Door door;
 
 
+    [Space (10)]
+
+
+    [SerializeField]
+    private ChokmahManager chokmahManager;
+
+    [SerializeField]
+    private ChokmahPath targetPath;
+
+
     private bool done = false;
 
     public void TriggerEvent()      // NE PAS TOUCHER
@@ -25,9 +35,23 @@ public class Disjoncteur : AII_EventTrigger, IEventTriggerable
         {
             GetComponent<BoxCollider>().enabled = true;
             done = true;
+            _light.material.color = Color.red;
+
+            _light.material.SetColor("_EmissiveColor", Color.white * 15);
+
         }
-        
     }
+
+
+
+    private void Start()
+    {
+        _light.material = new Material(_light.material);
+        _light.material.color = Color.black;
+        _light.material.SetColor("_EmissiveColor", Color.white * 0);
+    }
+
+
 
     public override void InteractionSucceed()
     {
@@ -44,5 +68,16 @@ public class Disjoncteur : AII_EventTrigger, IEventTriggerable
             GameManager.Instance.BinahManager.SendBinahToLocation(coverPosition.position);
         }
 
+
+        if (targetPath != null)
+        {
+            chokmahManager.TargetPath = targetPath;
+            IEventTriggerable eventInterface = chokmahManager.GetComponent<IEventTriggerable>();
+            eventInterface.TriggerEvent();
+        }
+
+
     }
+
+
 }

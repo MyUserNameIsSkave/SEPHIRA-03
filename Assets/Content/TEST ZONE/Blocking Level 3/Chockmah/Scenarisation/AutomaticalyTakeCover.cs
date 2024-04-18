@@ -10,6 +10,9 @@ public class AutomaticalyTakeCover : MonoBehaviour
     [Space(10)]
 
     [SerializeField]
+    private bool singleUse = false;
+
+    [SerializeField]
     private CameraBase associatedEventCamera;
 
     [SerializeField]
@@ -33,12 +36,12 @@ public class AutomaticalyTakeCover : MonoBehaviour
     [SerializeField]
     private ChokmahPath targetPath;
 
-
+    private bool usedAlready = false;
 
 
     //WORKING VARIABLES
 
-    private bool AlreadyTriggered;
+
     private UtilityAI_Manager binah;
 
 
@@ -57,15 +60,17 @@ public class AutomaticalyTakeCover : MonoBehaviour
             return;
         }
 
-        if (!AlreadyTriggered)
+        
+        if (!usedAlready || !singleUse)
         {
             TakeCover();
             StartCoroutine(TriggerChockmah());
+            usedAlready = true;
         }
 
     }
 
-
+    private bool chokmahTriggered = false;
 
 
 
@@ -89,6 +94,11 @@ public class AutomaticalyTakeCover : MonoBehaviour
 
     IEnumerator TriggerChockmah()
     {
+        if (chokmahTriggered)
+        {
+            yield break;
+        }
+
         while (associatedEventCamera != GameManager.Instance.CameraController.CurrentCamera)
         {
             yield return new WaitForFixedUpdate();
@@ -100,6 +110,8 @@ public class AutomaticalyTakeCover : MonoBehaviour
         chokmahManager.TargetPath = targetPath;
         IEventTriggerable eventInterface = chokmahManager.GetComponent<IEventTriggerable>();
         eventInterface.TriggerEvent();
+
+        chokmahTriggered = true;
 
         yield return 0;
     }

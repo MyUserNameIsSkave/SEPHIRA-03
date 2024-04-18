@@ -7,6 +7,9 @@ public class ChokmahPath : MonoBehaviour
 {
 
     public bool IsLoop = false;
+    public bool DestroyAutomaticaly = false;
+    public float movementSpeed = 0;
+
 
     [Space(30)]
     [Header ("    DEBUG SETTINGS")]

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class Door : AII_EventTrigger
 {
     [SerializeField]
     private Transform coverPosition;
+
+    [SerializeField]
+    private Transform outPosition;
 
     [Space (20)]
 
@@ -38,6 +42,13 @@ public class Door : AII_EventTrigger
     private bool doorIsLocked = true;
 
 
+
+
+    [SerializeField]
+    private BoxCollider collisionToEnable;
+
+
+
     private void Start()
     {
         for (int i = 0; i < pointLight.Length; i++)
@@ -56,6 +67,9 @@ public class Door : AII_EventTrigger
     {
         if (!alreadyInteracted)
         {
+            collisionToEnable.enabled = true;
+
+
             gameObject.layer = 0;           //Default
             GetComponent<InteractionCostUI>().IsActive = false;
             alreadyInteracted = true;
@@ -67,6 +81,8 @@ public class Door : AII_EventTrigger
         else if (!doorIsLocked)
         {
             GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            GameManager.Instance.BinahManager.SendBinahToLocation(outPosition.position);
         }
     }
 

@@ -65,6 +65,10 @@ public class ChokmahLogic : MonoBehaviour
                 {
                     currentIndex = 0;
                 }
+                else if (patrolRoute.DestroyAutomaticaly)
+                {
+                    Destroy(gameObject);
+                }
                 else
                 {
                     yield break;
