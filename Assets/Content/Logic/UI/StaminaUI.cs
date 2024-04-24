@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.PlayerLoop.PreUpdate;
@@ -143,7 +144,13 @@ public class StaminaUI : MonoBehaviour
 
 
 
-
+    private void FixedUpdate()
+    {
+        if (GameManager.Instance.PlayerStam.CurrentStam != GameManager.Instance.PlayerStam.maxStam)
+        {
+            FadeIn();
+        }
+    }
 
 
 
@@ -251,6 +258,9 @@ public class StaminaUI : MonoBehaviour
 
 
         yield return new WaitForSeconds(timeBeforeFading);
+
+        
+
         FadeOut();
     }
 
@@ -281,6 +291,7 @@ public class StaminaUI : MonoBehaviour
 
     public void FadeIn()
     {
+
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
@@ -288,6 +299,11 @@ public class StaminaUI : MonoBehaviour
     public void FadeOut()
     {
         if (currentCost != 0)
+        {
+            return;
+        }
+
+        if (GameManager.Instance.PlayerStam.CurrentStam != GameManager.Instance.PlayerStam.maxStam)
         {
             return;
         }

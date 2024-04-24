@@ -5,6 +5,7 @@ using UnityEngine;
 namespace SimpleFolderIcon.Editor
 {
 
+
     [InitializeOnLoad]
     public class CustomFolder
     {
