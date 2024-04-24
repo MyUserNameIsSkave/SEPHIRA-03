@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,11 +35,29 @@ public class GameManager : MonoBehaviour
 
         Binah = GameObject.FindGameObjectWithTag("Binah");
         BinahManager = Binah.GetComponent<UtilityAI_Manager>();
-
-
     }
 
 
 
+    [Space(20)]
 
+
+
+
+    public CheckpointCollision currentCheckpoint;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentCheckpoint == null)
+            {
+                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                currentCheckpoint.Respawn();
+            }
+        }
+    }
 }
