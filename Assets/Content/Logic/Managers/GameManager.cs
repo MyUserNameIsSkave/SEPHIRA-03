@@ -1,6 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Properties;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,8 +23,31 @@ public class GameManager : MonoBehaviour
     public PlayerStamina PlayerStam;
 
 
+    //Checkpoints
+    private CheckpointCollision[] checkpoints = null;
+
+    public static List<int> ValidatedCheckpoints = new List<int>();
+    public static int CurrentIndex = -1;
+
+
+
+
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);   //NE DOIS PAS ETRE L'ENFANT D'UN AUTRE OBJET
+
+        GameManager[] managers = FindObjectsOfType<GameManager>();
+        foreach (GameManager manager in managers)
+        {
+            if (manager != this)
+            {
+                Destroy(manager.gameObject);
+            }
+        }
+
+
+
         Instance = this;
         Player = GameObject.FindGameObjectWithTag("Player");
         mainCamera = Camera.main;
@@ -35,29 +58,53 @@ public class GameManager : MonoBehaviour
 
         Binah = GameObject.FindGameObjectWithTag("Binah");
         BinahManager = Binah.GetComponent<UtilityAI_Manager>();
+
+
+
+        checkpoints = FindObjectsOfType<CheckpointCollision>();
+        SpawnToCheckpoint();
     }
 
-
-
-    [Space(20)]
-
-
-
-
-    public CheckpointCollision currentCheckpoint;
-
+    //DEBUG
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (currentCheckpoint == null)
-            {
-                SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-            }
-            else
-            {
-                currentCheckpoint.Respawn();
-            }
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+
+
+
+
+
+
+    /// <summary>
+    /// Used only to Respawn to the Last Checkpoint.
+    /// </summary>
+    private void SpawnToCheckpoint()
+    {
+        if (CurrentIndex < 0 || CurrentIndex >= checkpoints.Length)
+        {
+            return;
+        }
+
+
+        print(CurrentIndex);
+        CheckpointCollision currentCheckpoint = checkpoints[CurrentIndex];
+
+        CameraController.CurrentCamera = currentCheckpoint.checkpointCamera;
+        Binah.transform.position = currentCheckpoint.transform.position;
+    }
+
+    /// <summary>
+    /// Used only to Change Level.
+    /// </summary>
+    public void ChangeScene(string sceneName)
+    {
+        ValidatedCheckpoints = new List<int>();
+        CurrentIndex = -1;
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }

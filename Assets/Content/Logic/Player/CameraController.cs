@@ -24,7 +24,10 @@ public class CameraController : MonoBehaviour
             }
 
             //Set FOV to New Camerra FOV
-            ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 
+            if (cameraReference != null)
+            {
+                ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 
+            }
 
             //Change Reference
             _currentCamera = value; }
@@ -94,7 +97,7 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        cameraReference = Camera.main;
+        cameraReference = GameManager.Instance.mainCamera;
         cameraReference.fieldOfView = CurrentCamera.baseFOV;
         referenceFOV = cameraReference.fieldOfView;
         currentFOV = referenceFOV;
