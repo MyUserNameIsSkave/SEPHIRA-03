@@ -16,6 +16,7 @@ public class UtilityAI_Manager : MonoBehaviour
 
     public float WalkSpeed;
     public float CrouchSpeed;
+    public float ScaffoldingStairsSpeed;
     public float LadderSpeed;
 
     [Range(1f, 4f)]
@@ -119,6 +120,8 @@ public class UtilityAI_Manager : MonoBehaviour
 
 
 
+
+
     // ----- WORKING VARIABLES -----
 
     //State Machine Variables
@@ -164,6 +167,8 @@ public class UtilityAI_Manager : MonoBehaviour
     [HideInInspector]
     public bool usingLadder;
 
+    [HideInInspector]
+    public bool usingScaffoldingStairs;
 
 
     [HideInInspector]
@@ -371,12 +376,22 @@ public class UtilityAI_Manager : MonoBehaviour
 
 
 
-
     private void UpdateMoveSpeed()
     {
         if (usingLadder)
         {
             currentSpeed = LadderSpeed;
+        }
+        else if (usingScaffoldingStairs)
+        {
+            if (isCrouched)
+            {
+                currentSpeed = ScaffoldingStairsSpeed * (CrouchSpeed / WalkSpeed);
+            }
+            else
+            {
+                currentSpeed = ScaffoldingStairsSpeed;
+            }
         }
         else
         {
@@ -389,6 +404,7 @@ public class UtilityAI_Manager : MonoBehaviour
                 currentSpeed = WalkSpeed;
             }
         }
+        
 
         Agent.speed = currentSpeed * speedMultiplier;
     }

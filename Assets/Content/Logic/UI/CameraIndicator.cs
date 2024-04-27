@@ -128,7 +128,7 @@ public class CameraIndicator : MonoBehaviour
     {
         if (indicatorCenter == null)
         {
-            Debug.LogError("INDICATOR CENTER NULL");
+            //Debug.LogError("INDICATOR CENTER NULL");
             return;
         }
         Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(indicatorCenter.transform.position);
