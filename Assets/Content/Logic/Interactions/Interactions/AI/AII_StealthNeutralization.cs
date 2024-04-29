@@ -34,18 +34,9 @@ public class AII_StealthNeutralization : AI_Interaction
         #endregion
 
 
-        //Deactivate Enemy
-        parent.GetComponent<NavMeshAgent>().enabled = false;
-        parent.GetComponent<Enemy_AudioDetection>().enabled = false;
-        parent.GetComponent<Enemy_VisualDetection>().enabled = false;
-        parent.GetComponent<CapsuleCollider>().enabled = false;
+        parent.GetComponent<Enemy_BaseManager>().Kill();
 
-        EnemyManager.enabled = false;
-
-        parent.transform.Translate(new Vector3(0, -0.8f, 0));
-        parent.transform.Rotate(new Vector3(0, 0, -90));
-        parent.transform.Translate(new Vector3(0, 0.7f, 0));
-
+       
 
         //Succeed result
         Destroy(gameObject);

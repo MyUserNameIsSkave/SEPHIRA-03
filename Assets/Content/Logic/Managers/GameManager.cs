@@ -90,8 +90,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-
-        print(CurrentIndex);
         CheckpointCollision currentCheckpoint = checkpoints[CurrentIndex];
 
         CameraController.CurrentCamera = currentCheckpoint.checkpointCamera;
@@ -106,5 +104,10 @@ public class GameManager : MonoBehaviour
         ValidatedCheckpoints = new List<int>();
         CurrentIndex = -1;
         SceneManager.LoadSceneAsync(sceneName);
+    }
+
+    public void Respawn()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

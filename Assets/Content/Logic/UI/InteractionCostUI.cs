@@ -192,7 +192,12 @@ public class InteractionCostUI : MonoBehaviour
     }
 
 
-
+    private void OnDestroy()
+    {
+        Destroy(uiObject);
+        UpdateStamPreview(0);
+        GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+    }
 
 
 

@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Enemy_AudioDetection))]
 [RequireComponent(typeof(Enemy_VisualDetection))]
@@ -37,7 +38,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     public bool useIdle;
     public bool usePatrol;
-    public bool useGettingCloser;
 
 
 
@@ -46,10 +46,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     [HideInInspector]
     public Enemy_PatrolState PatrolState;
-
-    [HideInInspector]
-    public Enemy_GettingCloserState GettingCloserState;
-
 
 
     [HideInInspector]
@@ -61,16 +57,17 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     [Space(7)]
 
     public bool useNeutralization;
-    public bool useImmobilization;
     public bool useWarning;
 
 
 
     [HideInInspector]
-    public Enemy_NeutralizationState NeutralizationState;
+    public Enemy_NeutralizationState NeutralizationState; 
+    
 
     [HideInInspector]
-    public Enemy_ImmobilizationState ImmobilizationState;
+    public Enemy_Struggling StrugglingState;
+
 
     [HideInInspector]
     public Enemy_WarningState WarningState;
@@ -276,16 +273,6 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
                 }
                 break;
         }
-        switch (initialState)
-        {
-            case possibleInitialState.Enemy_GettingCloser:
-                if (!useGettingCloser)
-                {
-                    Debug.LogError("Le State Initial de " + gameObject.name + " n'est pas seletionné parmis les States possibles");
-                    Debug.Break();
-                }
-                break;
-        }
         #endregion
 
 
@@ -314,25 +301,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
                 SwitchState(PatrolState);
             }
         }
-        if (useGettingCloser)
-        {
-            NeutralStates.Add(GettingCloserState = new Enemy_GettingCloserState());
-            GettingCloserState.BaseManager = this;
-
-            //Set Initial State
-            if (initialState == possibleInitialState.Enemy_GettingCloser)
-            {
-                SwitchState(GettingCloserState);
-            }
-        }
         #endregion
 
         #region Attack State
-        if (useImmobilization)
-        {
-            AttackingStates.Add(ImmobilizationState = new Enemy_ImmobilizationState());
-            ImmobilizationState.BaseManager = this;
-        }
         if (useNeutralization)
         {
             AttackingStates.Add(NeutralizationState = new Enemy_NeutralizationState());
@@ -343,6 +314,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
             AttackingStates.Add(WarningState = new Enemy_WarningState());
             WarningState.BaseManager = this;
         }
+
+        StrugglingState = new Enemy_Struggling(); //Ne pas ajouter a l'array de State d'Attaque
+        StrugglingState.BaseManager = this;
         #endregion
 
         #region Binah Lost or Enemy Warned
@@ -852,6 +826,25 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     }
 
 
+
+    public void Kill()
+    {
+        //Deactivate Enemy
+        transform.Translate(new Vector3(0, -0.8f, 0));
+        transform.Rotate(new Vector3(0, 0, -90));
+        transform.Translate(new Vector3(0, 0.7f, 0));
+
+        transform.GetChild(0).GetComponent<AII_StealthNeutralization>().enabled = false;
+        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<Enemy_AudioDetection>().enabled = false;
+        GetComponent<Enemy_VisualDetection>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        this.enabled = false;
+
+    }
 
 
 }
