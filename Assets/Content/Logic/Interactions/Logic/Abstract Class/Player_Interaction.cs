@@ -11,18 +11,25 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
 
 
 
-    private void Awake()
+    private void Start()
     {
         staminaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStamina>();
     }
 
 
     /// <summary>
-    /// Return True if the Player has enought Stma for the Action.
+    /// Return True if the Player has enougth Stam for the Action.
     /// </summary>
     /// <returns></returns>
     protected bool CheckStamina()
     {
+        if (staminaScript == null)
+        {
+            return false;
+        }
+
+
+
         if (stamCost <= staminaScript.CurrentStam)
         {
             staminaScript.CurrentStam -= stamCost;

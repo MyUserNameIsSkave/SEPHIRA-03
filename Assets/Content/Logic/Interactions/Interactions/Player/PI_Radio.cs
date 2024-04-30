@@ -18,16 +18,15 @@ public class PI_Radio : Player_Interaction
     [Space(15)]
 
     [SerializeField]
-    private bool isOn = true;
+    private bool defaultState = true;
+
+    [Space(10)]
 
     [SerializeField]
     private AudioClip[] _audioClips;
 
     [SerializeField]
     private int musicTrack;
-
-    [SerializeField]
-    private float onVolume= 1f;
 
 
 
@@ -41,14 +40,19 @@ public class PI_Radio : Player_Interaction
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = _audioClips[musicTrack - 1];
 
-        if (_audioClips.Count() <= musicTrack - 1)
+        _audioSource.Play();
+
+
+        if (defaultState == true)
         {
-            _audioSource.clip = _audioClips[musicTrack - 1];
-            Apply();
+            _audioSource.mute = false;
         }
-
-        Apply();
+        else
+        {
+            _audioSource.mute = true;
+        }
     }
 
 
@@ -56,7 +60,7 @@ public class PI_Radio : Player_Interaction
 
     public override void Interaction()
     {
-        Switch();
+        //Switch();
     }
 
     public override void TriggerEvent()
@@ -68,21 +72,10 @@ public class PI_Radio : Player_Interaction
 
     private void Switch()
     {
-        isOn = !isOn;
-        Apply();
+        print(_audioSource.mute);
+        _audioSource.mute = !_audioSource.mute;
+
     }
 
-    private void Apply()
-    {
-        if (isOn)
-        {
-            _audioSource.volume = onVolume;
-        }
-        else
-        {
-            _audioSource.volume = 0.0f;
-
-        }
-    }
 
 }

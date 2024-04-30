@@ -14,6 +14,8 @@ public class PI_StrugglingPoint : Player_Interaction
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
 
+
+
         triggered = true;
     }
 
