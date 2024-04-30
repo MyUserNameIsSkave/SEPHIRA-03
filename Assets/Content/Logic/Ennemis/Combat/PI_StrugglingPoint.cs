@@ -11,8 +11,6 @@ public class PI_StrugglingPoint : Player_Interaction
 
     public override void Interaction()
     {
-        print("ACTION");
-
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
 

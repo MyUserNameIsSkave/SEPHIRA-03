@@ -13,7 +13,6 @@ public class Enemy_Struggling : Enemy_AttackingState
 
     public void YakuzaWin()
     {
-        Debug.Log("Yakuza win");
         GameManager.Instance.Respawn();
     }
 }

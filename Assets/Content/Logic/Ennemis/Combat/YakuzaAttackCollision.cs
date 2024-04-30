@@ -2,6 +2,7 @@ using GD.MinMaxSlider;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -68,39 +69,40 @@ public class YakuzaAttackCollision : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
 
-
-
-
-        if (enemyManager.CurrentState == enemyManager.NeutralizationState)
+        if (!(enemyManager.CurrentState == enemyManager.NeutralizationState))
         {
-            print("NUTRALIZE");
-            enemyManager.SwitchState(enemyManager.StrugglingState);
-
-
-            foreach (int index in strugglePointsToActivateIndexes)
-            {
-                PI_StrugglingPoint point = strugglingPoints[index];
-
-                activeStrugglingPoints.Add(point);
-                point.gameObject.GetComponent<MeshRenderer>().enabled = true;
-                point.gameObject.GetComponent<SphereCollider>().enabled = true;
-            }
-
-
-
-            //foreach (PI_StrugglingPoint point in strugglingPoints)
-            //{
-            //    activeStrugglingPoints.Add(point);
-            //    point.gameObject.GetComponent<MeshRenderer>().enabled = true;
-            //    point.gameObject.GetComponent<SphereCollider>().enabled = true;
-            //}
-
-
-            StartCoroutine(Strugglingtimer());
+            return;
         }
+
+        enemyManager.MoveAgent(enemyManager.transform.position);
+
+        if (GameManager.Instance.BinahManager.currentState == GameManager.Instance.BinahManager.StrugglingState)
+        {
+            return;
+        }
+
+
+
+        enemyManager.SwitchState(enemyManager.StrugglingState);
+
+        foreach (int index in strugglePointsToActivateIndexes)
+        {
+            PI_StrugglingPoint point = strugglingPoints[index];
+
+            activeStrugglingPoints.Add(point);
+            point.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            point.gameObject.GetComponent<SphereCollider>().enabled = true;
+        }
+
+
+
+        GameManager.Instance.BinahManager.SwitchState(GameManager.Instance.BinahManager.StrugglingState);
+
+        StartCoroutine(Strugglingtimer());
     }
 
 
@@ -129,6 +131,7 @@ public class YakuzaAttackCollision : MonoBehaviour
             if (isWining)
             {
                 enemyManager.Kill();
+                GameManager.Instance.BinahManager.SwitchState(GameManager.Instance.BinahManager.IdleState);
                 yield break;
             }
 

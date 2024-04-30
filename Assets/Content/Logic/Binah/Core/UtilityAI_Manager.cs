@@ -125,7 +125,7 @@ public class UtilityAI_Manager : MonoBehaviour
     // ----- WORKING VARIABLES -----
 
     //State Machine Variables
-    UtilityAI_BaseState currentState;
+    public UtilityAI_BaseState currentState;
     public UtilityAI_Idle IdleState = new UtilityAI_Idle();
     public UtilityAI_Fleeing FleeState = new UtilityAI_Fleeing();
     public UtilityAI_DoingAction DoingActionState = new UtilityAI_DoingAction();
