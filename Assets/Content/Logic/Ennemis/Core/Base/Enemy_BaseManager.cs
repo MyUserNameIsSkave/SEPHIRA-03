@@ -835,7 +835,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         transform.Translate(new Vector3(0, 0.7f, 0));
 
         transform.GetChild(0).GetComponent<AII_StealthNeutralization>().enabled = false;
-        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+        transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
 
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Enemy_AudioDetection>().enabled = false;

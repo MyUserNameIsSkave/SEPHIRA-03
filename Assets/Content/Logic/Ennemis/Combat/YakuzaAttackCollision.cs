@@ -15,7 +15,7 @@ public class YakuzaAttackCollision : MonoBehaviour
     [SerializeField] 
     private PI_StrugglingPoint[] strugglingPoints;
 
-    private List<PI_StrugglingPoint> strugglingPointsToActivate = new List<PI_StrugglingPoint>();
+
 
     private List<PI_StrugglingPoint> activeStrugglingPoints = new List<PI_StrugglingPoint>();
 

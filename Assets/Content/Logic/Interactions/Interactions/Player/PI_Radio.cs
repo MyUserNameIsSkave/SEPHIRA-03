@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -39,7 +40,14 @@ public class PI_Radio : Player_Interaction
 
     private void Awake()
     {
-        _audioSource.clip = _audioClips[musicTrack + 1];
+        _audioSource = GetComponent<AudioSource>();
+
+        if (_audioClips.Count() <= musicTrack - 1)
+        {
+            _audioSource.clip = _audioClips[musicTrack - 1];
+            Apply();
+        }
+
         Apply();
     }
 

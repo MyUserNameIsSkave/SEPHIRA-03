@@ -84,6 +84,9 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public float currentFOV;
 
+    //Panic button
+    private CameraBase[] cameraArray;
+    private GameObject binah;
 
 
     // Coroutines
@@ -159,4 +162,46 @@ public class CameraController : MonoBehaviour
         cameraReference.fieldOfView = currentFOV;
     }
 
+
+
+
+
+
+
+    private void Start()
+    {
+        cameraArray = FindObjectsOfType<CameraBase>();
+        binah = GameManager.Instance.Binah;
+    }
+
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            float nearestDistance = Mathf.Infinity;
+            CameraBase nearestCamera = null;
+
+
+            foreach (CameraBase camera in cameraArray)
+            {
+                if (camera.alreadyUsed)
+                {
+                    float currentDistance = Vector3.Distance(binah.transform.position, camera.transform.position);
+
+                    if (currentDistance < nearestDistance)
+                    {
+                        nearestDistance = currentDistance;
+                        nearestCamera = camera;
+                    }
+                }
+
+                if (nearestCamera != null && nearestCamera != this)
+                {
+                    CurrentCamera = nearestCamera;
+                }
+            }
+        }
+    }
 }
