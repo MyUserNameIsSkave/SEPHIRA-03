@@ -138,7 +138,7 @@ public class StaminaUI : MonoBehaviour
 
     public void ValueChanged(bool gainUpdate)
     {
-        //StopAllCoroutines();
+        StopAllCoroutines();
         StartCoroutine(UpdateVisuals(GameManager.Instance.PlayerStam.CurrentStam, gainUpdate));
     }
 

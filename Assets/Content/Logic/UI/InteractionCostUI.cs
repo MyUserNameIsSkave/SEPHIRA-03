@@ -113,9 +113,15 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseExit()
     {
-        Destroy(uiObject);
+        if (GameManager.Instance.PlayerStam.staminaUI == null)
+        {
+            return;
+        }
+
+
         UpdateStamPreview(0);
         GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+        Destroy(uiObject);
     }
 
 
@@ -144,6 +150,11 @@ public class InteractionCostUI : MonoBehaviour
 
     private void UpdateStamPreview(int newCurrentCost)
     {
+        if (GameManager.Instance.PlayerStam.staminaUI == null)
+        {
+            return;
+        }
+
         GameManager.Instance.PlayerStam.staminaUI.currentCost = newCurrentCost;
 
         if (newCurrentCost != 0)
@@ -194,9 +205,15 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(uiObject);
+
+        if (GameManager.Instance.PlayerStam.staminaUI == null)
+        {
+            return;
+        }
+
         UpdateStamPreview(0);
         GameManager.Instance.PlayerStam.staminaUI.ValueChanged(false);
+        Destroy(uiObject);
     }
 
 

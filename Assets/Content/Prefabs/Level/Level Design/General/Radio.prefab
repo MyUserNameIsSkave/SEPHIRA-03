@@ -74,8 +74,8 @@ GameObject:
   - component: {fileID: 316950639524687252}
   - component: {fileID: 4842044531964586380}
   - component: {fileID: 5677481443108858890}
-  - component: {fileID: 7722690517405582779}
   - component: {fileID: 8453696104702930189}
+  - component: {fileID: 7722690517405582779}
   - component: {fileID: 4636599516559545884}
   m_Layer: 31
   m_Name: Radio
@@ -171,23 +171,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7722690517405582779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414200982897607929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b3e11b0d0cd2148abadcde9a02590f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stamCost: 0
-  isOn: 1
-  _audioClips: []
-  musicTrack: 0
-  onVolume: 1
 --- !u!82 &8453696104702930189
 AudioSource:
   m_ObjectHideFlags: 0
@@ -198,20 +181,20 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: bb21891ab01c0c3409146c11bb445403, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.042
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.88
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -219,14 +202,14 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.102544405
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.3495862
+      outSlope: -2.3495862
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.06436077
     - serializedVersion: 3
       time: 1
       value: 0
@@ -234,8 +217,8 @@ AudioSource:
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.27989826
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -244,13 +227,22 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.953
+      value: 0.77926254
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.90585244
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -259,13 +251,22 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.4864006
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9821883
+      value: 0.0037414965
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -284,6 +285,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7722690517405582779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414200982897607929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b3e11b0d0cd2148abadcde9a02590f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamCost: 0
+  defaultState: 1
+  _audioClips:
+  - {fileID: 8300000, guid: 5ea471009a810d1458614beecb9c5313, type: 3}
+  - {fileID: 8300000, guid: bb21891ab01c0c3409146c11bb445403, type: 3}
+  musicTrack: 1
 --- !u!114 &4636599516559545884
 MonoBehaviour:
   m_ObjectHideFlags: 0
