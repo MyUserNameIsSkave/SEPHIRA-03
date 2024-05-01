@@ -16,21 +16,25 @@ public class CameraController : MonoBehaviour
     {
         get { return _currentCamera; }
 
-        set { //Stop Zoom Lerping
-            if (CurrentCamera.ZoomLerping != null)
-            {
-                CurrentCamera.StopCoroutine(CurrentCamera.ZoomLerping);
-                CurrentCamera.ZoomLeft = 0;
-            }
+        set
+        { //Stop Zoom Lerping
+            //if (CurrentCamera.ZoomLerping != null)
+            //{
+            //    CurrentCamera.StopCoroutine(CurrentCamera.ZoomLerping);
+            //    CurrentCamera.ZoomLeft = 0;
+            //}
+
+
 
             //Set FOV to New Camerra FOV
             if (cameraReference != null)
             {
-                ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y)); 
+                ChangeFOV(Mathf.Clamp(value.currentCameraFOV, value.FOVRange.x, value.FOVRange.y));
             }
 
             //Change Reference
-            _currentCamera = value; }
+            _currentCamera = value;
+        }
     }
 
 
@@ -104,6 +108,9 @@ public class CameraController : MonoBehaviour
         cameraReference.fieldOfView = CurrentCamera.baseFOV;
         referenceFOV = cameraReference.fieldOfView;
         currentFOV = referenceFOV;
+
+        cameraArray = FindObjectsOfType<CameraBase>();
+        binah = GameManager.Instance.Binah;
     }
 
 
@@ -166,16 +173,7 @@ public class CameraController : MonoBehaviour
 
 
 
-
-
-    private void Start()
-    {
-        cameraArray = FindObjectsOfType<CameraBase>();
-        binah = GameManager.Instance.Binah;
-    }
-
-
-
+    //Camera Panic Button
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
