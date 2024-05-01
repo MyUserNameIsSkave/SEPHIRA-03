@@ -14,6 +14,7 @@ public class LadderGeneratorEditor : Editor
         LadderGenerator ladderGenerator = (LadderGenerator)target;
 
 
+
         GUILayout.Space(10);
 
         GUILayout.BeginHorizontal();

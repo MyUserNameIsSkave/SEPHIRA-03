@@ -5,6 +5,8 @@ using UnityEngine;
 using GD.MinMaxSlider;
 using Unity.VisualScripting;
 using System.Linq;
+using Autodesk.Fbx;
+using UnityEngine.Profiling;
 
 public abstract class CameraBase : MonoBehaviour, IInteractable
 {
@@ -89,13 +91,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     [HideInInspector]
     public float currentCameraFOV;
 
-    [HideInInspector]
-    public float ZoomLeft = 0f;
-
-    private float currentLerpedFOV = 0f;
-
-    [HideInInspector]
-    public Coroutine ZoomLerping;
+    
 
     [HideInInspector]
     public bool alreadyUsed = false;
@@ -120,16 +116,12 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        //Le Starta meme pas l'air de se déclencher ?!
         if (this == cameraController.CurrentCamera)
         {
             isFirstCamera = true;
         }
     }
-
-
-
-
-
 
 
     #region INTERFACE
@@ -191,6 +183,14 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+        StartCoroutine(SmoothZoom());
+
+
+
+
+
+
+
         currentCameraFOV = baseFOV;
         playerObject = GameObject.FindGameObjectWithTag("Player");
         cameraController = GameManager.Instance.CameraController;
@@ -289,83 +289,61 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     /// </summary>
     public void Zoom(float ZoomIncrement)
     {
-        //Variables
-        ZoomLeft += ZoomIncrement;
-        float currentFOV = cameraController.currentFOV;
-
-
-        //Stop coroutine if can
-        if (ZoomLerping != null)
+        if (Mathf.Sign(zoomOffset) == Mathf.Sign(ZoomIncrement))
         {
-            StopCoroutine(ZoomLerping);
-        }
-
-
-        if (cameraController.ZoomDuration != 0)
-        {
-            //Call ZoomLerping Coroutine
-            ZoomLerping = StartCoroutine(LerpFOV(currentFOV, currentFOV + ZoomLeft, cameraController.ZoomDuration));
+            zoomOffset += ZoomIncrement;
         }
         else
         {
-            cameraController.ChangeFOV(Mathf.Clamp(currentFOV + ZoomIncrement, FOVRange.x, FOVRange.y));
+            //Make the Zoom Snappier.
+            zoomOffset = 0;
+            zoomOffset += ZoomIncrement;
         }
+        
+        //currentCameraFOV += ZoomIncrement;
+        //cameraController.ChangeFOV(currentCameraFOV);
     }
 
+    private float zoomOffset;
+
+    //Settings
+    private float zoomSmoothing = 100;
+
+    private float smallZoomSmoothing = 0.02f;
+    private float bigZoomSmoothing = 3f;
+    private float bigZoomThershold = 10f;
 
 
 
-    private IEnumerator LerpFOV(float startFOV, float endFOV, float duration)
+
+    IEnumerator SmoothZoom()
     {
-        //Initialization
-        float startTime = Time.time;
-        float elapsedTime = 0f;
+        yield return new WaitForNextFrameUnit();
 
-
-
-        while (elapsedTime < duration)
+        while (true)
         {
-            // Progression
-            float t = elapsedTime / duration;
-            elapsedTime = Time.time - startTime;
-
-
-            // Lerp
-            float lerpedFOV = Mathf.Lerp(startFOV, endFOV, t);
-
-
-            //Stop if alreaddy at the limit
-            if (lerpedFOV < FOVRange.x || lerpedFOV > FOVRange.y)
+            if (cameraController.CurrentCamera == this)
             {
-                ZoomLeft = 0;
-                yield break;
+
+                float adjustment = Mathf.Lerp(smallZoomSmoothing, bigZoomSmoothing, Mathf.Clamp01(Mathf.Abs(zoomOffset) / bigZoomThershold));
+
+
+                if (Mathf.Abs(zoomOffset) >= zoomSmoothing * Time.deltaTime * adjustment)
+                {
+                    float offsetType = Mathf.Sign(zoomOffset);
+
+                    zoomOffset -= zoomSmoothing * offsetType * Time.deltaTime * adjustment;
+                    currentCameraFOV = Mathf.Clamp(currentCameraFOV + zoomSmoothing * offsetType * Time.deltaTime * adjustment, FOVRange.x, FOVRange.y);
+
+                    cameraController.ChangeFOV(currentCameraFOV);
+
+                    yield return 0;
+                }
             }
-
-
-            // Apply Variables Values
-            currentLerpedFOV = lerpedFOV;
-            currentCameraFOV = lerpedFOV;
-            ZoomLeft -= lerpedFOV - currentLerpedFOV;
-
-
-            //Apply FOV
-            cameraController.ChangeFOV(lerpedFOV);
-
-
-            UiCamerBars.Instance.UpdateUI();
-
-
-            yield return null;
+            yield return 0;
         }
-
-
-
-
-        //Make sure the FOV value is exact
-        cameraController.ChangeFOV(endFOV);
-        currentCameraFOV = endFOV;
-        ZoomLeft = 0;
     }
+
 
     #endregion
 
