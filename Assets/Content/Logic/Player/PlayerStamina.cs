@@ -73,6 +73,7 @@ public class PlayerStamina : MonoBehaviour
 
     private void Start()
     {
+
         if (CurrentStam == maxStam)
         {
             isRegenerating = false;

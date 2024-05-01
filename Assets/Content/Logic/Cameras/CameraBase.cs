@@ -307,11 +307,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     private float zoomOffset;
 
     //Settings
-    private float zoomSmoothing = 100;
+    private float zoomSmoothing = 85;
 
     private float smallZoomSmoothing = 0.02f;
     private float bigZoomSmoothing = 3f;
-    private float bigZoomThershold = 10f;
+    private float bigZoomThershold = 12f;
 
 
 
