@@ -49,7 +49,7 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
         if (binahJoinTargetPosition != null && binahMaxDistanceBeforeAutoJoin != 0f)
         {
-            if (binahMaxDistanceBeforeAutoJoin <= Vector3.Distance(GameManager.Instance.Binah.transform.position, transform.position) || GameManager.Instance.BinahManager.IsAutomaticalyMovingToCamera)
+            if (binahMaxDistanceBeforeAutoJoin <= Vector3.Distance(GameManager.Instance.Binah.transform.position, binahJoinTargetPosition.position) || GameManager.Instance.BinahManager.IsAutomaticalyMovingToCamera)
             {
                 if (!GameManager.Instance.BinahManager.InRestrictiveZone)
                 {

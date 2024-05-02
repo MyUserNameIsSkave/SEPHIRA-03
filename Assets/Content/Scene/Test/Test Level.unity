@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.00003867946, g: 0.000027875187, b: 0.000041448282,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -620,6 +621,31 @@ PrefabInstance:
     - target: {fileID: 3913651593241517532, guid: 80781f374a525e841bbd845c0196f83a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524097595262973125, guid: 80781f374a525e841bbd845c0196f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.771898
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524097595262973125, guid: 80781f374a525e841bbd845c0196f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4137077
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524097595262973125, guid: 80781f374a525e841bbd845c0196f83a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.765593
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227946851070936001, guid: 80781f374a525e841bbd845c0196f83a,
+        type: 3}
+      propertyPath: binahJoinTargetPosition
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227946851070936001, guid: 80781f374a525e841bbd845c0196f83a,
+        type: 3}
+      propertyPath: binahMaxDistanceBeforeAutoJoin
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7754,6 +7780,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 23800000, guid: 98efe6cd9c075d44ca9b5dbbcf5f1ffb,
         type: 2}
+    - target: {fileID: 5968931054781903675, guid: 33a7acd7c2cf120438bb40ee16e84cc4,
+        type: 3}
+      propertyPath: m_CollectObjects
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6022681513759325975, guid: 33a7acd7c2cf120438bb40ee16e84cc4,
         type: 3}
       propertyPath: m_LocalPosition.x
