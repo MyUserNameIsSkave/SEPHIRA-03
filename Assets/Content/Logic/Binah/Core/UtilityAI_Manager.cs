@@ -178,6 +178,13 @@ public class UtilityAI_Manager : MonoBehaviour
     public bool CanRecieveInput = true;
 
 
+    [HideInInspector]
+    public bool InRestrictiveZone;
+
+    [HideInInspector]
+    public bool IsAutomaticalyMovingToCamera;
+
+
 
     private void OnValidate()
     {
@@ -327,6 +334,20 @@ public class UtilityAI_Manager : MonoBehaviour
         {
             return;
         }
+
+        if (GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition != null)
+        {
+            if (position == GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition.position)
+            {
+                IsAutomaticalyMovingToCamera = true;
+            }
+            else
+            {
+                IsAutomaticalyMovingToCamera = false;
+            }
+        }
+
+
 
         IndicatedPosition = position;
         SwitchState(MovingState);

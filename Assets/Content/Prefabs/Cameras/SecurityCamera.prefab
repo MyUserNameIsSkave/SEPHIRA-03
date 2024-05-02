@@ -129,6 +129,7 @@ Transform:
   - {fileID: 3339008810845713851}
   - {fileID: 5822191548230582030}
   - {fileID: 3087123783549364919}
+  - {fileID: 4524097595262973125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &6039337649041446343
@@ -173,11 +174,13 @@ MonoBehaviour:
   BaseVerticalRotation: 0
   baseFOV: 65
   FOVRange: {x: 20, y: 65}
-  MaxInteractionDistance: 0
+  accessibleCameras: []
+  isCameraAccessible: 0
+  binahMaxDistanceBeforeAutoJoin: 0
+  binahJoinTargetPosition: {fileID: 0}
   BasePitch: 0
   BaseYaw: 0
   currentCameraFOV: 0
-  ZoomLeft: 0
   alreadyUsed: 0
   DistanceWithPlayer: 0
 --- !u!114 &450508138179445812
@@ -300,6 +303,37 @@ Transform:
   - {fileID: 4359763895646650637}
   - {fileID: 2271540544832620291}
   m_Father: {fileID: 5822191548230582030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5050314155666686672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4524097595262973125}
+  m_Layer: 0
+  m_Name: BinahToJoinTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4524097595262973125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5050314155666686672}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3913651593241517532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5490115469911902297
 GameObject:

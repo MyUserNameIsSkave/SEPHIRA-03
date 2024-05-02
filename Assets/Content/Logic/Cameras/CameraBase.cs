@@ -71,6 +71,16 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
 
 
+    [Header("    AUTO BINAH JOIN")]
+    [Space(20)]
+
+
+    public float binahMaxDistanceBeforeAutoJoin;
+
+    public Transform binahJoinTargetPosition;
+
+
+
 
     // ----- WORKING VARIABLES -----
 
@@ -307,7 +317,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     private float zoomOffset;
 
     //Settings
-    private float zoomSmoothing = 85;
+    private float zoomSmoothing = 85f;
 
     private float smallZoomSmoothing = 0.02f;
     private float bigZoomSmoothing = 3f;
