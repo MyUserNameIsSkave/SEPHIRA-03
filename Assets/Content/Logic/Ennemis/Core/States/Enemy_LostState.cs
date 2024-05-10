@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,8 @@ public class Enemy_LostState : Enemy_SearchingState
 {
     public override void EnterState()
     {
+        Debug.Log("PUTE");
+        //BaseManager.animator.SetTrigger("StopRunning");
         BaseManager.MoveAgent(BaseManager.LastKnownPosition);
     }
 

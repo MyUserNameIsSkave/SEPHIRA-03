@@ -26,7 +26,8 @@ public class Enemy_PatrolState : Enemy_NeutralState
 
     public override void EnterState()
     {
-       BaseManager.StartPatrolling();
+        //BaseManager.animator.SetTrigger("StopRunning"); 
+        BaseManager.StartPatrolling();
     }
 
 

@@ -7,6 +7,7 @@ public class Enemy_Struggling : Enemy_AttackingState
 {
     public override void EnterState()
     {
+        BaseManager.animator.SetTrigger("StartStruggling");
         BaseManager.Agent.speed = BaseManager.WalkMoveSpeed;
         BaseManager.MoveAgent(BaseManager.transform.position);
     }

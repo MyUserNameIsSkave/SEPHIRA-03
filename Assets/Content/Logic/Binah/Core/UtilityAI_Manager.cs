@@ -117,7 +117,7 @@ public class UtilityAI_Manager : MonoBehaviour
     #endregion
 
 
-
+    public Animator animator;
 
 
 

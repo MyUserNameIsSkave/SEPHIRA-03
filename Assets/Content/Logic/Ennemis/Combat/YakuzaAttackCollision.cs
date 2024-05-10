@@ -131,6 +131,8 @@ public class YakuzaAttackCollision : MonoBehaviour
             if (isWining)
             {
                 enemyManager.Kill();
+                enemyManager.animator.SetTrigger("LooseStruggling");
+                GameManager.Instance.BinahManager.animator.SetTrigger("WinStruggling");
                 GameManager.Instance.BinahManager.SwitchState(GameManager.Instance.BinahManager.IdleState);
                 yield break;
             }
@@ -141,6 +143,10 @@ public class YakuzaAttackCollision : MonoBehaviour
 
         if (enemyManager.CurrentState == enemyManager.StrugglingState)
         {
+            enemyManager.animator.SetTrigger("WinStruggling");
+            GameManager.Instance.BinahManager.animator.SetTrigger("LooseStruggling");
+
+            Debug.Log("Manque un delaie ici pour l'animation du struggling");
             enemyManager.StrugglingState.YakuzaWin();
         }
     }

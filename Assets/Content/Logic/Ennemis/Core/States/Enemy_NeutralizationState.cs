@@ -6,12 +6,13 @@ public class Enemy_NeutralizationState : Enemy_AttackingState
 {
     public override void EnterState()
     {
+        BaseManager.animator.SetTrigger("StartRunning");
         BaseManager.Agent.speed = BaseManager.RunMoveSpeed;
     }
 
     public override void ExitState()
     {
-
+        BaseManager.animator.SetTrigger("StopRunning");
     }
 
 
@@ -27,6 +28,7 @@ public class Enemy_NeutralizationState : Enemy_AttackingState
     {
 
     }
+
     public override void FixedUpdateState()
     {
         if (Vector3.Distance(BaseManager.transform.position, BaseManager.Binah.transform.position) > BaseManager.AttackRange)
