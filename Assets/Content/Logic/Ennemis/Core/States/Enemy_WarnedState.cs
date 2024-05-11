@@ -11,6 +11,7 @@ public class Enemy_WarnedState : Enemy_SearchingState
 
     public override void EnterState()
     {
+        BaseManager.animator.SetTrigger("StartRunning");
         BaseManager.ArrivedOnWarning = false;
 
         BaseManager.LastKnownPosition = WarningPosition;
@@ -22,7 +23,7 @@ public class Enemy_WarnedState : Enemy_SearchingState
 
     public override void ExitState()
     {
-
+        BaseManager.animator.SetTrigger("StopRunning");
     }
 
 

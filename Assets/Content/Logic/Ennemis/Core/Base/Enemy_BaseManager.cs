@@ -31,6 +31,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         [Space(10)]
 
 
+    public Animator animator;
+
+
     #region State Settings
 
     [Header("   Neutral State")]
@@ -369,6 +372,8 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
     protected void BaseFixedUpdate()
     {
+        animator.SetFloat("Speed", Agent.velocity.magnitude / WalkMoveSpeed);
+
         if (CurrentState == null)
         {
             return;

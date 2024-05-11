@@ -8,6 +8,8 @@ public class UtilityAI_Struggling : UtilityAI_BaseState
     {
         Debug.Log("ENTER STRUGGLING STATE");
 
+        UtilityAI_Manager.animator.SetTrigger("StartStruggling");
+
         UtilityAI_Manager.CanRecieveInput = false;
         UtilityAI_Manager.Agent.SetDestination(UtilityAI_Manager.Object.transform.position);
     }
@@ -19,7 +21,7 @@ public class UtilityAI_Struggling : UtilityAI_BaseState
 
     public override void FixedUpdateState()
     {
-
+        Debug.Log("SALOPE");
     }
 
     public override void UpdateState()
