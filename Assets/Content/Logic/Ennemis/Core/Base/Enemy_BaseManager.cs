@@ -835,9 +835,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public void Kill()
     {
         //Deactivate Enemy
-        transform.Translate(new Vector3(0, -0.8f, 0));
-        transform.Rotate(new Vector3(0, 0, -90));
-        transform.Translate(new Vector3(0, 0.7f, 0));
+        //transform.Translate(new Vector3(0, -0.8f, 0));
+        //transform.Rotate(new Vector3(0, 0, -90));
+        //transform.Translate(new Vector3(0, 0.7f, 0));
 
         transform.GetChild(0).GetComponent<AII_StealthNeutralization>().enabled = false;
         transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = false;
