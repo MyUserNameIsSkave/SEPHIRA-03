@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
 
-
+    public GameObject StrugglingWith;
 
     public GameObject Binah;
     public UtilityAI_Manager BinahManager;

@@ -1,11 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class UtilityAI_Struggling : UtilityAI_BaseState
 {
+    private Quaternion BaseRotation;
+
+
+
     public override void EnterState()
     {
+        BaseRotation = UtilityAI_Manager.transform.rotation;
+
+        if (GameManager.Instance.StrugglingWith != null)
+        {
+            // Position
+            UtilityAI_Manager.transform.position = GameManager.Instance.StrugglingWith.transform.position;
+
+            // Rotation
+            //UtilityAI_Manager.transform.LookAt(GameManager.Instance.StrugglingWith.transform);
+            UtilityAI_Manager.transform.rotation = GameManager.Instance.StrugglingWith.transform.rotation;// * Quaternion.Euler(new Vector3(0, 180, 0));
+        }
+
+
         Debug.Log("ENTER STRUGGLING STATE");
 
         UtilityAI_Manager.animator.SetTrigger("StartStruggling");
@@ -16,12 +34,15 @@ public class UtilityAI_Struggling : UtilityAI_BaseState
 
     public override void ExitState()
     {
+
         UtilityAI_Manager.CanRecieveInput = true;
+        GameManager.Instance.StrugglingWith = null;
+        UtilityAI_Manager.transform.rotation = BaseRotation;
     }
 
     public override void FixedUpdateState()
     {
-        Debug.Log("SALOPE");
+
     }
 
     public override void UpdateState()
