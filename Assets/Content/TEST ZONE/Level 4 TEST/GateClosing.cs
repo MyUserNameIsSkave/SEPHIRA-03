@@ -5,7 +5,11 @@ using UnityEngine;
 public class GateClosing : MonoBehaviour
 {
     [SerializeField]
-    private Animator GateAnimator, RoomAnimation;
+    private Animator gateAnimator, roomAnimation;
+
+    [SerializeField]
+    private CameraBase nextCamera;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,10 +24,15 @@ public class GateClosing : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        RoomAnimation.SetTrigger("BinahPassed");
+        roomAnimation.SetTrigger("BinahPassed");
 
         yield return new WaitForSeconds(9f);
 
-        GateAnimator.SetTrigger("BinahPassed");
+        gateAnimator.SetTrigger("BinahPassed");
+
+        yield return new WaitForSeconds(3f);
+
+        GameManager.Instance.CameraController.CurrentCamera = nextCamera;
+
     }
 }
