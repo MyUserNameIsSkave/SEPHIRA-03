@@ -42,7 +42,7 @@ public class DroneMovements : MonoBehaviour
         }
         get
         {
-            return Vector3.Distance(transform.position, targets[CurrentTarget].transform.position) / targetSpeed;
+            return Vector3.Distance(transform.position, targets[CurrentTarget].transform.position) / automaticAverageSpeed;
         }
     }
 
@@ -50,19 +50,36 @@ public class DroneMovements : MonoBehaviour
     private bool isControledByPlayer = false;
 
 
+    [SerializeField, Tooltip("The average speed (U/s) of the drone movements.")]
+    private float automaticAverageSpeed = 1f;
 
     [SerializeField, Tooltip("The average speed (U/s) of the drone movements.")]
-    private float targetSpeed = 1f;
+    private float controledSpeed = 1f;
 
     [SerializeField]
     private Transform[] targets;
 
+    private Vector3 lastPosition;
+    private Vector3 currentSpeed;
 
+    private Vector2 xRange;
+    private Vector2 yRange;
 
 
     void Start()
     {
+        GetMovementRange();
+        StartCoroutine(CalculatesSpeed());
         AutomaticMovements();
+    }
+
+
+    private void Update()
+    {
+        if (isControledByPlayer)
+        {
+            ControlMovements();
+        }
     }
 
 
@@ -89,20 +106,88 @@ public class DroneMovements : MonoBehaviour
         AutomaticMovements();
     }
 
+
+
+
+    IEnumerator CalculatesSpeed()
+    {
+
+        while (true)
+        {
+            lastPosition = transform.position;
+            yield return new WaitForEndOfFrame();
+            currentSpeed = (transform.position - lastPosition) / Time.deltaTime;
+        }
+    }
+
+
+
+    private void GetMovementRange()
+    {
+        Transform lowestTransform = targets[0];
+        Transform uppestTransform = targets[0]; 
+        Transform rightestTransform = targets[0];
+        Transform leftestTransform = targets[0];
+
+        foreach (Transform target in targets)
+        {
+            //Height
+            if (lowestTransform.transform.position.y > target.position.y)
+            {
+                lowestTransform = target;
+            }
+            if (lowestTransform.transform.position.y < target.position.y)
+            {
+                uppestTransform = target;
+            }
+
+            //Side
+            if (lowestTransform.transform.position.x > target.position.x)
+            {
+                lowestTransform = target;
+            }
+            if (lowestTransform.transform.position.x < target.position.x)
+            {
+                uppestTransform = target;
+            }
+
+  
+
+            Vector3 delta = (target.position - transform.position).normalized;
+            Vector3 cross = Vector3.Cross(delta, transform.forward);
+
+            if (cross == Vector3.zero)
+            {
+                // Target is straight ahead
+            }
+            else if (cross.y > 0)
+            {
+                print("Right");
+            }
+            else
+            {
+                print("Left");
+            }
+
+        }
+
+
+
+    }
+
+
     public void ControlMovements()
     {
-        //Recupérer la zone jouable dans le start a partir de deux point. 
-        //Definir un plan.
-        //Definir la range de mouvement possible.
+        //if (transform.position )
 
-            //OU
 
-        //Utiliser un Dot Product avec la target vers laquel on va pour savoir si on l'a dépassé ou pas ? Et lock le mouvement si on l'a déplassé (avec un offset pour pas trop decaller)
-        
 
-        //Récupérer les input.
-        //Press         -->     Accelerer avec Tween.
-        //Tween fini    -->     Continuer le mouvement.
-        //Release       -->     Ralentissement avec Tween.
+
+        if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0)
+        {
+            transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
+        }
+
+
     }
 }
