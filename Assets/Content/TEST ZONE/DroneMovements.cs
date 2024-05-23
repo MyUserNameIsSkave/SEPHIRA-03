@@ -9,7 +9,6 @@ using UnityEngine.Rendering;
 public class DroneMovements : MonoBehaviour
 {
 
-
     private int CurrentTarget
     {
         set
@@ -49,6 +48,9 @@ public class DroneMovements : MonoBehaviour
 
     private bool isControledByPlayer = false;
 
+    [SerializeField]
+    private GameObject movementRangeBox;
+
 
     [SerializeField, Tooltip("The average speed (U/s) of the drone movements.")]
     private float automaticAverageSpeed = 1f;
@@ -60,15 +62,16 @@ public class DroneMovements : MonoBehaviour
     private Transform[] targets;
 
     private Vector3 lastPosition;
-    private Vector3 currentSpeed;
+    [HideInInspector]
+    public Vector3 currentSpeed;
 
-    private Vector2 xRange;
-    private Vector2 yRange;
+    [HideInInspector]
+    public bool IsInsideMovementRange = true;
+
 
 
     void Start()
     {
-        GetMovementRange();
         StartCoroutine(CalculatesSpeed());
         AutomaticMovements();
     }
@@ -76,6 +79,11 @@ public class DroneMovements : MonoBehaviour
 
     private void Update()
     {
+        if (movementRangeBox == null)
+        {
+            Debug.LogError("Empty Reference");
+        }
+
         if (isControledByPlayer)
         {
             ControlMovements();
@@ -122,72 +130,24 @@ public class DroneMovements : MonoBehaviour
 
 
 
-    private void GetMovementRange()
+    public void ControlMovements()
     {
-        Transform lowestTransform = targets[0];
-        Transform uppestTransform = targets[0]; 
-        Transform rightestTransform = targets[0];
-        Transform leftestTransform = targets[0];
-
-        foreach (Transform target in targets)
+        if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0)
         {
-            //Height
-            if (lowestTransform.transform.position.y > target.position.y)
+            if (IsInsideMovementRange)
             {
-                lowestTransform = target;
-            }
-            if (lowestTransform.transform.position.y < target.position.y)
-            {
-                uppestTransform = target;
-            }
-
-            //Side
-            if (lowestTransform.transform.position.x > target.position.x)
-            {
-                lowestTransform = target;
-            }
-            if (lowestTransform.transform.position.x < target.position.x)
-            {
-                uppestTransform = target;
-            }
-
-  
-
-            Vector3 delta = (target.position - transform.position).normalized;
-            Vector3 cross = Vector3.Cross(delta, transform.forward);
-
-            if (cross == Vector3.zero)
-            {
-                // Target is straight ahead
-            }
-            else if (cross.y > 0)
-            {
-                print("Right");
+                transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
             }
             else
             {
-                print("Left");
+                if (Vector3.Distance(movementRangeBox.transform.position, transform.position) > 
+                    Vector3.Distance(movementRangeBox.transform.position, transform.position + transform.right * -Input.GetAxis("Horizontal") + transform.up * Input.GetAxis("Vertical")))
+                {
+                    transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
+                }
+
             }
 
         }
-
-
-
-    }
-
-
-    public void ControlMovements()
-    {
-        //if (transform.position )
-
-
-
-
-        if (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical") != 0)
-        {
-            transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
-        }
-
-
     }
 }
