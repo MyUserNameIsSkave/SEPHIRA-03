@@ -115,7 +115,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private bool isFirstCamera = false;
 
-
+    protected float VerticalAdjustment = 1f;
 
 
     // ----- lOGIC -----
@@ -171,6 +171,8 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         //Send information to the new Camera that it is the new one
         Transitionned();
 
+
+
         cameraIndicatorScript.TransitionnedFrom();
         cameraController.CurrentCamera.alreadyUsed = true;
     }
@@ -194,11 +196,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     private void Awake()
     {
         StartCoroutine(SmoothZoom());
-
-
-
-
-
 
 
         currentCameraFOV = baseFOV;
@@ -280,7 +277,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         if (Mathf.Abs(HeightPositionhPercentage) >= 1 - cameraController.VerticalThreshold)
         {
             float PositionInBorder = Mathf.InverseLerp(1 - cameraController.VerticalThreshold, 1, Mathf.Abs(HeightPositionhPercentage));
-            VerticalInput = (cameraController.SensivityProgresion.Evaluate(PositionInBorder) * Mathf.Sign(HeightPositionhPercentage)) * cameraController.AjustedRotationSensivity * Time.deltaTime * 10;
+            VerticalInput = (cameraController.SensivityProgresion.Evaluate(PositionInBorder) * Mathf.Sign(HeightPositionhPercentage)) * cameraController.AjustedRotationSensivity * Time.deltaTime * 10 * VerticalAdjustment;
         }
 
 
