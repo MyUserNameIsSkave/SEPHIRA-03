@@ -5,6 +5,7 @@ using DG.Tweening;
 using static UnityEngine.GraphicsBuffer;
 using Unity.VisualScripting;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class DroneMovements : MonoBehaviour
 {
@@ -69,6 +70,12 @@ public class DroneMovements : MonoBehaviour
     public bool IsInsideMovementRange = true;
 
 
+    private GameObject outOfBoundUI;
+
+    private void Awake()
+    {
+        outOfBoundUI = GameObject.FindGameObjectWithTag("OutOfBoundDrone");
+    }
 
     void Start()
     {
@@ -108,6 +115,7 @@ public class DroneMovements : MonoBehaviour
 
     public void LoseControl()
     {
+        outOfBoundUI.GetComponent<Image>().enabled = false;
         isControledByPlayer = false;
         DOTween.KillAll();
         CurrentTarget -= 1;
@@ -136,10 +144,15 @@ public class DroneMovements : MonoBehaviour
         {
             if (IsInsideMovementRange)
             {
+                outOfBoundUI.GetComponent<Image>().enabled = false;
                 transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
             }
             else
             {
+                outOfBoundUI.GetComponent<Image>().enabled = true;
+
+
+
                 if (Vector3.Distance(movementRangeBox.transform.position, transform.position) > 
                     Vector3.Distance(movementRangeBox.transform.position, transform.position + transform.right * -Input.GetAxis("Horizontal") + transform.up * Input.GetAxis("Vertical")))
                 {

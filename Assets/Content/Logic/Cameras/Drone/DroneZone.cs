@@ -22,17 +22,14 @@ public class DroneZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         drone.IsInsideMovementRange = true;
-        print("enter");
     }
 
     private void OnTriggerExit(Collider other)
     {
         drone.IsInsideMovementRange = false;
-        print("exit");
 
         Vector3 basePosition = drone.transform.position;
         Vector3 currSpeed = drone.currentSpeed;
-        print(currSpeed);
 
         drone.transform.DOMove(basePosition + currSpeed / 4, 0.5f).SetEase(Ease.OutQuad);
 

@@ -12,8 +12,13 @@ public class AII_StealthNeutralization : AI_Interaction
 
     public override void InteractionSucceed()
     {
+
+        Debug.Log("Action DONE");
+
         GameObject parent = transform.parent.gameObject;
         Enemy_BaseManager EnemyManager = parent.GetComponent<Enemy_BaseManager>();
+
+        //EnemyManager.SwitchState(EnemyManager.)
 
         //Custom Fail Conditions
         #region
@@ -25,6 +30,7 @@ public class AII_StealthNeutralization : AI_Interaction
                 //Exeption if in Warning State
                 if (EnemyManager.CurrentState != EnemyManager.WarningState)
                 {
+                    Debug.Log("Neutralization Failed");
                     MakeInteractionFail();
                     return;
                 }
@@ -35,8 +41,8 @@ public class AII_StealthNeutralization : AI_Interaction
 
 
         parent.GetComponent<Enemy_BaseManager>().Kill();
+        EnemyManager.SwitchState(EnemyManager.NeutralizedState);
 
-       
 
         //Succeed result
         Destroy(gameObject);

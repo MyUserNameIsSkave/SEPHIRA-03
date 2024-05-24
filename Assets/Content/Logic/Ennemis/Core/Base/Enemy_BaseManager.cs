@@ -105,6 +105,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     #endregion
 
 
+    public Enemy_Neutralized NeutralizedState = new Enemy_Neutralized();
+
+
     [Space(20)]
 
 
@@ -333,6 +336,9 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
             SearchingStates.Add(WarnedState = new Enemy_WarnedState());
             WarnedState.BaseManager = this;
         }
+
+        NeutralizedState.BaseManager = this;
+
 
         #endregion
 
