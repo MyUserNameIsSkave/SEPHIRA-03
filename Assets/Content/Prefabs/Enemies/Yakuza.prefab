@@ -758,7 +758,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -883,11 +883,11 @@ MonoBehaviour:
   initialState: 0
   animator: {fileID: 7991844364051535144}
   useIdle: 1
-  usePatrol: 0
+  usePatrol: 1
   useNeutralization: 1
   useWarning: 0
   useLost: 1
-  useWarned: 0
+  useWarned: 1
   _detectionProgression: 0
   detectionMultiplier: 30
   detectionLoseRate: 10
@@ -2659,10 +2659,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7991844364051535144}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4e29859abeae3744a8b04cb9a1b39e97,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1750573786620228289}
   m_SourcePrefab: {fileID: 100100000, guid: 4e29859abeae3744a8b04cb9a1b39e97, type: 3}
 --- !u!4 &56784291395676931 stripped
 Transform:
@@ -2715,18 +2711,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1750573786620228289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6297014599682531126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a84d821a775b4043b7e8f0b4001f0d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6640748719915845004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4e29859abeae3744a8b04cb9a1b39e97,

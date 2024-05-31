@@ -108,6 +108,10 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
     public Enemy_Neutralized NeutralizedState = new Enemy_Neutralized();
 
 
+    public Enemy_DistractedState DistractedState = new Enemy_DistractedState();
+
+
+
     [Space(20)]
 
 
@@ -338,7 +342,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
         }
 
         NeutralizedState.BaseManager = this;
-
+        DistractedState.BaseManager = this;
 
         #endregion
 

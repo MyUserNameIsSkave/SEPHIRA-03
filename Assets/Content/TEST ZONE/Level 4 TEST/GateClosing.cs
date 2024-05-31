@@ -13,7 +13,7 @@ public class GateClosing : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Enter0");
+
         StartCoroutine(CloseGate());
     }
 

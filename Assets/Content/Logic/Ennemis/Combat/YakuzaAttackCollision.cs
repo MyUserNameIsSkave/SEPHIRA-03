@@ -38,8 +38,8 @@ public class YakuzaAttackCollision : MonoBehaviour
     private void Awake()
     {
 
-        strugglingDuration = UnityEngine.Random.RandomRange(strugglingDurationRange.x, strugglingDurationRange.y);      //Ne pas toucher
-        numberOfStrugglePointsToActivate = UnityEngine.Random.RandomRange(strugglePointsRange.x, strugglePointsRange.y);      //Ne pas toucher
+        strugglingDuration = UnityEngine.Random.Range(strugglingDurationRange.x, strugglingDurationRange.y);      //Ne pas toucher
+        numberOfStrugglePointsToActivate = UnityEngine.Random.Range(strugglePointsRange.x, strugglePointsRange.y);      //Ne pas toucher
 
 
 
@@ -48,7 +48,7 @@ public class YakuzaAttackCollision : MonoBehaviour
         while (strugglePointsToActivateIndexes.Count < numberOfStrugglePointsToActivate)
         {
             // generate a random index within the range of the array
-            int randomIndex = UnityEngine.Random.RandomRange(0, strugglingPoints.Length);
+            int randomIndex = UnityEngine.Random.Range(0, strugglingPoints.Length);
 
             // if the index has not already been selected, add it to the list
             if (!strugglePointsToActivateIndexes.Contains(randomIndex))

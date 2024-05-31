@@ -44,12 +44,13 @@ public class Enemy_WarnedState : Enemy_SearchingState
 
     public override void FixedUpdateState()
     {
-        if (Vector3.Distance(BaseManager.transform.position, WarningPosition) > 2f) //Valeur arbitraire
+        if (Vector3.Distance(BaseManager.transform.position, WarningPosition) > 3f) //Valeur arbitraire
         {
             return;
         }
 
         BaseManager.ArrivedOnWarning = true;
+        BaseManager.StopAgent();
 
     }
 
