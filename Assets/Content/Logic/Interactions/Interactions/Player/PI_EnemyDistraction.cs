@@ -34,6 +34,7 @@ public class PI_EnemyDistraction : Player_Interaction
     {
         underCooldown = true;
 
+        GetComponent<AudioSource>().Play();
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius, layerToDetect);
 

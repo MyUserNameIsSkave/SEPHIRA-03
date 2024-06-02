@@ -46,7 +46,6 @@ public class Enemy_DistractedState : Enemy_SearchingState
     {
         if (Vector3.Distance(BaseManager.transform.position, DistractionPosition) < 1.2f && !BaseManager.ArrivedOnWarning) //Valeur arbitraire
         {
-            Debug.Log("TESSSSSSSSSSSSSSSSSST");
             BaseManager.ArrivedOnWarning = true;
             BaseManager.StopAgent();
             return;
