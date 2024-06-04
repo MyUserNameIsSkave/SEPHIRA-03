@@ -12,9 +12,9 @@ public class ScaffoldingfStairs : MonoBehaviour
         if (other.CompareTag("Binah"))
         {
             GameManager.Instance.BinahManager.usingScaffoldingStairs = true;
-            GameManager.Instance.Binah.GetComponent<Animator>().speed = GameManager.Instance.Binah.GetComponent<Animator>().speed / 3;
+            GameManager.Instance.Binah.GetComponent<Animator>().speed = GameManager.Instance.Binah.GetComponent<Animator>().speed / 2;
+            print("SLOW DONW");
         }
-
     }
 
     
@@ -23,9 +23,8 @@ public class ScaffoldingfStairs : MonoBehaviour
         if (other.CompareTag("Binah"))
         {
             GameManager.Instance.BinahManager.usingScaffoldingStairs = false;
-            GameManager.Instance.Binah.GetComponent<Animator>().speed = GameManager.Instance.Binah.GetComponent<Animator>().speed * 3;
+            GameManager.Instance.Binah.GetComponent<Animator>().speed = GameManager.Instance.Binah.GetComponent<Animator>().speed * 2;
 
         }
-
     }
 }
