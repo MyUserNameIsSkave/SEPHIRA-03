@@ -5,8 +5,6 @@ using UnityEngine;
 using GD.MinMaxSlider;
 using Unity.VisualScripting;
 using System.Linq;
-using Autodesk.Fbx;
-using UnityEngine.Profiling;
 
 public abstract class CameraBase : MonoBehaviour, IInteractable
 {

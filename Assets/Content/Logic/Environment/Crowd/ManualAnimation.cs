@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ManualAnimation : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class ManualAnimation : MonoBehaviour
     [SerializeField]
     private bool synchronizedUpdate = true;
 
+    [SerializeField]
+    private bool visible = false;
+
+    [SerializeField]
+    private LayerMask layers;
+
 
 
     private void Start()
@@ -30,6 +37,8 @@ public class ManualAnimation : MonoBehaviour
 
     IEnumerator AnimationLoop()
     {
+        yield return 0;
+
         if (!synchronizedUpdate)
         {
             yield return new WaitForSeconds(Random.Range(0f, poseDuration));
@@ -40,11 +49,34 @@ public class ManualAnimation : MonoBehaviour
 
             for (int i = Random.Range(0, poses.Length); i < poses.Length; i++)
             {
-                meshFilter.mesh = poses[i];
+                if (visible)
+                {
+                    meshFilter.mesh = poses[i];
+                }
+
                 yield return new WaitForSeconds(poseDuration);
             }
-
-
         }
+    }
+
+
+    private void OnBecameVisible()
+    {
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(transform.position, (GameManager.Instance.Player.transform.position - transform.position).normalized, out hit, Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) - 1, layers))
+        {
+            visible = false;
+        }
+        else
+        {
+            visible = true;
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        visible = false;
     }
 }
