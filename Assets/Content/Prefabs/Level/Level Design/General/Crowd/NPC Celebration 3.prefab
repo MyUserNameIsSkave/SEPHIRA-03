@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3393282884913267870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7705923020386381793}
+  m_Layer: 0
+  m_Name: NPC Celebration 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7705923020386381793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393282884913267870}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 302.05402, y: 0.0001001358, z: 33.594925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6430257194762808760}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6721177243455851477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6430257194762808760}
+  - component: {fileID: 7695650090341769428}
+  - component: {fileID: 7053751685043438880}
+  - component: {fileID: 689374454253233935}
+  m_Layer: 0
+  m_Name: 'AnimatedMesh '
+  m_TagString: NPC
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6430257194762808760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721177243455851477}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.8218999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7705923020386381793}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &7695650090341769428
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721177243455851477}
+  m_Mesh: {fileID: 4300000, guid: d0fe8814d4627f746a9b2a5d13c13f30, type: 2}
+--- !u!23 &7053751685043438880
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721177243455851477}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5c57cae4107c43743b682234ac2b44bf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &689374454253233935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721177243455851477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73253e7f3e0fb1a43b54a6f9b1ab9873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poses:
+  - {fileID: 4300000, guid: 12a2dbf7b857465438299bc31f05e373, type: 2}
+  - {fileID: 4300000, guid: 6655df78922b80f4e91c8bb4e521c993, type: 2}
+  - {fileID: 4300000, guid: a8303e9694e40634fb8dd98b5cd11f3a, type: 2}
+  - {fileID: 4300000, guid: 03a25b7042b999346b37cae852267da5, type: 2}
+  - {fileID: 4300000, guid: 7cfb201b0d83a994f9f5154b2c2e40d0, type: 2}
+  - {fileID: 4300000, guid: 5be664c9baf051a41b1645dd3f56361a, type: 2}
+  - {fileID: 4300000, guid: 097737bfae401d242ba952e002b31bd5, type: 2}
+  - {fileID: 4300000, guid: c72874ae98515844bb25f7f33e1f7eb0, type: 2}
+  - {fileID: 4300000, guid: 2f4048b988f042a4485e7f528a7bcab7, type: 2}
+  - {fileID: 4300000, guid: 57377b951af6f3e4186b3ef623daf661, type: 2}
+  - {fileID: 4300000, guid: 6fe637d7556ca9f46a22805c120630b2, type: 2}
+  - {fileID: 4300000, guid: f6e3bb103316cb542aa20f3f12ad7223, type: 2}
+  - {fileID: 4300000, guid: 886d6227004caa94e9f4464f56c66b98, type: 2}
+  - {fileID: 4300000, guid: 123cd11d9d16f4a458144feb097c0e07, type: 2}
+  - {fileID: 4300000, guid: 222ec80833a36e14ca6334a7c4658a92, type: 2}
+  - {fileID: 4300000, guid: d9e215b023f4eda43b70d920034d73d8, type: 2}
+  - {fileID: 4300000, guid: b86f1b895a644d24f924f2740765e006, type: 2}
+  - {fileID: 4300000, guid: c4f78a6eaa0452c4f88ea2f7791fa4db, type: 2}
+  - {fileID: 4300000, guid: 7ef913323047bc340b293afa43f253d9, type: 2}
+  - {fileID: 4300000, guid: d6d6ff8f9ad99394881939447af31dea, type: 2}
+  - {fileID: 4300000, guid: 4fd2a637207466b48a2affa571ce523e, type: 2}
+  - {fileID: 4300000, guid: 0e262b1b15219c94b91bc0eac0b400e5, type: 2}
+  - {fileID: 4300000, guid: 4d95f18a05054ab4fa4a7ab5cf65f2fa, type: 2}
+  - {fileID: 4300000, guid: c8cc8de0e83765c419b78c5b45a2a76e, type: 2}
+  - {fileID: 4300000, guid: bacb09bed9acd23498e22a9cc93a4f82, type: 2}
+  - {fileID: 4300000, guid: bbfd66858f05c0c448c47c6a64f462e3, type: 2}
+  - {fileID: 4300000, guid: 2786bef26b6fb114bb130d44e201e123, type: 2}
+  - {fileID: 4300000, guid: 0d20aa12e3f4ad14a9a82cde830870b7, type: 2}
+  - {fileID: 4300000, guid: 17df24520e9a4244e9a0491e47c6dc80, type: 2}
+  - {fileID: 4300000, guid: 078c871970b25744bbb86ffd47e223cb, type: 2}
+  poseDuration: 0.2
+  synchronizedUpdate: 1
+  visible: 0
+  layers:
+    serializedVersion: 2
+    m_Bits: 268435457

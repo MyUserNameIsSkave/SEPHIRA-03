@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class CrowdSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject npcPrefab;
 
+
+
+
+    //Ajouter une orientation cible (Genre Un point a viser)
+
+
+
+    [SerializeField]
+    private Transform lookAtTarget;
+
+
+    [SerializeField]
+    private GameObject[] npcPrefabs;
+
+    [SerializeField]
+    private Material[] npcMaterials;
 
     [SerializeField]
     private int length, width;
@@ -45,7 +59,20 @@ public class CrowdSpawner : MonoBehaviour
             {
                 currentPosition = new Vector3(basePosition.x + spacing * x, currentPosition.y, basePosition.z + spacing * z);
                 currentPosition = new Vector3(currentPosition.x + Random.Range(-positionNoise, positionNoise), currentPosition.y, currentPosition.z + Random.Range(-positionNoise, positionNoise));
-                Instantiate(npcPrefab, currentPosition, Quaternion.identity, parent).transform.localScale = Vector3.one * Random.Range(0.85f, 1.15f);
+                GameObject npc = Instantiate(npcPrefabs[Random.Range(0, npcPrefabs.Length)], currentPosition, Quaternion.identity, parent);
+                npc.transform.localScale = Vector3.one * Random.Range(0.85f, 1.15f);
+                
+                if (lookAtTarget != null)
+                {
+                    npc.transform.LookAt(lookAtTarget);
+                }
+
+                //npc.transform.Rotate(new Vector3(-90, 0, 0));
+                npc.transform.position = new Vector3 (npc.transform.position.x, npc.transform.position.y + 0.875f, npc.transform.position.z);
+
+
+                npc.transform.GetChild(0).GetComponent<MeshRenderer>().material = npcMaterials[Random.Range(0, npcMaterials.Length)];
+
             }
         }
 

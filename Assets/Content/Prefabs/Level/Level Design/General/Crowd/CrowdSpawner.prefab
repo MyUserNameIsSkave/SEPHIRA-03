@@ -118,10 +118,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73be91ffcf9ac1419f163ebed53a0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcPrefab: {fileID: 3341284947854617514, guid: d115b9b19f2d6274f839f6ce3fed9a8c,
-    type: 3}
+  lookAtTarget: {fileID: 0}
+  npcPrefabs:
+  - {fileID: 1960427743266646834, guid: 139c9a60544b21442b7dc23192545c23, type: 3}
+  - {fileID: 471518460134466059, guid: 4f95052ad946fd244adce81a0fc718d7, type: 3}
+  - {fileID: 3393282884913267870, guid: 73daf6be53c654b478fd9cd5820da3c0, type: 3}
+  - {fileID: 27342483824615448, guid: c20c63a68be65144097ec2befe12efb6, type: 3}
+  npcMaterials:
+  - {fileID: 2100000, guid: 5c57cae4107c43743b682234ac2b44bf, type: 2}
+  - {fileID: 2100000, guid: e3455359e1865b740bda42857d917b31, type: 2}
+  - {fileID: 2100000, guid: f77bf34fd75a2854b9d046039922afc9, type: 2}
+  - {fileID: 2100000, guid: 76425f3b5dd37e64ebe55e37c245da12, type: 2}
+  - {fileID: 2100000, guid: 7360ee61ed1d6484583dde8a5672f56c, type: 2}
+  - {fileID: 2100000, guid: 7b1adaa52c4c3464994ab61000f1a761, type: 2}
+  - {fileID: 2100000, guid: f790ce3402817ee468aa0f8d2216f39d, type: 2}
+  - {fileID: 2100000, guid: c7c38ff6d5a2b474889835c9aaaa7cff, type: 2}
   length: 50
   width: 50
   spacing: 1.5
   spawnNow: 0
-  positionNoise: 0.75
+  positionNoise: 2.99

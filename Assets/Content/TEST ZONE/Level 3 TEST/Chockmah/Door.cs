@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.InputSystem.iOS;
 
 public class Door : AII_EventTrigger
 {

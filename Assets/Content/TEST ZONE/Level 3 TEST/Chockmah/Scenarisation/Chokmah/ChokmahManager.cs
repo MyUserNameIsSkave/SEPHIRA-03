@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.iOS;
-
 public class ChokmahManager : MonoBehaviour, IEventTriggerable
 {
 
