@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 
 public class NextLevel1 : MonoBehaviour, IEventTriggerable
@@ -20,6 +22,6 @@ public class NextLevel1 : MonoBehaviour, IEventTriggerable
     }
     public void TriggerEvent()
     {
-        GameManager.Instance.ChangeScene("Level 1");
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
