@@ -44,7 +44,8 @@ public class InteractionCostUI : MonoBehaviour
     public bool IsActive = true;
 
 
-    //If the text disapear with zoom, it's not a code issue
+    private AI_Interaction aiInteraction;
+    private Player_Interaction playerInteraction;
 
 
 
@@ -57,15 +58,14 @@ public class InteractionCostUI : MonoBehaviour
 
     private void Awake()
     {
+        aiInteraction = GetComponent<AI_Interaction>();
+        playerInteraction = GetComponent<Player_Interaction>();
+
+
         appliedHorizontalOffset = (Screen.width * horizontalPercentOffset) / 100;
 
         parentPanel = GameObject.FindGameObjectWithTag("Interaction Informations").transform;
         stamCost = GetCost();
-    }
-
-    private void Start()
-    {
-        //do not remove
     }
 
     private void OnMouseEnter()
@@ -74,6 +74,12 @@ public class InteractionCostUI : MonoBehaviour
         {
             return;
         }
+
+        if (!CheckDistance())
+        {
+            return;
+        }
+
 
         UpdateStamPreview(stamCost);
 
@@ -94,6 +100,20 @@ public class InteractionCostUI : MonoBehaviour
     }
 
 
+    private bool CheckDistance()
+    {
+        if (aiInteraction != null)
+        {
+            return aiInteraction.CheckDistance();
+        }
+        else
+        {
+            return playerInteraction.CheckDistance();
+        }
+    }
+
+
+
     private void OnMouseOver()
     {
         if (!IsActive)
@@ -104,8 +124,15 @@ public class InteractionCostUI : MonoBehaviour
             }
             return;
         }
+
+
         //Utile en cas de zoom
-        UpdatePosition();
+
+        if (CheckDistance())
+        {
+            UpdatePosition();
+
+        }
     }
 
 

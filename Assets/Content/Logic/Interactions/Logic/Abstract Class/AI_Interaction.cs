@@ -14,13 +14,16 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     [Space(7f)]
 
 
-    [Tooltip ("The Stamina Cost of the action to the Player")]
+    [Tooltip("The Stamina Cost of the action to the Player")]
     public int stamCost;
 
-    [Tooltip ("The Scriptabel Object that translate State Variables into Score")]
+    [Tooltip("The max distance with Binah to ask for Interaction")]
+    public float interactionDistance;
+
+    [Tooltip("The Scriptabel Object that translate State Variables into Score")]
     public Consideration Consideration;
 
-    [Tooltip ("The distance from the center at witch the action can be executed by the AI")]
+    [Tooltip("The distance from the center at witch the action can be executed by the AI")]
     public float ActionRange = 1f;
 
 
@@ -41,8 +44,8 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
 
 
-    [Space (15)]
-    [Header ("     FORCED ACTION")]
+    [Space(15)]
+    [Header("     FORCED ACTION")]
     [Space(7)]
 
 
@@ -50,7 +53,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     [Header("SETTINGS")]
     [Space(7)]
 
-    [Tooltip ("Number of Request needed to Force an Action")]
+    [Tooltip("Number of Request needed to Force an Action")]
     public int askedTimeToForce;
 
     [Tooltip("Time a Request stay before not counting anymore ")]
@@ -64,7 +67,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     [Header("     FORCED ACTION CONSEQUENCES")]
     [Space(7)]
 
-    [Tooltip ("Add this to State Variables in case of Forced Action")]
+    [Tooltip("Add this to State Variables in case of Forced Action")]
     public StateVariablesModification forcedActionVariablesModification;
 
 
@@ -100,7 +103,12 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
         UtilityAI_Manager = GameManager.Instance.BinahManager;
 
         //Transfert Input
-        UtilityAI_Manager.DoIndicatedAction(this);
+
+        if (CheckDistance())
+        {
+            UtilityAI_Manager.DoIndicatedAction(this);
+        }
+
     }
 
 
@@ -130,7 +138,7 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
         }
     }
 
-    
+
     public void MakeInteractionFail()
     {
         InteractionFailed();
@@ -155,7 +163,17 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
         }
     }
 
-
+    public bool CheckDistance()
+    {
+        if (Vector3.Distance(transform.position, GameManager.Instance.Binah.transform.position) <= interactionDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
 
@@ -175,9 +193,9 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
         if (modificationType == ModificationType.Add)
         {
             //Add
-            UtilityAI_Manager.StateVariablesDictionnary.AddStateVariables(variablesModification.Courage, 
-                                                                          variablesModification.Determination, 
-                                                                          variablesModification.Curiosity, 
+            UtilityAI_Manager.StateVariablesDictionnary.AddStateVariables(variablesModification.Courage,
+                                                                          variablesModification.Determination,
+                                                                          variablesModification.Curiosity,
                                                                           variablesModification.Independence);
 
         }
@@ -235,7 +253,10 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
     }
 
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, interactionDistance);
+    }
 }
 
 
