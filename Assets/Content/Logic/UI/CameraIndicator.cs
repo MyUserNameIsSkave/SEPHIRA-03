@@ -97,20 +97,6 @@ public class CameraIndicator : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private void Awake()
     {
         cameraOutlineParent = GameObject.FindWithTag("CameraOutlineParent").transform;
