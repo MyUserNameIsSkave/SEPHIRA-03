@@ -1,3 +1,4 @@
+using DigitalOpus.MB.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,8 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour, IEventTriggerable
 {
     //VARIABLES
+
+
 
     [Header("  DEBUG")]
     [SerializeField]
@@ -122,10 +125,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && manualyActivated)
-        {
-            PlayerNextLine();
-        }
+
     }
 
 

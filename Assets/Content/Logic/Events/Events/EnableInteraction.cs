@@ -1,22 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnableInteraction : MonoBehaviour, IEventTriggerable
 {
-    
+
     [SerializeReference]
     LayerMask ActivatedLayer;
 
     [SerializeReference]
     Material activatedMaterial;
 
-
+    [SerializeField]
+    Image mouse_icon;
 
     public void TriggerEvent()
     {
         gameObject.layer = GetLayerFromMask(ActivatedLayer);
         GetComponent<MeshRenderer>().material = activatedMaterial;
+
+
+        mouse_icon.enabled = true;
     }
 
 
@@ -40,4 +45,5 @@ public class EnableInteraction : MonoBehaviour, IEventTriggerable
 
         return layer;
     }
+
 }

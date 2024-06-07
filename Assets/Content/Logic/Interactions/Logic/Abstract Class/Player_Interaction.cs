@@ -8,7 +8,7 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
     public int stamCost;
 
     [Tooltip("The max distance with Binah to ask for Interaction")]
-    public float interactionDistance;
+    public float interactionDistance = 1000;
 
     protected PlayerStamina staminaScript;
 
