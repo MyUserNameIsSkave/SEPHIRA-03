@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 9032584452406934699, guid: 77ad084a3e8b39a47a3e33907933d5af,
         type: 3}
       propertyPath: antialiasing
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2937,7 +2937,12 @@ PrefabInstance:
     - target: {fileID: 6940773893366490395, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
         type: 3}
       propertyPath: m_Name
-      value: Canvas - Debug
+      value: Canvas - Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6940773893366490395, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7342529181363780410, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
         type: 3}
@@ -3048,6 +3053,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973413254665401134, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1762400597}
+    - target: {fileID: 7973413254665401134, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973413254665401134, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973413254665401134, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8432864103906077960, guid: 80a9fb08cdebf294b917e0d7129ea1e9,
         type: 3}

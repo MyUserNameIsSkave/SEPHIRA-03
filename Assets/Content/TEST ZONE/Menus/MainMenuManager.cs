@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadSceneAsync(dropdown.value + 1);
+        SceneManager.LoadSceneAsync(dropdown.value + 2);
     }
 
     public void Credits()
