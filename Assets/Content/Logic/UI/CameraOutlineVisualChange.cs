@@ -15,11 +15,14 @@ public class CameraOutlineVisualChange : MonoBehaviour
     private Color alreadyUsedColor;
 
 
-    [Space (10)]
+    [Space(10)]
 
 
     [SerializeField]
-    private Sprite onScreen;
+    private Sprite onScreenUsed;
+
+    [SerializeField]
+    private Sprite onScreenNotUsed;
 
     [SerializeField]
     private Sprite inMargin;
@@ -56,7 +59,7 @@ public class CameraOutlineVisualChange : MonoBehaviour
                         return;
                     }
 
-                    image.sprite = onScreen;
+                    image.sprite = onScreenUsed;
                     image.color = alreadyUsedColor;
                 }
                 else
@@ -66,7 +69,7 @@ public class CameraOutlineVisualChange : MonoBehaviour
                         return;
                     }
 
-                    image.sprite = onScreen;
+                    image.sprite = onScreenNotUsed;
                     image.color = Color.white;
                 }
                 break;
