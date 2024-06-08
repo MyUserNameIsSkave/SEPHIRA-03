@@ -68,6 +68,7 @@ public class UiCamerBars : MonoBehaviour
 
 
 
+
     IEnumerator UpdateBarsPositions()
     {
 
@@ -81,7 +82,7 @@ public class UiCamerBars : MonoBehaviour
 
         topSlider.value = (currentCamera.BaseYaw - currentCamera.HorizontalRange.x) / (Mathf.Abs(currentCamera.HorizontalRange.y) + Mathf.Abs(currentCamera.HorizontalRange.x));
         leftSlider.value = (currentCamera.BasePitch + currentCamera.VerticalRange.y) / (Mathf.Abs(currentCamera.VerticalRange.y) + Mathf.Abs(currentCamera.VerticalRange.x));
-        zoomSlider.value = currentCamera.currentCameraFOV / (currentCamera.FOVRange.x + currentCamera.FOVRange.y);
+        zoomBase.value = currentCamera.currentCameraFOV / (currentCamera.FOVRange.x + currentCamera.FOVRange.y);
 
         yield return null;
     }
@@ -96,6 +97,6 @@ public class UiCamerBars : MonoBehaviour
 
         topBase.value = (currentCamera.BaseYaw - currentCamera.HorizontalRange.x) / (Mathf.Abs(currentCamera.HorizontalRange.y) + Mathf.Abs(currentCamera.HorizontalRange.x));
         leftBase.value = (currentCamera.BasePitch + currentCamera.VerticalRange.y) / (Mathf.Abs(currentCamera.VerticalRange.y) + Mathf.Abs(currentCamera.VerticalRange.x));
-        zoomBase.value = currentCamera.currentCameraFOV / (currentCamera.FOVRange.x + currentCamera.FOVRange.y);
+        zoomSlider.value = currentCamera.currentCameraFOV / (currentCamera.FOVRange.x + currentCamera.FOVRange.y);
     }
 }
