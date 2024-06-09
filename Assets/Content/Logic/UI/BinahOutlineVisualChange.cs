@@ -39,6 +39,7 @@ public class BinahOutlineVisualChange : MonoBehaviour
 
     public void ChangeOutlineSprite(OutlineSprite currentState)
     {
+
         currentOutlineType = currentState;
 
         switch (currentState)

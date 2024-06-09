@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,8 +30,30 @@ public class GameManager : MonoBehaviour
     public static List<int> ValidatedCheckpoints = new List<int>();
     public static int CurrentIndex = -1;
 
+    public bool playerInputLocked
+    {
+        get
+        {
+            return _playerInputLocked;
+        }
+        set
+        {
+            _playerInputLocked = value;
 
+            if (value)
+            {
+                GameObject.FindWithTag("CameraOutlineParent").GetComponent<RectTransform>().localPosition = Vector3.one * 10000;
 
+            }
+            else
+            {
+                GameObject.FindWithTag("CameraOutlineParent").GetComponent<RectTransform>().localPosition = Vector3.zero;
+
+            }
+        }
+    }
+
+    private bool _playerInputLocked;
 
 
     private void Awake()
@@ -106,7 +129,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
-    public void Respawn()
+
+
+    /// <summary>
+    /// First spawn the Game Over UI
+    /// </summary>
+    public void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

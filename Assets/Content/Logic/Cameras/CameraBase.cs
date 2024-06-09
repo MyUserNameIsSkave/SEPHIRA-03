@@ -138,6 +138,12 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     {
         //Recieve Input
 
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
+
         if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
             if (!isCameraAccessible)

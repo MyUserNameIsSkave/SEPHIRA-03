@@ -24,6 +24,7 @@ public class Enemy_Struggling : Enemy_AttackingState
 
     public void YakuzaWin()
     {
-        GameManager.Instance.Respawn();
+        //GameManager.Instance.GameOver();
+        Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>().enabled = true;
     }
 }

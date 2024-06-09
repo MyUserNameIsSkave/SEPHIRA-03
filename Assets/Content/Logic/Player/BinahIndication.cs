@@ -90,6 +90,12 @@ public class BinahIndication : MonoBehaviour
 
     private void ActionIndication(RaycastHit hit)
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
+
         if (!DoubleCheckRaycast(AIInteractionLayer))
         {
             return;
@@ -109,6 +115,13 @@ public class BinahIndication : MonoBehaviour
 
     private void MovementIndication(RaycastHit hit)
     {
+
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
+
         if (!DoubleCheckRaycast(WalkableLayer))
         {
             return;

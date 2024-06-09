@@ -30,8 +30,16 @@ public class DebugPanel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            canvas.enabled = !canvas.isActiveAndEnabled;
-            gammaSlider.value = gammaSettings.gammaValue;
+            if (!Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>().enabled)
+            {
+                canvas.enabled = !canvas.isActiveAndEnabled;
+                gammaSlider.value = gammaSettings.gammaValue;
+            }
+        }
+
+        if (Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>().enabled && canvas.enabled)
+        {
+            canvas.enabled = false;
         }
     }
 

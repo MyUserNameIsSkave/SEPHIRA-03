@@ -99,6 +99,11 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
     public void SelectedByPlayer()
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
 
         UtilityAI_Manager = GameManager.Instance.BinahManager;
 
@@ -165,6 +170,11 @@ public abstract class AI_Interaction : MonoBehaviour, IInteractable
 
     public bool CheckDistance()
     {
+        if (interactionDistance == 0)
+        {
+            return true;
+        }
+
         if (Vector3.Distance(transform.position, GameManager.Instance.Binah.transform.position) <= interactionDistance)
         {
             return true;

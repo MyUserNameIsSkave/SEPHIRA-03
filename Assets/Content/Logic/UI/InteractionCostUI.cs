@@ -70,6 +70,11 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
         if (!IsActive)
         {
             return;
@@ -116,6 +121,11 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
         if (!IsActive)
         {
             if (uiObject != null)
@@ -140,6 +150,12 @@ public class InteractionCostUI : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
+
         if (GameManager.Instance.PlayerStam.staminaUI == null)
         {
             return;

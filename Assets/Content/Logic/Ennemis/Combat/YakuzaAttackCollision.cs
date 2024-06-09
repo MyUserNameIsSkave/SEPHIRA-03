@@ -64,7 +64,7 @@ public class YakuzaAttackCollision : MonoBehaviour
 
         foreach (PI_StrugglingPoint point in strugglingPoints)
         {
-            point.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            point.GetComponentInChildren<Canvas>(true).gameObject.SetActive(false);
             point.gameObject.GetComponent<SphereCollider>().enabled = false;
         }
     }
@@ -94,7 +94,7 @@ public class YakuzaAttackCollision : MonoBehaviour
             PI_StrugglingPoint point = strugglingPoints[index];
 
             activeStrugglingPoints.Add(point);
-            point.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            point.GetComponentInChildren<Canvas>(true).gameObject.SetActive(true);
             point.gameObject.GetComponent<SphereCollider>().enabled = true;
         }
 

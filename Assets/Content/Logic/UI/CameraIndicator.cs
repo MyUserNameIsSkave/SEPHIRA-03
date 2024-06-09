@@ -112,6 +112,9 @@ public class CameraIndicator : MonoBehaviour
 
     void FixedUpdate()
     {
+
+
+
         if (indicatorCenter == null)
         {
             //Debug.LogError("INDICATOR CENTER NULL");
@@ -142,7 +145,6 @@ public class CameraIndicator : MonoBehaviour
             DestroyUI();
             return;
         }
-
 
 
 
@@ -241,6 +243,9 @@ public class CameraIndicator : MonoBehaviour
 
     private void SpawnUI()
     {
+
+
+
         if (currentOutlineScript != null)
         {
             return;

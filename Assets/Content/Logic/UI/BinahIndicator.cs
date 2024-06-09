@@ -158,6 +158,7 @@ public class BinahIndicator : MonoBehaviour
 
     private void SpawnUI()
     {
+
         if (currentOutlineScript != null)
         {
             return;

@@ -8,7 +8,7 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
     public int stamCost;
 
     [Tooltip("The max distance with Binah to ask for Interaction")]
-    public float interactionDistance = 1000;
+    public float interactionDistance = 0;
 
     protected PlayerStamina staminaScript;
 
@@ -35,8 +35,6 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
 
         if (stamCost <= staminaScript.CurrentStam)
         {
-            staminaScript.CurrentStam -= stamCost;
-
             return true;
         }
         else
@@ -48,6 +46,11 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
 
     public bool CheckDistance()
     {
+        if (interactionDistance == 0)
+        {
+            return true;
+        }
+
         if (Vector3.Distance(transform.position, GameManager.Instance.Player.transform.position) <= interactionDistance)
         {
             return true;
@@ -65,8 +68,15 @@ public abstract class Player_Interaction : MonoBehaviour, IInteractable
 
     public void SelectedByPlayer()
     {
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
+
         if (CheckStamina() && CheckDistance())
         {
+            staminaScript.CurrentStam -= stamCost;
             Interaction();
             TriggerEvent();
         }

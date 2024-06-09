@@ -11,10 +11,8 @@ public class PI_StrugglingPoint : Player_Interaction
 
     public override void Interaction()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<Canvas>().gameObject.SetActive(false);
         GetComponent<SphereCollider>().enabled = false;
-
-
 
         triggered = true;
     }

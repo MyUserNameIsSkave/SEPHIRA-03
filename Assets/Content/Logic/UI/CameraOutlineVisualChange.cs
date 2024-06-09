@@ -106,6 +106,7 @@ public class CameraOutlineVisualChange : MonoBehaviour
 
     public void ChangeOutlineSize(Vector2 visibleSize, Vector2 marginSize)
     {
+
         switch (currentOutlineType)
         {
             case OutlineSprite.OnScreen:
