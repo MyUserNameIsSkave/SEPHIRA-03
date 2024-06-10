@@ -10,7 +10,7 @@ public class DroneMovementTutorialManager : MonoBehaviour, IEventTriggerable
     [SerializeField]
     private Material uiZ, uiQ, uiS, uiD;
 
-
+    
 
 
     [SerializeField]
@@ -99,7 +99,6 @@ public class DroneMovementTutorialManager : MonoBehaviour, IEventTriggerable
         }
         if (Input.GetKeyUp(KeyCode.D))   //D
         {
-            print("D UP");
             uiD_image_component.color = Color.clear;
         }
 

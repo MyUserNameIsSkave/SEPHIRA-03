@@ -1,3 +1,4 @@
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ public class BinahIndication : MonoBehaviour
 
     [Header ("     LAYER SELECTION")]
     [Space (7)]
+
+    [SerializeField]
+    private GameObject positionDecal;
 
     public LayerMask WalkableLayer;
     public LayerMask AIInteractionLayer;
@@ -27,7 +31,6 @@ public class BinahIndication : MonoBehaviour
 
 
 
-
     //----------------------------------------------------------------
 
 
@@ -39,7 +42,52 @@ public class BinahIndication : MonoBehaviour
 
 
 
+    private void Update()
+    {
+        if (!inIndicationMode)
+        {
+            positionDecal.transform.position = Vector3.one * 10000;
+            return;
+        }
 
+
+        RaycastHit hit;
+        Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, ~BinahLayer);
+
+
+        if (MovementIndicationPosition(hit) == Vector3.zero)
+        {
+            return;
+        }
+
+
+        positionDecal.transform.position = MovementIndicationPosition(hit);
+    }
+
+
+
+
+
+    private Vector3 MovementIndicationPosition(RaycastHit hit)
+    {
+        if (!DoubleCheckRaycast(WalkableLayer))
+        {
+            return Vector3.zero;
+        }
+
+
+        // Slope Verifiaction
+        Vector3 surfaceNormal = hit.normal;
+        float slopeAngle = Vector3.Angle(Vector3.up, surfaceNormal);
+
+        if (slopeAngle > maxSlop)
+        {
+            return Vector3.zero;
+        }
+
+
+        return hit.point;
+    }
 
 
 

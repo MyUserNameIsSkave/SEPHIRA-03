@@ -7,7 +7,10 @@ public class BinahIndication_DebugTool : MonoBehaviour
     BinahIndication indicationScript;
 
 
+
+
     [Space(10)]
+
 
 
     [SerializeField]
