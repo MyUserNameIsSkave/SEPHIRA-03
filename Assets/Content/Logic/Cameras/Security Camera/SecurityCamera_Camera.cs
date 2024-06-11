@@ -19,7 +19,11 @@ public class SecurityCamera_Camera : CameraBase
             {
                 if (!GameManager.Instance.BinahManager.InRestrictiveZone)
                 {
-                    GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
+                    if (!alreadyUsed)
+                    {
+                        GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
+
+                    }
                 }
             }
         }
