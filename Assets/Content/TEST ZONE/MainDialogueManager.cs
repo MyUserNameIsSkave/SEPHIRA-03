@@ -5,6 +5,7 @@ using UnityEngine;
 using AYellowpaper.SerializedCollections;
 using UnityEngine.ProBuilder.MeshOperations;
 using Unity.VisualScripting;
+using Autodesk.Fbx;
 
 public class MainDialogueManager : MonoBehaviour, IEventTriggerable
 {
@@ -64,6 +65,7 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
             GameManager.Instance.playerInputLocked = true;
         }
 
+        skipNext = false;
         StartCoroutine(DialogueLoop());
     }
 
@@ -104,7 +106,9 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
                 yield return new WaitForEndOfFrame();
                 time += Time.deltaTime;
             }
-            
+
+            time = 0;
+
         }
         StartCoroutine(DisplaySubtitles(""));
 
