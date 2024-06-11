@@ -12,10 +12,18 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
     private bool lockGameplay = false;
 
     [SerializeField]
+    private bool selfTrigger = false;
+
+
+    [SerializeField]
+    private float initialDelay;
+
+    [SerializeField]
     private SerializedDictionary<string, float> subtitles;
 
     [SerializeField]
     private MonoBehaviour[] events;
+
 
 
 
@@ -28,6 +36,11 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
     private void Start()
     {
         subtitleText = GameObject.FindGameObjectWithTag("General Subtitle").GetComponent<TextMeshProUGUI>();
+
+        if (selfTrigger)
+        {
+            TriggerEvent();
+        }
     }
 
 
@@ -58,6 +71,9 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
     IEnumerator DialogueLoop()
     {
         
+        yield return new WaitForSeconds(initialDelay);
+
+
         int subIndex = 0;
         foreach (KeyValuePair<string, float> subtitle in subtitles)
         {
@@ -96,12 +112,13 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
         {
             GameManager.Instance.playerInputLocked = false;
         }
+
     }
 
     IEnumerator DisplaySubtitles(string sub)
     {
-        yield return new WaitForSeconds(0.2f);
         subtitleText.text = sub;
+        yield return 0;
     }
 
 }
