@@ -16529,7 +16529,7 @@ MonoBehaviour:
   ActivatedLayer:
     serializedVersion: 2
     m_Bits: 2147483648
-  activatedMaterial: {fileID: 2100000, guid: ecdd566871d1c5849b1106ffc90da3af, type: 2}
+  activatedMaterial: {fileID: 2100000, guid: 83169b0a0f6506044b1cf83372381d80, type: 2}
   mouse_icon: {fileID: 156408275}
 --- !u!114 &671249599
 MonoBehaviour:
@@ -16555,14 +16555,13 @@ MonoBehaviour:
       Value: 7
     - Key: {fileID: 548163842}
       Value: 0.6
-    - Key: {fileID: 0}
-      Value: 13
     - Key: {fileID: 264437421}
       Value: 1
     - Key: {fileID: 1460452394}
       Value: 5
     - Key: {fileID: 478576693}
       Value: 25
+  clickIndicator: {fileID: 788907433}
 --- !u!64 &671249600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26920,6 +26919,11 @@ PrefabInstance:
       propertyPath: events.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[0]
+      value: 
+      objectReference: {fileID: 900815342}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
@@ -69959,7 +69963,7 @@ PrefabInstance:
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
       propertyPath: EventToTrigger._serializedList.Array.data[1].Value
-      value: 7.1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}

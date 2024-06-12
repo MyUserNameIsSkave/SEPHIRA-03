@@ -231,6 +231,8 @@ public class InteractionCostUI : MonoBehaviour
         Vector2 screenPosition = GameManager.Instance.mainCamera.WorldToScreenPoint(targetMesh.bounds.center);
         screenPosition = new Vector2(leftestPoint + appliedHorizontalOffset, screenPosition.y - Screen.height / 2);
 
+
+
         uiObject.GetComponent<RectTransform>().transform.localPosition = screenPosition;
     }
 
