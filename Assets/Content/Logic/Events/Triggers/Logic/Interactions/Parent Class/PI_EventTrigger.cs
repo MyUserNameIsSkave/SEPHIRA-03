@@ -43,7 +43,7 @@ public class PI_EventTrigger : Player_Interaction
 
 
 
-    private void CheckForCameraChange()
+    public void CheckForCameraChange()
     {
         foreach (KeyValuePair<CameraBase, float> kvp in NewCamera)
         {
@@ -63,7 +63,7 @@ public class PI_EventTrigger : Player_Interaction
 
 
 
-    private void CheckForEventsToDo()
+    public void CheckForEventsToDo()
     {
         foreach (KeyValuePair<MonoBehaviour, float> kvp in EventToTrigger)
         {
