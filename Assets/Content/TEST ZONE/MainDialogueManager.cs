@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using AYellowpaper.SerializedCollections;
-using UnityEngine.ProBuilder.MeshOperations;
-using Unity.VisualScripting;
-using Autodesk.Fbx;
 
 public class MainDialogueManager : MonoBehaviour, IEventTriggerable
 {
@@ -25,8 +22,8 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
     [SerializeField]
     private MonoBehaviour[] events;
 
-
-
+    [HideInInspector]
+    public bool dialogueFinished = false;
 
 
     private TextMeshProUGUI subtitleText;
@@ -116,7 +113,7 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
         {
             GameManager.Instance.playerInputLocked = false;
         }
-
+        dialogueFinished = true;
     }
 
     IEnumerator DisplaySubtitles(string sub)

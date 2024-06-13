@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class InsertUSB : MonoBehaviour
 {
+    [SerializeField]
+    private MainDialogueManager dialogue;
+
+    [SerializeField]
+    private GameObject skipUi;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +22,15 @@ public class InsertUSB : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (dialogue.dialogueFinished == false)
+            {
+                return;
+            }
+
+
             GetComponent<Animator>().SetTrigger("start");
+
+            Destroy(skipUi);
 
             Invoke("NextLevel", 5f);
         }
