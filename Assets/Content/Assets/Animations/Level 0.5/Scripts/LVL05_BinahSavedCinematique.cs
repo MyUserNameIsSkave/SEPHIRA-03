@@ -31,8 +31,8 @@ public class LVL05_BinahSavedCinematique : MonoBehaviour, IEventTriggerable
     {
         // Active la booléenne dans l'Animator
         animatorB.SetBool(booleanBinahSaved, true);
-        Invoke("BinahSavedYC", 6.4f);
-        Invoke("EnableGravity", 17.4f);
+        Invoke("BinahSavedYC", 6f);
+        Invoke("EnableGravity", 17.2f);
     }
 
    void BinahSavedYC()
