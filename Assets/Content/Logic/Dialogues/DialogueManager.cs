@@ -16,8 +16,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
     private int audioIndex = 0;
 
 
-    [SerializeField]
-    private AudioSource audioSource;
+
 
     [SerializeField]
     private bool manualyActivated = false;
@@ -158,21 +157,7 @@ public class DialogueManager : MonoBehaviour, IEventTriggerable
 
 
 
-        if (audioSource.isPlaying)
-        {
-            audioSource.Stop();
-            StopAllCoroutines();
-        }
-        
-
-
-
-
-        if (dialogueData.audioLine[audioIndex] != null)
-        {
-            audioSource.clip = dialogueData.audioLine[audioIndex];
-            audioSource.Play();
-        }
+      
 
         StartCoroutine(SubtitleCoroutine());
     }
