@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkSpeed: 4
   CrouchSpeed: 2.5
-  ScaffoldingStairsSpeed: 0
+  ScaffoldingStairsSpeed: 1
   LadderSpeed: 0.7
   outOfScreenSpeedMultiplier: 2.5
   currentSpeed: 0
@@ -2519,6 +2519,7 @@ MonoBehaviour:
   CoverConsideration: {fileID: 0}
   FleeDistance: 10
   UseDebugTool: 1
+  animator: {fileID: 0}
   Object: {fileID: 0}
   Agent: {fileID: 0}
   AI_InteractionObject:
@@ -2533,6 +2534,8 @@ MonoBehaviour:
   usingScaffoldingStairs: 0
   isCrouched: 0
   CanRecieveInput: 1
+  InRestrictiveZone: 0
+  IsAutomaticalyMovingToCamera: 0
 --- !u!114 &7340013218034187450
 MonoBehaviour:
   m_ObjectHideFlags: 0
