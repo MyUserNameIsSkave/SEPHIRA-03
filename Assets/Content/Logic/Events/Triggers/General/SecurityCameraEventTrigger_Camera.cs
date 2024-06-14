@@ -8,7 +8,6 @@ using UnityEngine;
 public class SecurityCameraEventTrigger_Camera : CameraBase
 {
 
-
     [Space(40)]
     [Header("  EVENT SETTINGS")]
     [Space(10)]
