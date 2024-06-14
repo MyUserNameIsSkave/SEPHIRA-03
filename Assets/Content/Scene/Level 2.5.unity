@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00045167893, g: 0.00026285255, b: 0.00013595099,
+  m_IndirectSpecularColor: {r: 0.00042703754, g: 0.00025140986, b: 0.00013000613,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -23926,6 +23926,11 @@ PrefabInstance:
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
       propertyPath: NewCamera._serializedList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
@@ -23933,6 +23938,11 @@ PrefabInstance:
       propertyPath: NewCamera._serializedList.Array.data[0].Key
       value: 
       objectReference: {fileID: 613825027}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 1939252443}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -74324,6 +74334,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4efc05f2c7212174b8a255dad6b14bbe, type: 3}
+--- !u!114 &1939252443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7756000439168141835, guid: 69e4368f2252a1c4988406ce6132ee77,
+    type: 3}
+  m_PrefabInstance: {fileID: 4093143473482110929}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1940579878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75777,7 +75799,7 @@ Transform:
   m_GameObject: {fileID: 1973366982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1167.404, z: -463.1345}
+  m_LocalPosition: {x: 9, y: -1167.404, z: -463.1345}
   m_LocalScale: {x: 1000, y: 2914.8223, z: 73.75122}
   m_ConstrainProportionsScale: 1
   m_Children: []
