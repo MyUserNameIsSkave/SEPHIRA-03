@@ -36,6 +36,7 @@ Transform:
   - {fileID: 7129187062651847985}
   - {fileID: 3495102761773176624}
   - {fileID: 6714375613820049985}
+  - {fileID: 3268302428820664414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!135 &5796144824269487305
@@ -83,7 +84,7 @@ MonoBehaviour:
   accessibleCameras: []
   isCameraAccessible: 0
   binahMaxDistanceBeforeAutoJoin: 0
-  binahJoinTargetPosition: {fileID: 0}
+  binahJoinTargetPosition: {fileID: 3268302428820664414}
   BasePitch: 0
   BaseYaw: 0
   currentCameraFOV: 0
@@ -174,6 +175,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4918371243184233665}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2076692348822863943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3268302428820664414}
+  m_Layer: 0
+  m_Name: BinahToJoinPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3268302428820664414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076692348822863943}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.046972267, y: 0.21806285, z: -0.15055564}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2844517170071029469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2093150385759299996
 GameObject:
