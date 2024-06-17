@@ -147,7 +147,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
             if (!isCameraAccessible)
-            {
+            {;
                 return;
             }
         }
