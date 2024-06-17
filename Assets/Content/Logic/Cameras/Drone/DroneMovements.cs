@@ -109,7 +109,7 @@ public class DroneMovements : MonoBehaviour
     public void TakeControl()
     {
         isControledByPlayer = true;
-        DOTween.KillAll();
+        DOTween.Kill(transform);
         transform.DOMove(transform.position + ((targets[CurrentTarget].transform.position - transform.position).normalized * 1), 1.25f).SetEase(Ease.OutQuad);
     }
 
@@ -117,7 +117,7 @@ public class DroneMovements : MonoBehaviour
     {
         outOfBoundUI.GetComponent<Image>().enabled = false;
         isControledByPlayer = false;
-        DOTween.KillAll();
+        DOTween.Kill(transform);
         CurrentTarget -= 1;
         AutomaticMovements();
     }

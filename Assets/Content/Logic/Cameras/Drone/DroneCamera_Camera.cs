@@ -42,7 +42,10 @@ public class DroneCamera_Camera : CameraBase
 
     private void FixedUpdate()
     {
-        if (isPossessed)
+        if (!isPossessed)
+        {
+            return;
+        }
 
         if (GameManager.Instance.CameraController.CurrentCamera != this)
         {
