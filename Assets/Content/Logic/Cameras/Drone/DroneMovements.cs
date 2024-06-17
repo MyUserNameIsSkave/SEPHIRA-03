@@ -102,22 +102,28 @@ public class DroneMovements : MonoBehaviour
 
     private void AutomaticMovements()
     {
+        print("automatic");
+
         CurrentTarget += 1;
         transform.DOMove(targets[CurrentTarget].transform.position, CurrentTimeBetweenTargets).SetEase(Ease.InOutQuad).onComplete = AutomaticMovements;
     }
 
     public void TakeControl()
     {
+        print("Take Control");
+
         isControledByPlayer = true;
-        DOTween.KillAll();
+        DOTween.Kill(transform);
         transform.DOMove(transform.position + ((targets[CurrentTarget].transform.position - transform.position).normalized * 1), 1.25f).SetEase(Ease.OutQuad);
     }
 
     public void LoseControl()
     {
+        print("Lose Control");
+
         outOfBoundUI.GetComponent<Image>().enabled = false;
         isControledByPlayer = false;
-        DOTween.KillAll();
+        DOTween.Kill(transform);
         CurrentTarget -= 1;
         AutomaticMovements();
     }
