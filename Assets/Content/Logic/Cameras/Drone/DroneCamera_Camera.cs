@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DroneCamera_Camera : CameraBase
 {
@@ -42,6 +43,8 @@ public class DroneCamera_Camera : CameraBase
 
     private void FixedUpdate()
     {
+        isCameraAccessible = GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Contains(this);
+
         if (!isPossessed)
         {
             return;
