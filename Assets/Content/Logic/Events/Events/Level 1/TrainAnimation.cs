@@ -5,6 +5,8 @@ using UnityEngine;
 public class TrainAnimation : MonoBehaviour, IEventTriggerable
 {
 
+    public AudioSource audioSource;
+
     [SerializeField]
     private float trainSpeed;
 
@@ -14,9 +16,14 @@ public class TrainAnimation : MonoBehaviour, IEventTriggerable
 
     private bool canMove = false;
 
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void TriggerEvent()
     {
         canMove = true;
+        audioSource.Play();
         Invoke("DestroyTrain", timeBeforeDestruction);
     }
 

@@ -131,14 +131,19 @@ public class CameraController : MonoBehaviour
 
         if (value.Get<float>() != 0)
         {
-            moveCamera = StartCoroutine(CameraRotation());
+            
+            
+                moveCamera = StartCoroutine(CameraRotation());
+      
+
         }
         else
         {
             StopCoroutine(moveCamera);
+            CurrentCamera.CameraRotate.Stop();
         }
     }
-
+    
     // MoveCamera Coroutine, Responsible for Camera Movement
     private IEnumerator CameraRotation()
     {
