@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DialogueSkipAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        StartCoroutine(TeleportBinah());
     }
 
-    // Update is called once per frame
-    void Update()
+
+    IEnumerator TeleportBinah()
     {
-        
+        GameManager.Instance.Binah.GetComponent<NavMeshAgent>().enabled = false;
+        GameManager.Instance.Binah.transform.position = transform.GetChild(0).position;
+
+        yield return new WaitForEndOfFrame();
+
+        GameManager.Instance.Binah.GetComponent<NavMeshAgent>().enabled = true;
     }
 }
