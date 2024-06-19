@@ -20,7 +20,7 @@ public class EnableInteraction : MonoBehaviour, IEventTriggerable
         gameObject.layer = GetLayerFromMask(ActivatedLayer);
         //GetComponent<MeshRenderer>().material = activatedMaterial;
 
-
+        GetComponent<MeshCollider>().enabled = true;
         mouse_icon.enabled = true;
     }
 
