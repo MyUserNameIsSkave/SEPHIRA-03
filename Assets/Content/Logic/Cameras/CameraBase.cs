@@ -79,7 +79,6 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
 
 
-
     // ----- WORKING VARIABLES -----
 
     //General
@@ -115,6 +114,15 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     protected float VerticalAdjustment = 1f;
 
+    public AudioSource CameraRotate;
+
+    public AudioSource CameraZoomIn;
+    public AudioSource CameraZoomOut;
+
+    public AudioSource CameraSwitch;
+
+
+
 
     // ----- lOGIC -----
 
@@ -129,6 +137,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         {
             isFirstCamera = true;
         }
+
     }
 
 
@@ -175,7 +184,11 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         //Send information to the new Camera that it is the new one
         Transitionned();
 
-
+        if (!CameraSwitch.isPlaying)
+        {
+            CameraSwitch.Play();
+        }
+           
 
         cameraIndicatorScript.TransitionnedFrom();
         cameraController.CurrentCamera.alreadyUsed = true;
@@ -231,14 +244,45 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
     public void RotateCamera()
     {
         Vector2 inputs = GetCameraInput();
+        bool isPitchAtLimit = BasePitch == -VerticalRange.y || BasePitch == -VerticalRange.x;
+        bool isYawAtLimit = BaseYaw == HorizontalRange.x || BaseYaw == HorizontalRange.y;
 
 
         if (inputs == Vector2.zero)
         {
+            CameraRotate.Stop();
             return;
         }
-        
-        
+
+        if (!isPitchAtLimit && !isYawAtLimit)
+        {
+            if (!CameraRotate.isPlaying)
+            {
+                CameraRotate.Play();
+            }
+        }
+        else 
+        {
+            // Check if the player is trying to move beyond the limits
+           
+
+            bool isTryingToMovePitch = -inputs.x != 0;
+            bool isTryingToMoveYaw = inputs.y != 0;
+
+            if (isPitchAtLimit && isTryingToMoveYaw && !isYawAtLimit || isYawAtLimit && isTryingToMovePitch && !isPitchAtLimit)
+            {
+               
+                if (!CameraRotate.isPlaying)
+                {
+                    CameraRotate.Play();
+                }
+            }
+            else
+            {
+                CameraRotate.Stop();
+            }
+        }
+
         float HorizontalInput = inputs.y;
         float VerticalInput = -inputs.x;
 
@@ -310,9 +354,22 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
             zoomOffset = 0;
             zoomOffset += ZoomIncrement;
         }
-        
-        //currentCameraFOV += ZoomIncrement;
-        //cameraController.ChangeFOV(currentCameraFOV);
+
+        // Play the appropriate sound based on the zoom direction
+        if (ZoomIncrement > 0) // Zooming in
+        {
+            if (!CameraZoomIn.isPlaying)
+            {
+                CameraZoomIn.Play();
+            }
+        }
+        else if (ZoomIncrement < 0) // Zooming out
+        {
+            if (!CameraZoomOut.isPlaying)
+            {
+                CameraZoomOut.Play();
+            }
+        }
     }
 
     private float zoomOffset;
