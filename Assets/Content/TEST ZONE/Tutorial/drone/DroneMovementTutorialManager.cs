@@ -193,6 +193,7 @@ public class DroneMovementTutorialManager : MonoBehaviour, IEventTriggerable
 
     public void TriggerEvent()
     {
+        print("PUTE");
         Destroy(gameObject);
     }
 }
