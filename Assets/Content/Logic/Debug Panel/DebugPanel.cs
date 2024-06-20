@@ -15,7 +15,7 @@ public class DebugPanel : MonoBehaviour
 
 
 
-
+    public AudioSource audioSource;
     private Canvas canvas;
 
     private void Start()
@@ -34,12 +34,21 @@ public class DebugPanel : MonoBehaviour
             {
                 canvas.enabled = !canvas.isActiveAndEnabled;
                 gammaSlider.value = gammaSettings.gammaValue;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+              
             }
         }
 
         if (Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>().enabled && canvas.enabled)
         {
             canvas.enabled = false;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
     }
 
