@@ -7,24 +7,29 @@ public class BinahAnimation : MonoBehaviour
 {
 
     private NavMeshAgent agent;
-    private Animator Animator;
+    private Animator animator;
     private UtilityAI_Manager utilityAI_Manager;
 
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        Animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         utilityAI_Manager = GetComponent<UtilityAI_Manager>(); 
     }
 
     private void Update()
     {
+        if (animator.runtimeAnimatorController == null || animator.runtimeAnimatorController.name != "Binah")
+        {
+            return;
+        }
         float maxSpeed = agent.speed;
         float currentSpeed = agent.velocity.magnitude;
 
-        Animator.SetFloat("Speed", currentSpeed / maxSpeed);
-        Animator.SetBool("IsCrouching", utilityAI_Manager.isCrouched);
+        animator.SetFloat("Speed", currentSpeed / maxSpeed);
+        animator.SetBool("IsCrouching", utilityAI_Manager.isCrouched);
+   
     }
 
 

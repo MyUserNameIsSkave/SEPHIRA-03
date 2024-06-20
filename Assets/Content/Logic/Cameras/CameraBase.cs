@@ -68,7 +68,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
 
 
-
+    [Space(15)]
     [Header("    AUTO BINAH JOIN")]
     [Space(20)]
 
@@ -77,6 +77,18 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     public Transform binahJoinTargetPosition;
 
+
+
+    [Space(15)]
+    [Header("    CAMERA SOUNDS")]
+    [Space(5)]
+
+    public AudioSource CameraRotate;
+
+    public AudioSource CameraZoomIn;
+    public AudioSource CameraZoomOut;
+
+    public AudioSource CameraSwitch;
 
 
     // ----- WORKING VARIABLES -----
@@ -114,12 +126,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     protected float VerticalAdjustment = 1f;
 
-    public AudioSource CameraRotate;
-
-    public AudioSource CameraZoomIn;
-    public AudioSource CameraZoomOut;
-
-    public AudioSource CameraSwitch;
+  
 
 
 

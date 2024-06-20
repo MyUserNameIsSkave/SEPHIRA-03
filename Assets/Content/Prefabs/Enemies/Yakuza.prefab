@@ -784,6 +784,7 @@ GameObject:
   - component: {fileID: 1167415777555378315}
   - component: {fileID: 269959716942771255}
   - component: {fileID: 2576885333094336725}
+  - component: {fileID: 4610288954575929492}
   m_Layer: 27
   m_Name: Yakuza
   m_TagString: Untagged
@@ -1028,6 +1029,21 @@ MonoBehaviour:
   InitialPosition: {x: 0, y: 0, z: 0}
   IsLoosingInterest: 0
   LastKnownPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &4610288954575929492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026705385125660482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21460b0d47885346ae569d8e83994f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 47cbfc087d033e24fb3423c7f0b8af38, type: 3}
+  - {fileID: 8300000, guid: ccb258402c710d344920c037a22cd02b, type: 3}
 --- !u!1 &2032350934923731773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,7 +4038,6 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 47cbfc087d033e24fb3423c7f0b8af38, type: 3}
   - {fileID: 8300000, guid: ccb258402c710d344920c037a22cd02b, type: 3}
-  audioSource: {fileID: 1989593320472255599}
 --- !u!82 &1989593320472255599
 AudioSource:
   m_ObjectHideFlags: 0
