@@ -71,10 +71,11 @@ public class DroneMovements : MonoBehaviour
 
 
     private GameObject outOfBoundUI;
-
+    public AudioSource audioSource;
     private void Awake()
     {
         outOfBoundUI = GameObject.FindGameObjectWithTag("OutOfBoundDrone");
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -104,6 +105,10 @@ public class DroneMovements : MonoBehaviour
     {
         CurrentTarget += 1;
         transform.DOMove(targets[CurrentTarget].transform.position, CurrentTimeBetweenTargets).SetEase(Ease.InOutQuad).onComplete = AutomaticMovements;
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     }
 
     public void TakeControl()
@@ -146,11 +151,15 @@ public class DroneMovements : MonoBehaviour
             {
                 outOfBoundUI.GetComponent<Image>().enabled = false;
                 transform.position += ((transform.right * -Input.GetAxis("Horizontal")) + (transform.up * Input.GetAxis("Vertical"))) * Time.deltaTime * controledSpeed;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
             }
             else
             {
                 outOfBoundUI.GetComponent<Image>().enabled = true;
-
+                audioSource.Stop();
 
 
                 if (Vector3.Distance(movementRangeBox.transform.position, transform.position) > 
