@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1440, 1080, true);
+
+
+
+
         DontDestroyOnLoad(gameObject);   //NE DOIS PAS ETRE L'ENFANT D'UN AUTRE OBJET
 
         GameManager[] managers = FindObjectsOfType<GameManager>();
