@@ -126,24 +126,17 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     protected float VerticalAdjustment = 1f;
 
-  
+
 
 
 
 
     // ----- lOGIC -----
 
-
-
-
-
+    
     private void Start()
     {
-        //Le Starta meme pas l'air de se déclencher ?!
-        if (this == cameraController.CurrentCamera)
-        {
-            isFirstCamera = true;
-        }
+
 
     }
 
@@ -163,7 +156,7 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
         if (GameManager.Instance.CameraController.CurrentCamera.accessibleCameras.Length != 0)
         {
             if (!isCameraAccessible)
-            {;
+            {
                 return;
             }
         }
@@ -219,6 +212,9 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+        alreadyUsed = false;
+
+
         StartCoroutine(SmoothZoom());
 
 
