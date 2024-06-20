@@ -7,7 +7,7 @@ public class BinahAnimation : MonoBehaviour
 {
 
     private NavMeshAgent agent;
-    public Animator animator;
+    private Animator animator;
     private UtilityAI_Manager utilityAI_Manager;
 
 
@@ -27,7 +27,6 @@ public class BinahAnimation : MonoBehaviour
         float maxSpeed = agent.speed;
         float currentSpeed = agent.velocity.magnitude;
 
-        Debug.Log("Son nom est" + animator.name);
         animator.SetFloat("Speed", currentSpeed / maxSpeed);
         animator.SetBool("IsCrouching", utilityAI_Manager.isCrouched);
    

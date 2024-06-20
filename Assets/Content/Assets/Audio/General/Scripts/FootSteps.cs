@@ -7,7 +7,7 @@ public class FootSteps : MonoBehaviour
     [SerializeField]
     private AudioClip[] clips;
 
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     // Start is called before the first frame update
 
     private void Awake()
@@ -19,7 +19,6 @@ public class FootSteps : MonoBehaviour
     {
         AudioClip clip = GetRandomClip();
         audioSource.PlayOneShot(clip);
-        Debug.Log("Bruit de pas");
     }
 
     private AudioClip GetRandomClip()
