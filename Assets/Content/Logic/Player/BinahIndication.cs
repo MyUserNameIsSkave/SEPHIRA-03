@@ -31,6 +31,7 @@ public class BinahIndication : MonoBehaviour
 
 
 
+
     //----------------------------------------------------------------
 
 
@@ -60,10 +61,10 @@ public class BinahIndication : MonoBehaviour
             return;
         }
 
-
         positionDecal.transform.position = MovementIndicationPosition(hit);
         positionDecal.transform.rotation = Quaternion.Euler(90, 0, 0);
         print(MovementIndicationPosition(hit));
+  
     }
 
 

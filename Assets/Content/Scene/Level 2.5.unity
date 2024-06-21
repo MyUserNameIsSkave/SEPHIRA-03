@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00045573857, g: 0.00026492568, b: 0.00013694518,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0.0004545083, g: 0.00026433266, b: 0.00013667184, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -38346,7 +38345,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7195108175773706492, guid: c54b88884ab63a94a8e5674604db3fc2,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1462421529}
   m_SourcePrefab: {fileID: 100100000, guid: c54b88884ab63a94a8e5674604db3fc2, type: 3}
 --- !u!1001 &854634586
 PrefabInstance:
@@ -53706,22 +53709,23 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'BINAH:  C''est un chat ?'
+      value: 'BINAH:  Un chat...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'HACKER: Bah alors, qu''es ce que tu fais la toi ?'
+      value: "HACKER: Bah alors, qu'est-ce que tu fais l\xE0 toi ?"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: "BINAH: Il cherche \xE0 etre libre, j'imagine."
+      value: "BINAH: Il aime \xEAtre \xE0 l'air libre... Je suppose."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[4].Key
-      value: 'BINAH: Surement.'
+      value: "HACKER: S\xFBrement. C'est bien mieux qu'\xEAtre enferm\xE9 \xE0 l'int\xE9rieur
+        du m\xE9ga building."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -59271,7 +59275,7 @@ PrefabInstance:
     - target: {fileID: 4203361926542050495, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -506.7094
+      value: -507.07
       objectReference: {fileID: 0}
     - target: {fileID: 4203361926542050495, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -59281,7 +59285,7 @@ PrefabInstance:
     - target: {fileID: 4203361926542050495, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -391.84
+      value: -391.48
       objectReference: {fileID: 0}
     - target: {fileID: 4203361926542050495, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -59356,17 +59360,17 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: "HACKER: Bien jou\xE9."
+      value: 'HACKER: ... Impressionant.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: "BINAH: Alors, tu vois une entr\xE9e?"
+      value: "BINAH: Une entr\xE9e devrait \xEAtre toute proche."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'HACKER: Attend, je vais jeter un oeil plus haut.'
+      value: 'HACKER: Attend une seconde, je vais jeter un oeil plus haut.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -62319,6 +62323,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401890130832394054, guid: 77ad084a3e8b39a47a3e33907933d5af,
+        type: 3}
+      propertyPath: BinahAnimator
+      value: 
+      objectReference: {fileID: 2025567734}
     - target: {fileID: 2616966976986061276, guid: 77ad084a3e8b39a47a3e33907933d5af,
         type: 3}
       propertyPath: m_Name
@@ -63598,6 +63607,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1462421528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7195108175773706492, guid: c54b88884ab63a94a8e5674604db3fc2,
+    type: 3}
+  m_PrefabInstance: {fileID: 850110734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1462421529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462421528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffff7e6eb4a00b448962ad120b868046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Binah: {fileID: 2025567724}
+  targetPosition: {x: -507.07, y: 0, z: -391.48}
+  intermediateDestination: {x: -506.4557, y: 0, z: -383.72}
+  delayTime: 0.5
+  moveDuration1: 3.5
+  moveDuration2: 1
+  firstAnimatorController: {fileID: 9100000, guid: 1f2e6ac5d56ab92438d6c266aba86fec,
+    type: 2}
+  secondAnimatorController: {fileID: 9100000, guid: cc56e50af0f907445bc01652a58f9395,
+    type: 2}
 --- !u!1 &1463390661
 GameObject:
   m_ObjectHideFlags: 0
@@ -64509,36 +64546,37 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1462421529}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: "HACKER: Merde... Le chemin est cass\xE9."
+      value: "HACKER: Merde... \xC7a s'est effondr\xE9. On va devoir trouv\xE9 un
+        autre moyen de passer."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'BINAH: Tempis. Je vais traverser. '
+      value: 'BINAH: Je vais devoir sauter. '
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: "BINAH:  Hein? T'es sure ? C'est super risqu\xE9 !"
+      value: "HACKER:  Hein !? C'est super risqu\xE9 attends !"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: 'HACKER: Tu voudrais ?'
+      value: 'HACKER: ...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[4].Key
-      value: "BINAH: Je n\u2019en suis pas s\xFBre\u2026 Je suis juste\u2026 curieuse."
+      value: 'HACKER: ...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -64554,17 +64592,17 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Value
-      value: 10000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Value
-      value: 10000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
-      value: 10000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -66685,6 +66723,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3338353945509453955, guid: ce796a74681d1d74ea3d8c6c1b651912,
+        type: 3}
+      propertyPath: BinahRef
+      value: 
+      objectReference: {fileID: 2025567724}
+    - target: {fileID: 3338353945509453955, guid: ce796a74681d1d74ea3d8c6c1b651912,
+        type: 3}
+      propertyPath: NavMeshAgentRef
+      value: 
+      objectReference: {fileID: 2025567735}
+    - target: {fileID: 3338353945509453955, guid: ce796a74681d1d74ea3d8c6c1b651912,
+        type: 3}
+      propertyPath: BinahAnimatorRef
+      value: 
+      objectReference: {fileID: 2025567734}
     - target: {fileID: 6222289231504546218, guid: ce796a74681d1d74ea3d8c6c1b651912,
         type: 3}
       propertyPath: m_Name
@@ -66698,12 +66751,12 @@ PrefabInstance:
     - target: {fileID: 6706374117544772368, guid: ce796a74681d1d74ea3d8c6c1b651912,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 352.64062
+      value: 352.31
       objectReference: {fileID: 0}
     - target: {fileID: 6706374117544772368, guid: ce796a74681d1d74ea3d8c6c1b651912,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -358.01
+      value: -357.94
       objectReference: {fileID: 0}
     - target: {fileID: 6706374117544772368, guid: ce796a74681d1d74ea3d8c6c1b651912,
         type: 3}
@@ -81283,7 +81336,6 @@ GameObject:
   - component: {fileID: 1871378578}
   - component: {fileID: 1871378577}
   - component: {fileID: 1871378576}
-  - component: {fileID: 1871378580}
   m_Layer: 0
   m_Name: Jump
   m_TagString: Untagged
@@ -81371,25 +81423,13 @@ Transform:
   m_GameObject: {fileID: 1871378575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -506.4557, y: 401.4237, z: -384.4106}
+  m_LocalPosition: {x: -506.4557, y: 401.4237, z: -383.72}
   m_LocalScale: {x: 1.6254104, y: 1.3971097, z: 1.4654102}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1781970851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1871378580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871378575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7fb4f74c49bcd340acbae9287938f63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1874934654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86932,6 +86972,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180.058, z: 0}
+--- !u!1 &2025567724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6222289231504546218, guid: ce796a74681d1d74ea3d8c6c1b651912,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525360691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2025567734 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4150955312195202485, guid: ce796a74681d1d74ea3d8c6c1b651912,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525360691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &2025567735 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 8401332345009082934, guid: ce796a74681d1d74ea3d8c6c1b651912,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525360691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2025879676
 PrefabInstance:
   m_ObjectHideFlags: 0
