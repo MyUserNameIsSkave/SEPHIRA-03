@@ -43,7 +43,8 @@ public class MainMenuManager : MonoBehaviour
         {
             clickSource.Play();
         }
-        Debug.Log("WHAT TO DO WITH THE CREDIT ?!");
+        SceneManager.LoadSceneAsync(6);
+
     }
 
 
