@@ -13,7 +13,6 @@ public class ScaffoldingfStairs : MonoBehaviour
         {
             GameManager.Instance.BinahManager.usingScaffoldingStairs = true;
             GameManager.Instance.Binah.GetComponent<Animator>().speed = GameManager.Instance.Binah.GetComponent<Animator>().speed / 2;
-            print("SLOW DONW");
         }
     }
 

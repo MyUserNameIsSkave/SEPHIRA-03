@@ -61,10 +61,13 @@ public class BinahIndication : MonoBehaviour
             return;
         }
 
+        if (GameManager.Instance.playerInputLocked)
+        {
+            return;
+        }
+
         positionDecal.transform.position = MovementIndicationPosition(hit);
         positionDecal.transform.rotation = Quaternion.Euler(90, 0, 0);
-        print(MovementIndicationPosition(hit));
-  
     }
 
 
