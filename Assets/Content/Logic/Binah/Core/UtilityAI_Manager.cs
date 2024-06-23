@@ -209,6 +209,13 @@ public class UtilityAI_Manager : MonoBehaviour
 
     private void Awake()
     {
+
+        BinahRef = gameObject;
+        BinahAnimatorRef = GetComponent<Animator>();
+        NavMeshAgentRef = GetComponent<NavMeshAgent>();
+
+
+
         //Base References
         Object = gameObject;
         Agent = GetComponent<NavMeshAgent>();
