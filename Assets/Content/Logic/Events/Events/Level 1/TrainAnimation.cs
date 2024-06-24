@@ -18,7 +18,11 @@ public class TrainAnimation : MonoBehaviour, IEventTriggerable
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    
     }
     public void TriggerEvent()
     {
