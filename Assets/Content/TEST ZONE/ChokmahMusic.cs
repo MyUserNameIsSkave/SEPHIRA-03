@@ -36,7 +36,7 @@ public class ChokmahMusic : MonoBehaviour, IEventTriggerable
         source.Play();
         source.loop = false;
 
-        yield return new WaitForSeconds(musicStart.length);
+        yield return new WaitForSeconds(musicStart.length - Time.fixedDeltaTime);
 
         source.clip = musicLoop;
         source.loop = true;
