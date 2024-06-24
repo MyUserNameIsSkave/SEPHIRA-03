@@ -36,6 +36,11 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
         if (TargetPath.movementSpeed != 0)
         {
             chokmahReference.GetComponent<NavMeshAgent>().speed = TargetPath.movementSpeed;
+
+            if (TargetPath.movementSpeed > 5)
+            {
+                transform.GetChild(0).GetComponent<Animator>().SetTrigger("Run");
+            }
         }
 
 
