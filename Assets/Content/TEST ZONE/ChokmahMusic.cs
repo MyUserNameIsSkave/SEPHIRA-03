@@ -40,5 +40,6 @@ public class ChokmahMusic : MonoBehaviour, IEventTriggerable
 
         source.clip = musicLoop;
         source.loop = true;
+        source.Play();
     }
 }
