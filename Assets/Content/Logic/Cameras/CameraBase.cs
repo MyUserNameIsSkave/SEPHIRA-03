@@ -409,6 +409,21 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
                     cameraController.ChangeFOV(currentCameraFOV);
 
                     yield return 0;
+
+                }
+                else
+                {
+                    // Stop the sounds when the zoom ends
+                    if (CameraZoomIn.isPlaying)
+                    {
+                        CameraZoomIn.Stop();
+                    }
+                    if (CameraZoomOut.isPlaying)
+                    {
+                        CameraZoomOut.Stop();
+                    }
+
+                    yield return 0;
                 }
             }
             yield return 0;
