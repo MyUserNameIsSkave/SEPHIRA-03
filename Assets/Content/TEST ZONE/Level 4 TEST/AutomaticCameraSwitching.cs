@@ -7,10 +7,15 @@ public class AutomaticCameraSwitching : MonoBehaviour
     [SerializeField]
     private CameraBase nextCamera;
 
+    public KeterInteraction keterounet;
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Binah"))
+        if (other.CompareTag("Binah") && keterounet.secondPhase)
         {
+
+
             GameManager.Instance.CameraController.CurrentCamera = nextCamera;
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1856.5217, g: 1366.755, b: 1137.7169, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5308,33 +5308,33 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: initialDelay
-      value: 4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
+      value: 'HACKER: Il a disparu ?!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[1].Key
       value: "BINAH: Chokmah. La deuxi\xE8me unit\xE9 sephira. J'en suis sure maintenant,
         c'est lui."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
-      propertyPath: subtitles._serializedList.Array.data[1].Key
+      propertyPath: subtitles._serializedList.Array.data[2].Key
       value: "HACKER: \xE7a craint ?"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
-      propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'BINAH: Oui...'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
-        type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: 'HACKER: Il a... disparu ??'
+      value: 'BINAH: Oui...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -5360,7 +5360,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Value
-      value: 10000
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -25704,8 +25704,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
+      propertyPath: selfTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
       propertyPath: initialDelay
-      value: 4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -102282,7 +102287,7 @@ Transform:
   m_GameObject: {fileID: 2041611356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.04076, y: -0.3717388, z: 1.4216794}
+  m_LocalPosition: {x: -13.22, y: -0.3717388, z: 1.093}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

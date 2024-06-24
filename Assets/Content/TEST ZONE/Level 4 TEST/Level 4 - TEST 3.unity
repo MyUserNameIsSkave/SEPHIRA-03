@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00043043267, g: 0.00025260964, b: 0.0001305584, a: 1}
+  m_IndirectSpecularColor: {r: 0.0004298846, g: 0.00025251487, b: 0.00013051463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,6 +228,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14250213}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &15210426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15210428}
+  - component: {fileID: 15210427}
+  m_Layer: 0
+  m_Name: RESET CAMERA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &15210427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15210426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51412fa07ff922449f0aff8d26c5d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetCamera:
+  - {fileID: 1328100660}
+  - {fileID: 991044474}
+--- !u!4 &15210428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15210426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35598886, y: 5.622763, z: 41.161747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &16455383
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,6 +5170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCamera: {fileID: 991044474}
+  keterounet: {fileID: 1847322818}
 --- !u!65 &450791824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5835,6 +5883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCamera: {fileID: 1639369212}
+  keterounet: {fileID: 1847322818}
 --- !u!65 &542471539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12612,8 +12661,18 @@ PrefabInstance:
       objectReference: {fileID: 575775832}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
+      propertyPath: accessibleCameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 575775832}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
       propertyPath: NewCamera._serializedList.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
@@ -12625,6 +12684,11 @@ PrefabInstance:
       propertyPath: NewCamera._serializedList.Array.data[0].Value
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 15210427}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16654,7 +16718,7 @@ MonoBehaviour:
   m_IESPoint: {fileID: 0}
   m_IESSpot: {fileID: 0}
   m_IncludeForRayTracing: 1
-  m_AreaLightShadowCone: 113.5
+  m_AreaLightShadowCone: 58.3
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
   m_AngularDiameter: 0.5
@@ -18271,6 +18335,7 @@ MonoBehaviour:
   binahTargetPosition: {fileID: 1655015476}
   playerTargetCamera: {fileID: 1328100660}
   gate: {fileID: 1696023838}
+  secondPhase: 0
 --- !u!136 &1847322819
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20535,3 +20600,4 @@ SceneRoots:
   - {fileID: 1752743251}
   - {fileID: 2042768498}
   - {fileID: 1946092460}
+  - {fileID: 15210428}
