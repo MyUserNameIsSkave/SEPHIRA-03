@@ -21,8 +21,7 @@ public class SecurityCamera_Camera : CameraBase
                 {
                     if (!alreadyUsed)
                     {
-                        GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
-
+                        Invoke("BinahFollow", 0.15f);
                     }
                 }
             }
@@ -30,6 +29,13 @@ public class SecurityCamera_Camera : CameraBase
 
         return;
     }
+
+    private void BinahFollow()
+    {
+        GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
+
+    }
+
 
     private void Start()
     {
