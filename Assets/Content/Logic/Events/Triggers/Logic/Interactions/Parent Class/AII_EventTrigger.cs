@@ -41,7 +41,7 @@ public class AII_EventTrigger : AI_Interaction
     public override void TriggerEvent()
     {
         CheckForCameraChange();
-        CheckForEventsToDo();
+        CheckForEventsToDo(); 
     }
 
 

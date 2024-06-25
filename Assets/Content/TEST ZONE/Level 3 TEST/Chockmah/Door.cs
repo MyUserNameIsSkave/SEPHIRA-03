@@ -47,6 +47,9 @@ public class Door : AII_EventTrigger
     private BoxCollider collisionToEnable;
 
 
+    public CameraBase CameraThatMustGetNewAccessible;
+    public CameraBase NewAccessibleCamera;
+
 
     private void Start()
     {
@@ -66,6 +69,10 @@ public class Door : AII_EventTrigger
     {
         if (!alreadyInteracted)
         {
+            CameraThatMustGetNewAccessible.accessibleCameras = new CameraBase[] {NewAccessibleCamera};
+
+
+
             collisionToEnable.enabled = true;
 
 
