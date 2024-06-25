@@ -9,7 +9,8 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
     [SerializeField]
     private GameObject Chokmah;
 
-    private GameObject chokmahReference;
+    [HideInInspector]
+    public GameObject chokmahReference;
 
     public bool ShouldBeDestroyed;
     
@@ -36,6 +37,11 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
         if (TargetPath.movementSpeed != 0)
         {
             chokmahReference.GetComponent<NavMeshAgent>().speed = TargetPath.movementSpeed;
+
+            if (TargetPath.movementSpeed > 5)
+            {
+                chokmahReference.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Run");
+            }
         }
 
 

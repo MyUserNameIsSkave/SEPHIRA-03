@@ -24,7 +24,8 @@ public class KeterInteraction : Player_Interaction
     [SerializeField]
     private GameObject gate;
 
-
+    [HideInInspector]
+    public bool secondPhase;
 
     public override void Interaction()
     {
@@ -41,6 +42,8 @@ public class KeterInteraction : Player_Interaction
 
     IEnumerator SecondPhaseTransition()
     {
+        secondPhase = true;
+
         GameManager.Instance.Binah.SetActive(false);
         GameManager.Instance.Binah.transform.position = binahTargetPosition.position;
         GameManager.Instance.BinahManager.SendBinahToLocation(binahTargetPosition.position);

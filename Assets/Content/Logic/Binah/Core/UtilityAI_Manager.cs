@@ -45,10 +45,18 @@ public class UtilityAI_Manager : MonoBehaviour
 
     [Space(15)]
     [Header("     VARIABLES")]
-    [Space(7)]
+    [Space(17)]
 
     public StateVariablesDictionnary StateVariablesDictionnary;
 
+
+    [Space(15)]
+    [Header("     BINAH REFERENCE")]
+    [Space(17)]
+
+    public GameObject BinahRef;
+    public Animator BinahAnimatorRef;
+    public NavMeshAgent NavMeshAgentRef;
 
     #region Action
     [Space(15)]
@@ -118,7 +126,6 @@ public class UtilityAI_Manager : MonoBehaviour
 
 
     public Animator animator;
-
 
 
 
@@ -202,6 +209,13 @@ public class UtilityAI_Manager : MonoBehaviour
 
     private void Awake()
     {
+
+        BinahRef = gameObject;
+        BinahAnimatorRef = GetComponent<Animator>();
+        NavMeshAgentRef = GetComponent<NavMeshAgent>();
+
+
+
         //Base References
         Object = gameObject;
         Agent = GetComponent<NavMeshAgent>();
@@ -275,6 +289,19 @@ public class UtilityAI_Manager : MonoBehaviour
             SwitchState(IdleState);
         }
 
+        if (BinahAnimatorRef.runtimeAnimatorController.name == "Binah")
+        {
+            if (NavMeshAgentRef.enabled == false)
+            {
+                NavMeshAgentRef.enabled = true;
+            }
+
+        }
+        else
+        {
+            NavMeshAgentRef.enabled = false;
+        }
+
     }
 
 
@@ -330,27 +357,41 @@ public class UtilityAI_Manager : MonoBehaviour
     /// </summary>
     public void SendBinahToLocation(Vector3 position)
     {
-        if (!CanRecieveInput)
+        if (BinahAnimatorRef.runtimeAnimatorController.name == "Binah")
         {
-            return;
-        }
+            if (NavMeshAgentRef.enabled == false)
+            {
+                NavMeshAgentRef.enabled = true;
+            }
 
-        if (GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition != null)
+            if (!CanRecieveInput)
+            {
+                return;
+            }
+
+            if (GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition != null)
+            {
+                if (position == GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition.position)
+                {
+                    IsAutomaticalyMovingToCamera = true;
+                }
+                else
+                {
+                    IsAutomaticalyMovingToCamera = false;
+                }
+            }
+
+
+
+            IndicatedPosition = position;
+            SwitchState(MovingState);
+        }
+        else
         {
-            if (position == GameManager.Instance.CameraController.CurrentCamera.binahJoinTargetPosition.position)
-            {
-                IsAutomaticalyMovingToCamera = true;
-            }
-            else
-            {
-                IsAutomaticalyMovingToCamera = false;
-            }
+            NavMeshAgentRef.enabled = false;
+
         }
-
-
-
-        IndicatedPosition = position;
-        SwitchState(MovingState);
+        
     }
 
 

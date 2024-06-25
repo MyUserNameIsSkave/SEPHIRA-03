@@ -49,6 +49,8 @@ public class AutomaticalyTakeCover : MonoBehaviour
     private void Awake()
     {
         binah = GameManager.Instance.BinahManager;
+
+
     }
 
 

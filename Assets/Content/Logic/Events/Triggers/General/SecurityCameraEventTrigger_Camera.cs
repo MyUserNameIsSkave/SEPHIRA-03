@@ -52,7 +52,10 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
             {
                 if (!GameManager.Instance.BinahManager.InRestrictiveZone)
                 {
-                    GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
+                    if (!alreadyUsed)
+                    {
+                        Invoke("BinahFollow", 0.15f);
+                    }
                 }
             }
         }
@@ -63,6 +66,11 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
 
 
+    private void BinahFollow()
+    {
+        GameManager.Instance.BinahManager.SendBinahToLocation(binahJoinTargetPosition.position);
+
+    }
 
 
     private void CheckForCameraChange()
