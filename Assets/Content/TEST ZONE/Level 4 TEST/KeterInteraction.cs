@@ -27,6 +27,10 @@ public class KeterInteraction : Player_Interaction
     [HideInInspector]
     public bool secondPhase;
 
+
+
+
+
     public override void Interaction()
     {
         StartCoroutine(SecondPhaseTransition());

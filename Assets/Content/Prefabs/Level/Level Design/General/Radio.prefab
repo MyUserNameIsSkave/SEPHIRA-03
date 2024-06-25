@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 8453696104702930189}
   - component: {fileID: 7722690517405582779}
   - component: {fileID: 4636599516559545884}
+  - component: {fileID: 7560103164097625930}
   m_Layer: 31
   m_Name: Radio
   m_TagString: Untagged
@@ -333,6 +334,16 @@ MonoBehaviour:
   - {fileID: 145521243859575853}
   - {fileID: 7844355908007687449}
   - {fileID: 2958500947886980330}
+--- !u!165 &7560103164097625930
+AudioHighPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414200982897607929}
+  m_Enabled: 1
+  m_CutoffFrequency: 1000
+  m_HighpassResonanceQ: 1
 --- !u!1 &2692130573168635511
 GameObject:
   m_ObjectHideFlags: 0

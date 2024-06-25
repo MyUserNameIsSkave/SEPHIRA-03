@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateClosing : MonoBehaviour
+public class GateClosing : MonoBehaviour, IEventTriggerable
 {
     [SerializeField]
     private Animator gateAnimator, roomAnimation;
@@ -10,10 +10,11 @@ public class GateClosing : MonoBehaviour
     [SerializeField]
     private CameraBase nextCamera;
 
+    public MonoBehaviour dialogue;
 
-    private void OnTriggerEnter(Collider other)
+
+    public void TriggerEvent()
     {
-
         StartCoroutine(CloseGate());
     }
 
@@ -34,5 +35,8 @@ public class GateClosing : MonoBehaviour
 
         GameManager.Instance.CameraController.CurrentCamera = nextCamera;
 
+        IEventTriggerable eventInterface = dialogue.GetComponent<IEventTriggerable>();
+        eventInterface.TriggerEvent();
     }
+
 }
