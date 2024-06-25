@@ -10,12 +10,6 @@ public class KeterInteraction : Player_Interaction
     private Animator room_animator;
 
     [SerializeField]
-    private Animator coridor_animator;
-
-    [SerializeField]
-    private Animator[] coridor_movables;
-
-    [SerializeField]
     private Transform binahTargetPosition;
 
     [SerializeField]
@@ -27,8 +21,10 @@ public class KeterInteraction : Player_Interaction
     [HideInInspector]
     public bool secondPhase;
 
+    [SerializeField]
+    private float delayBeforeTransition;
 
-
+    public MonoBehaviour pushedDialogue;
 
 
     public override void Interaction()
@@ -48,6 +44,10 @@ public class KeterInteraction : Player_Interaction
     {
         secondPhase = true;
 
+
+        yield return new WaitForSeconds(delayBeforeTransition);
+
+
         GameManager.Instance.Binah.SetActive(false);
         GameManager.Instance.Binah.transform.position = binahTargetPosition.position;
         GameManager.Instance.BinahManager.SendBinahToLocation(binahTargetPosition.position);
@@ -55,23 +55,16 @@ public class KeterInteraction : Player_Interaction
 
         room_animator.SetTrigger("SecondPhaseStart");
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.2f);
 
-        foreach (Animator animator in coridor_movables)
-        {
-            animator.SetTrigger("Start");
-        }
+
 
         GameManager.Instance.CameraController.CurrentCamera = playerTargetCamera;
         Destroy(gate);
 
-        yield return new WaitForSeconds(1f);
-
-        coridor_animator.SetTrigger("Coridor Animation");
-
-        yield return new WaitForSeconds(0.5f);
-
-        GameManager.Instance.BinahManager.SendBinahToLocation(transform.position);
+        IEventTriggerable eventInterface = pushedDialogue.GetComponent<IEventTriggerable>();
+        eventInterface.TriggerEvent();
+        
     }
 
 

@@ -28,7 +28,7 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
 
     private TextMeshProUGUI subtitleText;
     private bool skipNext;
-
+    private bool speaking;
 
 
     private void Start()
@@ -47,7 +47,7 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && speaking)
         {
             skipNext = true;
         }
@@ -71,7 +71,7 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
     {
         
         yield return new WaitForSeconds(initialDelay);
-
+        speaking = true;
 
         int subIndex = 0;
         foreach (KeyValuePair<string, float> subtitle in subtitles)
@@ -114,6 +114,8 @@ public class MainDialogueManager : MonoBehaviour, IEventTriggerable
             GameManager.Instance.playerInputLocked = false;
         }
         dialogueFinished = true;
+
+        speaking = false;
     }
 
     IEnumerator DisplaySubtitles(string sub)
