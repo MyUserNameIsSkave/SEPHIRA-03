@@ -46,17 +46,20 @@ public class MainDialogueCollision : MonoBehaviour
 
     IEnumerator CheckForCamera()
     {
-        while (true)
-        {
-            if (linkedCamera.alreadyUsed)
+        
+            while (true)
             {
-                IEventTriggerable eventInterface = dialogueToTrigger as IEventTriggerable;
-                eventInterface.TriggerEvent();
+                if (linkedCamera.alreadyUsed)
+                {
+                    IEventTriggerable eventInterface = dialogueToTrigger as IEventTriggerable;
+                    eventInterface.TriggerEvent();
 
-                yield break;
+                    yield break;
+                }
+
+                yield return 0;
             }
-
-            yield return 0;
-        }
+        
+        
     }
 }

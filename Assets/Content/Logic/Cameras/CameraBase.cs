@@ -358,20 +358,37 @@ public abstract class CameraBase : MonoBehaviour, IInteractable
             zoomOffset += ZoomIncrement;
         }
 
+        // Vérifier si le FOV est déjà à sa valeur maximale ou minimale
+        bool isAtMaxFOV = currentCameraFOV >= FOVRange.y;
+        bool isAtMinFOV = currentCameraFOV <= FOVRange.x;
+
         // Play the appropriate sound based on the zoom direction
         if (ZoomIncrement > 0) // Zooming in
         {
-            if (!CameraZoomIn.isPlaying)
+            if (!CameraZoomIn.isPlaying && !isAtMaxFOV)
             {
                 CameraZoomIn.Play();
             }
         }
-        else if (ZoomIncrement < 0) // Zooming out
+        else if (ZoomIncrement < 0 && !isAtMinFOV) // Zooming out
         {
             if (!CameraZoomOut.isPlaying)
             {
                 CameraZoomOut.Play();
             }
+        }
+        // Vérifier si le FOV a atteint sa valeur maximale ou minimale après la mise à jour
+        bool isAtMaxFOVAfterUpdate = currentCameraFOV >= FOVRange.y;
+        bool isAtMinFOVAfterUpdate = currentCameraFOV <= FOVRange.x;
+
+        // Arrêter les sons associés si le FOV a atteint sa valeur maximale ou minimale
+        if (isAtMaxFOVAfterUpdate)
+        {
+            CameraZoomIn.Stop();
+        }
+        if (isAtMinFOVAfterUpdate)
+        {
+            CameraZoomOut.Stop();
         }
     }
 
