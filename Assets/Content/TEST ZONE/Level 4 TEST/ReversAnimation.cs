@@ -12,6 +12,9 @@ public class ReversAnimation : MonoBehaviour
 
     bool isBeingReversed= false;
 
+    bool triggeredOnce = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +24,38 @@ public class ReversAnimation : MonoBehaviour
 
     private void FixedUpdate()
     {
- 
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (triggeredOnce && !isBeingReversed)
         {
             animator.SetFloat("AnimationSpeed", 0);
+            return;
+        }
+
+        if (triggeredOnce && isBeingReversed)
+        {
+            animator.SetFloat("AnimationSpeed", reverseSpeed);
+            return;
+        }
+
+
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            if (!isBeingReversed)
+            {
+                animator.SetFloat("AnimationSpeed", 0);
+            }
+            else
+            {
+                animator.SetFloat("AnimationSpeed", reverseSpeed);
+            }
         }
         else
         {
-            animator.SetFloat("AnimationSpeed", 1);
+            if (!isBeingReversed)
+            {
+                animator.SetFloat("AnimationSpeed", 1);
+
+            }
         }
-        
     }
 
 
@@ -38,12 +63,20 @@ public class ReversAnimation : MonoBehaviour
     private void OnMouseDrag()
     {
         isBeingReversed = true; 
-        animator.SetFloat("AnimationSpeed", reverseSpeed);
+        //animator.SetFloat("AnimationSpeed", reverseSpeed);
     }
 
     private void OnMouseUp()
     {
         isBeingReversed = false;
-        animator.SetFloat("AnimationSpeed", 1);
+        //animator.SetFloat("AnimationSpeed", 0);
+    }
+
+    private void OnMouseDown()
+    {
+        triggeredOnce = true;
+
+        isBeingReversed = true;
+        //animator.SetFloat("AnimationSpeed", 0);
     }
 }
