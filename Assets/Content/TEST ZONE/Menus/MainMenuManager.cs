@@ -43,7 +43,7 @@ public class MainMenuManager : MonoBehaviour
         {
             clickSource.Play();
         }
-        SceneManager.LoadSceneAsync(6);
+        SceneManager.LoadSceneAsync(8);
 
     }
 
