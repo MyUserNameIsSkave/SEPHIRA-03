@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0000839599, g: 0.0000043015466, b: 0.00000012689272,
+  m_IndirectSpecularColor: {r: 0.00008394314, g: 0.0000043041077, b: 0.00000012922102,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -4927,7 +4927,7 @@ MonoBehaviour:
         useOcclusionCulling: 1
         cullingMask:
           serializedVersion: 2
-          m_Bits: 4294967295
+          m_Bits: 1498775607
         sceneCullingMaskOverride: 0
       invertFaceCulling: 0
       flipYMode: 0
@@ -11429,7 +11429,7 @@ GameObject:
   - component: {fileID: 794931224}
   - component: {fileID: 794931223}
   - component: {fileID: 794931228}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Cube (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12216,13 +12216,13 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: "KETHER: Savoir mon nom ne t\u2019apportera rien vu que cela semble
+      value: "KETHER: Savoir mon nom ne t\u2019apportera rien mais vu que cela semble
         important pour toi... "
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: "KETHER: Je suis Kether... La premi\xE8re des SEPHIRA."
+      value: "KETHER: Je suis Kether... La premi\xE8re des unit\xE9s SEPHIRA."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -12287,7 +12287,7 @@ GameObject:
   - component: {fileID: 860446218}
   - component: {fileID: 860446222}
   - component: {fileID: 860446223}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Cube (15) fait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13023,7 +13023,7 @@ GameObject:
   - component: {fileID: 923166781}
   - component: {fileID: 923166785}
   - component: {fileID: 923166786}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Cube (13) fait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14095,6 +14095,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954333294}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &964156325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 964156326}
+  - component: {fileID: 964156327}
+  m_Layer: 28
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &964156326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964156325}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1283253223}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &964156327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964156325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 1.6023844, y: 0.96894854, z: 1.2998903}
+  m_Center: {x: 0, y: -0.015525728, z: 0}
+  m_Area: 1
+  m_AffectedAgents: f2652fae
 --- !u!1 &967991689
 GameObject:
   m_ObjectHideFlags: 0
@@ -18087,7 +18135,6 @@ GameObject:
   - component: {fileID: 1283253220}
   - component: {fileID: 1283253219}
   - component: {fileID: 1283253224}
-  - component: {fileID: 1283253225}
   m_Layer: 28
   m_Name: Ground (2)
   m_TagString: Walkable
@@ -18199,7 +18246,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -10.13083, z: 19.3527}
   m_LocalScale: {x: 19.332567, y: 21.308174, z: 7.0206156}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 964156326}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1283253224
@@ -18215,25 +18263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reverseSpeed: -1.25
---- !u!114 &1283253225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283253218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 0
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
 --- !u!1 &1283477111
 GameObject:
   m_ObjectHideFlags: 0
@@ -19203,28 +19232,59 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
+      value: '??? : Je t''attends... Je t''attends...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[1].Key
+      value: "BINAH : J'entend sa voix r\xE9sonner dans ma t\xEAte... Il est tout
+        proche."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[2].Key
       value: "TIFERETH: Bienvenue au dernier \xE9tage, bureau de Osamu Fushi, pr\xE9sident
         de la soci\xE9t\xE9 Gingko."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
-      propertyPath: subtitles._serializedList.Array.data[1].Key
+      propertyPath: subtitles._serializedList.Array.data[3].Key
       value: "TIFERETH: Maintenant... Barrez-vous. D\u2019autres t\xE2ches m\u2019attendent."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
-      propertyPath: subtitles._serializedList.Array.data[2].Key
+      propertyPath: subtitles._serializedList.Array.data[4].Key
       value: 'BINAH: Merci pour ton aide, Tifereth. Allons-y.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
+      propertyPath: subtitles._serializedList.Array.data[0].Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[1].Value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
-      value: 10000
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[3].Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Value
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19551,7 +19611,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -19597,13 +19657,13 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[7].Key
-      value: "KETHER: Pourquoi t\u2019obstines-tu Binah ? Pourquoi refuses-tu de
-        comprendre ?"
+      value: 'HACKER: Je vais bloquer les murs, continue d''avancer.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[8].Key
-      value: "KETHER: Ils sont la cause de tout \xE7a, ils sont le PROBL\xC8ME !"
+      value: "KETHER: Pourquoi t\u2019obstines-tu Binah ? Pourquoi refuses-tu de
+        comprendre ?"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -19638,7 +19698,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[7].Value
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -19648,7 +19708,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[9].Value
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21531,8 +21591,8 @@ Transform:
   m_GameObject: {fileID: 1593254000}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.075, z: 56.8603}
-  m_LocalScale: {x: 19.332567, y: 0.80079997, z: 89.31729}
+  m_LocalPosition: {x: -0.0505, y: 0.075, z: 58.9482}
+  m_LocalScale: {x: 19.232037, y: 0.80079997, z: 85.13724}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -25801,7 +25861,7 @@ GameObject:
   - component: {fileID: 1855251192}
   - component: {fileID: 1855251196}
   - component: {fileID: 1855251197}
-  m_Layer: 0
+  m_Layer: 28
   m_Name: Cube (12) fait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
