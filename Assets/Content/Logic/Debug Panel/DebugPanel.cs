@@ -17,10 +17,14 @@ public class DebugPanel : MonoBehaviour
 
     public AudioSource audioSource;
     private Canvas canvas;
+    private Canvas GameOverCanvas;
+
+
 
     private void Start()
     {
         canvas = GetComponent<Canvas>();
+        GameOverCanvas = Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>();
     }
 
 
@@ -42,7 +46,7 @@ public class DebugPanel : MonoBehaviour
             }
         }
 
-        if (Transform.FindObjectOfType<GameOverMenuManager>().gameObject.GetComponent<Canvas>().enabled && canvas.enabled)
+        if (GameOverCanvas.enabled && canvas.enabled)
         {
             canvas.enabled = false;
             if (!audioSource.isPlaying)

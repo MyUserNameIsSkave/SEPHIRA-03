@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-
+        
         CheckpointCollision currentCheckpoint = checkpoints[CurrentIndex];
 
         CameraController.CurrentCamera = currentCheckpoint.checkpointCamera;
