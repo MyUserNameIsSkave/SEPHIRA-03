@@ -17,6 +17,12 @@ public class BinahMovementTutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.CurrentIndex != -1)
+        {
+            return;
+        }
+
+
 
         if (GameManager.Instance.playerInputLocked)
         {

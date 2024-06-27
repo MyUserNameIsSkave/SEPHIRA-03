@@ -7,12 +7,26 @@ public class ChangeAnimator : MonoBehaviour, IEventTriggerable
 {
     public RuntimeAnimatorController newAnimatorController; // Référence au nouvel AnimatorController que vous voulez assigner
 
+
+
+
     void Start()
     {
         // Récupère l'Animator actuellement assigné au GameObject
         Animator currentAnimator = GetComponent<Animator>();
 
+
+        //Change automatiquement si respawn
+        if (GameManager.CurrentIndex != -1)
+        {
+            TriggerEvent();
+            GameManager.Instance.playerInputLocked = false;
+
+        }
     }
+
+
+
     public void TriggerEvent()
     {
         // Récupère l'Animator actuellement assigné au GameObject

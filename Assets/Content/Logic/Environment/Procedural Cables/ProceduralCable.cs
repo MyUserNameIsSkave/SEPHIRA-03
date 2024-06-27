@@ -131,12 +131,8 @@ public class ProceduralCable : MonoBehaviour
     //On Enable de base !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     private void Start()
     {
-
-
-
-
-        StartCoroutine(Loop());
-        StartCoroutine(ShowRange());
+        //StartCoroutine(Loop());
+        //StartCoroutine(ShowRange());
     }
 
 
@@ -172,7 +168,7 @@ public class ProceduralCable : MonoBehaviour
         {
             line.material = null;
         }
-
+        
         yield return new WaitForSeconds(Time.deltaTime);
         StartCoroutine(ShowRange());
     }
