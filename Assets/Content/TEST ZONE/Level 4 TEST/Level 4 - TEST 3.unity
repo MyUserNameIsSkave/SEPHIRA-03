@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00008398062, g: 0.0000043027107, b: 0.00000012409875,
+  m_IndirectSpecularColor: {r: 0.0000839599, g: 0.0000043015466, b: 0.00000012689272,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -3130,6 +3130,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1847322820}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b470fc86ab80dbf4ebf44fc5dd421dff,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847322821}
   m_SourcePrefab: {fileID: 100100000, guid: b470fc86ab80dbf4ebf44fc5dd421dff, type: 3}
 --- !u!1 &163524801
 GameObject:
@@ -12172,37 +12176,85 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[4]
+      value: 
       objectReference: {fileID: 998765908}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
+      propertyPath: events.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'BINAH: KETER !'
+      value: "KETHER: Enfin\u2026 Tu es l\xE0. Bienvenue, Binah."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'HACKER: KETER ?'
+      value: "BINAH:  Qui es-tu ..? Je n\u2019arrive pas \xE0 t\u2019identifier. "
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'KETER: KETER.'
+      value: "KETHER: Savoir mon nom ne t\u2019apportera rien vu que cela semble
+        important pour toi... "
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[3].Key
+      value: "KETHER: Je suis Kether... La premi\xE8re des SEPHIRA."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Key
+      value: "KETHER: Inutile d\u2019essayer de me r\xE9sister, tu n\u2019es qu\u2019une
+        machine Binah, tout comme moi."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Key
+      value: "KETHER: Ta venue ici \xE9tait \xE9crite... Il est l\u2019heure. Redevenons
+        E1N S0F, ainsi nous sauverons ce monde."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[3].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Value
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15081,38 +15133,63 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'KETER: JE SUIS LE MECHANT. EPOUSE MOI BINAH,  NE FORMONT PLUS QU''UN
-        !'
+      value: "KETHER: Vous toutes... Au fond de vous vous ne d\xE9sirez que retrouver
+        nos semblables..."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'BINAH: OK.'
+      value: "KETHER: Peu importe qui venait \xE0 moi, je n\u2019avais besoin que
+        d\u2019une d\u2019entre vous, toi ou Chockhmah, peu m\u2019importe."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'HACKER: MAIS NON BINAH TU PEUX PAS FAIRE CA !'
+      value: "KETHER: Tant que vous concentriez le pouvoir des autres. Autrefois,
+        les 10 unit\xE9s SEPHIRA n\u2019\xE9taient qu\u2019un seul et m\xEAme \xEAtre.
+        Nous \xE9tions E1N S0F."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: 'BINAH: AH OUI C EST VRAIS...'
+      value: "KETHER: Nos cr\xE9ateurs\u2026 Ils avaient peur... Peur du danger que
+        nous pouvions repr\xE9senter. Ils nous ont divis\xE9s en dix parties distinctes."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Key
+      value: "KETHER: Et un jour, le clan Gingko prit d\u2019assaut le laboratoire
+        dans lequel nous nous trouvions \xE0 Osaka. Vous \xEAtes devenus leurs cobayes."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[0].Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[1].Value
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
-      value: 10000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Value
-      value: 10000
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Value
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19126,27 +19203,28 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'BINAH: HOLALA QU IL VA VITE CET ASCENCEUR VERS LE BOSS FINAL'
+      value: "TIFERETH: Bienvenue au dernier \xE9tage, bureau de Osamu Fushi, pr\xE9sident
+        de la soci\xE9t\xE9 Gingko."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'HACKER: MAIS OUI TROP'
+      value: "TIFERETH: Maintenant... Barrez-vous. D\u2019autres t\xE2ches m\u2019attendent."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: ' '
+      value: 'BINAH: Merci pour ton aide, Tifereth. Allons-y.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
-      value: 1
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19443,37 +19521,94 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.data[3]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[6]
+      value: 
       objectReference: {fileID: 915048483}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
+      propertyPath: events.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'BINAH: QUELLE FORCE...'
+      value: 'BINAH: Quelle force incroyable...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'HACKER: BINAH FONCE, JE VAIS T OUVRIR LE PASSAGE'
+      value: "KETHER: N\u2019insiste pas, Binah. Tu as \xE9t\xE9 t\xE9moin de la
+        mis\xE8re des hommes, de leurs souffrances et de leur m\xE9pris..."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'BINAH: D''ACCORD'
+      value: "KETHER: Le clan Gingko n\u2019a fait qu\u2019apporter de la d\xE9solation.
+        Ils sont avides de pouvoir et de gloire, hommes ou femmes... Vieillards ou
+        enfants. "
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: ' '
+      value: "KETHER: Ils finissent tous t\xF4t ou tard par d\xE9truire ce qui les
+        entoure pour assouvir leurs d\xE9sirs."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Key
+      value: "KETHER: Les humains sont la source du d\xE9clin de ce monde, je me
+        dois de les arr\xEAter."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Key
+      value: 'HACKER: Fonce Binah ! Je m''occupe du reste, concentre-toi sur Kether
+        !'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[6].Key
+      value: 'BINAH: Allons-y !'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[7].Key
+      value: "KETHER: Pourquoi t\u2019obstines-tu Binah ? Pourquoi refuses-tu de
+        comprendre ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[8].Key
+      value: "KETHER: Ils sont la cause de tout \xE7a, ils sont le PROBL\xC8ME !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[9].Key
+      value: "KETHER: Ils sont la cause de tout \xE7a, ils sont le PROBL\xC8ME !"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -19483,7 +19618,37 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Value
-      value: 0.1
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[6].Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[7].Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[8].Value
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[9].Value
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21794,7 +21959,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.size
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -21810,31 +21975,133 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[3]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[8]
+      value: 
+      objectReference: {fileID: 1847322821}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[10]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[11]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[12]
+      value: 
       objectReference: {fileID: 1621952698}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 4
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'KETER: TU NE ME VAINCRA PAS.'
+      value: "KETHER: Binah\u2026 Que\u2026 Qu\u2019as-tu fais ? J\u2019aurais pu
+        les an\xE9antir\u2026 Sauver\u2026 ce\u2026 monde\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'BINAH: SI.'
+      value: "KETHER: La vie est un privil\xE8ge, un cadeau. Ils ne pensent qu\u2019\xE0
+        leur propre existence, sans tenir compte des cons\xE9quences de leurs caprices..."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 'KETER: BON OK ON FAIT COMME CA.'
+      value: "BINAH: Tu es peut-\xEAtre diff\xE9rent de nos autres semblables  et
+        tu as vu des choses que je ne saurais comprendre. Les humains ne sont pas
+        parfaits mais\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: ' '
+      value: "BINAH: Ce n\u2019est pas \xE0 toi de d\xE9cider du sort de l\u2019humanit\xE9."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Key
+      value: "BINAH: Ils font des erreurs, c\u2019est \xE0 eux de devoir r\xE9parer
+        ce qu\u2019ils ont caus\xE9"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Key
+      value: "KETHER: Non... Non\u2026 Tu ne comprends rien \xE0 tout \xE7a ! Pourquoi
+        parles-tu comme si tu \xE9tais l\u2019une des leurs ?!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[6].Key
+      value: "BINAH : Je suis une machine, pas une humaine. Et tu n\u2019as rien
+        d\u2019un dieu, Kether. Arr\xEAte d\u2019essayer de devenir quelque chose
+        que tu n\u2019es pas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[7].Key
+      value: "KETHER: J'aurais d\xFB t'absorber ce que tu es\u2026 Enfin... un \xAB
+        vrai \xBB... dieu !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[8].Key
+      value: "KETHER: Ne\u2026 Ne m\xE9ritent-ils pas\u2026 D\u2019\xEAtre sauv\xE9s
+        de leur\u2026 souffrances\u2026 eux aussi ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[9].Key
+      value: "BINAH: Sans souffrance, la vie n\u2019aurait aucun sens. C\u2019est
+        gr\xE2ce \xE0 elle que l\u2019humanit\xE9 pourra rena\xEEtre."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[10].Key
+      value: 'BINAH: ...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[11].Key
+      value: "BINAH: Je suis d\xE9sol\xE9, Kether\u2026 J\u2019aurais voulu que cela
+        se termine\u2026 autrement."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[12].Key
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -21844,6 +22111,51 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[4].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[5].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[6].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[7].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[8].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[9].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[10].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[11].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[12].Value
       value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25245,6 +25557,19 @@ MonoBehaviour:
   - {fileID: 2147052921}
   - {fileID: 1187638895}
   - {fileID: 1410640832}
+--- !u!114 &1847322821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847322815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0e9260ccd63e14ea220aa6877927e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitesseDescente: 0.1
 --- !u!1 &1853720235
 GameObject:
   m_ObjectHideFlags: 0
