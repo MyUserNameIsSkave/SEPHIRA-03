@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UtilityAI_Struggling : UtilityAI_BaseState
 {
     private Quaternion BaseRotation;
+    private NavMeshAgent binahNavMeshAgent;
 
 
 
     public override void EnterState()
     {
         BaseRotation = UtilityAI_Manager.transform.rotation;
+        binahNavMeshAgent = UtilityAI_Manager.BinahRef.GetComponent<NavMeshAgent>();
 
         if (GameManager.Instance.StrugglingWith != null)
         {
@@ -20,7 +23,11 @@ public class UtilityAI_Struggling : UtilityAI_BaseState
 
             // Rotation
             //UtilityAI_Manager.transform.LookAt(GameManager.Instance.StrugglingWith.transform);
+            // Désactive le NavMeshAgent
+            binahNavMeshAgent.enabled = false;
+            binahNavMeshAgent.enabled = true;
             UtilityAI_Manager.transform.rotation = GameManager.Instance.StrugglingWith.transform.rotation;// * Quaternion.Euler(new Vector3(0, 180, 0));
+                                                                                                         
         }
 
 
