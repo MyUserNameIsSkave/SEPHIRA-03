@@ -18,6 +18,8 @@ public class NavMesh_Updater : MonoBehaviour
     private GameObject binah;
 
 
+    public bool Enabled = true;
+
     // ----- LOGIC -----
 
 
@@ -25,6 +27,12 @@ public class NavMesh_Updater : MonoBehaviour
 
     private void Start()
     {
+        if (!Enabled)
+        {
+            return;
+        }
+
+
         binah = GameManager.Instance.Binah;
         StartCoroutine(KeepNavmeshUpdated());
     }

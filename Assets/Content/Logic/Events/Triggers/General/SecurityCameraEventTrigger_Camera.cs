@@ -40,8 +40,16 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
 
     protected override void Transitionned()
     {
+
         if (alreadyUsed)
         {
+            return;
+        }
+
+        if (!GameManager.Instance.JoinedFirstCamera)
+        {
+            print("Ignore Join Position and Event");
+            GameManager.Instance.JoinedFirstCamera = true;
             return;
         }
 
@@ -60,6 +68,8 @@ public class SecurityCameraEventTrigger_Camera : CameraBase
             }
         }
 
+
+        alreadyUsed = true;
         CheckForCameraChange();
         CheckForEventsToDo();
     }

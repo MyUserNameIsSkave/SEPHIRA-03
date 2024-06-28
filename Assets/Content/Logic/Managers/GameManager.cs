@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     public static List<int> ValidatedCheckpoints = new List<int>();
     public static int CurrentIndex = -1;
 
+    public bool JoinedFirstCamera = false;
+
+
+
     public bool playerInputLocked
     {
         get

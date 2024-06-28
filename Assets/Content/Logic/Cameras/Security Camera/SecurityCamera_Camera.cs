@@ -13,6 +13,14 @@ public class SecurityCamera_Camera : CameraBase
     //Same in other cameras
     protected override void Transitionned()
     {
+        if (!GameManager.Instance.JoinedFirstCamera)
+        {
+            print("Ignore Join Position and Event");
+            GameManager.Instance.JoinedFirstCamera = true;
+            return;
+        }
+
+
         if (binahJoinTargetPosition != null && binahMaxDistanceBeforeAutoJoin != 0f)
         {
             if (binahMaxDistanceBeforeAutoJoin <= Vector3.Distance(GameManager.Instance.Binah.transform.position, binahJoinTargetPosition.position) || GameManager.Instance.BinahManager.IsAutomaticalyMovingToCamera)
@@ -26,6 +34,7 @@ public class SecurityCamera_Camera : CameraBase
                 }
             }
         }
+        alreadyUsed = true;
 
         return;
     }

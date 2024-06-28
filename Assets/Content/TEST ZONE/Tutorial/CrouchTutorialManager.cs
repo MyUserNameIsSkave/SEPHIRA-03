@@ -6,13 +6,17 @@ using UnityEngine.UI;
 
 public class CrouchTutorialManager : MonoBehaviour, IEventTriggerable
 {
+
+    public static bool alreadyTriggered = false;
+
     public void TriggerEvent()
     {
-        if (GameManager.CurrentIndex != -1)
+        if (alreadyTriggered == true)
         {
             return;
         }
 
+        alreadyTriggered = true;
         GetComponent<Image>().enabled = true;
     }
 
