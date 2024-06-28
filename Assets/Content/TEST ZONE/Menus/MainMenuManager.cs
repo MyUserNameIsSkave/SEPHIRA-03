@@ -37,7 +37,7 @@ public class MainMenuManager : MonoBehaviour
 
 
 
-        SceneManager.LoadScene(dropdown.value);
+        SceneManager.LoadScene(dropdown.value + 1);
     }
 
     public void Credits()
