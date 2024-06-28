@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
 
 
         checkpoints = FindObjectsOfType<CheckpointCollision>();
-        SpawnToCheckpoint();
+        Spawn();
     }
 
     //DEBUG
@@ -115,18 +116,33 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Used only to Respawn to the Last Checkpoint.
     /// </summary>
-    private void SpawnToCheckpoint()
+    private void Spawn()
+    {
+        StartCoroutine(SpawnToCheckpoint());
+
+    }
+
+
+    IEnumerator SpawnToCheckpoint()
     {
         if (CurrentIndex < 0 || CurrentIndex >= checkpoints.Length)
         {
-            return;
+            yield return 0;
         }
-        
-        CheckpointCollision currentCheckpoint = checkpoints[CurrentIndex];
 
+        CheckpointCollision currentCheckpoint = checkpoints[CurrentIndex];
         CameraController.CurrentCamera = currentCheckpoint.checkpointCamera;
+
+        BinahManager.GetComponent<NavMeshAgent>().enabled = false;
         Binah.transform.position = currentCheckpoint.transform.position;
+
+        yield return new WaitForNextFrameUnit();
+
+        BinahManager.GetComponent<NavMeshAgent>().enabled = true;
+
     }
+
+
 
     /// <summary>
     /// Used only to Change Level.
