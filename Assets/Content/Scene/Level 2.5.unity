@@ -38,8 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00026480088, g: 0.00008031983, b: 0.000020218316,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0.0001980793, g: 0.00006320002, b: 0.0000254605, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13698,7 +13697,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: events.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -13714,31 +13713,36 @@ PrefabInstance:
         type: 3}
       propertyPath: events.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: events.Array.data[3]
+      value: 
       objectReference: {fileID: 236945965}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: 'HACKER: TADA.'
+      value: 'HACKER: T''es sur que c''est le bon chemin ?'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'BINAH: TADA.'
+      value: 'BINAH: Ca m''en a tout l''air. On y vas ? '
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: 
+      value: 'HACKER: Je te suis.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: 'HACKER: Tu voudrais ?'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -13769,7 +13773,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
-      value: 0.1
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -13818,7 +13822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc7e7204be44c7479182c2c46659d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: 6
+  NextScene: 8
 --- !u!114 &236945966 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
@@ -33936,6 +33940,11 @@ PrefabInstance:
       propertyPath: sound
       value: 
       objectReference: {fileID: 8300000, guid: 06b97e2b8e225c14fb27fd285e6c7e19, type: 3}
+    - target: {fileID: 3978122056583144608, guid: 7400ff9854a09344d886d91ae3395dab,
+        type: 3}
+      propertyPath: precedentAudioSource
+      value: 
+      objectReference: {fileID: 1294738533}
     - target: {fileID: 7974259366830866682, guid: 7400ff9854a09344d886d91ae3395dab,
         type: 3}
       propertyPath: m_Name
@@ -66826,6 +66835,11 @@ PrefabInstance:
       propertyPath: sound
       value: 
       objectReference: {fileID: 8300000, guid: 06b97e2b8e225c14fb27fd285e6c7e19, type: 3}
+    - target: {fileID: 3978122056583144608, guid: 7400ff9854a09344d886d91ae3395dab,
+        type: 3}
+      propertyPath: precedentAudioSource
+      value: 
+      objectReference: {fileID: 1720681171}
     - target: {fileID: 7974259366830866682, guid: 7400ff9854a09344d886d91ae3395dab,
         type: 3}
       propertyPath: m_Name
@@ -66836,6 +66850,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7400ff9854a09344d886d91ae3395dab, type: 3}
+--- !u!82 &1294738533 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7350025536959974306, guid: 7400ff9854a09344d886d91ae3395dab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1294738532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1295090493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87351,6 +87371,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7400ff9854a09344d886d91ae3395dab, type: 3}
+--- !u!82 &1720681171 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7350025536959974306, guid: 7400ff9854a09344d886d91ae3395dab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1720681170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1722566040
 PrefabInstance:
   m_ObjectHideFlags: 0
