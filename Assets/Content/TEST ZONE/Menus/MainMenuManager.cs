@@ -34,7 +34,10 @@ public class MainMenuManager : MonoBehaviour
         {
             clickSource.Play();
         }
-        SceneManager.LoadSceneAsync(dropdown.value + 2);
+
+
+
+        SceneManager.LoadScene(dropdown.value);
     }
 
     public void Credits()
