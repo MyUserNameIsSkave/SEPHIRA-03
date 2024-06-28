@@ -28,6 +28,9 @@ public class phase2KeterAnimation : MonoBehaviour, IEventTriggerable
 
         yield return new WaitForSeconds(0.4f);
 
-        GameManager.Instance.BinahManager.SendBinahToLocation(keter.position);
+        Vector3 targetPosition = keter.position;
+        targetPosition.z -= -1.5f;
+
+        GameManager.Instance.BinahManager.SendBinahToLocation(targetPosition);
     }
 }

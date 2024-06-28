@@ -8,6 +8,7 @@ public class BinahKillKether : MonoBehaviour, IEventTriggerable
     public float descendTime = 2f; // Temps pour parcourir la distance
     public Animator roomAnimator;
     public Animator roomAnimator2;
+    public Animator ketherAnimator;
 
     private Vector3 startPosition; // Position initiale de l'objet
 
@@ -15,6 +16,7 @@ public class BinahKillKether : MonoBehaviour, IEventTriggerable
     {
         startPosition = transform.position; // Enregistre la position initiale de l'objet
         StartCoroutine(Descend()); // Démarre la coroutine pour faire descendre l'objet
+        ketherAnimator.SetBool("IsFlying", false);
         if (roomAnimator != null && roomAnimator2 != null)
         {
             Destroy(roomAnimator);
