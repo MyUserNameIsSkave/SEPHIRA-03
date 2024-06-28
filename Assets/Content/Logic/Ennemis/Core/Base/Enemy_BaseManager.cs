@@ -179,7 +179,7 @@ public abstract class Enemy_BaseManager : MonoBehaviour, IWarnable
 
 
 
-    [Header("    Warining Settings")]
+    [Header("    Warning Settings")]
     [Space(5)]
 
     public float WarningRadius;
