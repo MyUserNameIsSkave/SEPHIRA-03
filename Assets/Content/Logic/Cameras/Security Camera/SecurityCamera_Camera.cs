@@ -15,9 +15,13 @@ public class SecurityCamera_Camera : CameraBase
     {
         if (!GameManager.Instance.JoinedFirstCamera)
         {
-            print("Ignore Join Position and Event");
             GameManager.Instance.JoinedFirstCamera = true;
-            return;
+
+            if (GameManager.CurrentIndex != 1)
+            {
+                print("Ignore Join Position and Event");
+                return;
+            }
         }
 
 
