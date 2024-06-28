@@ -5,14 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenuManager : MonoBehaviour
 {
+
+    private bool NotTriggered;
     public AudioSource audioSource;
     // Start is called before the first frame update
-    public void OnBecameVisible()
+    public void FixedUpdate()
     {
-        if (!audioSource.isPlaying)
+
+        if (GetComponent<Canvas>().enabled && !NotTriggered)
         {
+            NotTriggered = true;
             audioSource.PlayOneShot(audioSource.clip);
+            
         }
+
     }
     public void Restart()
     {
