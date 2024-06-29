@@ -13,6 +13,9 @@ public class ChangeLightState : MonoBehaviour, IEventTriggerable
     [SerializeField]
     private GameObject[] lights;
 
+    [SerializeField]
+    private AudioSource shutDown;
+
     private bool isLightsOn = true;
 
 
@@ -21,6 +24,7 @@ public class ChangeLightState : MonoBehaviour, IEventTriggerable
         StartCoroutine(LightStateChange());
 
         material.color = Color.red;
+        shutDown.Play();
     }
 
 

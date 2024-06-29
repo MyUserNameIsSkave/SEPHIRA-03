@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1851.6877, g: 1358.2286, b: 1124.7462, a: 1}
+  m_IndirectSpecularColor: {r: 1856.4368, g: 1366.8175, b: 1137.9015, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5248,18 +5248,18 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: "BINAH: Chokmah. La deuxi\xE8me unit\xE9 Sephira. J'en suis sure maintenant,
-        c'est lui."
+      value: "BINAH: Chokmah. C'est la deuxi\xE8me unit\xE9 SEPHIRA. J'en suis s\xFBre
+        d\xE9sormais, c'est lui."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
-      value: "HACKER: \xC7a craint ?"
+      value: 'HACKER: Il a l''air dangereux...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[3].Key
-      value: 'BINAH: Oui...'
+      value: 'BINAH: Il l''est.'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -14620,18 +14620,18 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: "HACKER: Binah ?!! \xC7a va ?"
+      value: "HACKER: Binah ?! \xC7a va ?"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: "BINAH: Oui tout va bien. Il s'est court-circuit\xE9 avec le dissjoncteur."
+      value: "BINAH: Oui, tout va bien. Frapp\xE9 ce disjoncteur l'a fait court-circuiter."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
       value: "BINAH: Chokmah a parl\xE9 de quelque chose qui l'appelait. Je crois
-        bien que je l'ai senti moi aussi, tout en haut, il attend. "
+        bien que je l'ai senti moi aussi, tout en haut, il m'attend. "
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -26076,7 +26076,7 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: "HACKER: Qu'es ce qu'il c'est pass\xE9 ?"
+      value: "HACKER: Qu'est-ce qu'il s'est pass\xE9 ?"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
@@ -43758,6 +43758,134 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 67.53578, y: 8.337994, z: -11.3446455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &831450136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831450138}
+  - component: {fileID: 831450137}
+  m_Layer: 0
+  m_Name: AudioShutDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &831450137
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831450136}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 520fa912d77eb89439bdd92ad95ff12f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &831450138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831450136}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 150.71504, y: 104.08924, z: 28.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63576,7 +63704,7 @@ PrefabInstance:
     - target: {fileID: 5571593235213716380, guid: 5c134d5ede209d04fa7c8bc7cea2af6a,
         type: 3}
       propertyPath: DestroyAutomaticaly
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5571593235213716380, guid: 5c134d5ede209d04fa7c8bc7cea2af6a,
         type: 3}
@@ -68967,12 +69095,22 @@ PrefabInstance:
       objectReference: {fileID: 499676057}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[2].Key
+      value: 
+      objectReference: {fileID: 499676057}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
       propertyPath: EventToTrigger._serializedList.Array.data[0].Value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
         type: 3}
       propertyPath: EventToTrigger._serializedList.Array.data[1].Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5501097133711414859, guid: 4fb74578675002d4f9433c75b0a3efed,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[2].Value
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -72898,7 +73036,7 @@ PrefabInstance:
         type: 3}
       propertyPath: accessibleCameras.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1593859078}
     - target: {fileID: 5822191548230582030, guid: 80781f374a525e841bbd845c0196f83a,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -91933,6 +92071,148 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60cbc86813e17c046873582ef711f413, type: 3}
+--- !u!1 &1770486403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770486406}
+  - component: {fileID: 1770486405}
+  - component: {fileID: 1770486404}
+  m_Layer: 0
+  m_Name: AudioShutDown (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1770486404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770486403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da0022a66dfb4c409eef7309b87e8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chokmahDeathAudio: {fileID: 1770486405}
+--- !u!82 &1770486405
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770486403}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1a65a4b6698843842b725964865a7a41, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1770486406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770486403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 134.92, y: 104.08924, z: 42.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1770991291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93423,12 +93703,12 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[6].Key
-      value: "HACKER: Merde\u2026 Il sait que t'es l\xE0 ? ! !"
+      value: "HACKER: Merde\u2026 Il sait que t'es l\xE0 ?!"
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[7].Key
-      value: "HACKER: Ok. Il y a une porte de secours au fond de la salle, essayons
+      value: "HACKER: Il y a une porte de secours au fond de la salle, je peux essayer
         de sortir par l\xE0."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
@@ -96762,6 +97042,7 @@ MonoBehaviour:
   - {fileID: 1968626826}
   - {fileID: 1844842311}
   - {fileID: 1472058141}
+  shutDown: {fileID: 831450137}
 --- !u!4 &1853375829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 955091133464414679, guid: 60cbc86813e17c046873582ef711f413,
@@ -99618,21 +99899,26 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[0].Key
-      value: "BINAH: \_Il n'y a personne ici ?"
+      value: 'BINAH: ...'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[1].Key
-      value: 'HACKER: Non pourquoi ?'
+      value: 'BINAH: Il n''y a personne ici ?'
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Key
+      value: 'HACKER: Je pense pas pourquoi ?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[3].Key
       value: "BINAH: \xC9trange, j'ai encore cette sensation..."
       objectReference: {fileID: 0}
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
@@ -99648,6 +99934,11 @@ PrefabInstance:
     - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
         type: 3}
       propertyPath: subtitles._serializedList.Array.data[2].Value
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528038536041761969, guid: efac874de11053c4b994349f47fa7bd1,
+        type: 3}
+      propertyPath: subtitles._serializedList.Array.data[3].Value
       value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -111222,13 +111513,28 @@ PrefabInstance:
     - target: {fileID: 1305155041354610936, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
         type: 3}
       propertyPath: EventToTrigger._serializedList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1305155041354610936, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
         type: 3}
       propertyPath: EventToTrigger._serializedList.Array.data[0].Key
       value: 
       objectReference: {fileID: 247589495}
+    - target: {fileID: 1305155041354610936, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[1].Key
+      value: 
+      objectReference: {fileID: 1770486404}
+    - target: {fileID: 1305155041354610936, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[0].Value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305155041354610936, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
+        type: 3}
+      propertyPath: EventToTrigger._serializedList.Array.data[1].Value
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1525291561076430843, guid: 8fea6c27410f01c4ba1d7fd2dd221115,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -111888,3 +112194,5 @@ SceneRoots:
   - {fileID: 1639103910}
   - {fileID: 647666961}
   - {fileID: 1366190423}
+  - {fileID: 831450138}
+  - {fileID: 1770486406}
