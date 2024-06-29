@@ -9,9 +9,15 @@ public class Level1IntroManager : MonoBehaviour
     private GameObject ZoomTutorialCanvas;
 
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.playerInputLocked = true;
+
+        if (GameManager.CurrentIndex != -1)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 
