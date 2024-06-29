@@ -16,6 +16,7 @@ public class ChangeAudioSource : MonoBehaviour, IEventTriggerable
     public void TriggerEvent()
     {
         audioSource.clip = clip; // Définit le nouveau clip à jouer
+        audioSource.volume = 0.7f;
         audioSource.Play(); // Joue le nouveau clip
     }
 
