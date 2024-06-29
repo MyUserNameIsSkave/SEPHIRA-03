@@ -14,6 +14,13 @@ public class CameraZoomTutorialUI : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.CurrentIndex != -1)
+        {
+            return;
+        }
+
+
+
         if (GameManager.Instance.CameraController.currentFOV < 30)
         {
             IEventTriggerable eventInterface = dialogueToTrigger as IEventTriggerable;

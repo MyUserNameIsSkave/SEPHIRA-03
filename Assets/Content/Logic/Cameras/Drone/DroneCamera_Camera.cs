@@ -10,6 +10,9 @@ public class DroneCamera_Camera : CameraBase
     //Same in other cameras
     protected override void Transitionned()
     {
+        GetComponent<DroneMovements>().TakeControl();
+
+
         if (binahJoinTargetPosition != null && binahMaxDistanceBeforeAutoJoin != 0f)
         {
             if (binahMaxDistanceBeforeAutoJoin <= Vector3.Distance(GameManager.Instance.Binah.transform.position, binahJoinTargetPosition.position) || GameManager.Instance.BinahManager.IsAutomaticalyMovingToCamera)
