@@ -13,4 +13,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(0);
     }
+
+    public void Scene6()
+    {
+        SceneManager.LoadSceneAsync(6);
+    }
+
 }
