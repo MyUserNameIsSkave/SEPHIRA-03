@@ -58,6 +58,7 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
         animator.SetBool(boolParameterName, true);
         chokmahCollision.enabled = false;
         DestroyImmediate(chokmahCollision, true);
+        chokmahReference.transform.Rotate(0, -180, 0);
         chokmahReference.transform.position = chokmahReference.transform.position; // Lock la position
         chokmahReference = null;
     }
