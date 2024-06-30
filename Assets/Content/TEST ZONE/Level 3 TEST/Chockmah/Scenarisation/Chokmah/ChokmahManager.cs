@@ -34,9 +34,11 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
             
         }
 
-        chokmahReference = Instantiate(Chokmah, TargetPath.gameObject.transform.GetChild(0).transform.position, TargetPath.gameObject.transform.GetChild(0).transform.rotation);
-        chokmahReference.GetComponent<ChokmahLogic>().patrolRoute = TargetPath;
-
+        if (chokmahReference == null)
+        {
+            chokmahReference = Instantiate(Chokmah, TargetPath.gameObject.transform.GetChild(0).transform.position, TargetPath.gameObject.transform.GetChild(0).transform.rotation);
+            chokmahReference.GetComponent<ChokmahLogic>().patrolRoute = TargetPath;
+        }
         if (TargetPath.movementSpeed != 0)
         {
             chokmahReference.GetComponent<NavMeshAgent>().speed = TargetPath.movementSpeed;
@@ -53,14 +55,20 @@ public class ChokmahManager : MonoBehaviour, IEventTriggerable
     }
     private IEnumerator SetAnimatorBoolAfterDelay(Animator animator, string boolParameterName, float delayTime)
     {
-        chokmahCollision = Chokmah.GetComponent<CapsuleCollider>();
-        yield return new WaitForSeconds(delayTime);
-        animator.SetBool(boolParameterName, true);
-        chokmahCollision.enabled = false;
-        DestroyImmediate(chokmahCollision, true);
-        chokmahReference.transform.Rotate(0, -180, 0);
-        chokmahReference.transform.position = chokmahReference.transform.position; // Lock la position
-        chokmahReference = null;
+        if (chokmahReference != null)
+        {
+            chokmahCollision = Chokmah.GetComponent<CapsuleCollider>();
+            yield return new WaitForSeconds(delayTime);
+            animator.SetBool(boolParameterName, true);
+            yield return new WaitForSeconds(0.7f);
+            Debug.Log("Rotate and freeze"); 
+            chokmahReference.transform.Rotate(0, -90, 0);
+            chokmahReference.transform.rotation = chokmahReference.transform.rotation;
+            chokmahReference.transform.position = chokmahReference.transform.position; // Lock la position
+            chokmahCollision.enabled = false;
+            DestroyImmediate(chokmahCollision, true);
+            chokmahReference = null;
+        }
     }
 
 
